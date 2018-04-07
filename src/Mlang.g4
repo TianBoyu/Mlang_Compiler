@@ -1,5 +1,5 @@
 grammar Mlang;
-
+//this is a new language, which looks like c and java
 prog: (func_def | class_def | var_dec)+;
 
 
@@ -69,7 +69,7 @@ class_id: BOOL
 class_type: class_id '[]'*;
 
 
-//reserved Keywords
+//Keywords
 BOOL    : 'bool';
 INT     : 'int';
 STRING  : 'string';
@@ -102,7 +102,6 @@ ADD     : '+';
 SUB     : '-';
 
 ID      : [a-zA-Z]+[a-zA-Z_]*;
-//NAME : [a-zA-Z_]+ ;
 WS      : [ \t\n\r]+ -> skip;
 
 
