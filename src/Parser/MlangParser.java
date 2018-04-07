@@ -1,12 +1,10 @@
+package Parser;
 // Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class MlangParser extends Parser {
@@ -26,12 +24,12 @@ public class MlangParser extends Parser {
 	public static final int
 		RULE_prog = 0, RULE_class_def = 1, RULE_func_def = 2, RULE_var_dec = 3, 
 		RULE_stat = 4, RULE_cond_stat = 5, RULE_circ_stat = 6, RULE_jump_stat = 7, 
-		RULE_expr_stat = 8, RULE_decl_stat = 9, RULE_expr = 10, RULE_expr_list = 11, 
-		RULE_stat_list = 12, RULE_assign_expr = 13, RULE_id = 14, RULE_class_id = 15, 
+		RULE_expr_stat = 8, RULE_decl_stat = 9, RULE_expr = 10, RULE_actual_parameters = 11, 
+		RULE_formal_parameters = 12, RULE_assign_expr = 13, RULE_id = 14, RULE_class_id = 15, 
 		RULE_class_type = 16;
 	public static final String[] ruleNames = {
 		"prog", "class_def", "func_def", "var_dec", "stat", "cond_stat", "circ_stat", 
-		"jump_stat", "expr_stat", "decl_stat", "expr", "expr_list", "stat_list", 
+		"jump_stat", "expr_stat", "decl_stat", "expr", "actual_parameters", "formal_parameters", 
 		"assign_expr", "id", "class_id", "class_type"
 	};
 
@@ -86,7 +84,7 @@ public class MlangParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Mlang.g4"; }
+	public String getGrammarFileName() { return "Parser/Mlang.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -254,8 +252,8 @@ public class MlangParser extends Parser {
 		public IdContext id() {
 			return getRuleContext(IdContext.class,0);
 		}
-		public Stat_listContext stat_list() {
-			return getRuleContext(Stat_listContext.class,0);
+		public Formal_parametersContext formal_parameters() {
+			return getRuleContext(Formal_parametersContext.class,0);
 		}
 		public StatContext stat() {
 			return getRuleContext(StatContext.class,0);
@@ -292,7 +290,7 @@ public class MlangParser extends Parser {
 			setState(49);
 			match(T__2);
 			setState(50);
-			stat_list(0);
+			formal_parameters(0);
 			setState(51);
 			match(T__3);
 			setState(52);
@@ -883,8 +881,8 @@ public class MlangParser extends Parser {
 		public IdContext id() {
 			return getRuleContext(IdContext.class,0);
 		}
-		public Expr_listContext expr_list() {
-			return getRuleContext(Expr_listContext.class,0);
+		public Actual_parametersContext actual_parameters() {
+			return getRuleContext(Actual_parametersContext.class,0);
 		}
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
@@ -949,7 +947,7 @@ public class MlangParser extends Parser {
 				setState(137);
 				match(T__2);
 				setState(138);
-				expr_list(0);
+				actual_parameters(0);
 				setState(139);
 				match(T__3);
 				}
@@ -1330,43 +1328,43 @@ public class MlangParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Expr_listContext extends ParserRuleContext {
+	public static class Actual_parametersContext extends ParserRuleContext {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public Expr_listContext expr_list() {
-			return getRuleContext(Expr_listContext.class,0);
+		public Actual_parametersContext actual_parameters() {
+			return getRuleContext(Actual_parametersContext.class,0);
 		}
-		public Expr_listContext(ParserRuleContext parent, int invokingState) {
+		public Actual_parametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_expr_list; }
+		@Override public int getRuleIndex() { return RULE_actual_parameters; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MlangListener ) ((MlangListener)listener).enterExpr_list(this);
+			if ( listener instanceof MlangListener ) ((MlangListener)listener).enterActual_parameters(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MlangListener ) ((MlangListener)listener).exitExpr_list(this);
+			if ( listener instanceof MlangListener ) ((MlangListener)listener).exitActual_parameters(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitExpr_list(this);
+			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitActual_parameters(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Expr_listContext expr_list() throws RecognitionException {
-		return expr_list(0);
+	public final Actual_parametersContext actual_parameters() throws RecognitionException {
+		return actual_parameters(0);
 	}
 
-	private Expr_listContext expr_list(int _p) throws RecognitionException {
+	private Actual_parametersContext actual_parameters(int _p) throws RecognitionException {
 		ParserRuleContext _parentctx = _ctx;
 		int _parentState = getState();
-		Expr_listContext _localctx = new Expr_listContext(_ctx, _parentState);
-		Expr_listContext _prevctx = _localctx;
+		Actual_parametersContext _localctx = new Actual_parametersContext(_ctx, _parentState);
+		Actual_parametersContext _prevctx = _localctx;
 		int _startState = 22;
-		enterRecursionRule(_localctx, 22, RULE_expr_list, _p);
+		enterRecursionRule(_localctx, 22, RULE_actual_parameters, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -1393,8 +1391,8 @@ public class MlangParser extends Parser {
 					_prevctx = _localctx;
 					{
 					{
-					_localctx = new Expr_listContext(_parentctx, _parentState);
-					pushNewRecursionContext(_localctx, _startState, RULE_expr_list);
+					_localctx = new Actual_parametersContext(_parentctx, _parentState);
+					pushNewRecursionContext(_localctx, _startState, RULE_actual_parameters);
 					setState(219);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 					setState(220);
@@ -1421,46 +1419,46 @@ public class MlangParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Stat_listContext extends ParserRuleContext {
+	public static class Formal_parametersContext extends ParserRuleContext {
 		public Class_idContext class_id() {
 			return getRuleContext(Class_idContext.class,0);
 		}
 		public IdContext id() {
 			return getRuleContext(IdContext.class,0);
 		}
-		public Stat_listContext stat_list() {
-			return getRuleContext(Stat_listContext.class,0);
+		public Formal_parametersContext formal_parameters() {
+			return getRuleContext(Formal_parametersContext.class,0);
 		}
-		public Stat_listContext(ParserRuleContext parent, int invokingState) {
+		public Formal_parametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_stat_list; }
+		@Override public int getRuleIndex() { return RULE_formal_parameters; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MlangListener ) ((MlangListener)listener).enterStat_list(this);
+			if ( listener instanceof MlangListener ) ((MlangListener)listener).enterFormal_parameters(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MlangListener ) ((MlangListener)listener).exitStat_list(this);
+			if ( listener instanceof MlangListener ) ((MlangListener)listener).exitFormal_parameters(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitStat_list(this);
+			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitFormal_parameters(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Stat_listContext stat_list() throws RecognitionException {
-		return stat_list(0);
+	public final Formal_parametersContext formal_parameters() throws RecognitionException {
+		return formal_parameters(0);
 	}
 
-	private Stat_listContext stat_list(int _p) throws RecognitionException {
+	private Formal_parametersContext formal_parameters(int _p) throws RecognitionException {
 		ParserRuleContext _parentctx = _ctx;
 		int _parentState = getState();
-		Stat_listContext _localctx = new Stat_listContext(_ctx, _parentState);
-		Stat_listContext _prevctx = _localctx;
+		Formal_parametersContext _localctx = new Formal_parametersContext(_ctx, _parentState);
+		Formal_parametersContext _prevctx = _localctx;
 		int _startState = 24;
-		enterRecursionRule(_localctx, 24, RULE_stat_list, _p);
+		enterRecursionRule(_localctx, 24, RULE_formal_parameters, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -1489,8 +1487,8 @@ public class MlangParser extends Parser {
 					_prevctx = _localctx;
 					{
 					{
-					_localctx = new Stat_listContext(_parentctx, _parentState);
-					pushNewRecursionContext(_localctx, _startState, RULE_stat_list);
+					_localctx = new Formal_parametersContext(_parentctx, _parentState);
+					pushNewRecursionContext(_localctx, _startState, RULE_formal_parameters);
 					setState(233);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 					setState(234);
@@ -1796,9 +1794,9 @@ public class MlangParser extends Parser {
 		case 10:
 			return expr_sempred((ExprContext)_localctx, predIndex);
 		case 11:
-			return expr_list_sempred((Expr_listContext)_localctx, predIndex);
+			return actual_parameters_sempred((Actual_parametersContext)_localctx, predIndex);
 		case 12:
-			return stat_list_sempred((Stat_listContext)_localctx, predIndex);
+			return formal_parameters_sempred((Formal_parametersContext)_localctx, predIndex);
 		case 14:
 			return id_sempred((IdContext)_localctx, predIndex);
 		}
@@ -1831,14 +1829,14 @@ public class MlangParser extends Parser {
 		}
 		return true;
 	}
-	private boolean expr_list_sempred(Expr_listContext _localctx, int predIndex) {
+	private boolean actual_parameters_sempred(Actual_parametersContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 11:
 			return precpred(_ctx, 2);
 		}
 		return true;
 	}
-	private boolean stat_list_sempred(Stat_listContext _localctx, int predIndex) {
+	private boolean formal_parameters_sempred(Formal_parametersContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 12:
 			return precpred(_ctx, 2);

@@ -1,3 +1,4 @@
+package Parser;
 // Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -117,25 +118,25 @@ public interface MlangListener extends ParseTreeListener {
 	 */
 	void exitExpr(MlangParser.ExprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MlangParser#expr_list}.
+	 * Enter a parse tree produced by {@link MlangParser#actual_parameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr_list(MlangParser.Expr_listContext ctx);
+	void enterActual_parameters(MlangParser.Actual_parametersContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MlangParser#expr_list}.
+	 * Exit a parse tree produced by {@link MlangParser#actual_parameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr_list(MlangParser.Expr_listContext ctx);
+	void exitActual_parameters(MlangParser.Actual_parametersContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MlangParser#stat_list}.
+	 * Enter a parse tree produced by {@link MlangParser#formal_parameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterStat_list(MlangParser.Stat_listContext ctx);
+	void enterFormal_parameters(MlangParser.Formal_parametersContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MlangParser#stat_list}.
+	 * Exit a parse tree produced by {@link MlangParser#formal_parameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitStat_list(MlangParser.Stat_listContext ctx);
+	void exitFormal_parameters(MlangParser.Formal_parametersContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MlangParser#assign_expr}.
 	 * @param ctx the parse tree

@@ -1,3 +1,4 @@
+package Parser;
 // Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -76,17 +77,17 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpr(MlangParser.ExprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MlangParser#expr_list}.
+	 * Visit a parse tree produced by {@link MlangParser#actual_parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr_list(MlangParser.Expr_listContext ctx);
+	T visitActual_parameters(MlangParser.Actual_parametersContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MlangParser#stat_list}.
+	 * Visit a parse tree produced by {@link MlangParser#formal_parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStat_list(MlangParser.Stat_listContext ctx);
+	T visitFormal_parameters(MlangParser.Formal_parametersContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MlangParser#assign_expr}.
 	 * @param ctx the parse tree

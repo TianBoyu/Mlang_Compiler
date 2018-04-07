@@ -1,3 +1,4 @@
+package Parser;
 // Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -93,14 +94,14 @@ public class MlangBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpr_list(MlangParser.Expr_listContext ctx) { return visitChildren(ctx); }
+	@Override public T visitActual_parameters(MlangParser.Actual_parametersContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitStat_list(MlangParser.Stat_listContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFormal_parameters(MlangParser.Formal_parametersContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
