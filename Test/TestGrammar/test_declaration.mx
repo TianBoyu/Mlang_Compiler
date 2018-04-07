@@ -1,0 +1,6 @@
+int integer;
+int[] array;
+string str;
+my_class mine;
+int a = 1;
+string b = "lalalala"

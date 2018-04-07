@@ -1,0 +1,24 @@
+int pos = 0;
+
+int move_left()
+{
+    pos = pos - 1;
+    return (-pos)
+}
+
+int move_left_for(int step)
+{
+    pos = pos - step
+    return (-pos)
+}
+
+void jump()
+{
+    do_nothing()
+}
+
+int jump_and_shout(string word)
+{
+    print(word)
+}
+

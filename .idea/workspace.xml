@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Mlang.g4" afterPath="$PROJECT_DIR$/src/Mlang.g4" />
-    </list>
+    <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="Mlang.g4" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Mlang.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="22" />
+            <state relative-caret-position="110">
+              <caret line="126" column="14" lean-forward="true" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -48,9 +46,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>expr_l</find>
-      <find>stat_list</find>
       <find>expr_list</find>
+      <find>stat_list</find>
     </findStrings>
+    <replaceStrings>
+      <replace>actuall_parameters</replace>
+      <replace>formal_parameters</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -406,10 +408,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Parser/MlangLexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="115" column="40" lean-forward="true" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mlang.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="22" />
+        <state relative-caret-position="110">
+          <caret line="126" column="14" lean-forward="true" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
           <folding />
         </state>
       </provider>
