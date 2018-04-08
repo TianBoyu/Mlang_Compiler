@@ -1,4 +1,4 @@
-package Parser;
+package Code.Parser;
 // Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -84,7 +84,7 @@ public class MlangParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Parser/Mlang.g4"; }
+	public String getGrammarFileName() { return "Code/Parser/Mlang.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
