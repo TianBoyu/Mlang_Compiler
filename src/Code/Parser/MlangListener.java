@@ -1,5 +1,5 @@
+// Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src/Code/Parser\Mlang.g4 by ANTLR 4.7
 package Code.Parser;
-// Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -47,6 +47,16 @@ public interface MlangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVar_dec(MlangParser.Var_decContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(MlangParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(MlangParser.BlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MlangParser#stat}.
 	 * @param ctx the parse tree

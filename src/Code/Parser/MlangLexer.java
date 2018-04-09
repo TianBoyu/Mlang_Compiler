@@ -1,10 +1,13 @@
+// Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src/Code/Parser\Mlang.g4 by ANTLR 4.7
 package Code.Parser;
-// Generated from F:/programing/Compiler/M_Language_Compiler/Mlang_Compiler/src\Mlang.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class MlangLexer extends Lexer {
@@ -96,7 +99,7 @@ public class MlangLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Code/Parser/Mlang.g4"; }
+	public String getGrammarFileName() { return "Mlang.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

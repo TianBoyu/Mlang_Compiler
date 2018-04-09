@@ -7,18 +7,21 @@ prog
 class_def
     : CLASS id '{'prog'}';
 func_def
-    : class_type id '('formal_parameters')''{'stat'}';
+    : class_type id '('formal_parameters?')'block;
 var_dec
     : class_type assign_expr ';'
     | class_type ID
     ;
+
+block
+    : '{'stat*'}';
 
 stat
     : cond_stat
     | circ_stat
     | jump_stat
     | '{'stat+ '}'
-    |expr_stat
+    | expr_stat
     | decl_stat
     ;
 cond_stat

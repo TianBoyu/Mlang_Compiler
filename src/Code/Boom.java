@@ -4,8 +4,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-import Code.Parser.MlangLexer;
-import Code.Parser.MlangParser;
 
 public class Boom {
     public static void processTree(String file_path) throws Exception
