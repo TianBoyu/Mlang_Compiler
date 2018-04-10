@@ -1,20 +1,25 @@
 package Code.AST.Node.ExprNode;
 
-import Code.AST.Node.ExprNode.ExprNode;
+import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Position;
 
 public class ArithExprNode extends ExprNode
 {
-    public ExprNode lhs, rhs;
-    public ArithExprNode(Position pos, ExprNode _lhs, ExprNode _rhs)
+    public ArithExprNode(Position _pos, ExprNode _lhs, ExprNode _rhs, BinaryOp _op)
     {
-        super(pos);
+        super(_pos);
         lhs = _lhs;
         rhs = _rhs;
+        op = _op;
     }
-    public void launchAnswer()
+    public final BinaryOp getOp()
     {
-        lhs.launchAnswer();
-        rhs.launchAnswer();
+        return op;
     }
+    public final ExprNode getLhs()
+    {
+        return lhs;
+    }
+    private ExprNode lhs, rhs;
+    private BinaryOp op;
 }

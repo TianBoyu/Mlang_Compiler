@@ -1,4 +1,4 @@
 package Code.AST.Node.StatNode;
 
-public class BrkStatNode {
+public class ReturnNode {
 }

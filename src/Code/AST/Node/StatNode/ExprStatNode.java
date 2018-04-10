@@ -1,4 +1,4 @@
 package Code.AST.Node.StatNode;
 
-public class WhileStatNode {
+public class ExprStatNode {
 }

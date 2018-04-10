@@ -1,5 +1,6 @@
-package Code.AST.Node;
+package Code.AST.Node.DeclNode;
 
+import Code.AST.Node.ASTBaseNode;
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Object.VarObject;
 import Code.AST.Tools.*;

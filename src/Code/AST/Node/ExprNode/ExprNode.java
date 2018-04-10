@@ -9,8 +9,4 @@ public class ExprNode extends ASTBaseNode
     {
         super(pos);
     }
-    public void launchAnswer()
-    {
-
-    }
 }

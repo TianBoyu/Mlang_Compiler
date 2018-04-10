@@ -1,5 +1,6 @@
-package Code.AST.Node;
+package Code.AST.Node.DeclNode;
 
+import Code.AST.Node.ASTBaseNode;
 import Code.AST.Node.ExprNode.ExprListNode;
 import Code.AST.Node.StatNode.BlockNode;
 import Code.AST.Object.FuncObject;
