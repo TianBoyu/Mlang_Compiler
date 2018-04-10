@@ -1,4 +1,4 @@
 package Code.AST.Tools;
 
-public class Types {
+public class SymbolTable {
 }

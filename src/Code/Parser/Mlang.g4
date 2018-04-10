@@ -20,7 +20,7 @@ stat
     : cond_stat
     | circ_stat
     | jump_stat
-    | '{'stat+ '}'
+    | block
     | expr_stat
     | decl_stat
     ;
