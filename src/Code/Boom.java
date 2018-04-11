@@ -20,7 +20,7 @@ public class Boom {
 //        System.out.println(tree.toStringTree(parser));
 //        System.out.println();
         System.out.println("Visitor:");
-        EvalVisitor evalByVisitor = new EvalVisitor();
+//        EvalVisitor evalByVisitor = new EvalVisitor();
     }
     public static void main(String[] args) throws Exception
     {
