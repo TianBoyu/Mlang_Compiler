@@ -13,6 +13,7 @@ public class VarDecNode extends DeclNode
         super(_pos);
         var = _var;
         value = v;
+//        lalala
     }
     public final VarObject getVar()
     {
