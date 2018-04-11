@@ -1,0 +1,11 @@
+class a
+{
+    int d;
+}
+
+int do_something(int b, int e, int f)
+{
+    f = b + e;
+}
+
+int c;

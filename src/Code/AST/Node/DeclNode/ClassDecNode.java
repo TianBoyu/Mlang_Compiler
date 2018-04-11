@@ -6,7 +6,7 @@ import Code.AST.Type.ClassType;
 
 import java.util.List;
 
-public class ClassDecNode extends ASTBaseNode
+public class ClassDecNode extends DeclNode
 {
     ClassType type;
     private List<FuncDecNode> member_function;
@@ -30,5 +30,10 @@ public class ClassDecNode extends ASTBaseNode
     public List<VarDecNode> getMemberVarible()
     {
         return member_varible;
+    }
+    @Override
+    public String getName()
+    {
+        return type.getTypeName();
     }
 }
