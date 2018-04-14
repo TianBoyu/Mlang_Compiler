@@ -4,6 +4,7 @@ import Code.AST.Type.Type;
 
 public class VarObject extends Object
 {
+//    private String name;
     private boolean is_global;
     private Type type;
     public VarObject(String _name, boolean _global, Type _type)

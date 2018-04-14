@@ -6,10 +6,14 @@ import java.util.List;
 
 public class ExprListNode extends ExprNode
 {
-    private List<ExprNode> expr;
+    private List<ExprNode> exprs;
     public ExprListNode(Position _pos, List<ExprNode> _expr)
     {
         super(_pos);
-        expr = _expr;
+        exprs = _expr;
+    }
+    public void addExpr(ExprNode node)
+    {
+        exprs.add(node);
     }
 }

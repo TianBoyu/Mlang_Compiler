@@ -28,5 +28,4 @@ public class ProgNode extends ASTBaseNode
         }
     }
     private List<DeclNode> declares;
-
 }

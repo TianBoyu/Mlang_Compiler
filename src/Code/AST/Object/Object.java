@@ -7,6 +7,7 @@ public class Object
     {
         name = _name;
     }
+
     public String getName() {
         return name;
     }

@@ -5,6 +5,7 @@ import Code.AST.Type.Type;
 
 public class FuncObject extends Object
 {
+//    private String name;
     private ExprListNode formal_parameter;
     private Type return_type;
     public FuncObject(String _name, ExprListNode _param, Type _type)
@@ -21,4 +22,5 @@ public class FuncObject extends Object
     {
         return return_type;
     }
+
 }

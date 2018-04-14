@@ -1,105 +1,89 @@
 grammar Mlang;
-//this is a new language, which looks like c and java
-prog
-    : (func_def | class_def | var_dec)+;
+
+program
+    : (variableDecl | functionDecl | classDecl) *
+    ;
+
+classDecl
+    : CLASS ID '{' (functionDecl | variableDecl)* '}'
+    ;
+
+functionDecl
+    : type? ID '('(parameter (','parameter)*)?')' block
+    ;
+
+variableDecl
+    : type ID '=' expression';'
+    | type ID ';'
+    ;
+
+parameter 
+    : type ID
+    ;
 
 
-class_def
-    : CLASS id '{'prog'}';
-func_def
-    : class_type id '('formal_parameters?')'block;
-var_dec
-    : class_type assign_expr ';'
-    | class_type ID ';'
+builtInType
+    : BOOL | INT | STRING | VOID
+    ;
+
+userType : ID;
+
+type
+    : (builtInType | userType) ('['']')*
     ;
 
 block
-    : '{'stat*'}';
+    : '{' statement* '}'
+    ;
 
-stat
-    : cond_stat
-    | circ_stat
-    | jump_stat
-    | block
-    | expr_stat
-    | decl_stat
-    ;
-cond_stat
-    : IF '(' expr ')' stat
-    | IF '(' expr ')' stat ELSE stat
-    ;
-circ_stat
-    : FOR '(' expr? ';' expr? ';' expr? ')' stat
-    | WHILE '(' expr ')' stat
-    ;
-jump_stat
-    : RETURN expr? ';'
+statement
+    : block
+    | variableDecl
+    | IF '('expression')' statement (ELSE statement)?
+    | FOR '('init=expression? ';' cond=expression?';' update=expression?')' statement
+    | WHILE '('expression ')' statement
+    | RETURN '(' expression ')' ';'
     | BREAK ';'
-    | CONTI ';'
-    ;
-expr_stat
-    : expr';'
-    ;
-decl_stat
-    : var_dec
+    | CONTINUE ';'
+    | expression ';'
+    | ';'
     ;
 
-expr
-    : expr op=('++'|'--')
-    | id '(' actual_parameters ')'
-    | op=('++'|'--') expr
-    | op=('+'|'-') expr
-    | op=('!'|'~') expr
-    | NEW class_id (('['expr']')+ ('[]')*)?
-    | expr op=('*'|'/'|'%') expr
-    | expr op=('+'|'-') expr
-    | expr op=('<<'|'>>') expr
-    | expr op=('<'|'<='|'>'|'>=') expr
-    | expr op=('=='|'!=') expr
-    | expr '&' expr
-    | expr '^' expr
-    | expr '|' expr
-    | expr '&&' expr
-    | expr '||' expr
+actual_parameter
+    : expression (',' expression)*
+    ;
+
+expression 
+    : expression '.' ID
+    | expression '[' expression ']'
+    | expression op=('++'|'--')
+    | ID '(' actual_parameter ')'
+    | op=('++'|'--') expression
+    | op=('+'|'-') expression
+    | op=('!'|'~') expression
+    | NEW type (('['expression']')+ ('[]')*)?
+    | expression op=('*'|'/'|'%') expression
+    | expression op=('+'|'-') expression
+    | expression op=('<<'|'>>') expression
+    | expression op=('<'|'<='|'>'|'>=') expression
+    | expression op=('=='|'!=') expression
+    | expression '&' expression
+    | expression '^' expression
+    | expression '|' expression
+    | expression '&&' expression
+    | expression '||' expression
     | NUM
     | TRUE
     | FALSE
     | NULL
     | STR
-    | id
-    | '(' expr ')'
-    | assign_expr
-    ;
-
-actual_parameters
-    : actual_parameters ',' expr
-    | expr?
-    ;
-formal_parameters
-    : formal_parameters ',' class_id id
-    | (class_id id)?
-    ;
-assign_expr
-    : id '=' expr;
-
-id
-    : ID
-    | id '[' expr ']'
-    | id '.' id
-    ;
-
-class_id
-    : BOOL
-    | INT
-    | STRING
-    | VOID
     | ID
+    | '(' expression ')'
+    | THIS
+    | expression '=' expression
     ;
-class_type
-    : class_id '[]'*;
 
 
-//Keywords
 BOOL    : 'bool';
 INT     : 'int';
 STRING  : 'string';
@@ -114,7 +98,7 @@ FOR     : 'for';
 WHILE   : 'while';
 
 BREAK   : 'break';
-CONTI   : 'continue';
+CONTINUE   : 'continue';
 RETURN   : 'return';
 
 NEW     : 'new';
@@ -133,6 +117,3 @@ SUB     : '-';
 
 ID      : [a-zA-Z]+[a-zA-Z_]*;
 WS      : [ \t\n\r]+ -> skip;
-
-
-

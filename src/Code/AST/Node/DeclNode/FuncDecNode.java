@@ -22,7 +22,7 @@ public class FuncDecNode extends DeclNode
     {
         return function;
     }
-    public final BlockNode getBlock()
+    public BlockNode getBlock()
     {
         return block;
     }
