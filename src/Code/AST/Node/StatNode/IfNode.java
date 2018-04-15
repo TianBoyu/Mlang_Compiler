@@ -1,10 +1,11 @@
 package Code.AST.Node.StatNode;
 
+import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
 
 public class IfNode extends StatNode
 {
-    public IfNode(Position _pos, ExprStatNode _cond, StatNode t, StatNode e)
+    public IfNode(Position _pos, ExprNode _cond, StatNode t, StatNode e)
     {
         super(_pos);
         condition = _cond;
@@ -12,7 +13,7 @@ public class IfNode extends StatNode
         else_then = e;
     }
 
-    public final ExprStatNode getCondition() {
+    public final ExprNode getCondition() {
         return condition;
     }
     public final StatNode getThen() {
@@ -22,7 +23,7 @@ public class IfNode extends StatNode
         return else_then;
     }
 
-    private ExprStatNode condition;
+    private ExprNode condition;
     private StatNode then;
     private StatNode else_then;
 }

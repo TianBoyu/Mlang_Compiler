@@ -1,10 +1,11 @@
 package Code.AST.Node.StatNode;
 
+import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
 
 public class ForNode extends StatNode
 {
-    public ForNode(Position _pos, StatNode b, StatNode e, StatNode u)
+    public ForNode(Position _pos, ExprNode b, ExprNode e, ExprNode u)
     {
         super(_pos);
         begin_condition = b;
@@ -12,19 +13,19 @@ public class ForNode extends StatNode
         update = u;
     }
 
-    public StatNode getBeginCondition() {
+    public ExprNode getBeginCondition() {
         return begin_condition;
     }
 
-    public StatNode getEndCondition() {
+    public ExprNode getEndCondition() {
         return end_condition;
     }
 
-    public StatNode getUpdate() {
+    public ExprNode getUpdate() {
         return update;
     }
 
-    private StatNode begin_condition;
-    private StatNode end_condition;
-    private StatNode update;
+    private ExprNode begin_condition;
+    private ExprNode end_condition;
+    private ExprNode update;
 }

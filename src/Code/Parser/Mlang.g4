@@ -27,9 +27,10 @@ builtInType
     ;
 
 userType : ID;
+arrayType : (builtInType | userType) ('['']')+;
 
 type
-    : (builtInType | userType) ('['']')*
+    : (arrayType | builtInType | userType)
     ;
 
 block
@@ -37,16 +38,18 @@ block
     ;
 
 statement
-    : block
-    | variableDecl
-    | IF '('expression')' statement (ELSE statement)?
-    | FOR '('init=expression? ';' cond=expression?';' update=expression?')' statement
-    | WHILE '('expression ')' statement
-    | RETURN '(' expression ')' ';'
-    | BREAK ';'
-    | CONTINUE ';'
-    | expression ';'
-    | ';'
+    : block                                                     #blockStat
+    | variableDecl                                              #varDeclStat
+    | IF '('expression')' statement (ELSE statement)?           #ifStat
+    | FOR '('init=expression?';'
+             cond=expression?';'
+             update=expression?')' statement                    #forStat
+    | WHILE '('expression ')' statement                         #whileStat
+    | RETURN '(' expression ')' ';'                             #returnStat
+    | BREAK ';'                                                 #breakStat
+    | CONTINUE ';'                                              #continueStat
+    | expression ';'                                            #exprStat
+    | ';'                                                       #emptyStat
     ;
 
 actual_parameter
@@ -54,33 +57,33 @@ actual_parameter
     ;
 
 expression 
-    : expression '.' ID
-    | expression '[' expression ']'
-    | expression op=('++'|'--')
-    | ID '(' actual_parameter ')'
-    | op=('++'|'--') expression
-    | op=('+'|'-') expression
-    | op=('!'|'~') expression
-    | NEW type (('['expression']')+ ('[]')*)?
-    | expression op=('*'|'/'|'%') expression
-    | expression op=('+'|'-') expression
-    | expression op=('<<'|'>>') expression
-    | expression op=('<'|'<='|'>'|'>=') expression
-    | expression op=('=='|'!=') expression
-    | expression '&' expression
-    | expression '^' expression
-    | expression '|' expression
-    | expression '&&' expression
-    | expression '||' expression
-    | NUM
-    | TRUE
-    | FALSE
-    | NULL
-    | STR
-    | ID
-    | '(' expression ')'
-    | THIS
-    | expression '=' expression
+    : expression '.' ID                                         #memberExpr
+    | expression '[' expression ']'                             #arrayExpr
+    | expression op=('++'|'--')                                 #suffixExpr
+    | ID '(' actual_parameter ')'                               #callExpr
+    | op=('++'|'--') expression                                 #prefixExpr
+    | op=('+'|'-') expression                                   #prefixExpr
+    | op=('!'|'~') expression                                   #prefixExpr
+    | NEW type (('['expression']')+ ('[]')*)?                   #newExpr
+    | expression op=('*'|'/'|'%') expression                    #binaryExpr
+    | expression op=('+'|'-') expression                        #binaryExpr
+    | expression op=('<<'|'>>') expression                      #binaryExpr
+    | expression op=('<'|'<='|'>'|'>=') expression              #binaryExpr
+    | expression op=('=='|'!=') expression                      #binaryExpr
+    | expression '&' expression                                 #binaryExpr
+    | expression '^' expression                                 #binaryExpr
+    | expression '|' expression                                 #binaryExpr
+    | expression '&&' expression                                #andExpr
+    | expression '||' expression                                #orExprt
+    | NUM                                                       #intConstExpr
+    | TRUE                                                      #boolConstExpr
+    | FALSE                                                     #boolConstExpr
+    | NULL                                                      #nullExpr
+    | STR                                                       #stringConstExpr
+    | ID                                                        #idExpr
+    | '(' expression ')'                                        #subExpr
+    | THIS                                                      #thisExpr
+    | expression '=' expression                                 #assignExpr
     ;
 
 
