@@ -334,6 +334,18 @@ public interface MlangListener extends ParseTreeListener {
 	 */
 	void exitBinaryExpr(MlangParser.BinaryExprContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code orExpr}
+	 * labeled alternative in {@link MlangParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrExpr(MlangParser.OrExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code orExpr}
+	 * labeled alternative in {@link MlangParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrExpr(MlangParser.OrExprContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code intConstExpr}
 	 * labeled alternative in {@link MlangParser#expression}.
 	 * @param ctx the parse tree
@@ -393,18 +405,6 @@ public interface MlangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCallExpr(MlangParser.CallExprContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code orExprt}
-	 * labeled alternative in {@link MlangParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterOrExprt(MlangParser.OrExprtContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code orExprt}
-	 * labeled alternative in {@link MlangParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitOrExprt(MlangParser.OrExprtContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code assignExpr}
 	 * labeled alternative in {@link MlangParser#expression}.

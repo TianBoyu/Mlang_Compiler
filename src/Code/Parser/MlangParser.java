@@ -1450,6 +1450,28 @@ public class MlangParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class OrExprContext extends ExpressionContext {
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public OrExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MlangListener ) ((MlangListener)listener).enterOrExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MlangListener ) ((MlangListener)listener).exitOrExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitOrExpr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class IntConstExprContext extends ExpressionContext {
 		public TerminalNode NUM() { return getToken(MlangParser.NUM, 0); }
 		public IntConstExprContext(ExpressionContext ctx) { copyFrom(ctx); }
@@ -1540,28 +1562,6 @@ public class MlangParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitCallExpr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class OrExprtContext extends ExpressionContext {
-		public List<ExpressionContext> expression() {
-			return getRuleContexts(ExpressionContext.class);
-		}
-		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
-		}
-		public OrExprtContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MlangListener ) ((MlangListener)listener).enterOrExprt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MlangListener ) ((MlangListener)listener).exitOrExprt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof MlangVisitor ) return ((MlangVisitor<? extends T>)visitor).visitOrExprt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2025,7 +2025,7 @@ public class MlangParser extends Parser {
 						break;
 					case 10:
 						{
-						_localctx = new OrExprtContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new OrExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(233);
 						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");

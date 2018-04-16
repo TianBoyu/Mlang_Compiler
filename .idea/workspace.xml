@@ -5,23 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ArrayExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BoolConstNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IntConstNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/NewExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/NullConstNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/PrefixExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/SuffixExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/UnaryExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/UnitExprNode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Tools/UnaryOp.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AndExprNode.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConditionExprNode.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IdExprNode.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/OrExprNode.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/StringConstNode.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/Listener.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ArithExprNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BinaryExprNode.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Tools/BinaryOp.java" afterPath="$PROJECT_DIR$/src/Code/AST/Tools/BinaryOp.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssginExprNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssignExprNode.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java" afterPath="$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" afterPath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangBaseVisitor.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangBaseVisitor.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangListener.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangVisitor.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangVisitor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,110 +36,82 @@
       <file leaf-file-name="ASTConstructor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="393" column="36" lean-forward="false" selection-start-line="393" selection-start-column="36" selection-end-line="393" selection-end-column="36" />
+            <state relative-caret-position="-630">
+              <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1170#1171#0" expanded="true" />
-                <element signature="e#1200#1201#0" expanded="true" />
+                <element signature="method#ASTConstructor#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#enterProgram#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitProgram#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitClassDecl#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitFunctionDecl#0;class#ASTConstructor#0" expanded="false" />
                 <element signature="method#exitVariableDecl#0;class#ASTConstructor#0" expanded="false" />
-                <element signature="method#enterParameter#0;class#ASTConstructor#0" expanded="false" />
-                <element signature="method#exitParameter#0;class#ASTConstructor#0" expanded="false" />
-                <element signature="method#enterBuiltInType#0;class#ASTConstructor#0" expanded="false" />
-                <element signature="e#7032#7033#0" expanded="true" />
-                <element signature="e#7082#7083#0" expanded="true" />
+                <element signature="method#exitBuiltInType#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitUserType#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitArrayType#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitType#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitBlock#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitVarDeclStat#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="e#6532#6533#0" expanded="true" />
+                <element signature="method#exitIfStat#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitForStat#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitWhileStat#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitReturnStat#0;class#ASTConstructor#0" expanded="false" />
                 <element signature="method#exitBreakStat#0;class#ASTConstructor#0" expanded="false" />
                 <element signature="method#exitContinueStat#0;class#ASTConstructor#0" expanded="false" />
-                <element signature="e#14346#14347#0" expanded="true" />
-                <element signature="e#14401#14402#0" expanded="true" />
+                <element signature="method#exitExprStat#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitActual_parameter#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitNewExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitBoolConstExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitThisExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitNullExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitArrayExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitMemberExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitSuffixExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitBinaryExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitIntConstExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="e#13641#13642#0" expanded="true" />
+                <element signature="e#13696#13697#0" expanded="true" />
+                <element signature="method#exitPrefixExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitStringConstExpr#0;class#ASTConstructor#0" expanded="false" />
+                <element signature="method#exitCallExpr#0;class#ASTConstructor#0" expanded="false" />
                 <element signature="method#getStat#0;class#ASTConstructor#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrefixExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/PrefixExprNode.java">
+      <file leaf-file-name="IdExprNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IdExprNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="5" column="49" lean-forward="false" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+            <state relative-caret-position="330">
+              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#221#222#0" expanded="true" />
-                <element signature="e#262#263#0" expanded="true" />
+                <element signature="e#260#261#0" expanded="true" />
+                <element signature="e#287#288#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SuffixExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/SuffixExprNode.java">
+      <file leaf-file-name="AssignExprNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssignExprNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#221#222#0" expanded="true" />
-                <element signature="e#262#263#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ExprNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+            <state relative-caret-position="420">
+              <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BoolConstNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BoolConstNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="15" selection-end-column="5" />
-              <folding>
-                <element signature="e#281#282#0" expanded="true" />
-                <element signature="e#309#310#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConstExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-              <folding>
-                <element signature="e#228#229#0" expanded="true" />
-                <element signature="e#255#256#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CallExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java">
+      <file leaf-file-name="OrExprNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/OrExprNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntConstNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IntConstNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+              <caret line="4" column="49" lean-forward="false" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
               <folding>
-                <element signature="e#267#268#0" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
+                <element signature="e#185#186#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,21 +120,70 @@
       <file leaf-file-name="BinaryExprNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BinaryExprNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="360">
+              <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NullConstNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/NullConstNode.java">
+      <file leaf-file-name="BinaryOp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Tools/BinaryOp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+            <state relative-caret-position="60">
+              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mlang.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2490">
+              <caret line="83" column="72" lean-forward="false" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CallExprNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
-                <element signature="e#160#161#0" expanded="true" />
-                <element signature="e#186#187#0" expanded="true" />
+                <element signature="e#416#417#0" expanded="true" />
+                <element signature="e#453#454#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndExprNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AndExprNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+              <folding>
+                <element signature="e#187#188#0" expanded="true" />
+                <element signature="e#222#223#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConditionExprNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConditionExprNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#374#375#0" expanded="true" />
+                <element signature="e#407#408#0" expanded="true" />
+                <element signature="e#435#436#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,11 +204,11 @@
       <find>expr_list</find>
       <find>stat_list</find>
       <find>ExprListNode</find>
+      <find>orE</find>
     </findStrings>
     <replaceStrings>
       <replace>actuall_parameters</replace>
       <replace>formal_parameters</replace>
-      <replace />
       <replace />
     </replaceStrings>
     <dirStrings>
@@ -205,15 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Code/AST/Object/BuiltInObject.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ArithExprNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/StatNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/BlockNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/BreakNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/ContinueNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/ExprStatNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Listener.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/Listener.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTComplexConstructor.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Tools/Constant.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Type/Type.java" />
@@ -229,10 +241,8 @@
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ExprListNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Object/Object.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Object/VarObject.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Object/ParameterObject.java" />
-        <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/IfNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/ForNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/WhileNode.java" />
@@ -250,18 +260,29 @@
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/SuffixExprNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Tools/BinaryOp.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/UnaryExprNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BoolConstNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/NullConstNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IntConstNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/PrefixExprNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/StringConstNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/Parser/MlangListener.java" />
+        <option value="$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java" />
+        <option value="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" />
+        <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConditionExprNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/OrExprNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AndExprNode.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IdExprNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1757" />
-    <option name="y" value="136" />
+    <option name="x" value="-1966" />
+    <option name="y" value="34" />
     <option name="width" value="1938" />
     <option name="height" value="1048" />
   </component>
@@ -283,8 +304,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -341,14 +362,29 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Code" type="462c0819:PsiDirectoryNode" />
               <item name="AST" type="462c0819:PsiDirectoryNode" />
+              <item name="Object" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mlang_Compiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mlang_Compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+              <item name="AST" type="462c0819:PsiDirectoryNode" />
               <item name="Tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mlang_Compiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mlang_Compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+              <item name="Parser" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,7 +396,7 @@
     <property name="$PROJECT_DIR$/src/Mlang.g4::/output-dir" value="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Parser" />
     <property name="$PROJECT_DIR$/src/Mlang.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/Mlang.g4::/gen-visitor" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
     <property name="$PROJECT_DIR$/src/Code/Parser/Mlang.g4::/auto-gen" value="false" />
     <property name="$PROJECT_DIR$/src/Code/Parser/Mlang.g4::/output-dir" value="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Code\Parser" />
     <property name="$PROJECT_DIR$/src/Code/Parser/Mlang.g4::/gen-listener" value="true" />
@@ -531,7 +567,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32460135" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21620172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22263949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -588,82 +624,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Test/TestGrammar/test_all.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/VarDecNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="e#566#567#0" expanded="false" />
-            <element signature="e#602#603#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/DeclNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/Name.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ProgNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="29" column="36" lean-forward="false" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Parser/MlangParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9930">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="e#703#704#0" expanded="false" />
-            <element signature="e#744#745#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Type/Type.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -690,13 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -750,13 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/ReturnNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -785,26 +731,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="468" column="73" lean-forward="true" selection-start-line="270" selection-start-column="4" selection-end-line="468" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ExprListNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssginExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -848,10 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding>
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#275#276#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -859,12 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#417#418#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -872,12 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="27" />
-          <folding>
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
-            <element signature="e#417#418#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -886,15 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Tools/BinaryOp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -902,17 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BinaryExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -921,49 +815,8 @@
         <state relative-caret-position="120">
           <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
           <folding>
-            <element signature="e#160#161#0" expanded="true" />
-            <element signature="e#186#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding>
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BoolConstNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="e#281#282#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IntConstNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-          <folding>
-            <element signature="e#267#268#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#160#161#0" expanded="false" />
+            <element signature="e#186#187#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -973,9 +826,9 @@
         <state relative-caret-position="270">
           <caret line="9" column="5" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#221#222#0" expanded="false" />
+            <element signature="e#262#263#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -985,9 +838,9 @@
         <state relative-caret-position="150">
           <caret line="5" column="49" lean-forward="false" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#221#222#0" expanded="false" />
+            <element signature="e#262#263#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1000,24 +853,211 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConstExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="e#228#229#0" expanded="false" />
+            <element signature="e#255#256#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/StringConstNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IntConstNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BoolConstNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="426" column="56" lean-forward="false" selection-start-line="426" selection-start-column="56" selection-end-line="426" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.tokens">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2859">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/MlangLexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/MlangListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="400" column="20" lean-forward="false" selection-start-line="400" selection-start-column="20" selection-end-line="400" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/MlangParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="1565" column="9" lean-forward="false" selection-start-line="1565" selection-start-column="9" selection-end-line="1565" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/BinaryExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Tools/BinaryOp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AndExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="e#187#188#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/OrExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="49" lean-forward="false" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+          <folding>
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ConditionExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssignExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2490">
+          <caret line="83" column="72" lean-forward="false" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IdExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding>
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="393" column="36" lean-forward="false" selection-start-line="393" selection-start-column="36" selection-end-line="393" selection-end-column="36" />
+        <state relative-caret-position="-630">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1170#1171#0" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
+            <element signature="method#ASTConstructor#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#enterProgram#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitProgram#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitClassDecl#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitFunctionDecl#0;class#ASTConstructor#0" expanded="false" />
             <element signature="method#exitVariableDecl#0;class#ASTConstructor#0" expanded="false" />
-            <element signature="method#enterParameter#0;class#ASTConstructor#0" expanded="false" />
-            <element signature="method#exitParameter#0;class#ASTConstructor#0" expanded="false" />
-            <element signature="method#enterBuiltInType#0;class#ASTConstructor#0" expanded="false" />
-            <element signature="e#7032#7033#0" expanded="true" />
-            <element signature="e#7082#7083#0" expanded="true" />
+            <element signature="method#exitBuiltInType#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitUserType#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitArrayType#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitType#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitBlock#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitVarDeclStat#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="e#6532#6533#0" expanded="true" />
+            <element signature="method#exitIfStat#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitForStat#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitWhileStat#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitReturnStat#0;class#ASTConstructor#0" expanded="false" />
             <element signature="method#exitBreakStat#0;class#ASTConstructor#0" expanded="false" />
             <element signature="method#exitContinueStat#0;class#ASTConstructor#0" expanded="false" />
-            <element signature="e#14346#14347#0" expanded="true" />
-            <element signature="e#14401#14402#0" expanded="true" />
+            <element signature="method#exitExprStat#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitActual_parameter#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitNewExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitBoolConstExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitThisExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitNullExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitArrayExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitMemberExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitSuffixExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitBinaryExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitIntConstExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="e#13641#13642#0" expanded="true" />
+            <element signature="e#13696#13697#0" expanded="true" />
+            <element signature="method#exitPrefixExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitStringConstExpr#0;class#ASTConstructor#0" expanded="false" />
+            <element signature="method#exitCallExpr#0;class#ASTConstructor#0" expanded="false" />
             <element signature="method#getStat#0;class#ASTConstructor#0" expanded="false" />
           </folding>
         </state>

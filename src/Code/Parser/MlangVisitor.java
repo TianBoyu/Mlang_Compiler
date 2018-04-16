@@ -203,6 +203,13 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBinaryExpr(MlangParser.BinaryExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code orExpr}
+	 * labeled alternative in {@link MlangParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrExpr(MlangParser.OrExprContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code intConstExpr}
 	 * labeled alternative in {@link MlangParser#expression}.
 	 * @param ctx the parse tree
@@ -237,13 +244,6 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCallExpr(MlangParser.CallExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code orExprt}
-	 * labeled alternative in {@link MlangParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOrExprt(MlangParser.OrExprtContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code assignExpr}
 	 * labeled alternative in {@link MlangParser#expression}.

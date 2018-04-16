@@ -74,7 +74,7 @@ expression
     | expression '^' expression                                 #binaryExpr
     | expression '|' expression                                 #binaryExpr
     | expression '&&' expression                                #andExpr
-    | expression '||' expression                                #orExprt
+    | expression '||' expression                                #orExpr
     | NUM                                                       #intConstExpr
     | TRUE                                                      #boolConstExpr
     | FALSE                                                     #boolConstExpr

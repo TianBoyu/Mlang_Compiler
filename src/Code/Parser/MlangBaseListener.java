@@ -364,6 +364,18 @@ public class MlangBaseListener implements MlangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOrExpr(MlangParser.OrExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrExpr(MlangParser.OrExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIntConstExpr(MlangParser.IntConstExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -419,18 +431,6 @@ public class MlangBaseListener implements MlangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCallExpr(MlangParser.CallExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterOrExprt(MlangParser.OrExprtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOrExprt(MlangParser.OrExprtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

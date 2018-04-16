@@ -6,20 +6,19 @@ import jdk.nashorn.api.tree.FunctionCallTree;
 
 public class CallExprNode extends ExprNode
 {
-    private FuncObject function;
-    private ExprListNode actual_parameter;
-    public CallExprNode(Position _pos, FuncObject _func, ExprListNode _param)
+    public CallExprNode(Position _pos, String name, ExprListNode _param)
     {
         super(_pos);
-        function = _func;
-        actual_parameter = _param;
+        func_name = name;
+        param = _param;
     }
-    public final FuncObject getFunction()
+    public String getFuncName()
     {
-        return function;
+        return func_name;
     }
-    public final ExprListNode getActualParameter()
-    {
-        return actual_parameter;
+    public ExprListNode getParam() {
+        return param;
     }
+    private String func_name;
+    private ExprListNode param;
 }

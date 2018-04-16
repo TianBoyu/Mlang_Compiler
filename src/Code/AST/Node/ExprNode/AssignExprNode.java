@@ -2,10 +2,10 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
 
-public class AssginExprNode extends ExprNode
+public class AssignExprNode extends ExprNode
 {
     private ExprNode lhs, rhs;
-    public AssginExprNode(Position _pos, ExprNode _lhs, ExprNode _rhs)
+    public AssignExprNode(Position _pos, ExprNode _lhs, ExprNode _rhs)
     {
         super(_pos);
         lhs = _lhs;
