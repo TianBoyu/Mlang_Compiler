@@ -3,9 +3,9 @@ package Code.AST.Node.ExprNode;
 import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Position;
 
-public class ArithExprNode extends ExprNode
+public class BinaryExprNode extends ExprNode
 {
-    public ArithExprNode(Position _pos, ExprNode _lhs, ExprNode _rhs, BinaryOp _op)
+    public BinaryExprNode(Position _pos, ExprNode _lhs, ExprNode _rhs, BinaryOp _op)
     {
         super(_pos);
         lhs = _lhs;

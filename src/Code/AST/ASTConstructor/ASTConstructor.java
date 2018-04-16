@@ -4,16 +4,17 @@ import Code.AST.Node.DeclNode.ClassDecNode;
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Node.DeclNode.FuncDecNode;
 import Code.AST.Node.DeclNode.VarDecNode;
-import Code.AST.Node.ExprNode.ExprListNode;
-import Code.AST.Node.ExprNode.ExprNode;
+import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Object.FuncObject;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Object.VarObject;
 import Code.AST.Table.TypeTable;
+import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.LoopBody;
 import Code.AST.Tools.Position;
+import Code.AST.Tools.UnaryOp;
 import Code.AST.Type.ArrayType;
 import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
@@ -131,10 +132,10 @@ public class ASTConstructor extends MlangBaseListener
         BuiltInType type;
         switch (ctx.getText())
         {
-            case "bool" : type = new BuiltInType("bool", 1);
-            case "int"  : type = new BuiltInType("int", 4);
-            case "void" : type = new BuiltInType("void", 0);
-            case "string": type = new BuiltInType("string", 0);
+            case "bool" : type = new BuiltInType("bool", 1); break;
+            case "int"  : type = new BuiltInType("int", 4); break;
+            case "void" : type = new BuiltInType("void", 0); break;
+            case "string": type = new BuiltInType("string", 0); break;
             default:
                 throw new InternalError(ctx.getText() + "is an invalid type");
         }
@@ -247,18 +248,13 @@ public class ASTConstructor extends MlangBaseListener
         map.put(ctx, returnNode);
     }
 
-    @Override public void enterBreakStat(MlangParser.BreakStatContext ctx) { }
 
-    @Override public void exitBreakStat(MlangParser.BreakStatContext ctx)
-    {
+    @Override public void exitBreakStat(MlangParser.BreakStatContext ctx) {
         BreakNode breakNode = new BreakNode(new Position(ctx.getStart().getLine()), new LoopBody());
         map.put(ctx, breakNode);
     }
 
-    @Override public void enterContinueStat(MlangParser.ContinueStatContext ctx) { }
-
-    @Override public void exitContinueStat(MlangParser.ContinueStatContext ctx)
-    {
+    @Override public void exitContinueStat(MlangParser.ContinueStatContext ctx) {
         ContinueNode continueNode = new ContinueNode(new Position(ctx.getStart().getLine()), new LoopBody());
         map.put(ctx, continueNode);
     }
@@ -279,71 +275,140 @@ public class ASTConstructor extends MlangBaseListener
         map.put(ctx, exprNodes);
     }
 
-    @Override public void enterNewExpr(MlangParser.NewExprContext ctx) { }
+    @Override public void exitNewExpr(MlangParser.NewExprContext ctx)
+    {
+        Type type = new Type(ctx.type().getText(), 4);
+        List<ExprNode> exprNodes = new ArrayList<>();
+        for(MlangParser.ExpressionContext item : ctx.expression())
+        {
+            exprNodes.add((ExprNode)map.get(item));
+        }
+        ExprListNode exprListNode = new ExprListNode(new Position(ctx.getStart().getLine()), exprNodes);
+        NewExprNode newExprNode = new NewExprNode(new Position(ctx.getStart().getLine()), type, exprListNode);
+        map.put(ctx, newExprNode);
+    }
+
+    @Override public void exitBoolConstExpr(MlangParser.BoolConstExprContext ctx)
+    {
+        boolean value = ctx.FALSE() == null? true : false;
+        BoolConstNode node = new BoolConstNode(new Position(ctx.getStart().getLine()), value);
+        map.put(ctx, node);
+    }
      
-    @Override public void exitNewExpr(MlangParser.NewExprContext ctx) { }
+    @Override public void exitThisExpr(MlangParser.ThisExprContext ctx) {
+        UnitExprNode unitExprNode = new UnitExprNode(new Position(ctx.getStart().getLine()), "this");
+        map.put(ctx, unitExprNode);
+    }
      
-    @Override public void enterBoolConstExpr(MlangParser.BoolConstExprContext ctx) { }
+    @Override public void exitNullExpr(MlangParser.NullExprContext ctx)
+    {
+        NullConstNode nullConstNode = new NullConstNode(new Position(ctx.getStart().getLine()));
+        map.put(ctx, nullConstNode);
+    }
+
      
-    @Override public void exitBoolConstExpr(MlangParser.BoolConstExprContext ctx) { }
+    @Override public void exitArrayExpr(MlangParser.ArrayExprContext ctx)
+    {
+        ArrayExprNode arrayExprNode = new ArrayExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression(0)),
+                getExpr(ctx.expression(1)));
+        map.put(ctx, arrayExprNode);                                                                                                                                                                                                                                                 ;
+    }
+
+    @Override public void exitMemberExpr(MlangParser.MemberExprContext ctx)
+    {
+        MemberExprNode memberExprNode = new MemberExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression()), ctx.ID().getText());
+        map.put(ctx, memberExprNode);
+    }
+
+    @Override public void exitSuffixExpr(MlangParser.SuffixExprContext ctx)
+    {
+        UnaryOp op;
+        switch (ctx.op.getText())
+        {
+            case "++": op = UnaryOp.SUF_INCRE; break;
+            case "--": op = UnaryOp.SUF_DECRE; break;
+            default:
+                throw new InternalError("Invalid suffix op" + ctx.op.getText());
+        }
+        SuffixExprNode suffixExprNode = new SuffixExprNode(new Position(ctx.getStart().getLine()), op,
+                (ExprNode)map.get(ctx.expression()));
+        map.put(ctx, suffixExprNode);
+    }
+
+    @Override public void exitBinaryExpr(MlangParser.BinaryExprContext ctx)
+    {
+        BinaryOp op;
+        switch (ctx.op.getText())
+        {
+            case "+" : op = BinaryOp.ADD; break;
+            case "-" : op = BinaryOp.MIN; break;
+            case "*" : op = BinaryOp.MUL; break;
+            case "/" : op = BinaryOp.DIV; break;
+            case "%" : op = BinaryOp.MOD; break;
+            case "&" : op = BinaryOp.BIT_AND; break;
+            case "^" : op = BinaryOp.BIT_XOR; break;
+            case "|" : op = BinaryOp.BIT_OR; break;
+            case ">>": op = BinaryOp.R_SHIFT; break;
+            case "<<": op = BinaryOp.L_SHIFT; break;
+            case "<" : op = BinaryOp.SLT; break;
+            case "<=": op = BinaryOp.SEQ; break;
+            case ">" : op = BinaryOp.SGT; break;
+            case ">=": op = BinaryOp.BEQ; break;
+            case "==": op = BinaryOp.EQU; break;
+            case "!=": op = BinaryOp.NEQ; break;
+            default:
+                throw new InternalError("Invalid binary op" + ctx.op.getText());
+        }
+        BinaryExprNode node = new BinaryExprNode(new Position(ctx.getStart().getLine()),
+                getExpr(ctx.expression(0)), getExpr(ctx.expression(1)), op);
+        map.put(ctx, node);
+    }
+
+    @Override public void exitIntConstExpr(MlangParser.IntConstExprContext ctx)
+    {
+        int value = Integer.valueOf(ctx.getText());
+        IntConstNode intConstNode = new IntConstNode(new Position(ctx.getStart().getLine()), value);
+        map.put(ctx, intConstNode);
+    }
+    @Override public void exitSubExpr(MlangParser.SubExprContext ctx)
+    {
+        map.put(ctx, getExpr(ctx.expression()));
+    }
      
-    @Override public void enterThisExpr(MlangParser.ThisExprContext ctx) { }
-     
-    @Override public void exitThisExpr(MlangParser.ThisExprContext ctx) { }
-     
-    @Override public void enterNullExpr(MlangParser.NullExprContext ctx) { }
-     
-    @Override public void exitNullExpr(MlangParser.NullExprContext ctx) { }
-     
-    @Override public void enterArrayExpr(MlangParser.ArrayExprContext ctx) { }
-     
-    @Override public void exitArrayExpr(MlangParser.ArrayExprContext ctx) { }
-     
-    @Override public void enterMemberExpr(MlangParser.MemberExprContext ctx) { }
-     
-    @Override public void exitMemberExpr(MlangParser.MemberExprContext ctx) { }
-     
-    @Override public void enterSuffixExpr(MlangParser.SuffixExprContext ctx) { }
-     
-    @Override public void exitSuffixExpr(MlangParser.SuffixExprContext ctx) { }
-     
-    @Override public void enterBinaryExpr(MlangParser.BinaryExprContext ctx) { }
-     
-    @Override public void exitBinaryExpr(MlangParser.BinaryExprContext ctx) { }
-     
-    @Override public void enterIntConstExpr(MlangParser.IntConstExprContext ctx) { }
-     
-    @Override public void exitIntConstExpr(MlangParser.IntConstExprContext ctx) { }
-     
-    @Override public void enterSubExpr(MlangParser.SubExprContext ctx) { }
-     
-    @Override public void exitSubExpr(MlangParser.SubExprContext ctx) { }
-     
-    @Override public void enterPrefixExpr(MlangParser.PrefixExprContext ctx) { }
-     
-    @Override public void exitPrefixExpr(MlangParser.PrefixExprContext ctx) { }
-     
-    @Override public void enterStringConstExpr(MlangParser.StringConstExprContext ctx) { }
+    @Override public void exitPrefixExpr(MlangParser.PrefixExprContext ctx)
+    {
+        UnaryOp op;
+        switch (ctx.op.getText())
+        {
+            case "++": op = UnaryOp.INCRE; break;
+            case "--": op = UnaryOp.DECRE; break;
+            case "~" : op = UnaryOp.BIT_NOT; break;
+            case "!" : op = UnaryOp.NOT; break;
+            case "+" : op = UnaryOp.POS; break;
+            case "-" : op = UnaryOp.NEG; break;
+            default:
+                throw new InternalError("Invalid prefix op" + ctx.op.getText());
+        }
+        PrefixExprNode prefixExprNode = new PrefixExprNode(new Position(ctx.getStart().getLine()),
+                op, (ExprNode)map.get(ctx.expression()));
+        map.put(ctx, prefixExprNode);
+    }
+
      
     @Override public void exitStringConstExpr(MlangParser.StringConstExprContext ctx) { }
-     
-    @Override public void enterCallExpr(MlangParser.CallExprContext ctx) { }
+
      
     @Override public void exitCallExpr(MlangParser.CallExprContext ctx) { }
-     
-    @Override public void enterOrExprt(MlangParser.OrExprtContext ctx) { }
+
      
     @Override public void exitOrExprt(MlangParser.OrExprtContext ctx) { }
-     
-    @Override public void enterAssignExpr(MlangParser.AssignExprContext ctx) { }
+
      
     @Override public void exitAssignExpr(MlangParser.AssignExprContext ctx) { }
-     
-    @Override public void enterIdExpr(MlangParser.IdExprContext ctx) { }
+
      
     @Override public void exitIdExpr(MlangParser.IdExprContext ctx) { }
-     
-    @Override public void enterAndExpr(MlangParser.AndExprContext ctx) { }
+
      
     @Override public void exitAndExpr(MlangParser.AndExprContext ctx) { }
     
