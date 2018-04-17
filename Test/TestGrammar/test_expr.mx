@@ -1,13 +1,16 @@
+int aa()
+{
 int a;
 c = a++;
 d = a--;
 e = --a;
 f = ~a;
 g = a * b;
-h = a * b + c >> d
-i = a * (b + c) << d
-j = a == b
-k = a >= b
-l = new int
-m = new string[1000]
-n = new string[a + b + c]
+h = a * b + c >> d;
+i = a * (b + c) << d;
+j = a == b;
+k = a >= b;
+l = new int;
+m = new string[1000];
+n = new string[a + b + c];
+}

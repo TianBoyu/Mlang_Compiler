@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class ArrayExprNode extends ExprNode
 {
@@ -19,5 +20,10 @@ public class ArrayExprNode extends ExprNode
 
     public ExprNode getIndex() {
         return index;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

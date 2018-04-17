@@ -38,76 +38,6 @@ public interface MlangListener extends ParseTreeListener {
 	 */
 	void exitFunctionDecl(MlangParser.FunctionDeclContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MlangParser#variableDecl}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariableDecl(MlangParser.VariableDeclContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#variableDecl}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariableDecl(MlangParser.VariableDeclContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#parameter}.
-	 * @param ctx the parse tree
-	 */
-	void enterParameter(MlangParser.ParameterContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#parameter}.
-	 * @param ctx the parse tree
-	 */
-	void exitParameter(MlangParser.ParameterContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#builtInType}.
-	 * @param ctx the parse tree
-	 */
-	void enterBuiltInType(MlangParser.BuiltInTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#builtInType}.
-	 * @param ctx the parse tree
-	 */
-	void exitBuiltInType(MlangParser.BuiltInTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#userType}.
-	 * @param ctx the parse tree
-	 */
-	void enterUserType(MlangParser.UserTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#userType}.
-	 * @param ctx the parse tree
-	 */
-	void exitUserType(MlangParser.UserTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayType(MlangParser.ArrayTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayType(MlangParser.ArrayTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#type}.
-	 * @param ctx the parse tree
-	 */
-	void enterType(MlangParser.TypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#type}.
-	 * @param ctx the parse tree
-	 */
-	void exitType(MlangParser.TypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#block}.
-	 * @param ctx the parse tree
-	 */
-	void enterBlock(MlangParser.BlockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#block}.
-	 * @param ctx the parse tree
-	 */
-	void exitBlock(MlangParser.BlockContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code blockStat}
 	 * labeled alternative in {@link MlangParser#statement}.
 	 * @param ctx the parse tree
@@ -227,6 +157,86 @@ public interface MlangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEmptyStat(MlangParser.EmptyStatContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#variableDecl}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableDecl(MlangParser.VariableDeclContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#variableDecl}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableDecl(MlangParser.VariableDeclContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#parameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterParameter(MlangParser.ParameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#parameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitParameter(MlangParser.ParameterContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#formal_parameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterFormal_parameter(MlangParser.Formal_parameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#formal_parameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitFormal_parameter(MlangParser.Formal_parameterContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#builtInType}.
+	 * @param ctx the parse tree
+	 */
+	void enterBuiltInType(MlangParser.BuiltInTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#builtInType}.
+	 * @param ctx the parse tree
+	 */
+	void exitBuiltInType(MlangParser.BuiltInTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#userType}.
+	 * @param ctx the parse tree
+	 */
+	void enterUserType(MlangParser.UserTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#userType}.
+	 * @param ctx the parse tree
+	 */
+	void exitUserType(MlangParser.UserTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayType(MlangParser.ArrayTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayType(MlangParser.ArrayTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterType(MlangParser.TypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitType(MlangParser.TypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(MlangParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(MlangParser.BlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MlangParser#actual_parameter}.
 	 * @param ctx the parse tree

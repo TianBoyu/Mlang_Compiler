@@ -2,6 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class CompareExprNode extends ExprNode
 {
@@ -26,5 +27,10 @@ public class CompareExprNode extends ExprNode
     public final BinaryOp getOp()
     {
         return op;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

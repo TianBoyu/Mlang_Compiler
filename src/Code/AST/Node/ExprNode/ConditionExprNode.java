@@ -2,7 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
 
-public class ConditionExprNode extends ExprNode
+public abstract class ConditionExprNode extends ExprNode
 {
     public ConditionExprNode(Position _pos, ExprNode c1, ExprNode c2)
     {
@@ -18,4 +18,5 @@ public class ConditionExprNode extends ExprNode
     public ExprNode getCond2() {
         return cond2;
     }
+
 }

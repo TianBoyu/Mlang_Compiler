@@ -2,6 +2,7 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class IfNode extends StatNode
 {
@@ -26,4 +27,9 @@ public class IfNode extends StatNode
     private ExprNode condition;
     private StatNode then;
     private StatNode else_then;
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

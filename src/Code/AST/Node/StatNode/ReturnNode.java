@@ -3,6 +3,7 @@ package Code.AST.Node.StatNode;
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.LoopBody;
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class ReturnNode extends StatNode
 {
@@ -17,5 +18,10 @@ public class ReturnNode extends StatNode
 
     public ExprNode getExprNode() {
         return exprNode;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

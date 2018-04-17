@@ -1,16 +1,12 @@
 package Code.AST.ASTConstructor;
 
-import Code.AST.Node.DeclNode.ClassDecNode;
-import Code.AST.Node.DeclNode.DeclNode;
-import Code.AST.Node.DeclNode.FuncDecNode;
-import Code.AST.Node.DeclNode.VarDecNode;
+import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
-import Code.AST.Object.FuncObject;
+import Code.AST.Object.FuncDecObject;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Object.VarObject;
-import Code.AST.Table.TypeTable;
 import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.LoopBody;
 import Code.AST.Tools.Position;
@@ -22,8 +18,6 @@ import Code.AST.Type.Type;
 import Code.Parser.MlangBaseListener;
 import Code.Parser.MlangParser;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ErrorNode;
-import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 import java.util.ArrayList;
@@ -42,7 +36,7 @@ public class ASTConstructor extends MlangBaseListener
         return program;
     }
 
-    private TypeTable type_table;
+//    private TypeTable type_table;
     private ProgNode program;
     private ParseTreeProperty<Object> map = new ParseTreeProperty<>();
 
@@ -64,6 +58,25 @@ public class ASTConstructor extends MlangBaseListener
     }
 
     @Override
+    public void enterClassDecl(MlangParser.ClassDeclContext ctx)
+    {
+//        super.enterClassDecl(ctx);
+        System.out.println("enter into class: " + ctx.ID().getText());
+    }
+
+    @Override
+    public void enterFunctionDecl(MlangParser.FunctionDeclContext ctx)
+    {
+        System.out.println("enter into function: " + ctx.ID().getText());
+    }
+
+    @Override
+    public void enterVariableDecl(MlangParser.VariableDeclContext ctx)
+    {
+        System.out.println("enter into varible: " + ctx.ID().getText());
+    }
+
+    @Override
     public void exitClassDecl(MlangParser.ClassDeclContext ctx)
     {
         List<VarDecNode> varDecNodes = new ArrayList<>();
@@ -77,7 +90,7 @@ public class ASTConstructor extends MlangBaseListener
             funcDecNodes.add((FuncDecNode) map.get(item));
         }
         Position pos = new Position(ctx.getStart().getLine());
-        ClassType type = new ClassType(ctx.getText(), 4);
+        ClassType type = new ClassType(ctx.ID().getText(), 4);
         ClassDecNode class_node = new ClassDecNode(pos, type, funcDecNodes, varDecNodes);
         map.put(ctx, class_node);
     }
@@ -85,25 +98,41 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitFunctionDecl(MlangParser.FunctionDeclContext ctx)
     {
-        List<ExprNode> exprList = new ArrayList<>();
-        for (MlangParser.ParameterContext item : ctx.parameter())
+        List<FuncParamNode> paras = new ArrayList<>();
+        if(ctx.formal_parameter() != null)
         {
-            ExprNode node = (ExprNode) map.get(item);
-            exprList.add(node);
+            for (MlangParser.ParameterContext item : ctx.formal_parameter().parameter())
+            {
+                ParameterObject object = new ParameterObject(new Type(item.type().getText(), 4), item.ID().getText());
+                FuncParamNode node = new FuncParamNode(new Position(ctx.getStart().getLine()), object);
+                paras.add(node);
+            }
         }
         BlockNode blockNode = (BlockNode) map.get(ctx.block());
         Position pos = new Position(ctx.getStart().getLine());
-        Type ret_type = type_table.getType(ctx.type().getText());
-        FuncObject func = new FuncObject(ctx.ID().getText(), new ExprListNode(pos, exprList), ret_type);
+        Type ret_type = new Type(ctx.type().getText(), 4);
+        FuncDecObject func = new FuncDecObject(ctx.ID().getText(), paras, ret_type);
         FuncDecNode funcDecNode = new FuncDecNode(pos, func, blockNode);
         map.put(ctx, funcDecNode);
+    }
+
+    @Override
+    public void enterFormal_parameter(MlangParser.Formal_parameterContext ctx)
+    {
+        System.out.println("formal_parameter");
+    }
+
+    @Override
+    public void exitFormal_parameter(MlangParser.Formal_parameterContext ctx)
+    {
+        System.out.println("out of formal_parameter");
     }
 
     @Override
     public void exitVariableDecl(MlangParser.VariableDeclContext ctx)
     {
         Position pos = new Position(ctx.getStart().getLine());
-        Type type = (Type) map.get(ctx.type());
+        Type type = new Type(ctx.type().getText(), 4);
         String id = ctx.ID().getText();
         ExprNode expr = (ExprNode) map.get(ctx.expression());
         VarObject varObject = new VarObject(id, false, type);
@@ -182,6 +211,7 @@ public class ASTConstructor extends MlangBaseListener
         List<StatNode> statNodes = new ArrayList<>();
         for (MlangParser.StatementContext item : ctx.statement())
         {
+            System.out.println(item.getText());
             StatNode stat = (StatNode) map.get(item);
             if (stat != null)
                 statNodes.add(stat);
@@ -205,15 +235,16 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitIfStat(MlangParser.IfStatContext ctx)
     {
-        IfNode ifNode = new IfNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression()), getStat(ctx.statement(0)), getStat(ctx.statement(1)));
+        IfNode ifNode = new IfNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression()),
+                getStat(ctx.statement(0)), getStat(ctx.statement(1)));
         map.put(ctx, ifNode);
     }
-
     @Override
     public void exitForStat(MlangParser.ForStatContext ctx)
     {
         ForNode forNode = new ForNode(new Position(ctx.getStart().getLine()), getExpr(ctx.init),
-                getExpr(ctx.cond), getExpr(ctx.update));
+                getExpr(ctx.cond), getExpr(ctx.update), getStat(ctx.statement()));
+//        System.out.println(ctx.statement().getText());
         map.put(ctx, forNode);
     }
 
@@ -462,9 +493,12 @@ public class ASTConstructor extends MlangBaseListener
     public void exitCallExpr(MlangParser.CallExprContext ctx)
     {
         List<ExprNode> params = new ArrayList<>();
-        for (MlangParser.ExpressionContext item : ctx.actual_parameter().expression())
+        if(ctx.actual_parameter() != null)
         {
-            params.add((ExprNode) map.get(item));
+            for (MlangParser.ExpressionContext item : ctx.actual_parameter().expression())
+            {
+                params.add((ExprNode) map.get(item));
+            }
         }
         map.put(ctx, new CallExprNode(new Position(ctx.getStart().getLine()), ctx.ID().getText(),
                 new ExprListNode(new Position(ctx.getStart().getLine()), params)));
@@ -512,4 +546,223 @@ public class ASTConstructor extends MlangBaseListener
         else return (StatNode) map.get(ctx);
     }
 
+
+    @Override
+    public void enterParameter(MlangParser.ParameterContext ctx)
+    {
+        super.enterParameter(ctx);
+    }
+
+    @Override
+    public void enterBuiltInType(MlangParser.BuiltInTypeContext ctx)
+    {
+        super.enterBuiltInType(ctx);
+    }
+
+    @Override
+    public void enterUserType(MlangParser.UserTypeContext ctx)
+    {
+        super.enterUserType(ctx);
+    }
+
+    @Override
+    public void enterArrayType(MlangParser.ArrayTypeContext ctx)
+    {
+        super.enterArrayType(ctx);
+    }
+
+    @Override
+    public void enterType(MlangParser.TypeContext ctx)
+    {
+        super.enterType(ctx);
+    }
+
+    @Override
+    public void exitType(MlangParser.TypeContext ctx)
+    {
+        super.exitType(ctx);
+    }
+
+    @Override
+    public void enterBlock(MlangParser.BlockContext ctx)
+    {
+//        System.out.println(ctx.getText());
+//        super.enterBlock(ctx);
+    }
+
+    @Override
+    public void enterBlockStat(MlangParser.BlockStatContext ctx)
+    {
+        super.enterBlockStat(ctx);
+    }
+
+    @Override
+    public void enterVarDeclStat(MlangParser.VarDeclStatContext ctx)
+    {
+        super.enterVarDeclStat(ctx);
+    }
+
+    @Override
+    public void enterIfStat(MlangParser.IfStatContext ctx)
+    {
+        super.enterIfStat(ctx);
+    }
+
+    @Override
+    public void enterForStat(MlangParser.ForStatContext ctx)
+    {
+        System.out.println("enter into for node");
+//        super.enterForStat(ctx);
+    }
+
+    @Override
+    public void enterWhileStat(MlangParser.WhileStatContext ctx)
+    {
+        super.enterWhileStat(ctx);
+    }
+
+    @Override
+    public void enterReturnStat(MlangParser.ReturnStatContext ctx)
+    {
+        super.enterReturnStat(ctx);
+    }
+
+    @Override
+    public void enterBreakStat(MlangParser.BreakStatContext ctx)
+    {
+        super.enterBreakStat(ctx);
+    }
+
+    @Override
+    public void enterContinueStat(MlangParser.ContinueStatContext ctx)
+    {
+        super.enterContinueStat(ctx);
+    }
+
+    @Override
+    public void enterExprStat(MlangParser.ExprStatContext ctx)
+    {
+        super.enterExprStat(ctx);
+    }
+
+    @Override
+    public void enterEmptyStat(MlangParser.EmptyStatContext ctx)
+    {
+        super.enterEmptyStat(ctx);
+    }
+
+    @Override
+    public void exitEmptyStat(MlangParser.EmptyStatContext ctx)
+    {
+        super.exitEmptyStat(ctx);
+    }
+
+    @Override
+    public void enterActual_parameter(MlangParser.Actual_parameterContext ctx)
+    {
+        System.out.println("enter into parameter");
+//        super.enterActual_parameter(ctx);
+    }
+
+    @Override
+    public void enterNewExpr(MlangParser.NewExprContext ctx)
+    {
+        super.enterNewExpr(ctx);
+    }
+
+    @Override
+    public void enterBoolConstExpr(MlangParser.BoolConstExprContext ctx)
+    {
+        super.enterBoolConstExpr(ctx);
+    }
+
+    @Override
+    public void enterThisExpr(MlangParser.ThisExprContext ctx)
+    {
+        super.enterThisExpr(ctx);
+    }
+
+    @Override
+    public void enterNullExpr(MlangParser.NullExprContext ctx)
+    {
+        super.enterNullExpr(ctx);
+    }
+
+    @Override
+    public void enterArrayExpr(MlangParser.ArrayExprContext ctx)
+    {
+        super.enterArrayExpr(ctx);
+    }
+
+    @Override
+    public void enterMemberExpr(MlangParser.MemberExprContext ctx)
+    {
+        super.enterMemberExpr(ctx);
+    }
+
+    @Override
+    public void enterSuffixExpr(MlangParser.SuffixExprContext ctx)
+    {
+        super.enterSuffixExpr(ctx);
+    }
+
+    @Override
+    public void enterBinaryExpr(MlangParser.BinaryExprContext ctx)
+    {
+        super.enterBinaryExpr(ctx);
+    }
+
+    @Override
+    public void enterOrExpr(MlangParser.OrExprContext ctx)
+    {
+        super.enterOrExpr(ctx);
+    }
+
+    @Override
+    public void enterIntConstExpr(MlangParser.IntConstExprContext ctx)
+    {
+        super.enterIntConstExpr(ctx);
+    }
+
+    @Override
+    public void enterSubExpr(MlangParser.SubExprContext ctx)
+    {
+        super.enterSubExpr(ctx);
+    }
+
+    @Override
+    public void enterPrefixExpr(MlangParser.PrefixExprContext ctx)
+    {
+        super.enterPrefixExpr(ctx);
+    }
+
+    @Override
+    public void enterStringConstExpr(MlangParser.StringConstExprContext ctx)
+    {
+        super.enterStringConstExpr(ctx);
+    }
+
+    @Override
+    public void enterCallExpr(MlangParser.CallExprContext ctx)
+    {
+        super.enterCallExpr(ctx);
+    }
+
+    @Override
+    public void enterAssignExpr(MlangParser.AssignExprContext ctx)
+    {
+        super.enterAssignExpr(ctx);
+    }
+
+    @Override
+    public void enterIdExpr(MlangParser.IdExprContext ctx)
+    {
+        super.enterIdExpr(ctx);
+    }
+
+    @Override
+    public void enterAndExpr(MlangParser.AndExprContext ctx)
+    {
+        super.enterAndExpr(ctx);
+    }
 }

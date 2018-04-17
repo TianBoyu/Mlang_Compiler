@@ -1,8 +1,9 @@
 package Code.AST.Node;
 
 import Code.AST.Tools.*;
+import Code.ASTVisitor.ASTVisitor;
 
-public class ASTBaseNode
+public abstract class ASTBaseNode
 {
     private Position position;
     public ASTBaseNode()
@@ -17,4 +18,5 @@ public class ASTBaseNode
     {
         return position;
     }
+    public abstract void accept(ASTVisitor visitor);
 }

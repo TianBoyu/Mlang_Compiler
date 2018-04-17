@@ -1,0 +1,9 @@
+int fuck()
+{
+    int i;
+    int j;
+    if(i == j)
+    {
+        int k;
+    }
+}

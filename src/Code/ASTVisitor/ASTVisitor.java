@@ -1,8 +1,6 @@
 package Code.ASTVisitor;
 
-import Code.AST.Node.DeclNode.ClassDecNode;
-import Code.AST.Node.DeclNode.FuncDecNode;
-import Code.AST.Node.DeclNode.VarDecNode;
+import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
@@ -12,9 +10,11 @@ public interface ASTVisitor
 {
     void visit(ProgNode node);
 
+    void visit(DeclNode node);
     void visit(ClassDecNode node);
     void visit(FuncDecNode node);
     void visit(VarDecNode node);
+    void visit(FuncParamNode node);
 
     void visit(ExprNode node);
     void visit(AndExprNode node);
@@ -44,6 +44,7 @@ public interface ASTVisitor
     void visit(IfNode node);
     void visit(ReturnNode node);
     void visit(WhileNode node);
+    void visit(ExprStatNode node);
 
     void visit(Type type);
 }

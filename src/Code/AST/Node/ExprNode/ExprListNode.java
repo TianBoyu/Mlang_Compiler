@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 import java.util.List;
 
@@ -20,5 +21,10 @@ public class ExprListNode extends ExprNode
     public List<ExprNode> getExprs()
     {
         return exprs;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

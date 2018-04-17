@@ -2,6 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Object.FuncObject;
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 import jdk.nashorn.api.tree.FunctionCallTree;
 
 public class CallExprNode extends ExprNode
@@ -21,4 +22,9 @@ public class CallExprNode extends ExprNode
     }
     private String func_name;
     private ExprListNode param;
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

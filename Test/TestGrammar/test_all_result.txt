@@ -1,0 +1,88 @@
+ProgNode
+  *FunctionDeclaration: aa
+    Type: int
+    BlockNode
+      *VariableDeclaration: a
+        Type: int
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: c
+          SuffixExprNode  Op: SUF_INCRE
+            IdExprNode  ID name: a
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: d
+          SuffixExprNode  Op: SUF_DECRE
+            IdExprNode  ID name: a
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: e
+          PrefixExprNode  Op: DECRE
+            IdExprNode  ID name: a
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: f
+          PrefixExprNode  Op: BIT_NOT
+            IdExprNode  ID name: a
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: g
+          BinaryExprNode  Op: MUL
+            IdExprNode  ID name: a
+            IdExprNode  ID name: b
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: h
+          BinaryExprNode  Op: R_SHIFT
+            BinaryExprNode  Op: ADD
+              BinaryExprNode  Op: MUL
+                IdExprNode  ID name: a
+                IdExprNode  ID name: b
+              IdExprNode  ID name: c
+            IdExprNode  ID name: d
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: i
+          BinaryExprNode  Op: L_SHIFT
+            BinaryExprNode  Op: MUL
+              IdExprNode  ID name: a
+              BinaryExprNode  Op: ADD
+                IdExprNode  ID name: b
+                IdExprNode  ID name: c
+            IdExprNode  ID name: d
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: j
+          BinaryExprNode  Op: EQU
+            IdExprNode  ID name: a
+            IdExprNode  ID name: b
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: k
+          BinaryExprNode  Op: BEQ
+            IdExprNode  ID name: a
+            IdExprNode  ID name: b
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: l
+          NewExprNode
+            Type: int
+            ExprListNode
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: m
+          NewExprNode
+            Type: string
+            ExprListNode
+              IntConstNode  value = 1000
+      ExprStatNode
+        AssignExprNode
+          IdExprNode  ID name: n
+          NewExprNode
+            Type: string
+            ExprListNode
+              BinaryExprNode  Op: ADD
+                BinaryExprNode  Op: ADD
+                  IdExprNode  ID name: a
+                  IdExprNode  ID name: b
+                IdExprNode  ID name: c

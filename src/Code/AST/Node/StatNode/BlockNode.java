@@ -1,6 +1,7 @@
 package Code.AST.Node.StatNode;
 
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 import java.util.List;
 
@@ -15,4 +16,9 @@ public class BlockNode extends StatNode
         return statements;
     }
     private List<StatNode> statements;
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

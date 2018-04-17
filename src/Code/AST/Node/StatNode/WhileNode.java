@@ -3,6 +3,7 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class WhileNode extends StatNode
 {
@@ -21,4 +22,9 @@ public class WhileNode extends StatNode
 
     private ExprNode condition;
     private StatNode then;
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
+    }
 }

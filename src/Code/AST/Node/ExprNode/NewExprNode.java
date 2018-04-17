@@ -2,6 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
+import Code.ASTVisitor.ASTVisitor;
 
 public class NewExprNode extends ExprNode
 {
@@ -20,5 +21,10 @@ public class NewExprNode extends ExprNode
 
     public ExprListNode getParameter() {
         return parameter;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

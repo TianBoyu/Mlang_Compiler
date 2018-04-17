@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class BoolConstNode extends ConstExprNode
 {
@@ -13,5 +14,10 @@ public class BoolConstNode extends ConstExprNode
     public boolean getValue()
     {
         return value;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

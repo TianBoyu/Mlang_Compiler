@@ -1,105 +1,97 @@
 grammar Mlang;
-//this is a new language, which looks like c and java
-prog
-    : (func_def | class_def | var_dec)+;
+
+program
+    : (variableDecl | functionDecl | classDecl) *
+    ;
+
+classDecl
+    : CLASS ID '{' (functionDecl | variableDecl)* '}'
+    ;
+
+functionDecl
+    : type? ID '('formal_parameter?')' block
+    ;
+
+statement
+    : block                                                     #blockStat
+    | variableDecl                                              #varDeclStat
+    | IF '('expression')' statement (ELSE statement)?           #ifStat
+    | FOR '('init=expression?';'
+             cond=expression?';'
+             update=expression?')' statement                    #forStat
+    | WHILE '('expression ')' statement                         #whileStat
+    | RETURN expression';'                                      #returnStat
+    | BREAK ';'                                                 #breakStat
+    | CONTINUE ';'                                              #continueStat
+    | expression ';'                                            #exprStat
+    | ';'                                                       #emptyStat
+    ;
+
+variableDecl
+    : type ID '=' expression';'
+    | type ID ';'
+    ;
+
+parameter 
+    : type ID
+    ;
+
+formal_parameter
+    : parameter (','parameter)*
+    ;
 
 
-class_def
-    : CLASS id '{'prog'}';
-func_def
-    : class_type id '('formal_parameters?')'block;
-var_dec
-    : class_type assign_expr ';'
-    | class_type ID ';'
+builtInType
+    : BOOL | INT | STRING | VOID
+    ;
+
+userType : ID;
+arrayType : (builtInType | userType) ('[]')+;
+
+type
+    : (arrayType | builtInType | userType)
     ;
 
 block
-    : '{'stat*'}';
-
-stat
-    : cond_stat
-    | circ_stat
-    | jump_stat
-    | block
-    | expr_stat
-    | decl_stat
-    ;
-cond_stat
-    : IF '(' expr ')' stat
-    | IF '(' expr ')' stat ELSE stat
-    ;
-circ_stat
-    : FOR '(' expr? ';' expr? ';' expr? ')' stat
-    | WHILE '(' expr ')' stat
-    ;
-jump_stat
-    : RETURN expr? ';'
-    | BREAK ';'
-    | CONTI ';'
-    ;
-expr_stat
-    : expr';'
-    ;
-decl_stat
-    : var_dec
+    : '{' statement* '}'
     ;
 
-expr
-    : expr op=('++'|'--')
-    | id '(' actual_parameters ')'
-    | op=('++'|'--') expr
-    | op=('+'|'-') expr
-    | op=('!'|'~') expr
-    | NEW class_id (('['expr']')+ ('[]')*)?
-    | expr op=('*'|'/'|'%') expr
-    | expr op=('+'|'-') expr
-    | expr op=('<<'|'>>') expr
-    | expr op=('<'|'<='|'>'|'>=') expr
-    | expr op=('=='|'!=') expr
-    | expr '&' expr
-    | expr '^' expr
-    | expr '|' expr
-    | expr '&&' expr
-    | expr '||' expr
-    | NUM
-    | TRUE
-    | FALSE
-    | NULL
-    | STR
-    | id
-    | '(' expr ')'
-    | assign_expr
+
+actual_parameter
+    : expression (',' expression)*
     ;
 
-actual_parameters
-    : actual_parameters ',' expr
-    | expr?
+expression 
+    : expression '.' ID                                         #memberExpr
+    | expression '[' expression ']'                             #arrayExpr
+    | expression op=('++'|'--')                                 #suffixExpr
+    | ID '(' actual_parameter ')'                               #callExpr
+    | op=('++'|'--') expression                                 #prefixExpr
+    | op=('+'|'-') expression                                   #prefixExpr
+    | op=('!'|'~') expression                                   #prefixExpr
+    | NEW type (('['expression']')+ ('[]')*)?                   #newExpr
+    | expression op=('*'|'/'|'%') expression                    #binaryExpr
+    | expression op=('+'|'-') expression                        #binaryExpr
+    | expression op=('<<'|'>>') expression                      #binaryExpr
+    | expression op=('<'|'<='|'>'|'>=') expression              #binaryExpr
+    | expression op=('=='|'!=') expression                      #binaryExpr
+    | expression '&' expression                                 #binaryExpr
+    | expression '^' expression                                 #binaryExpr
+    | expression '|' expression                                 #binaryExpr
+    | expression '&&' expression                                #andExpr
+    | expression '||' expression                                #orExpr
+    | NUM                                                       #intConstExpr
+    | TRUE                                                      #boolConstExpr
+    | FALSE                                                     #boolConstExpr
+    | NULL                                                      #nullExpr
+    | STR                                                       #stringConstExpr
+    | ID                                                        #idExpr
+    | '(' expression ')'                                        #subExpr
+    | THIS                                                      #thisExpr
+    | expression '=' expression                                 #assignExpr
     ;
-formal_parameters
-    : formal_parameters ',' class_id id
-    | (class_id id)?
-    ;
-assign_expr
-    : id '=' expr;
-
-id
-    : ID
-    | id '[' expr ']'
-    | id '.' id
-    ;
-
-class_id
-    : BOOL
-    | INT
-    | STRING
-    | VOID
-    | ID
-    ;
-class_type
-    : class_id '[]'*;
 
 
-//Keywords
 BOOL    : 'bool';
 INT     : 'int';
 STRING  : 'string';
@@ -114,7 +106,7 @@ FOR     : 'for';
 WHILE   : 'while';
 
 BREAK   : 'break';
-CONTI   : 'continue';
+CONTINUE   : 'continue';
 RETURN   : 'return';
 
 NEW     : 'new';
@@ -133,6 +125,3 @@ SUB     : '-';
 
 ID      : [a-zA-Z]+[a-zA-Z_]*;
 WS      : [ \t\n\r]+ -> skip;
-
-
-

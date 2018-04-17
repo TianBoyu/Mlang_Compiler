@@ -11,4 +11,9 @@ public class ParameterObject extends Object
         type = _type;
     }
     private Type type;
+
+    public Type getType()
+    {
+        return type;
+    }
 }

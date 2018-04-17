@@ -1,9 +1,6 @@
 package Code.AST;
 
-import Code.AST.Node.DeclNode.ClassDecNode;
-import Code.AST.Node.DeclNode.DeclNode;
-import Code.AST.Node.DeclNode.FuncDecNode;
-import Code.AST.Node.DeclNode.VarDecNode;
+import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
@@ -41,13 +38,23 @@ public class ASTPrinter implements ASTVisitor
         printStream.println(indent.toString() + node.getClass().getSimpleName());
         Tab();
 //        node.getDeclares().stream().forEachOrdered(this::visit);
+        for(DeclNode item : node.getDeclares())
+            visit(item);
+        BackSpace();
+    }
+
+    @Override
+    public void visit(DeclNode node)
+    {
+        if(node == null) return;
+        node.accept(this);
     }
 
     @Override
     public void visit(ClassDecNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + "Class: " + node.getName());
+        printStream.println(indent.toString() + "*ClassDeclaration: " + node.getName());
         Tab();
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
@@ -60,10 +67,14 @@ public class ASTPrinter implements ASTVisitor
     public void visit(FuncDecNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + "Function: " + node.getName());
+        printStream.println(indent.toString() + "*FunctionDeclaration: " + node.getName());
         Tab();
         if(node.getFunction().getReturnType() != null) visit(node.getFunction().getReturnType());
-        visit(node.getFunction().getParam());
+        if(node.getFunction().getParam() != null)
+        {
+            for (FuncParamNode item : node.getFunction().getParam())
+                visit(item);
+        }
         visit(node.getBlock());
         BackSpace();
     }
@@ -72,16 +83,27 @@ public class ASTPrinter implements ASTVisitor
     public void visit(VarDecNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + "Varible: " + node.getName());
+        printStream.println(indent.toString() + "*VariableDeclaration: " + node.getName());
         Tab();
         visit(node.getVar().getType());
+        if(node.getValue() != null)
+            visit(node.getValue());
         BackSpace();
+    }
+
+    @Override
+    public void visit(FuncParamNode node)
+    {
+        if(node == null) return;
+        printStream.println(indent.toString() + node.getClass().getSimpleName()
+         + " Type: " + node.getParam().getType().getTypeName() + "    Name: " + node.getParam().getName());
     }
 
     @Override
     public void visit(ExprNode node)
     {
         if(node == null) return;
+        node.accept(this);
     }
 
     @Override
@@ -121,7 +143,7 @@ public class ASTPrinter implements ASTVisitor
     public void visit(BinaryExprNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getOp().toString(node.getOp()));
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  Op: " + node.getOp().toString(node.getOp()));
         Tab();
         visit(node.getLhs());
         visit(node.getRhs());
@@ -132,14 +154,14 @@ public class ASTPrinter implements ASTVisitor
     public void visit(BoolConstNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + "value = " + node.getValue());
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  value = " + node.getValue());
     }
 
     @Override
     public void visit(CallExprNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getFuncName());
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  Function Name: " + node.getFuncName());
         Tab();
         visit(node.getParam());
         BackSpace();
@@ -173,14 +195,24 @@ public class ASTPrinter implements ASTVisitor
     public void visit(IdExprNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + "ID name: " + node.getName());
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  ID name: " + node.getName());
+    }
+
+    @Override
+    public void visit(ExprStatNode node)
+    {
+        if(node == null) return;
+        printStream.println(indent.toString() + node.getClass().getSimpleName());
+        Tab();
+        visit(node.getExpr());
+        BackSpace();
     }
 
     @Override
     public void visit(IntConstNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + "value = " + node.getValue());
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  value = " + node.getValue());
     }
 
     @Override
@@ -226,7 +258,7 @@ public class ASTPrinter implements ASTVisitor
     public void visit(PrefixExprNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getOp().toString(node.getOp()));
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  Op: " + node.getOp().toString(node.getOp()));
         Tab();
         visit(node.getExprNode());
         BackSpace();
@@ -236,14 +268,14 @@ public class ASTPrinter implements ASTVisitor
     public void visit(StringConstNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + "value = " + node.getValue());
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  value = " + node.getValue());
     }
 
     @Override
     public void visit(SuffixExprNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getOp().toString(node.getOp()));
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + "  Op: " + node.getOp().toString(node.getOp()));
         Tab();
         visit(node.getExprNode());
         BackSpace();
@@ -260,7 +292,8 @@ public class ASTPrinter implements ASTVisitor
     public void visit(StatNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName());
+//        printStream.println(indent.toString() + node.getClass().getSimpleName());
+        node.accept(this);
     }
 
     @Override
@@ -299,6 +332,7 @@ public class ASTPrinter implements ASTVisitor
         visit(node.getBeginCondition());
         visit(node.getEndCondition());
         visit(node.getUpdate());
+        visit(node.getBlock());
         BackSpace();
     }
 
@@ -336,6 +370,6 @@ public class ASTPrinter implements ASTVisitor
     public void visit(Type node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getTypeName());
+        printStream.println(indent.toString() + node.getClass().getSimpleName() + ": " + node.getTypeName());
     }
 }

@@ -29,48 +29,6 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionDecl(MlangParser.FunctionDeclContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MlangParser#variableDecl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVariableDecl(MlangParser.VariableDeclContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#parameter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParameter(MlangParser.ParameterContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#builtInType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBuiltInType(MlangParser.BuiltInTypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#userType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitUserType(MlangParser.UserTypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#arrayType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayType(MlangParser.ArrayTypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#type}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitType(MlangParser.TypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#block}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBlock(MlangParser.BlockContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code blockStat}
 	 * labeled alternative in {@link MlangParser#statement}.
 	 * @param ctx the parse tree
@@ -140,6 +98,54 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEmptyStat(MlangParser.EmptyStatContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#variableDecl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableDecl(MlangParser.VariableDeclContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#parameter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParameter(MlangParser.ParameterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#formal_parameter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFormal_parameter(MlangParser.Formal_parameterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#builtInType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBuiltInType(MlangParser.BuiltInTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#userType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUserType(MlangParser.UserTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#arrayType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayType(MlangParser.ArrayTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitType(MlangParser.TypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#block}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock(MlangParser.BlockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MlangParser#actual_parameter}.
 	 * @param ctx the parse tree

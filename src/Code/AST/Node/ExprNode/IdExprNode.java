@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.ASTVisitor.ASTVisitor;
 
 public class IdExprNode extends ExprNode
 {
@@ -12,5 +13,10 @@ public class IdExprNode extends ExprNode
     String name;
     public String getName() {
         return name;
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

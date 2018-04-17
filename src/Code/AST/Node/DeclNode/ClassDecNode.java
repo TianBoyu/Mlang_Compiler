@@ -3,6 +3,7 @@ package Code.AST.Node.DeclNode;
 import Code.AST.Node.ASTBaseNode;
 import Code.AST.Tools.Position;
 import Code.AST.Type.ClassType;
+import Code.ASTVisitor.ASTVisitor;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ClassDecNode extends DeclNode
         member_function = func;
         member_varible = var;
     }
-    public final ClassType getType()
+    public ClassType getType()
     {
         return type;
     }
@@ -35,5 +36,10 @@ public class ClassDecNode extends DeclNode
     public String getName()
     {
         return type.getTypeName();
+    }
+    @Override
+    public void accept(ASTVisitor visitor)
+    {
+        visitor.visit(this);
     }
 }

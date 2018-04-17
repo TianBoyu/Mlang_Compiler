@@ -1,22 +1,12 @@
 class love_letter
 {
-    string your_name;
-    int date;
-    class gift
+    void show_letter(int receiver)
     {
-        int price;
-        int type;
-        string color;
-    }
-    gift my_gift;
-    void show_letter(int reciver)
-    {
-        if(reciver == your_name)
+        if(receiver == your_name)
         {
-            print("this is a love letter for you);
-            give(gift);
+            print("this is a love letter for you");
             print("i love you!");
-            print(date);        
+            print(date);
         }
     }
 }

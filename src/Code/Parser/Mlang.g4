@@ -9,7 +9,22 @@ classDecl
     ;
 
 functionDecl
-    : type? ID '('(parameter (','parameter)*)?')' block
+    : type? ID '('formal_parameter?')' block
+    ;
+
+statement
+    : block                                                     #blockStat
+    | variableDecl                                              #varDeclStat
+    | IF '('expression')' statement (ELSE statement)?           #ifStat
+    | FOR '('init=expression?';'
+             cond=expression?';'
+             update=expression?')' statement                    #forStat
+    | WHILE '('expression ')' statement                         #whileStat
+    | RETURN expression';'                                      #returnStat
+    | BREAK ';'                                                 #breakStat
+    | CONTINUE ';'                                              #continueStat
+    | expression ';'                                            #exprStat
+    | ';'                                                       #emptyStat
     ;
 
 variableDecl
@@ -21,13 +36,17 @@ parameter
     : type ID
     ;
 
+formal_parameter
+    : parameter (','parameter)*
+    ;
+
 
 builtInType
     : BOOL | INT | STRING | VOID
     ;
 
 userType : ID;
-arrayType : (builtInType | userType) ('['']')+;
+arrayType : (builtInType | userType) ('[]')+;
 
 type
     : (arrayType | builtInType | userType)
@@ -37,20 +56,6 @@ block
     : '{' statement* '}'
     ;
 
-statement
-    : block                                                     #blockStat
-    | variableDecl                                              #varDeclStat
-    | IF '('expression')' statement (ELSE statement)?           #ifStat
-    | FOR '('init=expression?';'
-             cond=expression?';'
-             update=expression?')' statement                    #forStat
-    | WHILE '('expression ')' statement                         #whileStat
-    | RETURN '(' expression ')' ';'                             #returnStat
-    | BREAK ';'                                                 #breakStat
-    | CONTINUE ';'                                              #continueStat
-    | expression ';'                                            #exprStat
-    | ';'                                                       #emptyStat
-    ;
 
 actual_parameter
     : expression (',' expression)*
