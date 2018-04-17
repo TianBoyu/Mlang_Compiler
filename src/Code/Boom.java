@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import Code.AST.ASTConstructor.ASTConstructor;
-import Code.AST.ASTConstructor.ASTPrinter;
+import Code.AST.ASTPrinter;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Code.Parser.*;

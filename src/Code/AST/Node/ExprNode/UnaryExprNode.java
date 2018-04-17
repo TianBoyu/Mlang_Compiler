@@ -13,4 +13,14 @@ public class UnaryExprNode extends ExprNode
     }
     private UnaryOp op;
     private ExprNode exprNode;
+
+    public UnaryOp getOp()
+    {
+        return op;
+    }
+
+    public ExprNode getExprNode()
+    {
+        return exprNode;
+    }
 }

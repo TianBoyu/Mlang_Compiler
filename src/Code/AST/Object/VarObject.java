@@ -13,4 +13,9 @@ public class VarObject extends Object
         is_global = _global;
         type = _type;
     }
+
+    public Type getType()
+    {
+        return type;
+    }
 }

@@ -12,14 +12,20 @@ public class BinaryExprNode extends ExprNode
         rhs = _rhs;
         op = _op;
     }
-    public final BinaryOp getOp()
+    public BinaryOp getOp()
     {
         return op;
     }
-    public final ExprNode getLhs()
+    public ExprNode getLhs()
     {
         return lhs;
     }
+
+    public ExprNode getRhs()
+    {
+        return rhs;
+    }
+
     private ExprNode lhs, rhs;
     private BinaryOp op;
 }

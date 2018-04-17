@@ -165,16 +165,16 @@ public class ASTConstructor extends MlangBaseListener
         map.put(ctx, arrayType);
     }
 
-    @Override
-    public void exitType(MlangParser.TypeContext ctx)//TODO
-    {
-        Type type;
-        if (ctx.builtInType() != null)
-            type = (Type) map.get(ctx.builtInType());
-        else if (ctx.userType() != null)
-            type = (Type) map.get(ctx.userType());
-        else type = (Type) map.get(ctx.arrayType());
-    }
+//    @Override
+//    public void exitType(MlangParser.TypeContext ctx)//TODO
+//    {
+//        Type type;
+//        if (ctx.builtInType() != null)
+//            type = (Type) map.get(ctx.builtInType());
+//        else if (ctx.userType() != null)
+//            type = (Type) map.get(ctx.userType());
+//        else type = (Type) map.get(ctx.arrayType());
+//    }
 
     @Override
     public void exitBlock(MlangParser.BlockContext ctx)

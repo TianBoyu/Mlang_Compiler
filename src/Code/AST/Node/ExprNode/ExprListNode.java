@@ -16,4 +16,9 @@ public class ExprListNode extends ExprNode
     {
         exprs.add(node);
     }
+
+    public List<ExprNode> getExprs()
+    {
+        return exprs;
+    }
 }
