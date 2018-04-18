@@ -4,15 +4,13 @@ import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
-import Code.AST.Tools.BinaryOp;
 import Code.AST.Type.Type;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
-import javax.swing.text.TabableView;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-public class ASTPrinter implements ASTVisitor
+public class ASTPrinter implements ASTTraversal
 {
     private StringBuilder indent = new StringBuilder();
     private PrintStream printStream;

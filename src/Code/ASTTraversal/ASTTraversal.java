@@ -1,4 +1,4 @@
-package Code.ASTVisitor;
+package Code.ASTTraversal;
 
 import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
@@ -6,7 +6,7 @@ import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Type.Type;
 
-public interface ASTVisitor
+public interface ASTTraversal
 {
     void visit(ProgNode node);
 

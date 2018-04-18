@@ -116,17 +116,17 @@ public class ASTConstructor extends MlangBaseListener
         map.put(ctx, funcDecNode);
     }
 
-    @Override
-    public void enterFormal_parameter(MlangParser.Formal_parameterContext ctx)
-    {
-        System.out.println("formal_parameter");
-    }
-
-    @Override
-    public void exitFormal_parameter(MlangParser.Formal_parameterContext ctx)
-    {
-        System.out.println("out of formal_parameter");
-    }
+//    @Override
+//    public void enterFormal_parameter(MlangParser.Formal_parameterContext ctx)
+//    {
+//        System.out.println("formal_parameter");
+//    }
+//
+//    @Override
+//    public void exitFormal_parameter(MlangParser.Formal_parameterContext ctx)
+//    {
+//        System.out.println("out of formal_parameter");
+//    }
 
     @Override
     public void exitVariableDecl(MlangParser.VariableDeclContext ctx)

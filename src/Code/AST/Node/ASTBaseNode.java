@@ -1,7 +1,7 @@
 package Code.AST.Node;
 
 import Code.AST.Tools.*;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public abstract class ASTBaseNode
 {
@@ -18,5 +18,5 @@ public abstract class ASTBaseNode
     {
         return position;
     }
-    public abstract void accept(ASTVisitor visitor);
+    public abstract void accept(ASTTraversal visitor);
 }

@@ -1,7 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class AndExprNode extends ConditionExprNode
 {
@@ -10,7 +10,7 @@ public class AndExprNode extends ConditionExprNode
         super(_pos, c1, c2);
     }
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

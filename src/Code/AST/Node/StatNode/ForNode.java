@@ -2,7 +2,7 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class ForNode extends StatNode
 {
@@ -37,7 +37,7 @@ public class ForNode extends StatNode
     private ExprNode update;
     private StatNode block;
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

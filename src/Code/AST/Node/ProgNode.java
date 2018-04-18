@@ -2,7 +2,7 @@ package Code.AST.Node;
 
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class ProgNode extends ASTBaseNode
     }
     private List<DeclNode> declares;
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

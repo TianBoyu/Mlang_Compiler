@@ -1,13 +1,11 @@
 package Code.AST.Node.DeclNode;
 
-import Code.AST.Node.ASTBaseNode;
-import Code.AST.Node.ExprNode.ExprListNode;
 import Code.AST.Node.StatNode.BlockNode;
 import Code.AST.Object.FuncDecObject;
-import Code.AST.Object.FuncObject;
 import Code.AST.Tools.Position;
-import Code.AST.Type.Type;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
+import Code.ASTTraversal.Scope.ClassScope;
+import Code.ASTTraversal.Scope.Scope;
 
 public class FuncDecNode extends DeclNode
 {
@@ -35,8 +33,12 @@ public class FuncDecNode extends DeclNode
         return function.getName();
     }
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    public void setScope(ClassScope scope)
+    {
+        function.setScope(scope);
     }
 }

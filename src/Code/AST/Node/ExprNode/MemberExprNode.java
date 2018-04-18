@@ -1,7 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class MemberExprNode extends ExprNode
 {
@@ -22,7 +22,7 @@ public class MemberExprNode extends ExprNode
         return member_name;
     }
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

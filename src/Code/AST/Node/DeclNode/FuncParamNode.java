@@ -3,7 +3,7 @@ package Code.AST.Node.DeclNode;
 import Code.AST.Node.ASTBaseNode;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class FuncParamNode extends ASTBaseNode
 {
@@ -20,7 +20,7 @@ public class FuncParamNode extends ASTBaseNode
     }
 
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

@@ -1,12 +1,9 @@
 package Code.AST.Node.DeclNode;
 
-import Code.AST.Node.ASTBaseNode;
 import Code.AST.Node.ExprNode.ExprNode;
-import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Object.VarObject;
 import Code.AST.Tools.*;
-import Code.AST.Type.Type;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class VarDecNode extends DeclNode
 {
@@ -31,7 +28,7 @@ public class VarDecNode extends DeclNode
     private VarObject var;
     private ExprNode value;
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

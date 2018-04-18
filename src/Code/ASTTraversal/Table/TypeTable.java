@@ -1,4 +1,4 @@
-package Code.AST.Table;
+package Code.ASTTraversal.Table;
 
 import Code.AST.Type.Type;
 
@@ -8,7 +8,7 @@ import java.util.Map;
 public class TypeTable
 {
     public static Map<String, Type> type_table = new HashMap<>();
-    public boolean addType(String k, Type v)
+    public boolean addElement(String k, Type v)
     {
         if(type_table.containsKey(k))
         {
@@ -20,8 +20,12 @@ public class TypeTable
             return true;
         }
     }
-    public Type getType(String k)
+    public Type findElement(String k)
     {
         return type_table.get(k);
+    }
+    public boolean containElement(String k)
+    {
+        return type_table.containsKey(k);
     }
 }

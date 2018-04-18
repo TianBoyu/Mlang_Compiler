@@ -2,7 +2,7 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Tools.LoopBody;
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class ContinueNode extends StatNode
 {
@@ -13,7 +13,7 @@ public class ContinueNode extends StatNode
     }
     private LoopBody loop;
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

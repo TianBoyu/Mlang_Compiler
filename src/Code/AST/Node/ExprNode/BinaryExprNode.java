@@ -2,7 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Position;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 public class BinaryExprNode extends ExprNode
 {
@@ -30,7 +30,7 @@ public class BinaryExprNode extends ExprNode
     private ExprNode lhs, rhs;
     private BinaryOp op;
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }

@@ -1,9 +1,8 @@
 package Code.AST.Node.DeclNode;
 
-import Code.AST.Node.ASTBaseNode;
 import Code.AST.Tools.Position;
 import Code.AST.Type.ClassType;
-import Code.ASTVisitor.ASTVisitor;
+import Code.ASTTraversal.ASTTraversal;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class ClassDecNode extends DeclNode
         return type.getTypeName();
     }
     @Override
-    public void accept(ASTVisitor visitor)
+    public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
     }
