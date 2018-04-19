@@ -1,5 +1,7 @@
 package Code.AST.Type;
 
+import Code.AST.Node.DeclNode.ClassDecNode;
+
 public class Type {
     private String type_name;
     private int type_size;
@@ -15,6 +17,10 @@ public class Type {
     public int getTypeSize()
     {
         return type_size;
+    }
+    public ClassDecNode getClassNode()
+    {
+        return null;
     }
 
 }

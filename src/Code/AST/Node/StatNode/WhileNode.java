@@ -4,6 +4,7 @@ package Code.AST.Node.StatNode;
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
 import Code.ASTTraversal.ASTTraversal;
+import Code.ASTTraversal.Scope.Scope;
 
 public class WhileNode extends StatNode
 {
@@ -19,9 +20,30 @@ public class WhileNode extends StatNode
     public final StatNode getThen() {
         return then;
     }
+    public Scope getExternalScope()
+    {
+        return ExternalScope;
+    }
+
+    public Scope getInternalScope()
+    {
+        return InternalScope;
+    }
+
+    public void setExternalScope(Scope externalScope)
+    {
+        ExternalScope = externalScope;
+    }
+
+    public void setInternalScope(Scope internalScope)
+    {
+        InternalScope = internalScope;
+    }
 
     private ExprNode condition;
     private StatNode then;
+    private Scope ExternalScope;
+    private Scope InternalScope;
     @Override
     public void accept(ASTTraversal visitor)
     {

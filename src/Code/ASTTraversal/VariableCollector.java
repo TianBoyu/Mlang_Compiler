@@ -6,64 +6,88 @@ import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.Scope.ClassScope;
+import Code.ASTTraversal.Scope.Scope;
+
+import java.util.Stack;
 
 public class VariableCollector implements ASTTraversal
 {
-    private ClassScope currentScope;
-    VariableCollector()
+    private Scope currentScope;
+    public Stack<Scope> scopeStack = new Stack<>();
+
+    public VariableCollector(Scope topScope)
     {
-        currentScope = new ClassScope(new ClassType("global", 0));
+        currentScope = topScope;
+        scopeStack.push(currentScope);
     }
     @Override
     public void visit(ProgNode node)
     {
         if(node == null) return;
         for(DeclNode item : node.getDeclares())
-        {
             visit(item);
-        }
     }
 
     @Override
     public void visit(DeclNode node)
     {
-
+        if(node == null) return;
+        node.accept(this);
     }
 
     @Override
     public void visit(ClassDecNode node)
     {
-
+        if(node == null) return;
+        setCurrentScope(node.getInternalScope());
+        for(FuncDecNode item : node.getMemberFunction())
+            visit(item);
+        for(VarDecNode item : node.getMemberVarible()   )
+            visit(item);
+        exitCurrentScope();
     }
 
     @Override
     public void visit(FuncDecNode node)
     {
-
+        if(node == null) return;
+        setCurrentScope(node.getInternalScope());
+        node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
+        for(FuncParamNode item : node.getParameter())
+            visit(item);
+        visit(node.getBlock());
+        exitCurrentScope();
     }
 
     @Override
     public void visit(VarDecNode node)
     {
-
+        if(node == null) return;
+        node.setScope(currentScope);
+        node.setType(currentScope.findType(node.getType().getTypeName()));
+        currentScope.addNode(node);
     }
 
     @Override
     public void visit(FuncParamNode node)
     {
-
+        if(node == null) return;
+        node.setScope(currentScope);
+        node.setType(currentScope.findType(node.getType().getTypeName()));
+        currentScope.addNode(node);
     }
 
     @Override
     public void visit(ExprNode node)
     {
-
+        if(node == null) return;
+        node.accept(this);
     }
 
     @Override
     public void visit(AndExprNode node)
     {
+        if(node == null) return;
 
     }
 
@@ -227,5 +251,13 @@ public class VariableCollector implements ASTTraversal
     public void visit(Type type)
     {
 
+    }
+    private void setCurrentScope(Scope _currentScope)
+    {
+        currentScope = _currentScope;
+    }
+    private void exitCurrentScope()
+    {
+        currentScope = currentScope.getParent();
     }
 }

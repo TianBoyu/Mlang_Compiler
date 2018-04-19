@@ -103,7 +103,7 @@ public class ASTConstructor extends MlangBaseListener
         {
             for (MlangParser.ParameterContext item : ctx.formal_parameter().parameter())
             {
-                ParameterObject object = new ParameterObject(new Type(item.type().getText(), 4), item.ID().getText());
+                ParameterObject object = new ParameterObject(item.ID().getText(), new Type(item.type().getText(), 4));
                 FuncParamNode node = new FuncParamNode(new Position(ctx.getStart().getLine()), object);
                 paras.add(node);
             }
@@ -143,7 +143,7 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitParameter(MlangParser.ParameterContext ctx)
     {
-        map.put(ctx, new ParameterObject((Type) map.get(ctx.type()), ctx.ID().getText()));
+        map.put(ctx, new ParameterObject(ctx.ID().getText(), (Type) map.get(ctx.type())));
     }
 
     @Override

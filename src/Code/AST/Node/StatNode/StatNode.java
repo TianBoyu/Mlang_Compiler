@@ -9,4 +9,8 @@ public abstract class StatNode extends ASTBaseNode
     {
         super(_pos);
     }
+    public String getName()
+    {
+        return "Stat";
+    }
 }

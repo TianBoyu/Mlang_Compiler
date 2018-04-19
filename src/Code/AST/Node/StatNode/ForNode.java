@@ -3,6 +3,7 @@ package Code.AST.Node.StatNode;
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
 import Code.ASTTraversal.ASTTraversal;
+import Code.ASTTraversal.Scope.Scope;
 
 public class ForNode extends StatNode
 {
@@ -32,10 +33,32 @@ public class ForNode extends StatNode
         return block;
     }
 
+    public Scope getExternalScope()
+    {
+        return ExternalScope;
+    }
+
+    public Scope getInternalScope()
+    {
+        return InternalScope;
+    }
+
+    public void setExternalScope(Scope externalScope)
+    {
+        ExternalScope = externalScope;
+    }
+
+    public void setInternalScope(Scope internalScope)
+    {
+        InternalScope = internalScope;
+    }
+
     private ExprNode begin_condition;
     private ExprNode end_condition;
     private ExprNode update;
     private StatNode block;
+    private Scope ExternalScope;
+    private Scope InternalScope;
     @Override
     public void accept(ASTTraversal visitor)
     {

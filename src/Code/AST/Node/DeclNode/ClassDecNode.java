@@ -3,6 +3,7 @@ package Code.AST.Node.DeclNode;
 import Code.AST.Tools.Position;
 import Code.AST.Type.ClassType;
 import Code.ASTTraversal.ASTTraversal;
+import Code.ASTTraversal.Scope.Scope;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class ClassDecNode extends DeclNode
     ClassType type;
     private List<FuncDecNode> member_function;
     private List<VarDecNode>  member_varible;
+    private Scope internal_scope;
 
     public ClassDecNode(Position pos, ClassType _type, List<FuncDecNode> func, List<VarDecNode> var)
     {
@@ -31,6 +33,17 @@ public class ClassDecNode extends DeclNode
     {
         return member_varible;
     }
+
+    public void setInternalScope(Scope internal_scope)
+    {
+        this.internal_scope = internal_scope;
+    }
+
+    public Scope getInternalScope()
+    {
+        return internal_scope;
+    }
+
     @Override
     public String getName()
     {

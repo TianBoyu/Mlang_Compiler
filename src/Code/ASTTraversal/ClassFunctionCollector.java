@@ -6,21 +6,19 @@ import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.Scope.ClassScope;
 import Code.ASTTraversal.Scope.Scope;
 import Code.ASTTraversal.Table.FunctionTable;
 import Code.ASTTraversal.Table.TypeTable;
 
+import java.util.Stack;
 public class ClassFunctionCollector implements ASTTraversal
 {
-    private ClassScope currentScope;
-    private FunctionTable functionTable;
-    private TypeTable typeTable;
-    ClassFunctionCollector(FunctionTable _functionTable, TypeTable _typeTable)
+    private Scope currentScope;
+    public Stack<Scope> scopeStack = new Stack<>();
+    ClassFunctionCollector(Scope topScope)
     {
-        functionTable = _functionTable;
-        typeTable = _typeTable;
-        currentScope = new ClassScope(new ClassType("global", 0));
+        currentScope = topScope;
+        scopeStack.push(currentScope);
     }
     @Override
     public void visit(ProgNode node)
@@ -40,25 +38,30 @@ public class ClassFunctionCollector implements ASTTraversal
     @Override
     public void visit(ClassDecNode node)
     {
-        if(typeTable.containElement(node.getName()))
-            throw new RuntimeException("class " + node.getName() + " have already been declared");
-        if(!typeTable.addElement(node.getName(), node.getType()))
-            throw new RuntimeException("class: " + node.getName() + " declaration failed");
-        setCurrentScope(new ClassScope(node.getType()));
+        currentScope.addType(node);
+        currentScope = new Scope(currentScope);
+        node.setInternalScope(currentScope);
+        scopeStack.push(currentScope);
         for(FuncDecNode item : node.getMemberFunction())
-        {
             visit(item);
-        }
+        for(VarDecNode item : node.getMemberVarible())
+            visit(item);
+        exitCurrentScope();
     }
 
     @Override
     public void visit(FuncDecNode node)
     {
-        node.setScope(currentScope);
-        if(functionTable.containElement(node.getName()))
-            throw new RuntimeException("function: " + node.getName() + " have already been declared");
-        if(!functionTable.addElement(node.getName(), node))
-            throw new RuntimeException("function: " + node.getName() + " declaration failed");
+        currentScope.addNode(node);
+        node.setExternalScope(currentScope);
+
+        currentScope = new Scope(currentScope);
+        node.setInternalScope(currentScope);
+        scopeStack.push(currentScope);
+        for(FuncParamNode item : node.getParameter())
+            visit(item);
+        visit(node.getBlock());
+        exitCurrentScope();
     }
 
     @Override
@@ -190,31 +193,39 @@ public class ClassFunctionCollector implements ASTTraversal
     @Override
     public void visit(StatNode node)
     {
-
+        if(node == null) return;
+        node.accept(this);
     }
 
     @Override
     public void visit(BlockNode node)
     {
-
+        for(StatNode item : node.getStatements())
+            visit(item);
     }
 
     @Override
     public void visit(BreakNode node)
     {
-
+        if(!currentScope.isLoop())
+            throw new RuntimeException("'break' must be in a loop");
     }
 
     @Override
     public void visit(ContinueNode node)
     {
-
+        if(!currentScope.isLoop())
+            throw new RuntimeException("'break' must be in a loop");
     }
 
     @Override
     public void visit(ForNode node)
     {
-
+        node.setExternalScope(currentScope);
+        currentScope = new Scope(currentScope);
+        currentScope.setLoop(true);
+        node.setInternalScope(currentScope);
+        scopeStack.push(currentScope);
     }
 
     @Override
@@ -226,13 +237,22 @@ public class ClassFunctionCollector implements ASTTraversal
     @Override
     public void visit(ReturnNode node)
     {
-
+        while(!currentScope.isFunction())
+        {
+            currentScope = currentScope.getParent();
+            if(!currentScope.isFunction())
+                throw new RuntimeException("'return' must be in a function");
+        }
     }
 
     @Override
     public void visit(WhileNode node)
     {
-
+        node.setExternalScope(currentScope);
+        currentScope = new Scope(currentScope);
+        currentScope.setLoop(true);
+        node.setInternalScope(currentScope);
+        scopeStack.push(currentScope);
     }
 
     @Override
@@ -246,8 +266,12 @@ public class ClassFunctionCollector implements ASTTraversal
     {
 
     }
-    private void setCurrentScope(ClassScope _currentScope)
+    private void setCurrentScope(Scope _currentScope)
     {
         currentScope = _currentScope;
+    }
+    private void exitCurrentScope()
+    {
+        currentScope = currentScope.getParent();
     }
 }

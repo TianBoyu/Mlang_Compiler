@@ -3,17 +3,11 @@ package Code.AST.Object;
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 
-public class ParameterObject extends Object
+public class ParameterObject extends VarObject
 {
-    public ParameterObject(Type _type, String _name)
+    public ParameterObject(String _name, Type _type)
     {
-        super(_name);
-        type = _type;
+        super(_name, false, _type);
     }
     private Type type;
-
-    public Type getType()
-    {
-        return type;
-    }
 }

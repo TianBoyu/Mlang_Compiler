@@ -1,9 +1,7 @@
 package Code.AST.Object;
 
 import Code.AST.Node.DeclNode.FuncParamNode;
-import Code.AST.Node.ExprNode.ExprListNode;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.Scope.ClassScope;
 import Code.ASTTraversal.Scope.Scope;
 
 import java.util.List;
@@ -12,7 +10,7 @@ public class FuncDecObject extends Object
 {
     private List<FuncParamNode> parameter;
     private Type return_type;
-    private ClassScope scope;
+
     public FuncDecObject(String _name, List<FuncParamNode> _param, Type _type)
     {
         super(_name);
@@ -27,8 +25,15 @@ public class FuncDecObject extends Object
     {
         return return_type;
     }
-    public void setScope(ClassScope _scope)
+
+
+    public void setReturn_type(Type return_type)
     {
-        scope = _scope;
+        this.return_type = return_type;
+    }
+
+    public List<FuncParamNode> getParameter()
+    {
+        return parameter;
     }
 }

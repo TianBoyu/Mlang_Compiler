@@ -1,7 +1,14 @@
 package Code.ASTTraversal;
 
+import Code.ASTTraversal.Scope.Scope;
+
 public class Initializer
 {
+    private Scope topLevelScope;
+    Initializer(Scope topScope)
+    {
+        topLevelScope = topScope;
+    }
     public void InitializeBuiltInType()
     {
 
