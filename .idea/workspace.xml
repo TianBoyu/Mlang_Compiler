@@ -5,70 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/build.bash" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/semantic.bash" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTConstructor/ASTConstructor.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTConstructor/ASTConstructor.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTPrinter.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTPrinter.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ASTBaseNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ASTBaseNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/ClassDecNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/ClassDecNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/DeclNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/DeclNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/FuncDecNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/FuncDecNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/FuncParamNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/FuncParamNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/VarDecNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/DeclNode/VarDecNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/AndExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/AndExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/ArrayExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/ArrayExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/AssignExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/AssignExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/BinaryExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/BinaryExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/BoolConstNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/BoolConstNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/CallExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/CallExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/CompareExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/CompareExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/ConstExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/ConstExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/ExprListNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/ExprListNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/IdExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/IdExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/IntConstNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/IntConstNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/MemberExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/MemberExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/NewExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/NewExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/NullConstNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/NullConstNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/OrExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/OrExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/PrefixExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/PrefixExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/StringConstNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/StringConstNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/SuffixExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/SuffixExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/UnitExprNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/UnitExprNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ProgNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ProgNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/BlockNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/BlockNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/BreakNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/BreakNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ContinueNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ContinueNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ExprStatNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ExprStatNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ForNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ForNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/IfNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/IfNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ReturnNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/ReturnNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/StatNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/StatNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/WhileNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/StatNode/WhileNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Object/FuncDecObject.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Object/FuncDecObject.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Object/ParameterObject.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Object/ParameterObject.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Object/VarObject.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Object/VarObject.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Table/TypeTable.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Type/ClassType.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Type/ClassType.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Type/Type.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Type/Type.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTVisitor/ASTVisitor.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Boom.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Boom.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/Mlang.g4" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/Mlang.g4" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/Mlang.tokens" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/Mlang.tokens" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangLexer.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangLexer.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangLexer.tokens" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangLexer.tokens" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser.class" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTPrinter.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTPrinter.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java" afterPath="$PROJECT_DIR$/src/Code/AST/Object/FuncObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" afterPath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/Mlang.tokens" afterPath="$PROJECT_DIR$/src/Code/Parser/Mlang.tokens" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangLexer.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangLexer.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangLexer.tokens" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangLexer.tokens" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -168,8 +105,8 @@
       <file leaf-file-name="Boom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="222">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -441,7 +378,7 @@
     <property name="$PROJECT_DIR$/src/Mlang.g4::/output-dir" value="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Parser" />
     <property name="$PROJECT_DIR$/src/Mlang.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/Mlang.g4::/gen-visitor" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable" />
     <property name="$PROJECT_DIR$/src/Code/Parser/Mlang.g4::/auto-gen" value="false" />
     <property name="$PROJECT_DIR$/src/Code/Parser/Mlang.g4::/output-dir" value="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Code\Parser" />
     <property name="$PROJECT_DIR$/src/Code/Parser/Mlang.g4::/gen-listener" value="true" />
@@ -613,9 +550,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.50214595" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37927106" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37927106" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32460135" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32460135" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20708154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -669,7 +606,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Code/Boom.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1113,8 +1058,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        <state relative-caret-position="222">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
