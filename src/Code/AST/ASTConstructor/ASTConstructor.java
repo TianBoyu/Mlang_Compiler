@@ -61,19 +61,19 @@ public class ASTConstructor extends MlangBaseListener
     public void enterClassDecl(MlangParser.ClassDeclContext ctx)
     {
 //        super.enterClassDecl(ctx);
-        System.out.println("enter into class: " + ctx.ID().getText());
+//        System.out.println("enter into class: " + ctx.ID().getText());
     }
 
     @Override
     public void enterFunctionDecl(MlangParser.FunctionDeclContext ctx)
     {
-        System.out.println("enter into function: " + ctx.ID().getText());
+//        System.out.println("enter into function: " + ctx.ID().getText());
     }
 
     @Override
     public void enterVariableDecl(MlangParser.VariableDeclContext ctx)
     {
-        System.out.println("enter into varible: " + ctx.ID().getText());
+//        System.out.println("enter into varible: " + ctx.ID().getText());
     }
 
     @Override
@@ -342,7 +342,8 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitArrayExpr(MlangParser.ArrayExprContext ctx)
     {
-        ArrayExprNode arrayExprNode = new ArrayExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression(0)),
+        ArrayExprNode arrayExprNode = new ArrayExprNode(new Position(ctx.getStart().getLine()),
+                getExpr(ctx.expression(0)),
                 getExpr(ctx.expression(1)));
         map.put(ctx, arrayExprNode);
     }
@@ -611,7 +612,7 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void enterForStat(MlangParser.ForStatContext ctx)
     {
-        System.out.println("enter into for node");
+//        System.out.println("enter into for node");
 //        super.enterForStat(ctx);
     }
 
@@ -660,7 +661,7 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void enterActual_parameter(MlangParser.Actual_parameterContext ctx)
     {
-        System.out.println("enter into parameter");
+//        System.out.println("enter into parameter");
 //        super.enterActual_parameter(ctx);
     }
 

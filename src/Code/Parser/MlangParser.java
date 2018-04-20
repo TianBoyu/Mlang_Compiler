@@ -38,8 +38,8 @@ public class MlangParser extends Parser {
 		"'<='", "'>'", "'>='", "'=='", "'!='", "'&'", "'^'", "'|'", "'&&'", "'||'", 
 		"'bool'", "'int'", "'string'", "'null'", "'void'", "'true'", "'false'", 
 		"'if'", "'else'", "'for'", "'while'", "'break'", "'continue'", "'return'", 
-		"'new'", "'class'", "'this'", null, null, null, "'//'", "'*'", "'/'", 
-		"'+'", "'-'"
+		"'new'", "'class'", "'this'", null, null, null, null, "'*'", "'/'", "'+'", 
+		"'-'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 

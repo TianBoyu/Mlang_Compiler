@@ -117,7 +117,7 @@ NUM     : [0-9]+;
 ESC     : '\\"' | '\\\\' | '\\n';
 STR     : '"'(ESC|.)*?'"';
 
-COMMENT : '//';
+COMMENT :  '//' ~[\r\n]* -> skip;
 MUL     : '*';
 DIV     : '/';
 ADD     : '+';

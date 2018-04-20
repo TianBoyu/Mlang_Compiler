@@ -48,9 +48,13 @@ public class Scope
             throw new RuntimeException(name + " have not been declared");
         else return this.parent.findNode(name);
     }
-    private boolean containsNode(String name)
+    public boolean containsNode(String name)
     {
-        return scopeNodes.containsKey(name);
+        if(scopeNodes.containsKey(name))
+            return true;
+        else if(this.isTop)
+            return false;
+        else return this.parent.containsNode(name);
     }
     public void addType(ClassDecNode node) throws RuntimeException
     {
@@ -78,9 +82,13 @@ public class Scope
             throw new RuntimeException(name + " have not been declared");
         else return this.parent.findType(name);
     }
-    private boolean containsType(String name)
+    public boolean containsType(String name)
     {
-        return scopeTypes.containsKey(name);
+        if(scopeNodes.containsKey(name))
+            return true;
+        else if(this.isTop)
+            return false;
+        else return this.parent.containsType(name);
     }
     public Scope getParent()
     {

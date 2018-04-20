@@ -52,6 +52,8 @@ public class VariableCollector implements ASTTraversal
     {
         if(node == null) return;
         setCurrentScope(node.getInternalScope());
+        if(!currentScope.containsType(node.getReturnType().getTypeName()))
+            throw new RuntimeException("type " + node.getReturnType().getTypeName() + " is not declared");
         node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
@@ -64,6 +66,8 @@ public class VariableCollector implements ASTTraversal
     {
         if(node == null) return;
         node.setScope(currentScope);
+        if(!currentScope.containsType(node.getType().getTypeName()))
+            throw new RuntimeException("type " + node.getType().getTypeName() + " is not declared");
         node.setType(currentScope.findType(node.getType().getTypeName()));
         currentScope.addNode(node);
     }
@@ -73,6 +77,8 @@ public class VariableCollector implements ASTTraversal
     {
         if(node == null) return;
         node.setScope(currentScope);
+        if(!currentScope.containsType(node.getType().getTypeName()))
+            throw new RuntimeException("type " + node.getType().getTypeName() + " is not declared");
         node.setType(currentScope.findType(node.getType().getTypeName()));
         currentScope.addNode(node);
     }
@@ -118,7 +124,10 @@ public class VariableCollector implements ASTTraversal
     @Override
     public void visit(CallExprNode node)
     {
-
+        if(!currentScope.containsNode(node.getFuncName()))
+            throw new RuntimeException("function " + node.getFuncName() + " have not been declared");
+        FuncDecNode function = (FuncDecNode)currentScope.findNode(node.getFuncName());
+//        for(ExprNode param : node)
     }
 
     @Override

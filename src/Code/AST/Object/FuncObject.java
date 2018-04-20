@@ -21,5 +21,4 @@ public class FuncObject extends Object
     {
         return return_type;
     }
-
 }

@@ -31,7 +31,7 @@ public class ASTPrinter implements ASTTraversal
     @Override
     public void visit(ProgNode node)
     {
-        System.out.println("Wow! We enter into a new program! Let's see what've the fool coded");
+//        System.out.println("Wow! We enter into a new program! Let's see what've the fool coded");
         if(node == null) return;
         printStream.println(indent.toString() + node.getClass().getSimpleName());
         Tab();
