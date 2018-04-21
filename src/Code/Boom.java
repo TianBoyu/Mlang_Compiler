@@ -39,7 +39,7 @@ public class Boom {
         ErrorHandler handler = new ErrorHandler();
 //        Initializer initializer = new Initializer(topLevelScope);
 //        initializer.Initialize();
-        topLevelScope.InitializeBuiltInType();
+        topLevelScope.Initialize();
         ScopeCollector scopeCollector = new ScopeCollector(topLevelScope, handler);
         scopeCollector.process(program);
         VariableCollector variableCollector = new VariableCollector(topLevelScope, handler);
@@ -47,7 +47,7 @@ public class Boom {
         SemanticChecker semanticChecker = new SemanticChecker(topLevelScope, handler);
         semanticChecker.process(program);
     }
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
         try
         {

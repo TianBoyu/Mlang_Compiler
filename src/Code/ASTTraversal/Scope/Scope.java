@@ -2,8 +2,10 @@ package Code.ASTTraversal.Scope;
 
 import Code.AST.Node.DeclNode.ClassDecNode;
 import Code.AST.Node.DeclNode.DeclNode;
+import Code.AST.Node.DeclNode.FuncDecNode;
 import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Tools.Name;
+import Code.AST.Tools.Position;
 import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
@@ -128,6 +130,17 @@ public class Scope
     }
     public void InitializeBuiltInFunction()
     {
+        //TODO
+        addNode(new FuncDecNode("getInt"));
+        addNode(new FuncDecNode("print"));
+        addNode(new FuncDecNode("println"));
+        addNode(new FuncDecNode("getString"));
+        addNode(new FuncDecNode("toString"));
+    }
 
+    public void Initialize()
+    {
+        InitializeBuiltInType();
+        InitializeBuiltInFunction();
     }
 }

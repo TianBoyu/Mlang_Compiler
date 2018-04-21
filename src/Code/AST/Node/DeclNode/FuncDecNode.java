@@ -1,14 +1,17 @@
 package Code.AST.Node.DeclNode;
 
 import Code.AST.Node.StatNode.BlockNode;
+import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Object.FuncDecObject;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
+import Code.AST.Type.BuiltInType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.ASTTraversal;
 import Code.ASTTraversal.Scope.Scope;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FuncDecNode extends DeclNode
@@ -25,6 +28,14 @@ public class FuncDecNode extends DeclNode
         block = _block;
         is_func = true;
     }
+    public FuncDecNode(String builtin_name)
+    {
+        super(new Position(0));
+        function = new FuncDecObject(builtin_name, new ArrayList<>(), new BuiltInType("int", 4));
+        block = null;
+        is_func = true;
+    }
+
     public FuncDecObject getFunction()
     {
         return function;
