@@ -11,7 +11,7 @@ public class ClassType extends Type
     }
     public ClassType(ClassDecNode node)
     {
-        super(node.getName(), 4);
+        super(node.getName().toString(), 4);
         classNode = node;
     }
     @Override

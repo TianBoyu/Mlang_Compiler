@@ -3,6 +3,7 @@ package Code.AST.Node.DeclNode;
 import Code.AST.Node.StatNode.BlockNode;
 import Code.AST.Object.FuncDecObject;
 import Code.AST.Object.ParameterObject;
+import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.ASTTraversal;
@@ -22,6 +23,7 @@ public class FuncDecNode extends DeclNode
         super(pos);
         function = _function;
         block = _block;
+        is_func = true;
     }
     public FuncDecObject getFunction()
     {
@@ -33,7 +35,7 @@ public class FuncDecNode extends DeclNode
     }
 
     @Override
-    public String getName()
+    public Name getName()
     {
         return function.getName();
     }

@@ -3,6 +3,7 @@ package Code.ASTTraversal.Scope;
 import Code.AST.Node.DeclNode.ClassDecNode;
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Node.StatNode.StatNode;
+import Code.AST.Tools.Name;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 
@@ -10,8 +11,8 @@ import java.util.*;
 
 public class Scope
 {
-    private Map<String, DeclNode> scopeNodes = new HashMap<>();
-    private Map<String, Type> scopeTypes = new HashMap<>();
+    private Map<Name, DeclNode> scopeNodes = new HashMap<>();
+    private Map<Name, Type> scopeTypes = new HashMap<>();
     private List<Scope> children = new ArrayList<>();
     private Scope parent;
     private boolean isTop;
@@ -40,7 +41,7 @@ public class Scope
         }
         scopeNodes.put(node.getName(), node);
     }
-    public DeclNode findNode(String name) throws RuntimeException
+    public DeclNode findNode(Name name) throws RuntimeException
     {
         if(scopeNodes.containsKey(name))
             return scopeNodes.get(name);
@@ -48,7 +49,7 @@ public class Scope
             throw new RuntimeException(name + " have not been declared");
         else return this.parent.findNode(name);
     }
-    public boolean containsNode(String name)
+    public boolean containsNode(Name name)
     {
         if(scopeNodes.containsKey(name))
             return true;
@@ -74,7 +75,7 @@ public class Scope
         }
         scopeTypes.put(type.getTypeName(), type);
     }
-    public Type findType(String name) throws RuntimeException
+    public Type findType(Name name) throws RuntimeException
     {
         if(scopeTypes.containsKey(name))
             return scopeTypes.get(name);
@@ -82,7 +83,7 @@ public class Scope
             throw new RuntimeException(name + " have not been declared");
         else return this.parent.findType(name);
     }
-    public boolean containsType(String name)
+    public boolean containsType(Name name)
     {
         if(scopeNodes.containsKey(name))
             return true;

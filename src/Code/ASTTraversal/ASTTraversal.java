@@ -23,7 +23,6 @@ public interface ASTTraversal
     void visit(BinaryExprNode node);
     void visit(BoolConstNode node);
     void visit(CallExprNode node);
-    void visit(CompareExprNode node);
     void visit(ExprListNode node);
     void visit(IdExprNode node);
     void visit(IntConstNode node);

@@ -1,5 +1,6 @@
 package Code.AST.Node.ExprNode;
 
+import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.ASTTraversal.ASTTraversal;
 
@@ -9,16 +10,17 @@ public class MemberExprNode extends ExprNode
     {
         super(_pos);
         expr = e;
-        member_name = member;
+        member_name = Name.getName(member);
+        isLvalue = true;
     }
     private ExprNode expr;
-    private String member_name;
+    private Name member_name;
 
     public ExprNode getExpr() {
         return expr;
     }
 
-    public String getMember_name() {
+    public Name getMember_name() {
         return member_name;
     }
     @Override

@@ -19,6 +19,11 @@ public class NewExprNode extends ExprNode
         return type;
     }
 
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
     public ExprListNode getParameter() {
         return parameter;
     }

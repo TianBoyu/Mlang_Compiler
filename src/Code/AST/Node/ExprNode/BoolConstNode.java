@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.AST.Type.BuiltInType;
 import Code.ASTTraversal.ASTTraversal;
 
 public class BoolConstNode extends ConstExprNode
@@ -9,6 +10,7 @@ public class BoolConstNode extends ConstExprNode
     {
         super(_pos);
         value = b;
+        exprType = new BuiltInType("bool", 1);
     }
     private boolean value;
     public boolean getValue()

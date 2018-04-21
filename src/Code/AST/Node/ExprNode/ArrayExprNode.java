@@ -10,6 +10,7 @@ public class ArrayExprNode extends ExprNode
         super(_pos);
         array = _array;
         index = _index;
+        isLvalue = true;
     }
     private ExprNode array;
     private ExprNode index;

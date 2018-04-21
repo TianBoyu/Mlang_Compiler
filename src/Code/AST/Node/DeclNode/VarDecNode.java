@@ -24,7 +24,7 @@ public class VarDecNode extends DeclNode
         return value;
     }
     @Override
-    public String getName()
+    public Name getName()
     {
         return var.getName();
     }

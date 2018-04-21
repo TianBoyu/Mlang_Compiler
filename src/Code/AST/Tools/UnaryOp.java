@@ -6,4 +6,13 @@ public enum UnaryOp {
     {
         return op.name();
     }
+    public static boolean changeValue(UnaryOp op)
+    {
+        return (op == INCRE || op == DECRE || op == SUF_DECRE || op == SUF_INCRE);
+    }
+    public static boolean isSuffix(UnaryOp op)
+    {
+        return (op == SUF_INCRE || op == SUF_DECRE);
+    }
+
 }

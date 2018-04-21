@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.AST.Type.BuiltInType;
 import Code.ASTTraversal.ASTTraversal;
 
 public class StringConstNode extends ConstExprNode
@@ -9,6 +10,7 @@ public class StringConstNode extends ConstExprNode
     {
         super(_pos);
         value = s;
+        exprType = new BuiltInType("string", 1);
     }
     private String value;
 

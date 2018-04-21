@@ -1,5 +1,6 @@
 package Code.AST.Node.DeclNode;
 
+import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.ClassType;
 import Code.ASTTraversal.ASTTraversal;
@@ -45,7 +46,7 @@ public class ClassDecNode extends DeclNode
     }
 
     @Override
-    public String getName()
+    public Name getName()
     {
         return type.getTypeName();
     }

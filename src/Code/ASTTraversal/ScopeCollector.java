@@ -11,14 +11,16 @@ import Code.ASTTraversal.Table.FunctionTable;
 import Code.ASTTraversal.Table.TypeTable;
 
 import java.util.Stack;
-public class ClassFunctionCollector implements ASTTraversal
+public class ScopeCollector implements ASTTraversal
 {
     private Scope currentScope;
     public Stack<Scope> scopeStack = new Stack<>();
-    ClassFunctionCollector(Scope topScope)
+    private ErrorHandler errorHandler;
+    ScopeCollector(Scope topScope, ErrorHandler handler)
     {
-        currentScope = topScope;
-        scopeStack.push(currentScope);
+//        currentScope = topScope;
+        setCurrentScope(topScope);
+        errorHandler = handler;
     }
     @Override
     public void visit(ProgNode node)
@@ -39,9 +41,9 @@ public class ClassFunctionCollector implements ASTTraversal
     public void visit(ClassDecNode node)
     {
         currentScope.addType(node);
-        currentScope = new Scope(currentScope);
-        node.setInternalScope(currentScope);
-        scopeStack.push(currentScope);
+        Scope scope = new Scope(currentScope);
+        node.setInternalScope(scope);
+        setCurrentScope(scope);
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
         for(VarDecNode item : node.getMemberVarible())
@@ -54,10 +56,9 @@ public class ClassFunctionCollector implements ASTTraversal
     {
         currentScope.addNode(node);
         node.setExternalScope(currentScope);
-
-        currentScope = new Scope(currentScope);
-        node.setInternalScope(currentScope);
-        scopeStack.push(currentScope);
+        Scope scope = new Scope(currentScope);
+        node.setInternalScope(scope);
+        setCurrentScope(scope);
         for(FuncParamNode item : node.getParameter())
             visit(item);
         visit(node.getBlock());
@@ -118,11 +119,6 @@ public class ClassFunctionCollector implements ASTTraversal
 
     }
 
-    @Override
-    public void visit(CompareExprNode node)
-    {
-
-    }
 
     @Override
     public void visit(ExprListNode node)
@@ -208,30 +204,35 @@ public class ClassFunctionCollector implements ASTTraversal
     public void visit(BreakNode node)
     {
         if(!currentScope.isLoop())
-            throw new RuntimeException("'break' must be in a loop");
+//            throw new RuntimeException("'break' must be in a loop");
+            errorHandler.addError(node.getPosition(), "'break' must be in a loop");
     }
 
     @Override
     public void visit(ContinueNode node)
     {
         if(!currentScope.isLoop())
-            throw new RuntimeException("'break' must be in a loop");
+//            throw new RuntimeException("'break' must be in a loop");
+            errorHandler.addError(node.getPosition(), "'continue' must be in a loop");
     }
 
     @Override
     public void visit(ForNode node)
     {
         node.setExternalScope(currentScope);
-        currentScope = new Scope(currentScope);
-        currentScope.setLoop(true);
-        node.setInternalScope(currentScope);
-        scopeStack.push(currentScope);
+        Scope scope = new Scope(currentScope);
+        scope.setLoop(true);
+        node.setInternalScope(scope);
+        setCurrentScope(scope);
     }
 
     @Override
     public void visit(IfNode node)
     {
-
+        node.setExternalScope(currentScope);
+        Scope scope = new Scope(currentScope);
+        node.setInternalScope(scope);
+        setCurrentScope(scope);
     }
 
     @Override
@@ -241,7 +242,7 @@ public class ClassFunctionCollector implements ASTTraversal
         {
             currentScope = currentScope.getParent();
             if(!currentScope.isFunction())
-                throw new RuntimeException("'return' must be in a function");
+                errorHandler.addError(node.getPosition(), "'return' must be in a function");
         }
     }
 
@@ -249,10 +250,10 @@ public class ClassFunctionCollector implements ASTTraversal
     public void visit(WhileNode node)
     {
         node.setExternalScope(currentScope);
-        currentScope = new Scope(currentScope);
-        currentScope.setLoop(true);
-        node.setInternalScope(currentScope);
-        scopeStack.push(currentScope);
+        Scope scope = new Scope(currentScope);
+        scope.setLoop(true);
+        node.setInternalScope(scope);
+        setCurrentScope(scope);
     }
 
     @Override
@@ -269,9 +270,11 @@ public class ClassFunctionCollector implements ASTTraversal
     private void setCurrentScope(Scope _currentScope)
     {
         currentScope = _currentScope;
+        scopeStack.push(currentScope);
     }
     private void exitCurrentScope()
     {
         currentScope = currentScope.getParent();
+        scopeStack.pop();
     }
 }

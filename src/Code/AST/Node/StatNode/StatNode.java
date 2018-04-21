@@ -1,6 +1,7 @@
 package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ASTBaseNode;
+import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 
 public abstract class StatNode extends ASTBaseNode
@@ -9,8 +10,8 @@ public abstract class StatNode extends ASTBaseNode
     {
         super(_pos);
     }
-    public String getName()
+    public Name getName()
     {
-        return "Stat";
+        return Name.getName("Stat");
     }
 }

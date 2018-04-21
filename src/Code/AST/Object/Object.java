@@ -1,14 +1,16 @@
 package Code.AST.Object;
 
+import Code.AST.Tools.Name;
+
 public class Object
 {
-    private String name;
+    private Name name;
     public Object(String _name)
     {
-        name = _name;
+        name = Name.getName(_name);
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 }

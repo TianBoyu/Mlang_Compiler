@@ -165,16 +165,6 @@ public class ASTPrinter implements ASTTraversal
         BackSpace();
     }
 
-    @Override
-    public void visit(CompareExprNode node)
-    {
-        if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getOp().toString(node.getOp()));
-        Tab();
-        visit(node.getLhs());
-        visit(node.getRhs());
-        BackSpace();
-    }
 
     @Override
     public void visit(ExprListNode node)

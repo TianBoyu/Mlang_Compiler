@@ -1,6 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
+import Code.AST.Type.BuiltInType;
 
 public abstract class ConditionExprNode extends ExprNode
 {
@@ -9,6 +10,7 @@ public abstract class ConditionExprNode extends ExprNode
         super(_pos);
         cond1 = c1;
         cond2 = c2;
+        exprType = new BuiltInType("bool", 1);
     }
     private ExprNode cond1;
     private ExprNode cond2;
