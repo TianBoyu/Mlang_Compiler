@@ -13,3 +13,15 @@ int main(){
 	println(toString(tak(a,b,c)));
 	return 0;
 }
+
+/*!! metadata:
+=== comment ===
+tak-5090379042-jiaxiao.mx
+=== assert ===
+success_compile
+=== phase ===
+semantic pretest
+=== is_public ===
+True
+
+!!*/
