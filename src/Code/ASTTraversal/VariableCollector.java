@@ -79,7 +79,7 @@ public class VariableCollector implements ASTTraversal
             errorHandler.addError(node.getPosition(),
                     "type " + node.getType().getTypeName() + " is not declared");
         node.setType(currentScope.findType(node.getType().getTypeName()));
-        if(node.getType() != node.getValue().getExprType())
+        if(node.getValue() != null && node.getType() != node.getValue().getExprType())
             errorHandler.addError(node.getPosition(),
                     node.getValue().getExprType().toString() + " cannot be assigned to " + node.getName().toString());
         currentScope.addNode(node);

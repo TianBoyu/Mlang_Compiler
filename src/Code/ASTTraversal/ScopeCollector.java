@@ -60,6 +60,7 @@ public class ScopeCollector implements ASTTraversal
         currentScope.addNode(node);
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
+        scope.setFunction(true);
         node.setInternalScope(scope);
         setCurrentScope(scope);
         for(FuncParamNode item : node.getParameter())

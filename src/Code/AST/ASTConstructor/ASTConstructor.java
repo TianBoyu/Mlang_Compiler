@@ -211,7 +211,7 @@ public class ASTConstructor extends MlangBaseListener
         List<StatNode> statNodes = new ArrayList<>();
         for (MlangParser.StatementContext item : ctx.statement())
         {
-            System.out.println(item.getText());
+//            System.out.println(item.getText());
             StatNode stat = (StatNode) map.get(item);
             if (stat != null)
                 statNodes.add(stat);

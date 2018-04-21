@@ -1,17 +1,12 @@
 package Code;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import Code.AST.ASTConstructor.ASTConstructor;
-import Code.AST.ASTPrinter;
 import Code.AST.Node.ProgNode;
-import Code.ASTTraversal.ErrorHandler;
+import Code.ASTTraversal.*;
 import Code.ASTTraversal.Scope.Scope;
-import Code.ASTTraversal.ScopeCollector;
-import Code.ASTTraversal.SemanticChecker;
-import Code.ASTTraversal.VariableCollector;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Code.Parser.*;
@@ -42,6 +37,9 @@ public class Boom {
     {
         Scope topLevelScope = new Scope(true);
         ErrorHandler handler = new ErrorHandler();
+//        Initializer initializer = new Initializer(topLevelScope);
+//        initializer.Initialize();
+        topLevelScope.InitializeBuiltInType();
         ScopeCollector scopeCollector = new ScopeCollector(topLevelScope, handler);
         scopeCollector.process(program);
         VariableCollector variableCollector = new VariableCollector(topLevelScope, handler);
@@ -49,7 +47,7 @@ public class Boom {
         SemanticChecker semanticChecker = new SemanticChecker(topLevelScope, handler);
         semanticChecker.process(program);
     }
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
         try
         {
@@ -69,5 +67,6 @@ public class Boom {
         {
             exit(1);
         }
+//        processTree("Test/TestSemantic/test684.mx", null);
     }
 }

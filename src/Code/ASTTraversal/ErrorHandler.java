@@ -12,6 +12,6 @@ public class ErrorHandler
     public void addError(Position pos, String reason)
     {
         errors.add(new Pair<>(pos, reason));
-        throw new RuntimeException(pos.getLineNum() + ": " + reason);
+        throw new RuntimeException("Line " + pos.getLineNum() + ": " + reason);
     }
 }

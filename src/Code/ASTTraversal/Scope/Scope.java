@@ -4,6 +4,7 @@ import Code.AST.Node.DeclNode.ClassDecNode;
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Tools.Name;
+import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 
@@ -86,7 +87,7 @@ public class Scope
     }
     public boolean containsType(Name name)
     {
-        if(scopeNodes.containsKey(name))
+        if(scopeTypes.containsKey(name))
             return true;
         else if(this.isTop)
             return false;
@@ -117,5 +118,16 @@ public class Scope
     public boolean isLoop()
     {
         return isLoop;
+    }
+
+    public void InitializeBuiltInType()
+    {
+        addType(new BuiltInType("int", 4));
+        addType(new BuiltInType("bool", 1));
+        addType(new BuiltInType("string", 1));
+    }
+    public void InitializeBuiltInFunction()
+    {
+
     }
 }

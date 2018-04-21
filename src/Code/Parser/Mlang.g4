@@ -65,7 +65,7 @@ expression
     : expression '.' ID                                         #memberExpr
     | expression '[' expression ']'                             #arrayExpr
     | expression op=('++'|'--')                                 #suffixExpr
-    | ID '(' actual_parameter ')'                               #callExpr
+    | ID '(' actual_parameter? ')'                              #callExpr
     | op=('++'|'--') expression                                 #prefixExpr
     | op=('+'|'-') expression                                   #prefixExpr
     | op=('!'|'~') expression                                   #prefixExpr
@@ -118,6 +118,7 @@ ESC     : '\\"' | '\\\\' | '\\n';
 STR     : '"'(ESC|.)*?'"';
 
 COMMENT :  '//' ~[\r\n]* -> skip;
+BLOCK_COMMENT : '/*' .*? '*/' -> skip;
 MUL     : '*';
 DIV     : '/';
 ADD     : '+';
