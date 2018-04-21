@@ -16,11 +16,14 @@ public class ScopeCollector implements ASTTraversal
     private Scope currentScope;
     public Stack<Scope> scopeStack = new Stack<>();
     private ErrorHandler errorHandler;
-    ScopeCollector(Scope topScope, ErrorHandler handler)
+    public ScopeCollector(Scope topScope, ErrorHandler handler)
     {
-//        currentScope = topScope;
         setCurrentScope(topScope);
         errorHandler = handler;
+    }
+    public void process(ProgNode progNode)
+    {
+        visit(progNode);
     }
     @Override
     public void visit(ProgNode node)

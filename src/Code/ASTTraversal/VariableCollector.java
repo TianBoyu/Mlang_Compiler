@@ -23,6 +23,10 @@ public class VariableCollector implements ASTTraversal
         setCurrentScope(topScope);
         errorHandler = handler;
     }
+    public void process(ProgNode progNode)
+    {
+        visit(progNode);
+    }
     @Override
     public void visit(ProgNode node)
     {

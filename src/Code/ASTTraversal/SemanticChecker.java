@@ -22,6 +22,10 @@ public class SemanticChecker implements ASTTraversal
         scopeStack.push(currentScope);
         errorHandler = handler;
     }
+    public void process(ProgNode progNode)
+    {
+        visit(progNode);
+    }
     @Override
     public void visit(ProgNode node)
     {

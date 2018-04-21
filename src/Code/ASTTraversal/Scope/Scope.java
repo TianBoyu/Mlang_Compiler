@@ -25,6 +25,7 @@ public class Scope
         this.isTop = top;
         isFunction = false;
         isLoop = false;
+        this.parent = this;
     }
     public Scope(Scope p)
     {

@@ -6,9 +6,17 @@ import java.io.InputStream;
 
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
+import Code.AST.Node.ProgNode;
+import Code.ASTTraversal.ErrorHandler;
+import Code.ASTTraversal.Scope.Scope;
+import Code.ASTTraversal.ScopeCollector;
+import Code.ASTTraversal.SemanticChecker;
+import Code.ASTTraversal.VariableCollector;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Code.Parser.*;
+
+import static java.lang.System.exit;
 
 public class Boom {
     public static void processTree(String read_file_path, String write_file_path) throws Exception
@@ -27,10 +35,39 @@ public class Boom {
         walker.walk(constructor, tree);
 //        ASTPrinter printer = new ASTPrinter();
 //        printer.PrintAST(constructor.getProgram(), new FileOutputStream(write_file_path));
+        checkSemantic(constructor.getProgram());
+
+    }
+    public static void checkSemantic(ProgNode program)
+    {
+        Scope topLevelScope = new Scope(true);
+        ErrorHandler handler = new ErrorHandler();
+        ScopeCollector scopeCollector = new ScopeCollector(topLevelScope, handler);
+        scopeCollector.process(program);
+        VariableCollector variableCollector = new VariableCollector(topLevelScope, handler);
+        variableCollector.process(program);
+        SemanticChecker semanticChecker = new SemanticChecker(topLevelScope, handler);
+        semanticChecker.process(program);
     }
     public static void main(String[] args) throws Exception
     {
-//        System.out.println("Code.Boom!Compile them all!");
-//        processTree("Test/TestGrammar/test_expr.mx", "Test/TestGrammar/test_all_result.txt");
+        try
+        {
+            InputStream is = System.in;
+            ANTLRInputStream input = new ANTLRInputStream(is);
+            MlangLexer lexer = new MlangLexer(input);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            MlangParser parser = new MlangParser(tokens);
+            ParseTree tree = parser.program();
+
+            ParseTreeWalker walker = new ParseTreeWalker();
+            ASTConstructor constructor = new ASTConstructor();
+            walker.walk(constructor, tree);
+            checkSemantic(constructor.getProgram());
+        }
+        catch (Exception e)
+        {
+            exit(1);
+        }
     }
 }
