@@ -6,6 +6,4 @@
 # $2 is the path to the target file.
 
 set -e
-cd "$(dirname "$2")"
-cat > program.txt   # save everything in stdin to program.txt
-java -cp ./lib/*:./bin Boom -i program.txt -o program.out
+cd "$(dirname "$0")"
