@@ -1,0 +1,8 @@
+ProgNode
+  *FunctionDeclaration: main
+    Type: int
+    BlockNode
+      ExprStatNode
+        AssignExprNode
+          StringConstNode  value = "a"
+          StringConstNode  value = "b"
