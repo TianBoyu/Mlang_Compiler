@@ -39,7 +39,7 @@ public class Boom {
     public static void main(String[] args) throws Exception
     {
         InputStream is = System.in;
-//        InputStream is = new FileInputStream("Test/TestSemantic/test692.mx");
+//        InputStream is = new FileInputStream("Test/TestSemantic/test610.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

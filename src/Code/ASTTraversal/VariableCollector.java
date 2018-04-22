@@ -194,7 +194,7 @@ public class VariableCollector implements ASTTraversal
         if(node == null) return;
         if(!currentScope.containsNode(node.getName()))
             errorHandler.addError(node.getPosition(),
-                    node.getName().toString() + "have not been declared");
+                    node.getName().toString() + " have not been declared");
         VarDecNode var = (VarDecNode)currentScope.findNode(node.getName());
         node.setExprType(var.getType());
     }

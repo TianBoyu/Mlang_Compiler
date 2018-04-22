@@ -127,6 +127,7 @@ public class Scope
         addType(new BuiltInType("int", 4));
         addType(new BuiltInType("bool", 1));
         addType(new BuiltInType("string", 1));
+        addType(new BuiltInType("void", 0));
     }
     public void InitializeBuiltInFunction()
     {
