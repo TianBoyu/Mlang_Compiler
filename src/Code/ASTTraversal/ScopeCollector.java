@@ -7,8 +7,6 @@ import Code.AST.Node.StatNode.*;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
-import Code.ASTTraversal.Table.FunctionTable;
-import Code.ASTTraversal.Table.TypeTable;
 
 import java.util.Stack;
 public class ScopeCollector implements ASTTraversal
@@ -57,7 +55,6 @@ public class ScopeCollector implements ASTTraversal
     @Override
     public void visit(FuncDecNode node)
     {
-        currentScope.addNode(node);
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setFunction(true);

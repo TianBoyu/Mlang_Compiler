@@ -63,11 +63,15 @@ public class VariableCollector implements ASTTraversal
         if(!currentScope.containsType(node.getReturnType().getTypeName()))
             errorHandler.addError(node.getPosition(),
                     "type " + node.getReturnType().getTypeName() + " is not declared");
+        if(node.getName() == Name.getName("main") && node.getReturnType().getTypeName() != Name.getName("int"))
+            errorHandler.addError(node.getPosition(),
+                    "the function 'main' should return an integer");
         node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
         visit(node.getBlock());
         exitCurrentScope();
+        currentScope.addNode(node);
     }
 
     @Override
@@ -343,7 +347,9 @@ public class VariableCollector implements ASTTraversal
     @Override
     public void visit(ReturnNode node)
     {
-
+        if(node == null) return;
+        if(node.getExprNode() == null) return;
+        visit(node.getExprNode());
     }
 
     @Override

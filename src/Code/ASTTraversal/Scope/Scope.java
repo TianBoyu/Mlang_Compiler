@@ -3,6 +3,7 @@ package Code.ASTTraversal.Scope;
 import Code.AST.Node.DeclNode.ClassDecNode;
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Node.DeclNode.FuncDecNode;
+import Code.AST.Node.DeclNode.VarDecNode;
 import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
@@ -41,7 +42,11 @@ public class Scope
     {
         if(scopeNodes.containsKey(node.getName()))
         {
-            throw new RuntimeException(node.getName() + " have been declared at " + scopeNodes.get(node.getName()).getPosition());
+            throw new RuntimeException(node.getName().toString() + " have been declared at " + scopeNodes.get(node.getName()).getPosition());
+        }
+        if(!node.isFunction() && ((VarDecNode)node).getType().getTypeName() == Name.getName("void"))
+        {
+            throw new RuntimeException("void can only be return type of a function");
         }
         scopeNodes.put(node.getName(), node);
     }

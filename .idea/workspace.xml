@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestSemantic/test619.mx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/semantic.bash" afterPath="$PROJECT_DIR$/semantic.bash" />
+      <change beforePath="$PROJECT_DIR$/Test/TestSemantic/test_result.txt" afterPath="$PROJECT_DIR$/Test/TestSemantic/test_result.txt" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/Scope/Scope.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/Scope/Scope.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/Table/FunctionTable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/Table/TableOperation.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/Table/TypeTable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/Table/VariableTable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Boom.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Boom.class" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Table/FunctionTable.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Table/TableOperation.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Table/TypeTable.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Table/VariableTable.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,26 +34,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="test610.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test610.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test655.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test655.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="semantic.bash" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/semantic.bash">
           <provider selected="true" editor-type-id="text-editor">
@@ -52,8 +47,8 @@
       <file leaf-file-name="VariableCollector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2160">
-              <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+            <state relative-caret-position="337">
+              <caret line="356" column="5" lean-forward="true" selection-start-line="356" selection-start-column="5" selection-end-line="356" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#714#715#0" expanded="true" />
@@ -68,98 +63,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ASTConstructor.java" pinned="true" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
+      <file leaf-file-name="ReturnNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/ReturnNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10080">
-              <caret line="367" column="26" lean-forward="false" selection-start-line="367" selection-start-column="26" selection-end-line="367" selection-end-column="26" />
+            <state relative-caret-position="229">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#914#915#0" expanded="true" />
-                <element signature="e#944#945#0" expanded="true" />
-                <element signature="e#7287#7288#0" expanded="true" />
-                <element signature="e#7337#7338#0" expanded="true" />
-                <element signature="e#7426#7427#0" expanded="true" />
-                <element signature="e#7483#7484#0" expanded="true" />
-                <element signature="e#14715#14716#0" expanded="true" />
-                <element signature="e#14770#14771#0" expanded="true" />
-                <element signature="e#17848#17849#0" expanded="true" />
-                <element signature="e#17889#17890#0" expanded="true" />
-                <element signature="e#17979#17980#0" expanded="true" />
-                <element signature="e#18022#18023#0" expanded="true" />
-                <element signature="e#18106#18107#0" expanded="true" />
-                <element signature="e#18146#18147#0" expanded="true" />
-                <element signature="e#18232#18233#0" expanded="true" />
-                <element signature="e#18273#18274#0" expanded="true" />
-                <element signature="e#18349#18350#0" expanded="true" />
-                <element signature="e#18385#18386#0" expanded="true" />
-                <element signature="e#18460#18461#0" expanded="true" />
-                <element signature="e#18495#18496#0" expanded="true" />
-                <element signature="e#18743#18744#0" expanded="true" />
-                <element signature="e#18784#18785#0" expanded="true" />
-                <element signature="e#18874#18875#0" expanded="true" />
-                <element signature="e#18917#18918#0" expanded="true" />
-                <element signature="e#18997#18998#0" expanded="true" />
-                <element signature="e#19035#19036#0" expanded="true" />
-                <element signature="e#19297#19298#0" expanded="true" />
-                <element signature="e#19338#19339#0" expanded="true" />
-                <element signature="e#19426#19427#0" expanded="true" />
-                <element signature="e#19468#19469#0" expanded="true" />
-                <element signature="e#19554#19555#0" expanded="true" />
-                <element signature="e#19595#19596#0" expanded="true" />
-                <element signature="e#19687#19688#0" expanded="true" />
-                <element signature="e#19731#19732#0" expanded="true" />
-                <element signature="e#19815#19816#0" expanded="true" />
-                <element signature="e#19855#19856#0" expanded="true" />
-                <element signature="e#19941#19942#0" expanded="true" />
-                <element signature="e#19982#19983#0" expanded="true" />
-                <element signature="e#20067#20068#0" expanded="true" />
-                <element signature="e#20107#20108#0" expanded="true" />
-                <element signature="e#20393#20394#0" expanded="true" />
-                <element signature="e#20432#20433#0" expanded="true" />
-                <element signature="e#20526#20527#0" expanded="true" />
-                <element signature="e#20571#20572#0" expanded="true" />
-                <element signature="e#20655#20656#0" expanded="true" />
-                <element signature="e#20695#20696#0" expanded="true" />
-                <element signature="e#20779#20780#0" expanded="true" />
-                <element signature="e#20819#20820#0" expanded="true" />
-                <element signature="e#20905#20906#0" expanded="true" />
-                <element signature="e#20946#20947#0" expanded="true" />
-                <element signature="e#21034#21035#0" expanded="true" />
-                <element signature="e#21076#21077#0" expanded="true" />
-                <element signature="e#21164#21165#0" expanded="true" />
-                <element signature="e#21206#21207#0" expanded="true" />
-                <element signature="e#21294#21295#0" expanded="true" />
-                <element signature="e#21336#21337#0" expanded="true" />
-                <element signature="e#21416#21417#0" expanded="true" />
-                <element signature="e#21454#21455#0" expanded="true" />
-                <element signature="e#21546#21547#0" expanded="true" />
-                <element signature="e#21590#21591#0" expanded="true" />
-                <element signature="e#21672#21673#0" expanded="true" />
-                <element signature="e#21711#21712#0" expanded="true" />
-                <element signature="e#21799#21800#0" expanded="true" />
-                <element signature="e#21841#21842#0" expanded="true" />
-                <element signature="e#21939#21940#0" expanded="true" />
-                <element signature="e#21986#21987#0" expanded="true" />
-                <element signature="e#22070#22071#0" expanded="true" />
-                <element signature="e#22110#22111#0" expanded="true" />
-                <element signature="e#22198#22199#0" expanded="true" />
-                <element signature="e#22240#22241#0" expanded="true" />
-                <element signature="e#22320#22321#0" expanded="true" />
-                <element signature="e#22358#22359#0" expanded="true" />
-                <element signature="e#22440#22441#0" expanded="true" />
-                <element signature="e#22479#22480#0" expanded="true" />
+                <element signature="e#586#587#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
+      <file leaf-file-name="ForNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/ForNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="259">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <folding>
+                <element signature="e#1362#1363#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,8 +90,8 @@
       <file leaf-file-name="Boom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+            <state relative-caret-position="612">
+              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,14 +99,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ErrorHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ErrorHandler.java">
+      <file leaf-file-name="test_result.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_result.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test619.mx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test619.mx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_whatever.mx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,8 +132,8 @@
       <file leaf-file-name="Scope.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3090">
-              <caret line="129" column="41" lean-forward="false" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+            <state relative-caret-position="300">
+              <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
               <folding>
                 <element signature="method#getParent#0;class#Scope#0" expanded="false" />
               </folding>
@@ -203,9 +144,11 @@
       <file leaf-file-name="ScopeCollector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="138">
+              <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -234,7 +177,6 @@
       <find>IfN</find>
       <find>ExprNode</find>
       <find>Sta</find>
-      <find>IdEx</find>
       <find>FUn</find>
       <find>Call</find>
       <find>Bina</find>
@@ -249,6 +191,7 @@
       <find>System</find>
       <find>push</find>
       <find>Sys</find>
+      <find>IdEx</find>
     </findStrings>
     <replaceStrings>
       <replace>actuall_parameters</replace>
@@ -271,8 +214,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Code/AST/Object/ParameterObject.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Object/FuncDecObject.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/ForNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/WhileNode.java" />
@@ -304,7 +245,6 @@
         <option value="$PROJECT_DIR$/src/Code/AST/Tools/UnaryOp.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/StatNode/IfNode.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ErrorHandler.java" />
-        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/Initializer.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test684.mx" />
@@ -318,9 +258,12 @@
         <option value="$PROJECT_DIR$/Test/TestSemantic/test654.mx" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test655.mx" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test692.mx" />
-        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" />
-        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" />
         <option value="$PROJECT_DIR$/semantic.bash" />
+        <option value="$PROJECT_DIR$/Test/TestSemantic/test619.mx" />
+        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" />
+        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
+        <option value="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
+        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" />
         <option value="$PROJECT_DIR$/src/Code/Boom.java" />
       </list>
     </option>
@@ -413,14 +356,6 @@
               <item name="Code" type="462c0819:PsiDirectoryNode" />
               <item name="ASTTraversal" type="462c0819:PsiDirectoryNode" />
               <item name="Scope" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mlang_Compiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mlang_Compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Code" type="462c0819:PsiDirectoryNode" />
-              <item name="ASTTraversal" type="462c0819:PsiDirectoryNode" />
-              <item name="Table" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mlang_Compiler" type="b2602c69:ProjectViewProjectNode" />
@@ -624,9 +559,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.50214595" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28929386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28929386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23819743" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -653,17 +588,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java</url>
-          <line>277</line>
+          <line>325</line>
           <properties />
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>currentScope</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>node</expression-string>
         <language-id>JAVA</language-id>
@@ -679,35 +619,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>currentScope</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IntConstNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/NullConstNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/StringConstNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -851,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/ForNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="59" column="4" lean-forward="false" selection-start-line="59" selection-start-column="4" selection-end-line="60" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/IfNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -921,13 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_result.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test654.mx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -942,90 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10080">
-          <caret line="367" column="26" lean-forward="false" selection-start-line="367" selection-start-column="26" selection-end-line="367" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#944#945#0" expanded="true" />
-            <element signature="e#7287#7288#0" expanded="true" />
-            <element signature="e#7337#7338#0" expanded="true" />
-            <element signature="e#7426#7427#0" expanded="true" />
-            <element signature="e#7483#7484#0" expanded="true" />
-            <element signature="e#14715#14716#0" expanded="true" />
-            <element signature="e#14770#14771#0" expanded="true" />
-            <element signature="e#17848#17849#0" expanded="true" />
-            <element signature="e#17889#17890#0" expanded="true" />
-            <element signature="e#17979#17980#0" expanded="true" />
-            <element signature="e#18022#18023#0" expanded="true" />
-            <element signature="e#18106#18107#0" expanded="true" />
-            <element signature="e#18146#18147#0" expanded="true" />
-            <element signature="e#18232#18233#0" expanded="true" />
-            <element signature="e#18273#18274#0" expanded="true" />
-            <element signature="e#18349#18350#0" expanded="true" />
-            <element signature="e#18385#18386#0" expanded="true" />
-            <element signature="e#18460#18461#0" expanded="true" />
-            <element signature="e#18495#18496#0" expanded="true" />
-            <element signature="e#18743#18744#0" expanded="true" />
-            <element signature="e#18784#18785#0" expanded="true" />
-            <element signature="e#18874#18875#0" expanded="true" />
-            <element signature="e#18917#18918#0" expanded="true" />
-            <element signature="e#18997#18998#0" expanded="true" />
-            <element signature="e#19035#19036#0" expanded="true" />
-            <element signature="e#19297#19298#0" expanded="true" />
-            <element signature="e#19338#19339#0" expanded="true" />
-            <element signature="e#19426#19427#0" expanded="true" />
-            <element signature="e#19468#19469#0" expanded="true" />
-            <element signature="e#19554#19555#0" expanded="true" />
-            <element signature="e#19595#19596#0" expanded="true" />
-            <element signature="e#19687#19688#0" expanded="true" />
-            <element signature="e#19731#19732#0" expanded="true" />
-            <element signature="e#19815#19816#0" expanded="true" />
-            <element signature="e#19855#19856#0" expanded="true" />
-            <element signature="e#19941#19942#0" expanded="true" />
-            <element signature="e#19982#19983#0" expanded="true" />
-            <element signature="e#20067#20068#0" expanded="true" />
-            <element signature="e#20107#20108#0" expanded="true" />
-            <element signature="e#20393#20394#0" expanded="true" />
-            <element signature="e#20432#20433#0" expanded="true" />
-            <element signature="e#20526#20527#0" expanded="true" />
-            <element signature="e#20571#20572#0" expanded="true" />
-            <element signature="e#20655#20656#0" expanded="true" />
-            <element signature="e#20695#20696#0" expanded="true" />
-            <element signature="e#20779#20780#0" expanded="true" />
-            <element signature="e#20819#20820#0" expanded="true" />
-            <element signature="e#20905#20906#0" expanded="true" />
-            <element signature="e#20946#20947#0" expanded="true" />
-            <element signature="e#21034#21035#0" expanded="true" />
-            <element signature="e#21076#21077#0" expanded="true" />
-            <element signature="e#21164#21165#0" expanded="true" />
-            <element signature="e#21206#21207#0" expanded="true" />
-            <element signature="e#21294#21295#0" expanded="true" />
-            <element signature="e#21336#21337#0" expanded="true" />
-            <element signature="e#21416#21417#0" expanded="true" />
-            <element signature="e#21454#21455#0" expanded="true" />
-            <element signature="e#21546#21547#0" expanded="true" />
-            <element signature="e#21590#21591#0" expanded="true" />
-            <element signature="e#21672#21673#0" expanded="true" />
-            <element signature="e#21711#21712#0" expanded="true" />
-            <element signature="e#21799#21800#0" expanded="true" />
-            <element signature="e#21841#21842#0" expanded="true" />
-            <element signature="e#21939#21940#0" expanded="true" />
-            <element signature="e#21986#21987#0" expanded="true" />
-            <element signature="e#22070#22071#0" expanded="true" />
-            <element signature="e#22110#22111#0" expanded="true" />
-            <element signature="e#22198#22199#0" expanded="true" />
-            <element signature="e#22240#22241#0" expanded="true" />
-            <element signature="e#22320#22321#0" expanded="true" />
-            <element signature="e#22358#22359#0" expanded="true" />
-            <element signature="e#22440#22441#0" expanded="true" />
-            <element signature="e#22479#22480#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5850">
@@ -1035,47 +851,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/Initializer.java" />
-    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ErrorHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3090">
-          <caret line="129" column="41" lean-forward="false" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
-          <folding>
-            <element signature="method#getParent#0;class#Scope#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="method#visit#15;class#VariableCollector#0" expanded="false" />
-            <element signature="method#visit#18;class#VariableCollector#0" expanded="false" />
-            <element signature="method#visit#21;class#VariableCollector#0" expanded="false" />
-            <element signature="method#visit#26;class#VariableCollector#0" expanded="false" />
-            <element signature="method#visit#27;class#VariableCollector#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1112,10 +893,175 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test619.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+          <folding>
+            <element signature="method#getParent#0;class#Scope#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="367" column="26" lean-forward="false" selection-start-line="367" selection-start-column="26" selection-end-line="367" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#914#915#0" expanded="false" />
+            <element signature="e#944#945#0" expanded="false" />
+            <element signature="e#7287#7288#0" expanded="false" />
+            <element signature="e#7337#7338#0" expanded="false" />
+            <element signature="e#7426#7427#0" expanded="false" />
+            <element signature="e#7483#7484#0" expanded="false" />
+            <element signature="e#14715#14716#0" expanded="false" />
+            <element signature="e#14770#14771#0" expanded="false" />
+            <element signature="e#17848#17849#0" expanded="false" />
+            <element signature="e#17889#17890#0" expanded="false" />
+            <element signature="e#17979#17980#0" expanded="false" />
+            <element signature="e#18022#18023#0" expanded="false" />
+            <element signature="e#18106#18107#0" expanded="false" />
+            <element signature="e#18146#18147#0" expanded="false" />
+            <element signature="e#18232#18233#0" expanded="false" />
+            <element signature="e#18273#18274#0" expanded="false" />
+            <element signature="e#18349#18350#0" expanded="false" />
+            <element signature="e#18385#18386#0" expanded="false" />
+            <element signature="e#18460#18461#0" expanded="false" />
+            <element signature="e#18495#18496#0" expanded="false" />
+            <element signature="e#18743#18744#0" expanded="false" />
+            <element signature="e#18784#18785#0" expanded="false" />
+            <element signature="e#18874#18875#0" expanded="false" />
+            <element signature="e#18917#18918#0" expanded="false" />
+            <element signature="e#18997#18998#0" expanded="false" />
+            <element signature="e#19035#19036#0" expanded="false" />
+            <element signature="e#19297#19298#0" expanded="false" />
+            <element signature="e#19338#19339#0" expanded="false" />
+            <element signature="e#19426#19427#0" expanded="false" />
+            <element signature="e#19468#19469#0" expanded="false" />
+            <element signature="e#19554#19555#0" expanded="false" />
+            <element signature="e#19595#19596#0" expanded="false" />
+            <element signature="e#19687#19688#0" expanded="false" />
+            <element signature="e#19731#19732#0" expanded="false" />
+            <element signature="e#19815#19816#0" expanded="false" />
+            <element signature="e#19855#19856#0" expanded="false" />
+            <element signature="e#19941#19942#0" expanded="false" />
+            <element signature="e#19982#19983#0" expanded="false" />
+            <element signature="e#20067#20068#0" expanded="false" />
+            <element signature="e#20107#20108#0" expanded="false" />
+            <element signature="e#20393#20394#0" expanded="false" />
+            <element signature="e#20432#20433#0" expanded="false" />
+            <element signature="e#20526#20527#0" expanded="false" />
+            <element signature="e#20571#20572#0" expanded="false" />
+            <element signature="e#20655#20656#0" expanded="false" />
+            <element signature="e#20695#20696#0" expanded="false" />
+            <element signature="e#20779#20780#0" expanded="false" />
+            <element signature="e#20819#20820#0" expanded="false" />
+            <element signature="e#20905#20906#0" expanded="false" />
+            <element signature="e#20946#20947#0" expanded="false" />
+            <element signature="e#21034#21035#0" expanded="false" />
+            <element signature="e#21076#21077#0" expanded="false" />
+            <element signature="e#21164#21165#0" expanded="false" />
+            <element signature="e#21206#21207#0" expanded="false" />
+            <element signature="e#21294#21295#0" expanded="false" />
+            <element signature="e#21336#21337#0" expanded="false" />
+            <element signature="e#21416#21417#0" expanded="false" />
+            <element signature="e#21454#21455#0" expanded="false" />
+            <element signature="e#21546#21547#0" expanded="false" />
+            <element signature="e#21590#21591#0" expanded="false" />
+            <element signature="e#21672#21673#0" expanded="false" />
+            <element signature="e#21711#21712#0" expanded="false" />
+            <element signature="e#21799#21800#0" expanded="false" />
+            <element signature="e#21841#21842#0" expanded="false" />
+            <element signature="e#21939#21940#0" expanded="false" />
+            <element signature="e#21986#21987#0" expanded="false" />
+            <element signature="e#22070#22071#0" expanded="false" />
+            <element signature="e#22110#22111#0" expanded="false" />
+            <element signature="e#22198#22199#0" expanded="false" />
+            <element signature="e#22240#22241#0" expanded="false" />
+            <element signature="e#22320#22321#0" expanded="false" />
+            <element signature="e#22358#22359#0" expanded="false" />
+            <element signature="e#22440#22441#0" expanded="false" />
+            <element signature="e#22479#22480#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="56" column="5" lean-forward="false" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_result.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/ForNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="e#1362#1363#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/StatNode/ReturnNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#586#587#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="356" column="5" lean-forward="true" selection-start-line="356" selection-start-column="5" selection-end-line="356" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="method#visit#15;class#VariableCollector#0" expanded="false" />
+            <element signature="method#visit#18;class#VariableCollector#0" expanded="false" />
+            <element signature="method#visit#21;class#VariableCollector#0" expanded="false" />
+            <element signature="method#visit#26;class#VariableCollector#0" expanded="false" />
+            <element signature="method#visit#27;class#VariableCollector#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+        <state relative-caret-position="612">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
