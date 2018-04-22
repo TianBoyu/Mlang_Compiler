@@ -1,8 +1,267 @@
 ProgNode
+  *VariableDeclaration: N
+    Type: int
+  *VariableDeclaration: h
+    Type: int
+    IntConstNode  value = 99
+  *VariableDeclaration: i
+    Type: int
+    IntConstNode  value = 100
+  *VariableDeclaration: j
+    Type: int
+    IntConstNode  value = 101
+  *VariableDeclaration: k
+    Type: int
+    IntConstNode  value = 102
+  *VariableDeclaration: total
+    Type: int
+    IntConstNode  value = 0
   *FunctionDeclaration: main
     Type: int
     BlockNode
+      *VariableDeclaration: a
+        Type: int
+      *VariableDeclaration: b
+        Type: int
+      *VariableDeclaration: c
+        Type: int
+      *VariableDeclaration: d
+        Type: int
+      *VariableDeclaration: e
+        Type: int
+      *VariableDeclaration: f
+        Type: int
       ExprStatNode
         AssignExprNode
-          StringConstNode  value = "a"
-          StringConstNode  value = "b"
+          IdExprNode  ID name: N
+          CallExprNode  Function Name: getInt
+            ExprListNode
+      ForNode
+        AssignExprNode
+          IdExprNode  ID name: a
+          IntConstNode  value = 1
+        BinaryExprNode  Op: SEQ
+          IdExprNode  ID name: a
+          IdExprNode  ID name: N
+        SuffixExprNode  Op: SUF_INCRE
+          IdExprNode  ID name: a
+        ForNode
+          AssignExprNode
+            IdExprNode  ID name: b
+            IntConstNode  value = 1
+          BinaryExprNode  Op: SEQ
+            IdExprNode  ID name: b
+            IdExprNode  ID name: N
+          SuffixExprNode  Op: SUF_INCRE
+            IdExprNode  ID name: b
+          ForNode
+            AssignExprNode
+              IdExprNode  ID name: c
+              IntConstNode  value = 1
+            BinaryExprNode  Op: SEQ
+              IdExprNode  ID name: c
+              IdExprNode  ID name: N
+            SuffixExprNode  Op: SUF_INCRE
+              IdExprNode  ID name: c
+            ForNode
+              AssignExprNode
+                IdExprNode  ID name: d
+                IntConstNode  value = 1
+              BinaryExprNode  Op: SEQ
+                IdExprNode  ID name: d
+                IdExprNode  ID name: N
+              SuffixExprNode  Op: SUF_INCRE
+                IdExprNode  ID name: d
+              ForNode
+                AssignExprNode
+                  IdExprNode  ID name: e
+                  IntConstNode  value = 1
+                BinaryExprNode  Op: SEQ
+                  IdExprNode  ID name: e
+                  IdExprNode  ID name: N
+                SuffixExprNode  Op: SUF_INCRE
+                  IdExprNode  ID name: e
+                ForNode
+                  AssignExprNode
+                    IdExprNode  ID name: f
+                    IntConstNode  value = 1
+                  BinaryExprNode  Op: SEQ
+                    IdExprNode  ID name: f
+                    IdExprNode  ID name: N
+                  SuffixExprNode  Op: SUF_INCRE
+                    IdExprNode  ID name: f
+                  IfNode
+                    AndExprNode
+                      AndExprNode
+                        AndExprNode
+                          AndExprNode
+                            AndExprNode
+                              AndExprNode
+                                AndExprNode
+                                  AndExprNode
+                                    AndExprNode
+                                      AndExprNode
+                                        AndExprNode
+                                          AndExprNode
+                                            AndExprNode
+                                              AndExprNode
+                                                AndExprNode
+                                                  AndExprNode
+                                                    AndExprNode
+                                                      AndExprNode
+                                                        AndExprNode
+                                                          AndExprNode
+                                                            AndExprNode
+                                                              AndExprNode
+                                                                AndExprNode
+                                                                  AndExprNode
+                                                                    AndExprNode
+                                                                      AndExprNode
+                                                                        AndExprNode
+                                                                          AndExprNode
+                                                                            AndExprNode
+                                                                              AndExprNode
+                                                                                AndExprNode
+                                                                                  AndExprNode
+                                                                                    AndExprNode
+                                                                                      AndExprNode
+                                                                                        AndExprNode
+                                                                                          AndExprNode
+                                                                                            AndExprNode
+                                                                                              AndExprNode
+                                                                                                AndExprNode
+                                                                                                  AndExprNode
+                                                                                                    BinaryExprNode  Op: NEQ
+                                                                                                      IdExprNode  ID name: a
+                                                                                                      IdExprNode  ID name: b
+                                                                                                    BinaryExprNode  Op: NEQ
+                                                                                                      IdExprNode  ID name: a
+                                                                                                      IdExprNode  ID name: c
+                                                                                                  BinaryExprNode  Op: NEQ
+                                                                                                    IdExprNode  ID name: a
+                                                                                                    IdExprNode  ID name: d
+                                                                                                BinaryExprNode  Op: NEQ
+                                                                                                  IdExprNode  ID name: a
+                                                                                                  IdExprNode  ID name: e
+                                                                                              BinaryExprNode  Op: NEQ
+                                                                                                IdExprNode  ID name: a
+                                                                                                IdExprNode  ID name: f
+                                                                                            BinaryExprNode  Op: NEQ
+                                                                                              IdExprNode  ID name: a
+                                                                                              IdExprNode  ID name: h
+                                                                                          BinaryExprNode  Op: NEQ
+                                                                                            IdExprNode  ID name: a
+                                                                                            IdExprNode  ID name: i
+                                                                                        BinaryExprNode  Op: NEQ
+                                                                                          IdExprNode  ID name: a
+                                                                                          IdExprNode  ID name: j
+                                                                                      BinaryExprNode  Op: NEQ
+                                                                                        IdExprNode  ID name: a
+                                                                                        IdExprNode  ID name: k
+                                                                                    BinaryExprNode  Op: NEQ
+                                                                                      IdExprNode  ID name: b
+                                                                                      IdExprNode  ID name: c
+                                                                                  BinaryExprNode  Op: NEQ
+                                                                                    IdExprNode  ID name: b
+                                                                                    IdExprNode  ID name: d
+                                                                                BinaryExprNode  Op: NEQ
+                                                                                  IdExprNode  ID name: b
+                                                                                  IdExprNode  ID name: e
+                                                                              BinaryExprNode  Op: NEQ
+                                                                                IdExprNode  ID name: b
+                                                                                IdExprNode  ID name: f
+                                                                            BinaryExprNode  Op: NEQ
+                                                                              IdExprNode  ID name: b
+                                                                              IdExprNode  ID name: h
+                                                                          BinaryExprNode  Op: NEQ
+                                                                            IdExprNode  ID name: b
+                                                                            IdExprNode  ID name: i
+                                                                        BinaryExprNode  Op: NEQ
+                                                                          IdExprNode  ID name: b
+                                                                          IdExprNode  ID name: j
+                                                                      BinaryExprNode  Op: NEQ
+                                                                        IdExprNode  ID name: b
+                                                                        IdExprNode  ID name: k
+                                                                    BinaryExprNode  Op: NEQ
+                                                                      IdExprNode  ID name: c
+                                                                      IdExprNode  ID name: d
+                                                                  BinaryExprNode  Op: NEQ
+                                                                    IdExprNode  ID name: c
+                                                                    IdExprNode  ID name: e
+                                                                BinaryExprNode  Op: NEQ
+                                                                  IdExprNode  ID name: c
+                                                                  IdExprNode  ID name: f
+                                                              BinaryExprNode  Op: NEQ
+                                                                IdExprNode  ID name: c
+                                                                IdExprNode  ID name: h
+                                                            BinaryExprNode  Op: NEQ
+                                                              IdExprNode  ID name: c
+                                                              IdExprNode  ID name: i
+                                                          BinaryExprNode  Op: NEQ
+                                                            IdExprNode  ID name: c
+                                                            IdExprNode  ID name: j
+                                                        BinaryExprNode  Op: NEQ
+                                                          IdExprNode  ID name: c
+                                                          IdExprNode  ID name: k
+                                                      BinaryExprNode  Op: NEQ
+                                                        IdExprNode  ID name: d
+                                                        IdExprNode  ID name: e
+                                                    BinaryExprNode  Op: NEQ
+                                                      IdExprNode  ID name: d
+                                                      IdExprNode  ID name: f
+                                                  BinaryExprNode  Op: NEQ
+                                                    IdExprNode  ID name: d
+                                                    IdExprNode  ID name: h
+                                                BinaryExprNode  Op: NEQ
+                                                  IdExprNode  ID name: d
+                                                  IdExprNode  ID name: i
+                                              BinaryExprNode  Op: NEQ
+                                                IdExprNode  ID name: d
+                                                IdExprNode  ID name: j
+                                            BinaryExprNode  Op: NEQ
+                                              IdExprNode  ID name: d
+                                              IdExprNode  ID name: k
+                                          BinaryExprNode  Op: NEQ
+                                            IdExprNode  ID name: e
+                                            IdExprNode  ID name: f
+                                        BinaryExprNode  Op: NEQ
+                                          IdExprNode  ID name: e
+                                          IdExprNode  ID name: h
+                                      BinaryExprNode  Op: NEQ
+                                        IdExprNode  ID name: e
+                                        IdExprNode  ID name: i
+                                    BinaryExprNode  Op: NEQ
+                                      IdExprNode  ID name: e
+                                      IdExprNode  ID name: j
+                                  BinaryExprNode  Op: NEQ
+                                    IdExprNode  ID name: e
+                                    IdExprNode  ID name: k
+                                BinaryExprNode  Op: NEQ
+                                  IdExprNode  ID name: f
+                                  IdExprNode  ID name: h
+                              BinaryExprNode  Op: NEQ
+                                IdExprNode  ID name: f
+                                IdExprNode  ID name: i
+                            BinaryExprNode  Op: NEQ
+                              IdExprNode  ID name: f
+                              IdExprNode  ID name: j
+                          BinaryExprNode  Op: NEQ
+                            IdExprNode  ID name: f
+                            IdExprNode  ID name: k
+                        BinaryExprNode  Op: NEQ
+                          IdExprNode  ID name: i
+                          IdExprNode  ID name: j
+                      BinaryExprNode  Op: NEQ
+                        IdExprNode  ID name: h
+                        IdExprNode  ID name: k
+                    BlockNode
+                      ExprStatNode
+                        SuffixExprNode  Op: SUF_INCRE
+                          IdExprNode  ID name: total
+      ExprStatNode
+        CallExprNode  Function Name: println
+          ExprListNode
+            CallExprNode  Function Name: toString
+              ExprListNode
+                IdExprNode  ID name: total
+      ReturnNode

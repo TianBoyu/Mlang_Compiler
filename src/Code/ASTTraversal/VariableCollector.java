@@ -59,6 +59,7 @@ public class VariableCollector implements ASTTraversal
     {
         if(node == null) return;
         setCurrentScope(node.getInternalScope());
+        //TODO array type
         if(!currentScope.containsType(node.getReturnType().getTypeName()))
             errorHandler.addError(node.getPosition(),
                     "type " + node.getReturnType().getTypeName() + " is not declared");
@@ -79,9 +80,10 @@ public class VariableCollector implements ASTTraversal
             errorHandler.addError(node.getPosition(),
                     "type " + node.getType().getTypeName() + " is not declared");
         node.setType(currentScope.findType(node.getType().getTypeName()));
-        if(node.getValue() != null && node.getType() != node.getValue().getExprType())
+        if(node.getValue() != null && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
             errorHandler.addError(node.getPosition(),
-                    node.getValue().getExprType().toString() + " cannot be assigned to " + node.getName().toString());
+                    node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
+                            node.getName().toString() + '(' + node.getType().getTypeName() + ')');
         currentScope.addNode(node);
     }
 
@@ -266,6 +268,7 @@ public class VariableCollector implements ASTTraversal
     public void visit(SuffixExprNode node)
     {
         if(node == null)return;
+        visit(node.getExprNode());
         if(!UnaryOp.isSuffix(node.getOp()))
             errorHandler.addError(node.getPosition(),
                     node.getOp().toString() + "is a prefix operator");
