@@ -1,10 +1,14 @@
-void main() {}
+int main() {
+    while (1) { }
+    break;
+    return 0;
+}
 
 
 
 /*!! metadata:
 === comment ===
-func-7-5140309552-wancheng.mx
+ctrflow-1-5100379071-puyouer.mx
 === assert ===
 failure_compile
 === phase ===

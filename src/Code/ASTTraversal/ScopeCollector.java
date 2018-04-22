@@ -204,17 +204,13 @@ public class ScopeCollector implements ASTTraversal
     @Override
     public void visit(BreakNode node)
     {
-        if(!currentScope.isLoop())
-//            throw new RuntimeException("'break' must be in a loop");
-            errorHandler.addError(node.getPosition(), "'break' must be in a loop");
+
     }
 
     @Override
     public void visit(ContinueNode node)
     {
-        if(!currentScope.isLoop())
-//            throw new RuntimeException("'break' must be in a loop");
-            errorHandler.addError(node.getPosition(), "'continue' must be in a loop");
+
     }
 
     @Override
@@ -239,12 +235,7 @@ public class ScopeCollector implements ASTTraversal
     @Override
     public void visit(ReturnNode node)
     {
-        while(!currentScope.isFunction())
-        {
-            currentScope = currentScope.getParent();
-            if(!currentScope.isFunction())
-                errorHandler.addError(node.getPosition(), "'return' must be in a function");
-        }
+
     }
 
     @Override

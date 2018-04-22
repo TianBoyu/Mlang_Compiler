@@ -1,10 +1,9 @@
 package Code.ASTTraversal.Scope;
 
-import Code.AST.Node.DeclNode.ClassDecNode;
-import Code.AST.Node.DeclNode.DeclNode;
-import Code.AST.Node.DeclNode.FuncDecNode;
-import Code.AST.Node.DeclNode.VarDecNode;
+import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.StatNode.StatNode;
+import Code.AST.Object.FuncDecObject;
+import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.BuiltInType;
@@ -137,11 +136,25 @@ public class Scope
     public void InitializeBuiltInFunction()
     {
         //TODO
-        addNode(new FuncDecNode("getInt"));
-        addNode(new FuncDecNode("print"));
-        addNode(new FuncDecNode("println"));
-        addNode(new FuncDecNode("getString"));
-        addNode(new FuncDecNode("toString"));
+        addNode(new FuncDecNode(new Position(0),
+                                new FuncDecObject("getInt", new ArrayList<>(), new BuiltInType("int", 4)),
+                                null));
+        List<FuncParamNode> paras = new ArrayList<>();
+        paras.add(new FuncParamNode(new Position(0), new ParameterObject("a", new Type("string", 0))));
+        addNode(new FuncDecNode(new Position(0),
+                                new FuncDecObject("print", paras, new BuiltInType("void", 0)),
+                                null));
+        addNode(new FuncDecNode(new Position(0),
+                                new FuncDecObject("println", paras, new BuiltInType("void", 0)),
+                                null));
+        addNode(new FuncDecNode(new Position(0),
+                                new FuncDecObject("getString", new ArrayList<>(), new BuiltInType("string", 0)),
+                                null));
+        paras.clear();
+        paras.add(new FuncParamNode(new Position(0), new ParameterObject("a", new Type("int", 4))));
+        addNode(new FuncDecNode(new Position(0),
+                                new FuncDecObject("toString", paras, new BuiltInType("string", 4)),
+                                null));
     }
 
     public void Initialize()

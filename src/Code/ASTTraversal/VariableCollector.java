@@ -70,9 +70,9 @@ public class VariableCollector implements ASTTraversal
         node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
+        currentScope.addNode(node);
         visit(node.getBlock());
         exitCurrentScope();
-        currentScope.addNode(node);
     }
 
     @Override
@@ -311,13 +311,17 @@ public class VariableCollector implements ASTTraversal
     @Override
     public void visit(BreakNode node)
     {
-
+        if(!currentScope.isLoop())
+//            throw new RuntimeException("'break' must be in a loop");
+            errorHandler.addError(node.getPosition(), "'break' must be in a loop");
     }
 
     @Override
     public void visit(ContinueNode node)
     {
-
+        if(!currentScope.isLoop())
+//            throw new RuntimeException("'break' must be in a loop");
+            errorHandler.addError(node.getPosition(), "'continue' must be in a loop");
     }
 
     @Override
@@ -327,6 +331,9 @@ public class VariableCollector implements ASTTraversal
         setCurrentScope(node.getInternalScope());
         visit(node.getBeginCondition());
         visit(node.getEndCondition());
+        if(node.getEndCondition().getExprType().getTypeName() != Name.getName("bool"))
+            errorHandler.addError(node.getPosition(),
+                    "end condition should be of bool type");
         visit(node.getUpdate());
         visit(node.getBlock());
         exitCurrentScope();
@@ -350,6 +357,12 @@ public class VariableCollector implements ASTTraversal
     {
         if(node == null) return;
         if(node.getExprNode() == null) return;
+        while(!currentScope.isFunction())
+        {
+            currentScope = currentScope.getParent();
+            if(!currentScope.isFunction())
+                errorHandler.addError(node.getPosition(), "'return' must be in a function");
+        }
         visit(node.getExprNode());
     }
 
