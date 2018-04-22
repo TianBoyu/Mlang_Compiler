@@ -10,6 +10,7 @@ import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
 
+import java.util.List;
 import java.util.Stack;
 
 public class VariableCollector implements ASTTraversal
@@ -180,7 +181,7 @@ public class VariableCollector implements ASTTraversal
                     node.getFuncName().toString() + " is not a function");
         visit(node.getParam());
         node.setExprType(function.getReturnType());
-        //TODO check param type matches
+        checkParameterMatch(function, node);
     }
 
 
@@ -382,5 +383,20 @@ public class VariableCollector implements ASTTraversal
     {
         currentScope = currentScope.getParent();
         scopeStack.pop();
+    }
+    private void checkParameterMatch(FuncDecNode decl, CallExprNode call)
+    {
+        if(decl.getParameter().size() != call.getParam().getExprs().size())
+            errorHandler.addError(call.getPosition(),
+                    "wrong number of parameters");
+        List<FuncParamNode> formal_params = decl.getParameter();
+        List<ExprNode> actual_params = call.getParam().getExprs();
+        for(int i = 1; i < decl.getParameter().size(); ++i)
+        {
+            if(!Type.equal(formal_params.get(i).getType(), actual_params.get(i).getExprType()))
+                errorHandler.addError(call.getPosition(),
+                        "required type " + formal_params.get(i).getType().getTypeName()
+                + " finding " + actual_params.get(i).getExprType().getTypeName());
+        }
     }
 }

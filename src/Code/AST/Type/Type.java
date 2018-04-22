@@ -23,5 +23,9 @@ public class Type {
     {
         return null;
     }
+    public static boolean equal(Type a, Type b)
+    {
+        return (a.getTypeName() == b.getTypeName());
+    }
 
 }

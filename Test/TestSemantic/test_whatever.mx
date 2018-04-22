@@ -1,21 +1,10 @@
-int f(){
-	for (;;) int a = 1;
-	return a;
-}
-
-int g(){
-	while(true) int b = 1;
-	return b;
-}
-int main(){
-	return 0;
-}
+void main() {}
 
 
 
 /*!! metadata:
 === comment ===
-scope-1-5140519064-youyurong.mx
+func-7-5140309552-wancheng.mx
 === assert ===
 failure_compile
 === phase ===
