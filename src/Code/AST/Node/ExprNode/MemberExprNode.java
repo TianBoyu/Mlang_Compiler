@@ -6,22 +6,23 @@ import Code.ASTTraversal.ASTTraversal;
 
 public class MemberExprNode extends ExprNode
 {
-    public MemberExprNode(Position _pos, ExprNode e, String member)
+    public MemberExprNode(Position _pos, ExprNode e, ExprNode member)
     {
         super(_pos);
         expr = e;
-        member_name = Name.getName(member);
+//        member_name = Name.getName(member);
+        member_expr = member;
         isLvalue = true;
     }
     private ExprNode expr;
-    private Name member_name;
+    private ExprNode member_expr;
 
     public ExprNode getExpr() {
         return expr;
     }
 
-    public Name getMember_name() {
-        return member_name;
+    public ExprNode getMemberExpr() {
+        return member_expr;
     }
     @Override
     public void accept(ASTTraversal visitor)

@@ -207,7 +207,7 @@ public class ASTPrinter implements ASTTraversal
     public void visit(MemberExprNode node)
     {
         if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName() + "member name = " +node.getMember_name());
+        printStream.println(indent.toString() + node.getClass().getSimpleName());
         Tab();
         visit(node.getExpr());
         BackSpace();

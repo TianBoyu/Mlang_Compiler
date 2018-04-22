@@ -52,7 +52,7 @@ public class Boom {
         try
         {
             InputStream is = System.in;
-//            InputStream is = new FileInputStream("Test/TestSemantic/test684.mx");
+//            InputStream is = new FileInputStream("Test/TestSemantic/test610.mx");
             ANTLRInputStream input = new ANTLRInputStream(is);
             MlangLexer lexer = new MlangLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);

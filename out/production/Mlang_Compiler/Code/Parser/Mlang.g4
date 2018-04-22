@@ -62,7 +62,7 @@ actual_parameter
     ;
 
 expression 
-    : expression '.' ID                                         #memberExpr
+    : expression '.' expression                                 #memberExpr
     | expression '[' expression ']'                             #arrayExpr
     | expression op=('++'|'--')                                 #suffixExpr
     | ID '(' actual_parameter? ')'                              #callExpr

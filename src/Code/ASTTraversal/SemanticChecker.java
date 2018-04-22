@@ -141,7 +141,9 @@ public class SemanticChecker implements ASTTraversal
     @Override
     public void visit(MemberExprNode node)
     {
-
+        if(node == null) return;
+        visit(node.getExpr());
+        visit(node.getMemberExpr());
     }
 
     @Override

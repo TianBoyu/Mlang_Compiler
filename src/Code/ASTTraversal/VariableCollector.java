@@ -207,6 +207,9 @@ public class VariableCollector implements ASTTraversal
     public void visit(MemberExprNode node)
     {
         //TODO
+        if(node == null) return;
+        visit(node.getExpr());
+        visit(node.getMemberExpr());
     }
 
     @Override

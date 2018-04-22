@@ -1429,10 +1429,12 @@ public class MlangParser extends Parser {
 		}
 	}
 	public static class MemberExprContext extends ExpressionContext {
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
 		}
-		public TerminalNode ID() { return getToken(MlangParser.ID, 0); }
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
 		public MemberExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1921,11 +1923,23 @@ public class MlangParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
 					case 1:
 						{
-						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new MemberExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(207);
-						if (!(precpred(_ctx, 19))) throw new FailedPredicateException(this, "precpred(_ctx, 19)");
+						if (!(precpred(_ctx, 27))) throw new FailedPredicateException(this, "precpred(_ctx, 27)");
 						setState(208);
+						match(T__8);
+						setState(209);
+						expression(28);
+						}
+						break;
+					case 2:
+						{
+						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(210);
+						if (!(precpred(_ctx, 19))) throw new FailedPredicateException(this, "precpred(_ctx, 19)");
+						setState(211);
 						((BinaryExprContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__15) | (1L << MUL) | (1L << DIV))) != 0)) ) {
@@ -1936,17 +1950,17 @@ public class MlangParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(209);
+						setState(212);
 						expression(20);
 						}
 						break;
-					case 2:
+					case 3:
 						{
 						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(210);
+						setState(213);
 						if (!(precpred(_ctx, 18))) throw new FailedPredicateException(this, "precpred(_ctx, 18)");
-						setState(211);
+						setState(214);
 						((BinaryExprContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==ADD || _la==SUB) ) {
@@ -1957,17 +1971,17 @@ public class MlangParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(212);
+						setState(215);
 						expression(19);
 						}
 						break;
-					case 3:
+					case 4:
 						{
 						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(213);
+						setState(216);
 						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
-						setState(214);
+						setState(217);
 						((BinaryExprContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==T__16 || _la==T__17) ) {
@@ -1978,17 +1992,17 @@ public class MlangParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(215);
+						setState(218);
 						expression(18);
 						}
 						break;
-					case 4:
+					case 5:
 						{
 						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(216);
+						setState(219);
 						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
-						setState(217);
+						setState(220);
 						((BinaryExprContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__18) | (1L << T__19) | (1L << T__20) | (1L << T__21))) != 0)) ) {
@@ -1999,17 +2013,17 @@ public class MlangParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(218);
+						setState(221);
 						expression(17);
 						}
 						break;
-					case 5:
+					case 6:
 						{
 						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(219);
+						setState(222);
 						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
-						setState(220);
+						setState(223);
 						((BinaryExprContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==T__22 || _la==T__23) ) {
@@ -2020,20 +2034,8 @@ public class MlangParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(221);
-						expression(16);
-						}
-						break;
-					case 6:
-						{
-						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
-						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(222);
-						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
-						setState(223);
-						match(T__24);
 						setState(224);
-						expression(15);
+						expression(16);
 						}
 						break;
 					case 7:
@@ -2041,11 +2043,11 @@ public class MlangParser extends Parser {
 						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(225);
-						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
+						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
 						setState(226);
-						match(T__25);
+						match(T__24);
 						setState(227);
-						expression(14);
+						expression(15);
 						}
 						break;
 					case 8:
@@ -2053,59 +2055,59 @@ public class MlangParser extends Parser {
 						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(228);
-						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
+						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
 						setState(229);
-						match(T__26);
+						match(T__25);
 						setState(230);
-						expression(13);
+						expression(14);
 						}
 						break;
 					case 9:
 						{
-						_localctx = new AndExprContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new BinaryExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(231);
-						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
+						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
 						setState(232);
-						match(T__27);
+						match(T__26);
 						setState(233);
-						expression(12);
+						expression(13);
 						}
 						break;
 					case 10:
 						{
-						_localctx = new OrExprContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new AndExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(234);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
 						setState(235);
-						match(T__28);
+						match(T__27);
 						setState(236);
-						expression(11);
+						expression(12);
 						}
 						break;
 					case 11:
 						{
-						_localctx = new AssignExprContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new OrExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(237);
-						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
 						setState(238);
-						match(T__5);
+						match(T__28);
 						setState(239);
-						expression(2);
+						expression(11);
 						}
 						break;
 					case 12:
 						{
-						_localctx = new MemberExprContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new AssignExprContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(240);
-						if (!(precpred(_ctx, 27))) throw new FailedPredicateException(this, "precpred(_ctx, 27)");
+						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
 						setState(241);
-						match(T__8);
+						match(T__5);
 						setState(242);
-						match(ID);
+						expression(2);
 						}
 						break;
 					case 13:
@@ -2171,29 +2173,29 @@ public class MlangParser extends Parser {
 	private boolean expression_sempred(ExpressionContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 19);
-		case 1:
-			return precpred(_ctx, 18);
-		case 2:
-			return precpred(_ctx, 17);
-		case 3:
-			return precpred(_ctx, 16);
-		case 4:
-			return precpred(_ctx, 15);
-		case 5:
-			return precpred(_ctx, 14);
-		case 6:
-			return precpred(_ctx, 13);
-		case 7:
-			return precpred(_ctx, 12);
-		case 8:
-			return precpred(_ctx, 11);
-		case 9:
-			return precpred(_ctx, 10);
-		case 10:
-			return precpred(_ctx, 1);
-		case 11:
 			return precpred(_ctx, 27);
+		case 1:
+			return precpred(_ctx, 19);
+		case 2:
+			return precpred(_ctx, 18);
+		case 3:
+			return precpred(_ctx, 17);
+		case 4:
+			return precpred(_ctx, 16);
+		case 5:
+			return precpred(_ctx, 15);
+		case 6:
+			return precpred(_ctx, 14);
+		case 7:
+			return precpred(_ctx, 13);
+		case 8:
+			return precpred(_ctx, 12);
+		case 9:
+			return precpred(_ctx, 11);
+		case 10:
+			return precpred(_ctx, 10);
+		case 11:
+			return precpred(_ctx, 1);
 		case 12:
 			return precpred(_ctx, 26);
 		case 13:
@@ -2274,26 +2276,27 @@ public class MlangParser extends Parser {
 		"\2\2\2\u00cf\u00ae\3\2\2\2\u00cf\u00b0\3\2\2\2\u00cf\u00b2\3\2\2\2\u00cf"+
 		"\u00c4\3\2\2\2\u00cf\u00c5\3\2\2\2\u00cf\u00c6\3\2\2\2\u00cf\u00c7\3\2"+
 		"\2\2\u00cf\u00c8\3\2\2\2\u00cf\u00c9\3\2\2\2\u00cf\u00ca\3\2\2\2\u00cf"+
-		"\u00ce\3\2\2\2\u00d0\u00fe\3\2\2\2\u00d1\u00d2\f\25\2\2\u00d2\u00d3\t"+
-		"\6\2\2\u00d3\u00fd\5\34\17\26\u00d4\u00d5\f\24\2\2\u00d5\u00d6\t\4\2\2"+
-		"\u00d6\u00fd\5\34\17\25\u00d7\u00d8\f\23\2\2\u00d8\u00d9\t\7\2\2\u00d9"+
-		"\u00fd\5\34\17\24\u00da\u00db\f\22\2\2\u00db\u00dc\t\b\2\2\u00dc\u00fd"+
-		"\5\34\17\23\u00dd\u00de\f\21\2\2\u00de\u00df\t\t\2\2\u00df\u00fd\5\34"+
-		"\17\22\u00e0\u00e1\f\20\2\2\u00e1\u00e2\7\33\2\2\u00e2\u00fd\5\34\17\21"+
-		"\u00e3\u00e4\f\17\2\2\u00e4\u00e5\7\34\2\2\u00e5\u00fd\5\34\17\20\u00e6"+
-		"\u00e7\f\16\2\2\u00e7\u00e8\7\35\2\2\u00e8\u00fd\5\34\17\17\u00e9\u00ea"+
-		"\f\r\2\2\u00ea\u00eb\7\36\2\2\u00eb\u00fd\5\34\17\16\u00ec\u00ed\f\f\2"+
-		"\2\u00ed\u00ee\7\37\2\2\u00ee\u00fd\5\34\17\r\u00ef\u00f0\f\3\2\2\u00f0"+
-		"\u00f1\7\b\2\2\u00f1\u00fd\5\34\17\4\u00f2\u00f3\f\35\2\2\u00f3\u00f4"+
-		"\7\13\2\2\u00f4\u00fd\7:\2\2\u00f5\u00f6\f\34\2\2\u00f6\u00f7\7\f\2\2"+
-		"\u00f7\u00f8\5\34\17\2\u00f8\u00f9\7\r\2\2\u00f9\u00fd\3\2\2\2\u00fa\u00fb"+
-		"\f\33\2\2\u00fb\u00fd\t\3\2\2\u00fc\u00d1\3\2\2\2\u00fc\u00d4\3\2\2\2"+
-		"\u00fc\u00d7\3\2\2\2\u00fc\u00da\3\2\2\2\u00fc\u00dd\3\2\2\2\u00fc\u00e0"+
-		"\3\2\2\2\u00fc\u00e3\3\2\2\2\u00fc\u00e6\3\2\2\2\u00fc\u00e9\3\2\2\2\u00fc"+
-		"\u00ec\3\2\2\2\u00fc\u00ef\3\2\2\2\u00fc\u00f2\3\2\2\2\u00fc\u00f5\3\2"+
-		"\2\2\u00fc\u00fa\3\2\2\2\u00fd\u0100\3\2\2\2\u00fe\u00fc\3\2\2\2\u00fe"+
-		"\u00ff\3\2\2\2\u00ff\35\3\2\2\2\u0100\u00fe\3\2\2\2\33!#+-\638FKOSiu\177"+
-		"\u0088\u008d\u0092\u0098\u00a2\u00a9\u00ba\u00bf\u00c2\u00cf\u00fc\u00fe";
+		"\u00ce\3\2\2\2\u00d0\u00fe\3\2\2\2\u00d1\u00d2\f\35\2\2\u00d2\u00d3\7"+
+		"\13\2\2\u00d3\u00fd\5\34\17\36\u00d4\u00d5\f\25\2\2\u00d5\u00d6\t\6\2"+
+		"\2\u00d6\u00fd\5\34\17\26\u00d7\u00d8\f\24\2\2\u00d8\u00d9\t\4\2\2\u00d9"+
+		"\u00fd\5\34\17\25\u00da\u00db\f\23\2\2\u00db\u00dc\t\7\2\2\u00dc\u00fd"+
+		"\5\34\17\24\u00dd\u00de\f\22\2\2\u00de\u00df\t\b\2\2\u00df\u00fd\5\34"+
+		"\17\23\u00e0\u00e1\f\21\2\2\u00e1\u00e2\t\t\2\2\u00e2\u00fd\5\34\17\22"+
+		"\u00e3\u00e4\f\20\2\2\u00e4\u00e5\7\33\2\2\u00e5\u00fd\5\34\17\21\u00e6"+
+		"\u00e7\f\17\2\2\u00e7\u00e8\7\34\2\2\u00e8\u00fd\5\34\17\20\u00e9\u00ea"+
+		"\f\16\2\2\u00ea\u00eb\7\35\2\2\u00eb\u00fd\5\34\17\17\u00ec\u00ed\f\r"+
+		"\2\2\u00ed\u00ee\7\36\2\2\u00ee\u00fd\5\34\17\16\u00ef\u00f0\f\f\2\2\u00f0"+
+		"\u00f1\7\37\2\2\u00f1\u00fd\5\34\17\r\u00f2\u00f3\f\3\2\2\u00f3\u00f4"+
+		"\7\b\2\2\u00f4\u00fd\5\34\17\4\u00f5\u00f6\f\34\2\2\u00f6\u00f7\7\f\2"+
+		"\2\u00f7\u00f8\5\34\17\2\u00f8\u00f9\7\r\2\2\u00f9\u00fd\3\2\2\2\u00fa"+
+		"\u00fb\f\33\2\2\u00fb\u00fd\t\3\2\2\u00fc\u00d1\3\2\2\2\u00fc\u00d4\3"+
+		"\2\2\2\u00fc\u00d7\3\2\2\2\u00fc\u00da\3\2\2\2\u00fc\u00dd\3\2\2\2\u00fc"+
+		"\u00e0\3\2\2\2\u00fc\u00e3\3\2\2\2\u00fc\u00e6\3\2\2\2\u00fc\u00e9\3\2"+
+		"\2\2\u00fc\u00ec\3\2\2\2\u00fc\u00ef\3\2\2\2\u00fc\u00f2\3\2\2\2\u00fc"+
+		"\u00f5\3\2\2\2\u00fc\u00fa\3\2\2\2\u00fd\u0100\3\2\2\2\u00fe\u00fc\3\2"+
+		"\2\2\u00fe\u00ff\3\2\2\2\u00ff\35\3\2\2\2\u0100\u00fe\3\2\2\2\33!#+-\63"+
+		"8FKOSiu\177\u0088\u008d\u0092\u0098\u00a2\u00a9\u00ba\u00bf\u00c2\u00cf"+
+		"\u00fc\u00fe";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

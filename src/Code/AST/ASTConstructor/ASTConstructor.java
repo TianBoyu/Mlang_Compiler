@@ -351,7 +351,7 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitMemberExpr(MlangParser.MemberExprContext ctx)
     {
-        MemberExprNode memberExprNode = new MemberExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression()), ctx.ID().getText());
+        MemberExprNode memberExprNode = new MemberExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression(0)), getExpr(ctx.expression(1)));
         map.put(ctx, memberExprNode);
     }
 
