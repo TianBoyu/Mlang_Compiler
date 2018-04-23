@@ -182,14 +182,16 @@ public class ASTConstructor extends MlangBaseListener
     {
         Type baseType;
         ArrayType arrayType;
+        int dimension = (ctx.getChildCount() - 1) / 2;
         if (ctx.builtInType() != null)
         {
             baseType = (Type) map.get(ctx.builtInType());
-            arrayType = new ArrayType(ctx.builtInType().getText(), 4, baseType);
-        } else
+            arrayType = new ArrayType(ctx.builtInType().getText(), dimension, baseType);
+        }
+        else
         {
             baseType = new ClassType(ctx.userType().ID().getText(), 4);
-            arrayType = new ArrayType(ctx.userType().ID().getText(), 4, baseType);
+            arrayType = new ArrayType(ctx.userType().ID().getText(), dimension, baseType);
         }
         map.put(ctx, arrayType);
     }

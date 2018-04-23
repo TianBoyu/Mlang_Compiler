@@ -8,6 +8,7 @@ import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Tools.UnaryOp;
+import Code.AST.Type.ArrayType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
 
@@ -83,9 +84,17 @@ public class SemanticChecker implements ASTTraversal
         if(node == null) return;
         node.setScope(currentScope);
         visit(node.getValue());
-        if(!currentScope.containsType(node.getType().getTypeName()))
-            errorHandler.addError(node.getPosition(),
-                    "type " + node.getType().getTypeName() + " is not declared");
+        try
+        {
+            visit(node.getType());
+        }
+        catch (Exception e)
+        {
+            errorHandler.addError(node.getPosition(), e.getMessage());
+        }
+//        if(!currentScope.containsType(node.getType().getTypeName()))
+//            errorHandler.addError(node.getPosition(),
+//                    "type " + node.getType().getTypeName() + " is not declared");
         node.setType(currentScope.findType(node.getType().getTypeName()));
         if(node.getValue() != null && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
             errorHandler.addError(node.getPosition(),
@@ -417,7 +426,16 @@ public class SemanticChecker implements ASTTraversal
     @Override
     public void visit(Type type)
     {
-
+        if(type instanceof ArrayType)
+        {
+            if(!currentScope.containsNode(((ArrayType) type).getBaseType().getTypeName()))
+            {
+                throw new RuntimeException(((ArrayType) type).getBaseType().getTypeName().toString()
+                        + " have not been declared");
+            }
+        }
+        if(!currentScope.containsType(type.getTypeName()))
+            throw new RuntimeException(type.getTypeName().toString() + " have not been declared");
     }
     private void setCurrentScope(Scope _currentScope)
     {

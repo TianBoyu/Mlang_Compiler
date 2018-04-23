@@ -7,6 +7,7 @@ import Code.AST.Node.StatNode.*;
 import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.UnaryOp;
+import Code.AST.Type.ArrayType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
@@ -63,10 +64,19 @@ public class FunctionCollector implements ASTTraversal
         if(node == null) return;
         setCurrentScope(node.getInternalScope());
         //TODO array type
-        if(!currentScope.containsType(node.getReturnType().getTypeName()))
-            errorHandler.addError(node.getPosition(),
-                    "type " + node.getReturnType().getTypeName() + " is not declared");
-        node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
+        try
+        {
+            visit(node.getReturnType());
+        }
+        catch (Exception e)
+        {
+            errorHandler.addError(node.getPosition(), e.getMessage());
+        }
+//        if(!currentScope.containsType(node.getReturnType().getTypeName()))
+//            errorHandler.addError(node.getPosition(),
+//                    "type " + node.getReturnType().getTypeName() + " is not declared");
+        if(!(node.getReturnType() instanceof ArrayType))
+            node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
         node.getExternalScope().addNode(node);
@@ -85,9 +95,17 @@ public class FunctionCollector implements ASTTraversal
     {
         if(node == null) return;
         node.setScope(currentScope);
-        if(!currentScope.containsType(node.getType().getTypeName()))
-            errorHandler.addError(node.getPosition(),
-                    "type " + node.getType().getTypeName() + " is not declared");
+        try
+        {
+            visit(node.getType());
+        }
+        catch(Exception e)
+        {
+            errorHandler.addError(node.getPosition(), e.getMessage());
+        }
+//        if(!currentScope.containsType(node.getType().getTypeName()))
+//            errorHandler.addError(node.getPosition(),
+//                    "type " + node.getType().getTypeName() + " is not declared");
         node.setType(currentScope.findType(node.getType().getTypeName()));
         currentScope.addNode(node);
     }
@@ -262,9 +280,18 @@ public class FunctionCollector implements ASTTraversal
     }
 
     @Override
-    public void visit(Type type)
+    public void visit(Type type) throws Exception
     {
-
+        if(type instanceof ArrayType)
+        {
+            if(!currentScope.containsNode(((ArrayType) type).getBaseType().getTypeName()))
+            {
+                throw new RuntimeException(((ArrayType) type).getBaseType().getTypeName().toString()
+                        + " have not been declared");
+            }
+        }
+        if(!currentScope.containsType(type.getTypeName()))
+            throw new RuntimeException(type.getTypeName().toString() + " have not been declared");
     }
     private void setCurrentScope(Scope _currentScope)
     {

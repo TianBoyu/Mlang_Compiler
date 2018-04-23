@@ -45,5 +45,5 @@ public interface ASTTraversal
     void visit(WhileNode node);
     void visit(ExprStatNode node);
 
-    void visit(Type type);
+    void visit(Type type) throws Exception;
 }
