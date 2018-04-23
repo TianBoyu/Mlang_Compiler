@@ -128,10 +128,12 @@ public class SemanticChecker implements ASTTraversal
     @Override
     public void visit(ArrayExprNode node)
     {
+        visit(node.getArray());
         visit(node.getIndex());
         if(node.getIndex().getExprType().getTypeName() != Name.getName("int"))
             errorHandler.addError(node.getPosition(), "array index must be an integer"
                     + ", finding " + node.getIndex().getExprType().getTypeName().toString());
+        node.setExprType(node.getArray().getExprType());
         //TODO set Expr type
     }
 

@@ -231,6 +231,7 @@ public class ScopeCollector implements ASTTraversal
     {
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
+        scope.setLoop(currentScope.isLoop());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());
