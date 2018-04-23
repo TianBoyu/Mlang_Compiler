@@ -74,7 +74,7 @@ public class VariableCollector implements ASTTraversal
         node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
-        currentScope.getParent().addNode(node);
+        node.getExternalScope().addNode(node);
         visit(node.getBlock());
         node.setInternalScope(currentScope);
         exitCurrentScope();
@@ -272,7 +272,8 @@ public class VariableCollector implements ASTTraversal
         if(UnaryOp.changeValue(node.getOp()) && !node.getExprNode().isLvalue())
             errorHandler.addError(node.getPosition(),
                     node.getOp().toString() + " can only be applied to a left value");
-        if(node.getOp() != UnaryOp.NOT && node.getExprType().getTypeName() != Name.getName("int"))
+        visit(node.getExprNode());
+        if(node.getOp() != UnaryOp.NOT && node.getExprNode().getExprType().getTypeName() != Name.getName("int"))
             errorHandler.addError(node.getPosition(),
                     node.getOp().toString() + "can only be applied to integer");
         node.setExprType(node.getExprNode().getExprType());
@@ -296,6 +297,7 @@ public class VariableCollector implements ASTTraversal
         if(UnaryOp.changeValue(node.getOp()) && !node.getExprNode().isLvalue())
             errorHandler.addError(node.getPosition(),
                     node.getOp().toString() + " can only be applied to a left value");
+        visit(node.getExprNode());
         if(!(node.getExprNode().getExprType().getTypeName() == Name.getName("int")))
             errorHandler.addError(node.getPosition(),
                     node.getOp().toString() + "can only be applied to integer");

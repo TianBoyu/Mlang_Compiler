@@ -3,6 +3,7 @@ package Code;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.function.Function;
 
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
@@ -23,8 +24,8 @@ public class Boom {
         topLevelScope.Initialize();
         ScopeCollector scopeCollector = new ScopeCollector(topLevelScope, handler);
         scopeCollector.process(program);
-        VariableCollector variableCollector = new VariableCollector(topLevelScope, handler);
-        variableCollector.process(program);
+        FunctionCollector functionCollector = new FunctionCollector(topLevelScope, handler);
+        functionCollector.process(program);
         SemanticChecker semanticChecker = new SemanticChecker(topLevelScope, handler);
         semanticChecker.process(program);
     }

@@ -1,46 +1,48 @@
-//Target: use loops to calculate calculator of 6!
-//@author yixi
+class Fibonacci{
+	int x;
+	int result;
 
-int N;
-int h = 99;
-int i = 100;
-int j = 101;
-int k = 102;
-int total = 0;
+	void reset(){
+		x = 0;
+		result = 0;
+	}
 
-int main() {
-  	int a;
-    int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	N=getInt();
-	for ( a=1; a<=N; a++ )
-	for ( b=1; b<=N; b++ )
-	for ( c=1; c<=N; c++ )
-	for ( d=1; d<=N; d++ )
-	for ( e=1; e<=N; e++ )
-	for ( f=1; f<=N; f++ )
-		if (a!=b && a!=c && a!=d && a!=e && a!=f && a!=h && a!=i && a!=j && a!=k
-              && b!=c && b!=d && b!=e && b!=f && b!=h && b!=i && b!=j && b!=k
-              && c!=d && c!=e && c!=f && c!=h && c!=i && c!=j && c!=k
-              && d!=e && d!=f && d!=h && d!=i && d!=j && d!=k
-              && e!=f && e!=h && e!=i && e!=j && e!=k
-              && f!=h && f!=i && f!=j && f!=k && i!=j && h!=k)
-		{
-			total++;
-		}
+	void set_problem(int x_in){
+		reset();
+		x = x_in;
+	}
 
-	println(toString(total));
+	int calc(int cur_num){
+		if (cur_num == 0)
+			return 1;
+		else
+			return cur_num * calc(cur_num-1);
+	}
+
+	int get_result(){
+		result = calc(x);
+		return result;
+	}
+
+
+}
+
+int main(){
+	Fibonacci teacher;
+	teacher = new Fibonacci;
+	int x;
+	for (x = 0; x < 5; x++){
+		teacher.set_problem(x);
+		println(toString(teacher.get_result()));
+	}
 	return 0;
 }
 
 
-
 /*!! metadata:
 === comment ===
-superloop-5090379042-jiaxiao.mx
+class-5140309536-xuxiaojun.txt
+Test class and recursive function
 === assert ===
 success_compile
 === phase ===
