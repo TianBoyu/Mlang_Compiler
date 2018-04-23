@@ -117,6 +117,12 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormal_parameter(MlangParser.Formal_parameterContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MlangParser#arrayType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayType(MlangParser.ArrayTypeContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MlangParser#builtInType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -128,12 +134,6 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitUserType(MlangParser.UserTypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MlangParser#arrayType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayType(MlangParser.ArrayTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MlangParser#type}.
 	 * @param ctx the parse tree

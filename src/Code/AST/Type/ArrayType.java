@@ -8,7 +8,7 @@ public class ArrayType extends Type
     {
         super(_name, 1);
 //        basic_type = _basic;
-        if(dimension == 1)
+        if(dimension == 0)
         {
             this.basic_type = _basic;
         }
@@ -31,8 +31,8 @@ public class ArrayType extends Type
     public final Type getBaseType()
     {
         Type basic = this.getBasic_type();
-        while(((ArrayType)basic).getDimension() > 0)
-            basic = ((ArrayType)basic).getBasic_type();
+        while(basic instanceof ArrayType)
+            basic = ((ArrayType) basic).getBasic_type();
         return basic;
     }
 }

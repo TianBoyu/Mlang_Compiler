@@ -284,14 +284,14 @@ public class FunctionCollector implements ASTTraversal
     {
         if(type instanceof ArrayType)
         {
-            if(!currentScope.containsNode(((ArrayType) type).getBaseType().getTypeName()))
+            if(!currentScope.containsType(((ArrayType) type).getBaseType().getTypeName()))
             {
-                throw new RuntimeException(((ArrayType) type).getBaseType().getTypeName().toString()
+                throw new RuntimeException("type " + ((ArrayType) type).getBaseType().getTypeName().toString()
                         + " have not been declared");
             }
         }
         if(!currentScope.containsType(type.getTypeName()))
-            throw new RuntimeException(type.getTypeName().toString() + " have not been declared");
+            throw new RuntimeException("type " + type.getTypeName().toString() + " have not been declared");
     }
     private void setCurrentScope(Scope _currentScope)
     {

@@ -3,7 +3,6 @@ package Code;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.function.Function;
 
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
@@ -38,7 +37,7 @@ public class Boom {
     public static void main(String[] args) throws Exception
     {
         InputStream is = System.in;
-//        InputStream is = new FileInputStream("Test/TestSemantic/test684.mx");
+//        InputStream is = new FileInputStream("Test/TestSemantic/test_whatever.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

@@ -188,6 +188,16 @@ public interface MlangListener extends ParseTreeListener {
 	 */
 	void exitFormal_parameter(MlangParser.Formal_parameterContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MlangParser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayType(MlangParser.ArrayTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayType(MlangParser.ArrayTypeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MlangParser#builtInType}.
 	 * @param ctx the parse tree
 	 */
@@ -207,16 +217,6 @@ public interface MlangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUserType(MlangParser.UserTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MlangParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayType(MlangParser.ArrayTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MlangParser#arrayType}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayType(MlangParser.ArrayTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MlangParser#type}.
 	 * @param ctx the parse tree

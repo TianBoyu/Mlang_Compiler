@@ -132,7 +132,8 @@ public class ASTConstructor extends MlangBaseListener
     public void exitVariableDecl(MlangParser.VariableDeclContext ctx)
     {
         Position pos = new Position(ctx.getStart().getLine());
-        Type type = new Type(ctx.type().getText(), 4);
+//        Type type = new Type(ctx.type().getText(), 4);
+        Type type = (Type)map.get(ctx.type());
         String id = ctx.ID().getText();
         ExprNode expr = (ExprNode) map.get(ctx.expression());
         VarObject varObject = new VarObject(id, false, type);
@@ -196,16 +197,17 @@ public class ASTConstructor extends MlangBaseListener
         map.put(ctx, arrayType);
     }
 
-//    @Override
-//    public void exitType(MlangParser.TypeContext ctx)//TODO
-//    {
-//        Type type;
-//        if (ctx.builtInType() != null)
-//            type = (Type) map.get(ctx.builtInType());
-//        else if (ctx.userType() != null)
-//            type = (Type) map.get(ctx.userType());
-//        else type = (Type) map.get(ctx.arrayType());
-//    }
+    @Override
+    public void exitType(MlangParser.TypeContext ctx)//TODO
+    {
+        Type type;
+        if (ctx.builtInType() != null)
+            type = (BuiltInType) map.get(ctx.builtInType());
+        else if (ctx.userType() != null)
+            type = (ClassType) map.get(ctx.userType());
+        else type = (ArrayType) map.get(ctx.arrayType());
+        map.put(ctx, type);
+    }
 
     @Override
     public void exitBlock(MlangParser.BlockContext ctx)
@@ -549,223 +551,4 @@ public class ASTConstructor extends MlangBaseListener
         else return (StatNode) map.get(ctx);
     }
 
-
-    @Override
-    public void enterParameter(MlangParser.ParameterContext ctx)
-    {
-        super.enterParameter(ctx);
-    }
-
-    @Override
-    public void enterBuiltInType(MlangParser.BuiltInTypeContext ctx)
-    {
-        super.enterBuiltInType(ctx);
-    }
-
-    @Override
-    public void enterUserType(MlangParser.UserTypeContext ctx)
-    {
-        super.enterUserType(ctx);
-    }
-
-    @Override
-    public void enterArrayType(MlangParser.ArrayTypeContext ctx)
-    {
-        super.enterArrayType(ctx);
-    }
-
-    @Override
-    public void enterType(MlangParser.TypeContext ctx)
-    {
-        super.enterType(ctx);
-    }
-
-    @Override
-    public void exitType(MlangParser.TypeContext ctx)
-    {
-        super.exitType(ctx);
-    }
-
-    @Override
-    public void enterBlock(MlangParser.BlockContext ctx)
-    {
-//        System.out.println(ctx.getText());
-//        super.enterBlock(ctx);
-    }
-
-    @Override
-    public void enterBlockStat(MlangParser.BlockStatContext ctx)
-    {
-        super.enterBlockStat(ctx);
-    }
-
-    @Override
-    public void enterVarDeclStat(MlangParser.VarDeclStatContext ctx)
-    {
-        super.enterVarDeclStat(ctx);
-    }
-
-    @Override
-    public void enterIfStat(MlangParser.IfStatContext ctx)
-    {
-        super.enterIfStat(ctx);
-    }
-
-    @Override
-    public void enterForStat(MlangParser.ForStatContext ctx)
-    {
-//        System.out.println("enter into for node");
-//        super.enterForStat(ctx);
-    }
-
-    @Override
-    public void enterWhileStat(MlangParser.WhileStatContext ctx)
-    {
-        super.enterWhileStat(ctx);
-    }
-
-    @Override
-    public void enterReturnStat(MlangParser.ReturnStatContext ctx)
-    {
-        super.enterReturnStat(ctx);
-    }
-
-    @Override
-    public void enterBreakStat(MlangParser.BreakStatContext ctx)
-    {
-        super.enterBreakStat(ctx);
-    }
-
-    @Override
-    public void enterContinueStat(MlangParser.ContinueStatContext ctx)
-    {
-        super.enterContinueStat(ctx);
-    }
-
-    @Override
-    public void enterExprStat(MlangParser.ExprStatContext ctx)
-    {
-        super.enterExprStat(ctx);
-    }
-
-    @Override
-    public void enterEmptyStat(MlangParser.EmptyStatContext ctx)
-    {
-        super.enterEmptyStat(ctx);
-    }
-
-    @Override
-    public void exitEmptyStat(MlangParser.EmptyStatContext ctx)
-    {
-        super.exitEmptyStat(ctx);
-    }
-
-    @Override
-    public void enterActual_parameter(MlangParser.Actual_parameterContext ctx)
-    {
-//        System.out.println("enter into parameter");
-//        super.enterActual_parameter(ctx);
-    }
-
-    @Override
-    public void enterNewExpr(MlangParser.NewExprContext ctx)
-    {
-        super.enterNewExpr(ctx);
-    }
-
-    @Override
-    public void enterBoolConstExpr(MlangParser.BoolConstExprContext ctx)
-    {
-        super.enterBoolConstExpr(ctx);
-    }
-
-    @Override
-    public void enterThisExpr(MlangParser.ThisExprContext ctx)
-    {
-        super.enterThisExpr(ctx);
-    }
-
-    @Override
-    public void enterNullExpr(MlangParser.NullExprContext ctx)
-    {
-        super.enterNullExpr(ctx);
-    }
-
-    @Override
-    public void enterArrayExpr(MlangParser.ArrayExprContext ctx)
-    {
-        super.enterArrayExpr(ctx);
-    }
-
-    @Override
-    public void enterMemberExpr(MlangParser.MemberExprContext ctx)
-    {
-        super.enterMemberExpr(ctx);
-    }
-
-    @Override
-    public void enterSuffixExpr(MlangParser.SuffixExprContext ctx)
-    {
-        super.enterSuffixExpr(ctx);
-    }
-
-    @Override
-    public void enterBinaryExpr(MlangParser.BinaryExprContext ctx)
-    {
-        super.enterBinaryExpr(ctx);
-    }
-
-    @Override
-    public void enterOrExpr(MlangParser.OrExprContext ctx)
-    {
-        super.enterOrExpr(ctx);
-    }
-
-    @Override
-    public void enterIntConstExpr(MlangParser.IntConstExprContext ctx)
-    {
-        super.enterIntConstExpr(ctx);
-    }
-
-    @Override
-    public void enterSubExpr(MlangParser.SubExprContext ctx)
-    {
-        super.enterSubExpr(ctx);
-    }
-
-    @Override
-    public void enterPrefixExpr(MlangParser.PrefixExprContext ctx)
-    {
-        super.enterPrefixExpr(ctx);
-    }
-
-    @Override
-    public void enterStringConstExpr(MlangParser.StringConstExprContext ctx)
-    {
-        super.enterStringConstExpr(ctx);
-    }
-
-    @Override
-    public void enterCallExpr(MlangParser.CallExprContext ctx)
-    {
-        super.enterCallExpr(ctx);
-    }
-
-    @Override
-    public void enterAssignExpr(MlangParser.AssignExprContext ctx)
-    {
-        super.enterAssignExpr(ctx);
-    }
-
-    @Override
-    public void enterIdExpr(MlangParser.IdExprContext ctx)
-    {
-        super.enterIdExpr(ctx);
-    }
-
-    @Override
-    public void enterAndExpr(MlangParser.AndExprContext ctx)
-    {
-        super.enterAndExpr(ctx);
-    }
 }

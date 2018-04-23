@@ -40,13 +40,12 @@ formal_parameter
     : parameter (','parameter)*
     ;
 
-
+arrayType : (builtInType | userType) ('[]')+;
 builtInType
     : BOOL | INT | STRING | VOID
     ;
 
 userType : ID;
-arrayType : (builtInType | userType) ('[]')+;
 
 type
     : (arrayType | builtInType | userType)

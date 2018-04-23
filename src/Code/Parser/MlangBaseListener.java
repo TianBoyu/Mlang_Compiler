@@ -208,6 +208,18 @@ public class MlangBaseListener implements MlangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterArrayType(MlangParser.ArrayTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayType(MlangParser.ArrayTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBuiltInType(MlangParser.BuiltInTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -227,18 +239,6 @@ public class MlangBaseListener implements MlangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUserType(MlangParser.UserTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArrayType(MlangParser.ArrayTypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArrayType(MlangParser.ArrayTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
