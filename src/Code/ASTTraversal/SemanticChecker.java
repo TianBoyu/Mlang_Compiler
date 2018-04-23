@@ -9,6 +9,7 @@ import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Tools.UnaryOp;
 import Code.AST.Type.ArrayType;
+import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
 
@@ -92,7 +93,8 @@ public class SemanticChecker implements ASTTraversal
         {
             errorHandler.addError(node.getPosition(), e.getMessage());
         }
-        node.setType(currentScope.findType(node.getType().getTypeName()));
+        if(node.getType() instanceof ClassType)
+            node.setType(currentScope.findType(node.getType().getTypeName()));
         if(node.getValue() != null && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
             errorHandler.addError(node.getPosition(),
                     node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
@@ -133,6 +135,9 @@ public class SemanticChecker implements ASTTraversal
         if(node.getIndex().getExprType().getTypeName() != Name.getName("int"))
             errorHandler.addError(node.getPosition(), "array index must be an integer"
                     + ", finding " + node.getIndex().getExprType().getTypeName().toString());
+        if(!(node.getArray().getExprType() instanceof ArrayType))
+            errorHandler.addError(node.getPosition(),
+                    "'[]' can not be applied to non-array element");
         node.setExprType(node.getArray().getExprType());
         //TODO set Expr type
     }
