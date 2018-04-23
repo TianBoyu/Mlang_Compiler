@@ -72,9 +72,6 @@ public class FunctionCollector implements ASTTraversal
         {
             errorHandler.addError(node.getPosition(), e.getMessage());
         }
-//        if(!currentScope.containsType(node.getReturnType().getTypeName()))
-//            errorHandler.addError(node.getPosition(),
-//                    "type " + node.getReturnType().getTypeName() + " is not declared");
         if(!(node.getReturnType() instanceof ArrayType))
             node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
@@ -103,10 +100,8 @@ public class FunctionCollector implements ASTTraversal
         {
             errorHandler.addError(node.getPosition(), e.getMessage());
         }
-//        if(!currentScope.containsType(node.getType().getTypeName()))
-//            errorHandler.addError(node.getPosition(),
-//                    "type " + node.getType().getTypeName() + " is not declared");
-        node.setType(currentScope.findType(node.getType().getTypeName()));
+        if(node.getType() instanceof ClassType)
+            node.setType(currentScope.findType(node.getType().getTypeName()));
         currentScope.addNode(node);
     }
 

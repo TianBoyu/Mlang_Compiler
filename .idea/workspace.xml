@@ -7,6 +7,8 @@
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" afterPath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
+      <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
     </list>
@@ -26,8 +28,8 @@
             <file leaf-file-name="test_whatever.mx" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="570">
-                    <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                  <state relative-caret-position="31710">
+                    <caret line="1057" column="0" lean-forward="true" selection-start-line="1057" selection-start-column="0" selection-end-line="1057" selection-end-column="0" />
                     <folding />
                   </state>
                 </provider>
@@ -43,21 +45,72 @@
       <file leaf-file-name="ASTConstructor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="349" column="43" lean-forward="false" selection-start-line="349" selection-start-column="43" selection-end-line="349" selection-end-column="43" />
+            <state relative-caret-position="283">
+              <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArrayExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ArrayExprNode.java">
+      <file leaf-file-name="FunctionCollector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="944">
+              <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
-                <element signature="e#447#448#0" expanded="true" />
+                <element signature="method#FunctionCollector#0;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#0;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#4;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#6;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#7;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#8;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#9;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#10;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#11;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#12;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#13;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#14;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#15;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#16;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#17;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#18;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#19;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#20;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#21;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#22;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#23;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#24;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#25;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#26;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#27;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#28;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#29;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#30;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#31;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#visit#32;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#setCurrentScope#0;class#FunctionCollector#0" expanded="false" />
+                <element signature="method#exitCurrentScope#0;class#FunctionCollector#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuncDecNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuncParamNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,14 +118,14 @@
       <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="95" column="47" lean-forward="true" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
+            <state relative-caret-position="73">
+              <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#745#746#0" expanded="true" />
-                <element signature="e#794#795#0" expanded="true" />
-                <element signature="e#825#826#0" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#765#766#0" expanded="true" />
+                <element signature="e#814#815#0" expanded="true" />
+                <element signature="e#845#846#0" expanded="true" />
                 <element signature="method#checkParameterMatch#0;class#SemanticChecker#0" expanded="false" />
               </folding>
             </state>
@@ -91,34 +144,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScopeCollector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-685">
-              <caret line="245" column="0" lean-forward="false" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Mlang.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
               <caret line="64" column="16" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssignExprNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssignExprNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="e#524#525#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -138,16 +169,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="245">
               <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuiltInType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Type/BuiltInType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -260,12 +281,12 @@
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ASTTraversal.java" />
         <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
-        <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
-        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Type/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
-        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
+        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
+        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
         <option value="$PROJECT_DIR$/src/Code/Boom.java" />
       </list>
     </option>
@@ -335,6 +356,15 @@
               <item name="Code" type="462c0819:PsiDirectoryNode" />
               <item name="AST" type="462c0819:PsiDirectoryNode" />
               <item name="Node" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mlang_Compiler" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mlang_Compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+              <item name="AST" type="462c0819:PsiDirectoryNode" />
+              <item name="Node" type="462c0819:PsiDirectoryNode" />
+              <item name="DeclNode" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mlang_Compiler" type="b2602c69:ProjectViewProjectNode" />
@@ -603,8 +633,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.50214595" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3621868" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27107063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24785408" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -683,12 +713,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java</url>
-          <line>132</line>
+          <line>133</line>
           <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java</url>
+          <line>92</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="69" />
+      <option name="time" value="70" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -803,13 +839,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -881,6 +911,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -888,16 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
           <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#1372#1373#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1035,55 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6210">
-          <caret line="295" column="53" lean-forward="false" selection-start-line="295" selection-start-column="53" selection-end-line="295" selection-end-column="53" />
-          <folding>
-            <element signature="method#FunctionCollector#0;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#0;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#4;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#6;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#7;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#8;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#9;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#10;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#11;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#12;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#13;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#14;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#15;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#16;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#17;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#18;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#19;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#20;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#21;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#22;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#23;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#24;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#25;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#26;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#27;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#28;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#29;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#30;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#31;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#visit#32;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#setCurrentScope#0;class#FunctionCollector#0" expanded="false" />
-            <element signature="method#exitCurrentScope#0;class#FunctionCollector#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="349" column="43" lean-forward="false" selection-start-line="349" selection-start-column="43" selection-end-line="349" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/AssignExprNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1155,24 +1127,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="31710">
+          <caret line="1057" column="0" lean-forward="true" selection-start-line="1057" selection-start-column="0" selection-end-line="1057" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="95" column="47" lean-forward="true" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
+        <state relative-caret-position="73">
+          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
             <element signature="method#checkParameterMatch#0;class#SemanticChecker#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="944">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="method#FunctionCollector#0;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#0;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#4;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#6;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#7;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#8;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#9;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#10;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#11;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#12;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#13;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#14;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#15;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#16;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#17;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#18;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#19;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#20;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#21;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#22;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#23;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#24;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#25;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#26;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#27;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#28;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#29;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#30;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#31;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#visit#32;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#setCurrentScope#0;class#FunctionCollector#0" expanded="false" />
+            <element signature="method#exitCurrentScope#0;class#FunctionCollector#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

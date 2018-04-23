@@ -103,36 +103,25 @@ public class ASTConstructor extends MlangBaseListener
         {
             for (MlangParser.ParameterContext item : ctx.formal_parameter().parameter())
             {
-                ParameterObject object = new ParameterObject(item.ID().getText(), new Type(item.type().getText(), 4));
-                FuncParamNode node = new FuncParamNode(new Position(ctx.getStart().getLine()), object);
-                paras.add(node);
+                paras.add((FuncParamNode)map.get(item));
             }
         }
         BlockNode blockNode = (BlockNode) map.get(ctx.block());
         Position pos = new Position(ctx.getStart().getLine());
-        Type ret_type = new Type(ctx.type().getText(), 4);
+        Type ret_type;
+        if(ctx.type() != null)
+            ret_type = new Type(ctx.type().getText(), 4);
+        else
+            ret_type = new Type(ctx.ID().getText(), 4);
         FuncDecObject func = new FuncDecObject(ctx.ID().getText(), paras, ret_type);
         FuncDecNode funcDecNode = new FuncDecNode(pos, func, blockNode);
         map.put(ctx, funcDecNode);
     }
 
-//    @Override
-//    public void enterFormal_parameter(MlangParser.Formal_parameterContext ctx)
-//    {
-//        System.out.println("formal_parameter");
-//    }
-//
-//    @Override
-//    public void exitFormal_parameter(MlangParser.Formal_parameterContext ctx)
-//    {
-//        System.out.println("out of formal_parameter");
-//    }
-
     @Override
     public void exitVariableDecl(MlangParser.VariableDeclContext ctx)
     {
         Position pos = new Position(ctx.getStart().getLine());
-//        Type type = new Type(ctx.type().getText(), 4);
         Type type = (Type)map.get(ctx.type());
         String id = ctx.ID().getText();
         ExprNode expr = (ExprNode) map.get(ctx.expression());
@@ -144,7 +133,8 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitParameter(MlangParser.ParameterContext ctx)
     {
-        map.put(ctx, new ParameterObject(ctx.ID().getText(), (Type) map.get(ctx.type())));
+        map.put(ctx, new FuncParamNode(new Position(ctx.getStart().getLine()),
+                new ParameterObject(ctx.ID().getText(), (Type) map.get(ctx.type()))));
     }
 
     @Override

@@ -16,6 +16,7 @@ import Code.ASTTraversal.Scope.Scope;
 import java.util.List;
 import java.util.Stack;
 
+//TODO Constructors
 public class SemanticChecker implements ASTTraversal
 {
     private Scope currentScope;
