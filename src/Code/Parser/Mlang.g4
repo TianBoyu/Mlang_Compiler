@@ -124,5 +124,5 @@ DIV     : '/';
 ADD     : '+';
 SUB     : '-';
 
-ID      : [a-zA-Z]+[a-zA-Z_]*;
+ID      : [a-zA-Z]+[a-zA-Z_0-9]*;
 WS      : [ \t\n\r]+ -> skip;

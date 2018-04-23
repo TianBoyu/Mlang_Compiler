@@ -9,4 +9,13 @@ public enum BinaryOp
     {
         return op.name();
     }
+    public static boolean isArith(BinaryOp op)
+    {
+        return (op != EQU && op != NEQ);
+    }
+    public static boolean isCompare(BinaryOp op)
+    {
+        return (op == SLT || op == SGT || op ==SEQ || op == BEQ || op == EQU || op == NEQ);
+    }
+
 }

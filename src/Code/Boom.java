@@ -13,8 +13,6 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Code.Parser.*;
 
-import static java.lang.System.exit;
-
 public class Boom {
     public static void checkSemantic(ProgNode program)
     {
@@ -39,7 +37,7 @@ public class Boom {
     public static void main(String[] args) throws Exception
     {
         InputStream is = System.in;
-//        InputStream is = new FileInputStream("Test/TestSemantic/test684.mx");
+//        InputStream is = new FileInputStream("Test/TestSemantic/test_whatever.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

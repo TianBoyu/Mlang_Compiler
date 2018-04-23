@@ -4,6 +4,7 @@ import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
+import Code.AST.Tools.BinaryOp;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.UnaryOp;
 import Code.AST.Type.ClassType;
@@ -158,7 +159,18 @@ public class VariableCollector implements ASTTraversal
             errorHandler.addError(node.getPosition(), "cannot operate with type "
                     + node.getLhs().getExprType().getTypeName().toString() + " and type "
                     + node.getLhs().getExprType().getTypeName().toString());
-        node.setExprType(node.getLhs().getExprType());
+        if(BinaryOp.isArith(node.getOp()) && node.getLhs().getExprType().getTypeName() != Name.getName("int"))
+        {
+            if(!(node.getOp() == BinaryOp.ADD && node.getLhs().getExprType().getTypeName() == Name.getName("string")))
+            {
+                errorHandler.addError(node.getPosition(),
+                        "type " + node.getLhs().getExprType().getTypeName().toString() + " cannot operate");
+            }
+        }
+        if(BinaryOp.isCompare(node.getOp()))
+            node.setExprType(new Type("bool", 1));
+        else
+            node.setExprType(node.getLhs().getExprType());
 
     }
 
@@ -346,6 +358,9 @@ public class VariableCollector implements ASTTraversal
         if(node == null) return;
         setCurrentScope(node.getInternalScope());
         visit(node.getCondition());
+        if(node.getCondition().getExprType().getTypeName() != Name.getName("bool"))
+            errorHandler.addError(node.getPosition(),
+                    "conditions in if statement must be of bool type");
         visit(node.getThen());
         if(node.getElseThen() != null)
             visit(node.getElseThen());
@@ -372,6 +387,9 @@ public class VariableCollector implements ASTTraversal
         if(node == null) return;
         setCurrentScope(node.getInternalScope());
         visit(node.getCondition());
+        if(node.getCondition().getExprType().getTypeName() != Name.getName("bool"))
+            errorHandler.addError(node.getPosition(),
+                    "conditions in while statement must be of bool type");
         visit(node.getThen());
         exitCurrentScope();
     }

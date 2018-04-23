@@ -5,6 +5,7 @@ import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Tools.Name;
+import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
 
@@ -24,6 +25,9 @@ public class SemanticChecker implements ASTTraversal
     }
     public void process(ProgNode progNode)
     {
+        if(!currentScope.containsNode(Name.getName("main")) ||
+                !currentScope.findNode(Name.getName("main")).isFunction())
+            errorHandler.addError(new Position(0), "no main function");
         visit(progNode);
     }
     @Override
