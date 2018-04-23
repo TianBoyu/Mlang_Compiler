@@ -19,21 +19,20 @@ public class SemanticChecker implements ASTTraversal
 
     public SemanticChecker(Scope topScope, ErrorHandler handler)
     {
-        currentScope = topScope;
-        scopeStack.push(currentScope);
         errorHandler = handler;
     }
     public void process(ProgNode progNode)
     {
-        if(!currentScope.containsNode(Name.getName("main")) ||
-                !currentScope.findNode(Name.getName("main")).isFunction())
-            errorHandler.addError(new Position(0), "no main function");
         visit(progNode);
     }
     @Override
     public void visit(ProgNode node)
     {
         if(node == null) return;
+        setCurrentScope(node.getScope());
+        if(!currentScope.containsNode(Name.getName("main")) ||
+                !currentScope.findNode(Name.getName("main")).isFunction())
+            errorHandler.addError(new Position(0), "no main function");
         for(DeclNode item : node.getDeclares())
             visit(item);
     }

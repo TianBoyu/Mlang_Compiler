@@ -22,7 +22,7 @@ public class VariableCollector implements ASTTraversal
 
     public VariableCollector(Scope topScope, ErrorHandler handler)
     {
-        setCurrentScope(topScope);
+//        setCurrentScope(topScope);
         errorHandler = handler;
     }
     public void process(ProgNode progNode)
@@ -33,8 +33,10 @@ public class VariableCollector implements ASTTraversal
     public void visit(ProgNode node)
     {
         if(node == null) return;
+        setCurrentScope(node.getScope());
         for(DeclNode item : node.getDeclares())
             visit(item);
+        node.setScope(currentScope);
     }
 
     @Override
@@ -53,6 +55,7 @@ public class VariableCollector implements ASTTraversal
             visit(item);
         for(VarDecNode item : node.getMemberVarible()   )
             visit(item);
+        node.setInternalScope(currentScope);
         exitCurrentScope();
     }
 
@@ -71,8 +74,9 @@ public class VariableCollector implements ASTTraversal
         node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
-        currentScope.addNode(node);
+        currentScope.getParent().addNode(node);
         visit(node.getBlock());
+        node.setInternalScope(currentScope);
         exitCurrentScope();
     }
 
@@ -348,8 +352,8 @@ public class VariableCollector implements ASTTraversal
                     "end condition should be of bool type");
         visit(node.getUpdate());
         visit(node.getBlock());
+        node.setInternalScope(currentScope);
         exitCurrentScope();
-        //TODO type of end condition should be bool
     }
 
     @Override
@@ -364,6 +368,7 @@ public class VariableCollector implements ASTTraversal
         visit(node.getThen());
         if(node.getElseThen() != null)
             visit(node.getElseThen());
+        node.setInternalScope(currentScope);
         exitCurrentScope();
     }
 
@@ -391,6 +396,7 @@ public class VariableCollector implements ASTTraversal
             errorHandler.addError(node.getPosition(),
                     "conditions in while statement must be of bool type");
         visit(node.getThen());
+        node.setInternalScope(currentScope);
         exitCurrentScope();
     }
 

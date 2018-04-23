@@ -29,6 +29,7 @@ public class ScopeCollector implements ASTTraversal
         if(node == null) return;
         for(DeclNode item : node.getDeclares())
             visit(item);
+        node.setScope(currentScope);
     }
 
     @Override
@@ -221,6 +222,8 @@ public class ScopeCollector implements ASTTraversal
         scope.setLoop(true);
         node.setInternalScope(scope);
         setCurrentScope(scope);
+        visit(node.getBlock());
+        exitCurrentScope();
     }
 
     @Override
@@ -230,6 +233,10 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         node.setInternalScope(scope);
         setCurrentScope(scope);
+        visit(node.getThen());
+        if(node.getElseThen() != null)
+            visit(node.getElseThen());
+        exitCurrentScope();
     }
 
     @Override
@@ -246,6 +253,8 @@ public class ScopeCollector implements ASTTraversal
         scope.setLoop(true);
         node.setInternalScope(scope);
         setCurrentScope(scope);
+        visit(node.getThen());
+        exitCurrentScope();
     }
 
     @Override

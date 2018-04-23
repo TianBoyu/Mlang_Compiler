@@ -3,6 +3,7 @@ package Code.AST.Node;
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Tools.Position;
 import Code.ASTTraversal.ASTTraversal;
+import Code.ASTTraversal.Scope.Scope;
 
 import java.util.List;
 
@@ -29,6 +30,18 @@ public class ProgNode extends ASTBaseNode
         }
     }
     private List<DeclNode> declares;
+    private Scope scope;
+
+    public Scope getScope()
+    {
+        return scope;
+    }
+
+    public void setScope(Scope scope)
+    {
+        this.scope = scope;
+    }
+
     @Override
     public void accept(ASTTraversal visitor)
     {
