@@ -51,7 +51,7 @@ public class SemanticChecker implements ASTTraversal
         setCurrentScope(node.getInternalScope());
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
-        for(VarDecNode item : node.getMemberVarible()   )
+        for(VarDecNode item : node.getMemberVarible())
             visit(item);
         exitCurrentScope();
     }
@@ -63,7 +63,7 @@ public class SemanticChecker implements ASTTraversal
         setCurrentScope(node.getInternalScope());
         for(FuncParamNode item : node.getParameter())
             visit(item);
-        visit(node.getBlock());
+//        visit(node.getBlock());
         exitCurrentScope();
     }
 
@@ -144,9 +144,7 @@ public class SemanticChecker implements ASTTraversal
     @Override
     public void visit(MemberExprNode node)
     {
-        if(node == null) return;
-        visit(node.getExpr());
-        visit(node.getMemberExpr());
+
     }
 
     @Override
@@ -218,8 +216,7 @@ public class SemanticChecker implements ASTTraversal
     @Override
     public void visit(ForNode node)
     {
-        if(node == null) return;
-        setCurrentScope(node.getInternalScope());
+
     }
 
     @Override
@@ -237,8 +234,7 @@ public class SemanticChecker implements ASTTraversal
     @Override
     public void visit(WhileNode node)
     {
-        if(node == null) return;
-        setCurrentScope(node.getInternalScope());
+
     }
 
     @Override
