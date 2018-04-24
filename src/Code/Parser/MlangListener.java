@@ -451,4 +451,14 @@ public interface MlangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAndExpr(MlangParser.AndExprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MlangParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(MlangParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MlangParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(MlangParser.FunctionCallContext ctx);
 }

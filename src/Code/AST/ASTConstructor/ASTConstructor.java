@@ -345,7 +345,13 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitMemberExpr(MlangParser.MemberExprContext ctx)
     {
-        MemberExprNode memberExprNode = new MemberExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression(0)), getExpr(ctx.expression(1)));
+        MemberExprNode memberExprNode;
+        if(ctx.functionCall() != null)
+            memberExprNode = new MemberExprNode(new Position(ctx.getStart().getLine()),
+                getExpr(ctx.expression()), (CallExprNode)map.get(ctx.functionCall()));
+        else
+            memberExprNode = new MemberExprNode(new Position(ctx.getStart().getLine()),
+                    getExpr(ctx.expression()), ctx.ID().getText());
         map.put(ctx, memberExprNode);
     }
 
@@ -486,6 +492,21 @@ public class ASTConstructor extends MlangBaseListener
 
     @Override
     public void exitCallExpr(MlangParser.CallExprContext ctx)
+    {
+        List<ExprNode> params = new ArrayList<>();
+        if(ctx.functionCall().actual_parameter() != null)
+        {
+            for (MlangParser.ExpressionContext item : ctx.functionCall().actual_parameter().expression())
+            {
+                params.add((ExprNode) map.get(item));
+            }
+        }
+        map.put(ctx, new CallExprNode(new Position(ctx.getStart().getLine()), ctx.functionCall().ID().getText(),
+                new ExprListNode(new Position(ctx.getStart().getLine()), params)));
+    }
+
+    @Override
+    public void exitFunctionCall(MlangParser.FunctionCallContext ctx)
     {
         List<ExprNode> params = new ArrayList<>();
         if(ctx.actual_parameter() != null)

@@ -7,10 +7,18 @@
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" afterPath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTConstructor/ASTConstructor.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTConstructor/ASTConstructor.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/SemanticChecker.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/SemanticChecker.class" />
       <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" afterPath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangBaseListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangBaseVisitor.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangBaseVisitor.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangListener.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangListener.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangVisitor.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangVisitor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +36,8 @@
             <file leaf-file-name="test_whatever.mx" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="31710">
-                    <caret line="1057" column="0" lean-forward="true" selection-start-line="1057" selection-start-column="0" selection-end-line="1057" selection-end-column="0" />
+                  <state relative-caret-position="1350">
+                    <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
                     <folding />
                   </state>
                 </provider>
@@ -45,9 +53,28 @@
       <file leaf-file-name="ASTConstructor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
+            <state relative-caret-position="450">
+              <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MemberExprNode.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="57" column="44" lean-forward="false" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+              <folding>
+                <element signature="e#806#807#0" expanded="true" />
+                <element signature="e#841#842#0" expanded="true" />
+                <element signature="e#874#875#0" expanded="true" />
+                <element signature="e#899#900#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+                <element signature="e#979#980#0" expanded="true" />
+                <element signature="e#1201#1202#0" expanded="true" />
+                <element signature="e#1236#1237#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,7 +82,7 @@
       <file leaf-file-name="FunctionCollector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="944">
+            <state relative-caret-position="180">
               <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
                 <element signature="method#FunctionCollector#0;class#FunctionCollector#0" expanded="false" />
@@ -118,8 +145,8 @@
       <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+            <state relative-caret-position="164">
+              <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#727#728#0" expanded="true" />
@@ -147,8 +174,8 @@
       <file leaf-file-name="Mlang.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="64" column="16" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
+            <state relative-caret-position="1221">
+              <caret line="95" column="5" lean-forward="false" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -164,11 +191,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Boom.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Boom.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="245">
-              <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+              <caret line="40" column="35" lean-forward="false" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -185,8 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exitCa;</find>
-      <find>Binary</find>
       <find>ExprNode</find>
       <find>Sta</find>
       <find>FUn</find>
@@ -215,6 +240,8 @@
       <find>exit</find>
       <find>ArrayE</find>
       <find>ArrayEx</find>
+      <find>Mem</find>
+      <find>exitCa</find>
     </findStrings>
     <replaceStrings>
       <replace>actuall_parameters</replace>
@@ -267,7 +294,6 @@
         <option value="$PROJECT_DIR$/Test/TestSemantic/test684.mx" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test610.mx" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/CallExprNode.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/ASTPrinter.java" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test654.mx" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test655.mx" />
@@ -280,14 +306,15 @@
         <option value="$PROJECT_DIR$/src/Code/AST/Node/ProgNode.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/VariableCollector.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ASTTraversal.java" />
-        <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
         <option value="$PROJECT_DIR$/src/Code/AST/Type/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
-        <option value="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
-        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" />
-        <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
+        <option value="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
         <option value="$PROJECT_DIR$/src/Code/Boom.java" />
+        <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
+        <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
+        <option value="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
+        <option value="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java" />
       </list>
     </option>
   </component>
@@ -451,8 +478,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Code\Parser\" />
       <recent name="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Code\Parser" />
+      <recent name="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Code\Parser\" />
       <recent name="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Code\Parser\Code\Parser" />
       <recent name="F:\programing\Compiler\M_Language_Compiler\Mlang_Compiler\src\Parser" />
     </key>
@@ -633,7 +660,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.50214595" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27107063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27107063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -644,7 +671,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32118452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32118452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -717,14 +744,8 @@
           <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="70" />
+      <option name="time" value="71" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -778,7 +799,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/Initializer.java" />
     <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test610.mx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1061,7 +1081,7 @@
         <state relative-caret-position="300">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1097,14 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="64" column="16" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/IdExprNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -1120,37 +1132,46 @@
         <state relative-caret-position="180">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31710">
-          <caret line="1057" column="0" lean-forward="true" selection-start-line="1057" selection-start-column="0" selection-end-line="1057" selection-end-column="0" />
+        <state relative-caret-position="1350">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="method#checkParameterMatch#0;class#SemanticChecker#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="245">
+          <caret line="40" column="35" lean-forward="false" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="944">
+        <state relative-caret-position="180">
           <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding>
             <element signature="method#FunctionCollector#0;class#FunctionCollector#0" expanded="false" />
@@ -1189,35 +1210,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncDecNode.java">
+    <entry file="file://$PROJECT_DIR$/src/Code/Parser/Mlang.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/DeclNode/FuncParamNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="1221">
+          <caret line="95" column="5" lean-forward="false" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
+        <state relative-caret-position="450">
+          <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
+    <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="164">
+          <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
+            <element signature="method#checkParameterMatch#0;class#SemanticChecker#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="57" column="44" lean-forward="false" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+          <folding>
+            <element signature="e#806#807#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#874#875#0" expanded="true" />
+            <element signature="e#899#900#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#1201#1202#0" expanded="true" />
+            <element signature="e#1236#1237#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

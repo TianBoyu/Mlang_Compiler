@@ -60,11 +60,12 @@ actual_parameter
     : expression (',' expression)*
     ;
 
+
 expression 
-    : expression '.' expression                                 #memberExpr
+    : expression '.' (ID | functionCall)                        #memberExpr
     | expression '[' expression ']'                             #arrayExpr
     | expression op=('++'|'--')                                 #suffixExpr
-    | ID '(' actual_parameter? ')'                              #callExpr
+    | functionCall                                              #callExpr
     | op=('++'|'--') expression                                 #prefixExpr
     | op=('+'|'-') expression                                   #prefixExpr
     | op=('!'|'~') expression                                   #prefixExpr
@@ -90,6 +91,9 @@ expression
     | expression '=' expression                                 #assignExpr
     ;
 
+functionCall
+    : ID '(' actual_parameter? ')'
+    ;
 
 BOOL    : 'bool';
 INT     : 'int';

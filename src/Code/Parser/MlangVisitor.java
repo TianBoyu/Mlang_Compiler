@@ -271,4 +271,10 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAndExpr(MlangParser.AndExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MlangParser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(MlangParser.FunctionCallContext ctx);
 }
