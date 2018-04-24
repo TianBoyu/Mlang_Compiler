@@ -171,10 +171,7 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(MemberExprNode node)
     {
-        //TODO
         if(node == null) return;
-        visit(node.getExpr());
-        visit(node.getMemberExpr());
     }
 
     @Override

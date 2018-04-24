@@ -250,6 +250,26 @@ public class SemanticChecker implements ASTTraversal
     {
         if(node == null) return;
         visit(node.getExpr());
+        if(!(node.getExpr().getExprType() instanceof ClassType))
+        {
+            errorHandler.addError(node.getPosition(), "'.' should be applied to a class");
+        }
+        Scope scope = currentScope.findType(node.getExpr().getExprType().getTypeName()).getClassNode().getInternalScope();
+        if(!scope.containsNode(node.getName()))
+        {
+            errorHandler.addError(node.getPosition(), node.getName().toString() + " have not been declared");
+        }
+        if(node.isFunctionCall())
+        {
+            FuncDecNode func = (FuncDecNode)scope.findNode(node.getName());
+            node.setExprType(func.getReturnType());
+            visit(node.getFunctionCall().getParam());
+            checkParameterMatch(func, node.getFunctionCall());
+        }
+        else
+        {
+            node.setExprType(((VarDecNode)scope.findNode(node.getName())).getType());
+        }
 
 
     }
