@@ -3,6 +3,7 @@ package Code.AST.Node.DeclNode;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.ClassType;
+import Code.AST.Type.Type;
 import Code.ASTTraversal.ASTTraversal;
 import Code.ASTTraversal.Scope.Scope;
 
@@ -25,6 +26,10 @@ public class ClassDecNode extends DeclNode
     public ClassType getType()
     {
         return type;
+    }
+    public void setType(ClassType t)
+    {
+        type = t;
     }
     public List<FuncDecNode> getMemberFunction()
     {

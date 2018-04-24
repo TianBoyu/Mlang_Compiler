@@ -45,6 +45,7 @@ public class ScopeCollector implements ASTTraversal
         if(!currentScope.isTop())
             errorHandler.addError(node.getPosition(), "class defination should be at top scope");
         currentScope.addType(node);
+        node.setType((ClassType)currentScope.findType(node.getName()));
         Scope scope = new Scope(currentScope);
         scope.setClass(true);
         node.setInternalScope(scope);
@@ -65,6 +66,7 @@ public class ScopeCollector implements ASTTraversal
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setFunction(true);
+        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         for(FuncParamNode item : node.getParameter())
@@ -189,7 +191,7 @@ public class ScopeCollector implements ASTTraversal
     }
 
     @Override
-    public void visit(UnitExprNode node)
+    public void visit(ThisExprNode node)
     {
 
     }
@@ -204,8 +206,15 @@ public class ScopeCollector implements ASTTraversal
     @Override
     public void visit(BlockNode node)
     {
+        Scope scope = new Scope(currentScope);
+        scope.setClass(currentScope.isClass());
+        scope.setFunction(currentScope.isFunction());
+        scope.setLoop(currentScope.isLoop());
+        setCurrentScope(scope);
+        node.setScope(scope);
         for(StatNode item : node.getStatements())
             visit(item);
+        exitCurrentScope();
     }
 
     @Override
@@ -227,6 +236,7 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         scope.setLoop(true);
         scope.setFunction(currentScope.isFunction());
+        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getBlock());
@@ -240,6 +250,7 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         scope.setLoop(currentScope.isLoop());
         scope.setFunction(currentScope.isFunction());
+        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());
@@ -261,6 +272,7 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         scope.setLoop(true);
         scope.setFunction(currentScope.isFunction());
+        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());

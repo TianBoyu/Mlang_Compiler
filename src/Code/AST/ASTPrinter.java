@@ -270,7 +270,7 @@ public class ASTPrinter implements ASTTraversal
     }
 
     @Override
-    public void visit(UnitExprNode node)
+    public void visit(ThisExprNode node)
     {
         if(node == null) return;
         printStream.println(indent.toString() + node.getClass().getSimpleName() + node.getName());

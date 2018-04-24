@@ -4,15 +4,11 @@ import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
-import Code.AST.Tools.BinaryOp;
-import Code.AST.Tools.Name;
-import Code.AST.Tools.UnaryOp;
 import Code.AST.Type.ArrayType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
 
-import java.util.List;
 import java.util.Stack;
 
 public class FunctionCollector implements ASTTraversal
@@ -225,7 +221,7 @@ public class FunctionCollector implements ASTTraversal
     }
 
     @Override
-    public void visit(UnitExprNode node)
+    public void visit(ThisExprNode node)
     {
         //TODO
     }

@@ -44,7 +44,7 @@ public class Scope
     {
         if(scopeNodes.containsKey(node.getName()))
         {
-            throw new RuntimeException(node.getName().toString() + " have been declared at " + scopeNodes.get(node.getName()).getPosition());
+            throw new RuntimeException(node.getName().toString() + " have been declared at Line " + scopeNodes.get(node.getName()).getPosition().getLineNum());
         }
         if(!node.isFunction() && ((VarDecNode)node).getType().getTypeName() == Name.getName("void"))
         {

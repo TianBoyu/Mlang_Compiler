@@ -2,6 +2,7 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Tools.Position;
 import Code.ASTTraversal.ASTTraversal;
+import Code.ASTTraversal.Scope.Scope;
 
 import java.util.List;
 
@@ -16,9 +17,20 @@ public class BlockNode extends StatNode
         return statements;
     }
     private List<StatNode> statements;
+    private Scope scope;
     @Override
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+
+    public Scope getScope()
+    {
+        return scope;
+    }
+
+    public void setScope(Scope scope)
+    {
+        this.scope = scope;
     }
 }

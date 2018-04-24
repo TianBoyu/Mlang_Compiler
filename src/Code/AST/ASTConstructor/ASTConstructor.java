@@ -328,8 +328,8 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitThisExpr(MlangParser.ThisExprContext ctx)
     {
-        UnitExprNode unitExprNode = new UnitExprNode(new Position(ctx.getStart().getLine()), "this");
-        map.put(ctx, unitExprNode);
+        ThisExprNode thisExprNode = new ThisExprNode(new Position(ctx.getStart().getLine()), "this");
+        map.put(ctx, thisExprNode);
     }
 
     @Override

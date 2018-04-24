@@ -3,9 +3,9 @@ package Code.AST.Node.ExprNode;
 import Code.AST.Tools.Position;
 import Code.ASTTraversal.ASTTraversal;
 
-public class UnitExprNode extends ExprNode
+public class ThisExprNode extends ExprNode
 {
-    public UnitExprNode(Position _pos, String _name)
+    public ThisExprNode(Position _pos, String _name)
     {
         super(_pos);
         name = _name;

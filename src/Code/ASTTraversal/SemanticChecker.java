@@ -24,6 +24,7 @@ public class SemanticChecker implements ASTTraversal
     public Stack<Scope> scopeStack = new Stack<>();
     private ErrorHandler errorHandler;
     private FuncDecNode currentFunction;
+    private ClassDecNode currentClass;
 
     public SemanticChecker(Scope topScope, ErrorHandler handler)
     {
@@ -60,6 +61,7 @@ public class SemanticChecker implements ASTTraversal
     public void visit(ClassDecNode node)
     {
         if(node == null) return;
+        currentClass = node;
         setCurrentScope(node.getInternalScope());
         for(VarDecNode item : node.getMemberVarible()   )
             visit(item);
@@ -67,6 +69,7 @@ public class SemanticChecker implements ASTTraversal
             visit(item);
         node.setInternalScope(currentScope);
         exitCurrentScope();
+        currentClass = null;
     }
 
     @Override
@@ -88,7 +91,7 @@ public class SemanticChecker implements ASTTraversal
     {
         if(node == null) return;
         node.setScope(currentScope);
-        if(!currentScope.isClass())
+        if(!(currentScope.isClass()))
         {
             if (node == null) return;
             try
@@ -390,9 +393,11 @@ public class SemanticChecker implements ASTTraversal
     }
 
     @Override
-    public void visit(UnitExprNode node)
+    public void visit(ThisExprNode node)
     {
-        //TODO
+        if(currentClass == null)
+            errorHandler.addError(node.getPosition(), "'this' should be in a class");
+        node.setExprType(currentClass.getType());
     }
 
     @Override
@@ -406,8 +411,10 @@ public class SemanticChecker implements ASTTraversal
     public void visit(BlockNode node)
     {
         if(node == null) return;
+        setCurrentScope(node.getScope());
         for(StatNode item : node.getStatements())
             visit(item);
+        exitCurrentScope();
     }
 
     @Override

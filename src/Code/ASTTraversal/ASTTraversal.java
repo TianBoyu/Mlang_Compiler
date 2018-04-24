@@ -33,7 +33,7 @@ public interface ASTTraversal
     void visit(PrefixExprNode node);
     void visit(StringConstNode node);
     void visit(SuffixExprNode node);
-    void visit(UnitExprNode node);
+    void visit(ThisExprNode node);
 
     void visit(StatNode node);
     void visit(BlockNode node);
