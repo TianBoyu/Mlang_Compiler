@@ -75,9 +75,9 @@ expression
     | expression op=('<<'|'>>') expression                      #binaryExpr
     | expression op=('<'|'<='|'>'|'>=') expression              #binaryExpr
     | expression op=('=='|'!=') expression                      #binaryExpr
-    | expression '&' expression                                 #binaryExpr
-    | expression '^' expression                                 #binaryExpr
-    | expression '|' expression                                 #binaryExpr
+    | expression op='&' expression                              #binaryExpr
+    | expression op='^' expression                              #binaryExpr
+    | expression op='|' expression                              #binaryExpr
     | expression '&&' expression                                #andExpr
     | expression '||' expression                                #orExpr
     | NUM                                                       #intConstExpr

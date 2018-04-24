@@ -8,7 +8,7 @@ public class ArrayType extends Type
     {
         super(_name, 1);
 //        basic_type = _basic;
-        if(dimension <= 0)
+        if(dimension <= 1)
         {
             this.basic_type = _basic;
         }

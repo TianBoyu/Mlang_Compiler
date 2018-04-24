@@ -179,7 +179,7 @@ public class ASTConstructor extends MlangBaseListener
     {
         Type baseType;
         ArrayType arrayType;
-        int dimension = (ctx.getChildCount() - 1) / 2;
+        int dimension = ctx.getChildCount() - 1;
         if (ctx.builtInType() != null)
         {
             baseType = (Type) map.get(ctx.builtInType());
@@ -385,6 +385,8 @@ public class ASTConstructor extends MlangBaseListener
     public void exitBinaryExpr(MlangParser.BinaryExprContext ctx)
     {
         BinaryOp op;
+        if(ctx.op == null)
+            System.out.println(1);
         switch (ctx.op.getText())
         {
             case "+":

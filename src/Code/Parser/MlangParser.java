@@ -2027,7 +2027,7 @@ public class MlangParser extends Parser {
 						setState(220);
 						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
 						setState(221);
-						match(T__24);
+						((BinaryExprContext)_localctx).op = match(T__24);
 						setState(222);
 						expression(15);
 						}
@@ -2039,7 +2039,7 @@ public class MlangParser extends Parser {
 						setState(223);
 						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
 						setState(224);
-						match(T__25);
+						((BinaryExprContext)_localctx).op = match(T__25);
 						setState(225);
 						expression(14);
 						}
@@ -2051,7 +2051,7 @@ public class MlangParser extends Parser {
 						setState(226);
 						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
 						setState(227);
-						match(T__26);
+						((BinaryExprContext)_localctx).op = match(T__26);
 						setState(228);
 						expression(13);
 						}

@@ -9,6 +9,7 @@ import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Tools.UnaryOp;
 import Code.AST.Type.ArrayType;
+import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.ASTTraversal.Scope.Scope;
@@ -101,13 +102,20 @@ public class SemanticChecker implements ASTTraversal
         }
         if(node.getType() instanceof ClassType)
             node.setType(currentScope.findType(node.getType().getTypeName()));
+        if(node.getValue() == null) return;
         visit(node.getValue());
-        if(node.getValue() != null
-                && node.getValue().getExprType().getTypeName() != Name.getName("null")
-                && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
-            errorHandler.addError(node.getPosition(),
-                    node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
-                            node.getName().toString() + '(' + node.getType().getTypeName() + ')');
+        if(node.getValue().getExprType().getTypeName() != Name.getName("null"))
+        {
+            if (node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
+                errorHandler.addError(node.getPosition(),
+                        node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
+                                node.getName().toString() + '(' + node.getType().getTypeName() + ')');
+        }
+        else
+        {
+            if(node.getType() instanceof BuiltInType)
+                errorHandler.addError(node.getPosition(), "null cannot be assigned to built in type");
+        }
     }
 
     @Override
@@ -166,6 +174,11 @@ public class SemanticChecker implements ASTTraversal
                         + node.getLhs().getExprType().getTypeName().toString() + " to "
                         + node.getRhs().getExprType().getTypeName().toString());
         }
+        else
+        {
+            if(node.getLhs().getExprType() instanceof BuiltInType)
+                errorHandler.addError(node.getPosition(), "null cannot be assigned to built in type");
+        }
     }
 
     @Override
@@ -176,10 +189,12 @@ public class SemanticChecker implements ASTTraversal
         visit(node.getRhs());
         if(node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
         {
-            if(node.getOp() != BinaryOp.EQU)
+            if(!(node.getOp() == BinaryOp.EQU &&
+                    (node.getLhs().getExprType().getTypeName() == Name.getName("null")
+                    || node.getRhs().getExprType().getTypeName() == Name.getName("null"))))
                 errorHandler.addError(node.getPosition(), "cannot operate with type "
                         + node.getLhs().getExprType().getTypeName().toString() + " and type "
-                        + node.getLhs().getExprType().getTypeName().toString());
+                        + node.getRhs().getExprType().getTypeName().toString());
         }
         if(BinaryOp.isArith(node.getOp()) && node.getLhs().getExprType().getTypeName() != Name.getName("int"))
         {
@@ -409,9 +424,12 @@ public class SemanticChecker implements ASTTraversal
         setCurrentScope(node.getInternalScope());
         visit(node.getBeginCondition());
         visit(node.getEndCondition());
-        if(node.getEndCondition().getExprType().getTypeName() != Name.getName("bool"))
-            errorHandler.addError(node.getPosition(),
-                    "end condition should be of bool type");
+        if(node.getEndCondition() != null)
+        {
+            if (node.getEndCondition().getExprType().getTypeName() != Name.getName("bool"))
+                errorHandler.addError(node.getPosition(),
+                        "end condition should be of bool type");
+        }
         visit(node.getUpdate());
         visit(node.getBlock());
         node.setInternalScope(currentScope);
