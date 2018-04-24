@@ -172,6 +172,26 @@ public class Scope
         addNode(new FuncDecNode(new Position(0),
                                 new FuncDecObject("toString", paras, new BuiltInType("string", 4)),
                                 null));
+        addNode(new FuncDecNode(new Position(0),
+                                new FuncDecObject("size", new ArrayList<>(), new BuiltInType("int", 4)),
+                                null));
+        addNode(new FuncDecNode(new Position(0),
+                new FuncDecObject("length", new ArrayList<>(), new BuiltInType("int", 4)),
+                null));
+        paras.clear();
+        paras.add(new FuncParamNode(new Position(0), new ParameterObject("left", new Type("int", 4))));
+        paras.add(new FuncParamNode(new Position(0), new ParameterObject("right", new Type("int", 4))));
+        addNode(new FuncDecNode(new Position(0),
+                new FuncDecObject("substring", paras, new BuiltInType("string", 4)),
+                null));
+        addNode(new FuncDecNode(new Position(0),
+                new FuncDecObject("parseInt", new ArrayList<>(), new BuiltInType("int", 4)),
+                null));
+        paras.clear();
+        paras.add(new FuncParamNode(new Position(0), new ParameterObject("pos", new Type("int", 4))));
+        addNode(new FuncDecNode(new Position(0),
+                new FuncDecObject("ord", paras, new BuiltInType("int", 4)),
+                null));
     }
 
     public void Initialize()

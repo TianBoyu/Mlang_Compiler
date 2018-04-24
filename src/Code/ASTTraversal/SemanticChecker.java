@@ -87,8 +87,24 @@ public class SemanticChecker implements ASTTraversal
     {
         if(node == null) return;
         node.setScope(currentScope);
+        if(!currentScope.isClass())
+        {
+            if (node == null) return;
+            try
+            {
+                visit(node.getType());
+            } catch (Exception e)
+            {
+                errorHandler.addError(node.getPosition(), e.getMessage());
+            }
+            currentScope.addNode(node);
+        }
+        if(node.getType() instanceof ClassType)
+            node.setType(currentScope.findType(node.getType().getTypeName()));
         visit(node.getValue());
-        if(node.getValue() != null && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
+        if(node.getValue() != null
+                && node.getValue().getExprType().getTypeName() != Name.getName("null")
+                && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
             errorHandler.addError(node.getPosition(),
                     node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
                             node.getName().toString() + '(' + node.getType().getTypeName() + ')');
@@ -130,7 +146,7 @@ public class SemanticChecker implements ASTTraversal
         if(!(node.getArray().getExprType() instanceof ArrayType))
             errorHandler.addError(node.getPosition(),
                     "'[]' can not be applied to non-array element");
-        node.setExprType(node.getArray().getExprType());
+        node.setExprType(((ArrayType)node.getArray().getExprType()).getBasic_type());
         //TODO set Expr type
     }
 
@@ -143,10 +159,13 @@ public class SemanticChecker implements ASTTraversal
                     "assign operator can only be applied to a left value");
         visit(node.getLhs());
         visit(node.getRhs());
-        if(node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
-            errorHandler.addError(node.getPosition(), "cannot cast from "
-                    + node.getLhs().getExprType().getTypeName().toString() + " to "
-                    + node.getLhs().getExprType().getTypeName().toString());
+        if(node.getRhs().getExprType().getTypeName() != Name.getName("null"))
+        {
+            if (node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
+                errorHandler.addError(node.getPosition(), "cannot cast from "
+                        + node.getLhs().getExprType().getTypeName().toString() + " to "
+                        + node.getRhs().getExprType().getTypeName().toString());
+        }
     }
 
     @Override
@@ -156,9 +175,12 @@ public class SemanticChecker implements ASTTraversal
         visit(node.getLhs());
         visit(node.getRhs());
         if(node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
-            errorHandler.addError(node.getPosition(), "cannot operate with type "
-                    + node.getLhs().getExprType().getTypeName().toString() + " and type "
-                    + node.getLhs().getExprType().getTypeName().toString());
+        {
+            if(node.getOp() != BinaryOp.EQU)
+                errorHandler.addError(node.getPosition(), "cannot operate with type "
+                        + node.getLhs().getExprType().getTypeName().toString() + " and type "
+                        + node.getLhs().getExprType().getTypeName().toString());
+        }
         if(BinaryOp.isArith(node.getOp()) && node.getLhs().getExprType().getTypeName() != Name.getName("int"))
         {
             if(!(node.getOp() == BinaryOp.ADD && node.getLhs().getExprType().getTypeName() == Name.getName("string")))
@@ -243,7 +265,16 @@ public class SemanticChecker implements ASTTraversal
         visit(node.getExpr());
         if(!(node.getExpr().getExprType() instanceof ClassType))
         {
-            errorHandler.addError(node.getPosition(), "'.' should be applied to a class");
+            if(!((node.getExpr().getExprType() instanceof ArrayType
+                    && node.isFunctionCall()
+                    && node.getFunctionCall().getFuncName() == Name.getName("size"))
+                    || (node.getExpr().getExprType().getTypeName() == Name.getName("string")
+                    && node.isFunctionCall()
+                    && isStringBuiltIn(node.getFunctionCall().getFuncName()))))
+            {
+                errorHandler.addError(node.getPosition(), "wrong usage of '.'");
+            }
+            return;
         }
         Scope scope = currentScope.findType(node.getExpr().getExprType().getTypeName()).getClassNode().getInternalScope();
         if(!scope.containsNode(node.getName()))
@@ -409,6 +440,7 @@ public class SemanticChecker implements ASTTraversal
         if(node == null) return;
         if(!currentScope.isFunction())
             errorHandler.addError(node.getPosition(), "'return' must be in a function");
+        if(node.getExprNode() == null) return;
         visit(node.getExprNode());
         if(node.getExprNode().getExprType().getTypeName() != currentFunction.getReturnType().getTypeName())
             errorHandler.addError(node.getPosition(),
@@ -460,5 +492,12 @@ public class SemanticChecker implements ASTTraversal
     {
         currentScope = currentScope.getParent();
         scopeStack.pop();
+    }
+    private boolean isStringBuiltIn(Name name)
+    {
+        return (name == Name.getName("length")
+                || name == Name.getName("substring")
+                || name == Name.getName("parseInt")
+                || name == Name.getName("ord"));
     }
 }

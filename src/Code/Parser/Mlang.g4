@@ -20,7 +20,7 @@ statement
              cond=expression?';'
              update=expression?')' statement                    #forStat
     | WHILE '('expression ')' statement                         #whileStat
-    | RETURN expression';'                                      #returnStat
+    | RETURN expression?';'                                     #returnStat
     | BREAK ';'                                                 #breakStat
     | CONTINUE ';'                                              #continueStat
     | expression ';'                                            #exprStat

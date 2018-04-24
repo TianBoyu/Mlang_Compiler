@@ -36,7 +36,10 @@ public class FunctionCollector implements ASTTraversal
         if(node == null) return;
         setCurrentScope(node.getScope());
         for(DeclNode item : node.getDeclares())
+        {
+            if (item instanceof VarDecNode) continue;
             visit(item);
+        }
         node.setScope(currentScope);
     }
 
@@ -77,7 +80,6 @@ public class FunctionCollector implements ASTTraversal
             node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
-        visit(node.getBlock());
         node.getExternalScope().addNode(node);
         node.setInternalScope(currentScope);
         exitCurrentScope();
@@ -238,9 +240,9 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(BlockNode node)
     {
-        if(node == null) return;
-        for(StatNode item : node.getStatements())
-            visit(item);
+//        if(node == null) return;
+//        for(StatNode item : node.getStatements())
+//            visit(item);
     }
 
     @Override
