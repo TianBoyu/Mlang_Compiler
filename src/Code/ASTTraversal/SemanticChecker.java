@@ -167,6 +167,8 @@ public class SemanticChecker implements ASTTraversal
                     "assign operator can only be applied to a left value");
         visit(node.getLhs());
         visit(node.getRhs());
+        if(node.getRhs().getExprType() == null)
+            System.out.println(1);
         if(node.getRhs().getExprType().getTypeName() != Name.getName("null"))
         {
             if (node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
@@ -280,12 +282,20 @@ public class SemanticChecker implements ASTTraversal
         visit(node.getExpr());
         if(!(node.getExpr().getExprType() instanceof ClassType))
         {
-            if(!((node.getExpr().getExprType() instanceof ArrayType
+            if(node.getExpr().getExprType() instanceof ArrayType
                     && node.isFunctionCall()
                     && node.getFunctionCall().getFuncName() == Name.getName("size"))
-                    || (node.getExpr().getExprType().getTypeName() == Name.getName("string")
-                    && node.isFunctionCall()
-                    && isStringBuiltIn(node.getFunctionCall().getFuncName()))))
+            {
+                node.setExprType(new BuiltInType("int", 4));
+            }
+            else if (node.getExpr().getExprType().getTypeName() == Name.getName("string")
+                && node.isFunctionCall()
+                && isStringBuiltIn(node.getFunctionCall().getFuncName()))
+            {
+                FuncDecNode func = (FuncDecNode)currentScope.findNode(node.getName());
+                node.setExprType(func.getReturnType());
+            }
+            else
             {
                 errorHandler.addError(node.getPosition(), "wrong usage of '.'");
             }
@@ -460,7 +470,7 @@ public class SemanticChecker implements ASTTraversal
             errorHandler.addError(node.getPosition(), "'return' must be in a function");
         if(node.getExprNode() == null) return;
         visit(node.getExprNode());
-        if(node.getExprNode().getExprType().getTypeName() != currentFunction.getReturnType().getTypeName())
+        if(!Type.equal(currentFunction.getReturnType(), node.getExprNode().getExprType()))
             errorHandler.addError(node.getPosition(),
                     "function " + currentFunction.getName().toString() + " should not return a "
                     +node.getExprNode().getExprType().getTypeName().toString());
