@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" afterPath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTConstructor/ASTConstructor.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTConstructor/ASTConstructor.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTPrinter.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/ASTPrinter.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/UnitExprNode.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/ASTTraversal.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/ASTTraversal.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/FunctionCollector.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/FunctionCollector.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/ScopeCollector.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/ScopeCollector.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/SemanticChecker.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/ASTTraversal/SemanticChecker.class" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/ASTPrinter.java" afterPath="$PROJECT_DIR$/src/Code/AST/ASTPrinter.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/DeclNode/ClassDecNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/DeclNode/ClassDecNode.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/UnitExprNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/ThisExprNode.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/StatNode/BlockNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/StatNode/BlockNode.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/ASTTraversal.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/ASTTraversal.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/FunctionCollector.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" afterPath="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,23 +40,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ASTConstructor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="331" column="33" lean-forward="false" selection-start-line="331" selection-start-column="33" selection-end-line="331" selection-end-column="33" />
-              <folding>
-                <element signature="e#7178#7179#0" expanded="true" />
-                <element signature="e#7228#7229#0" expanded="true" />
-                <element signature="e#7317#7318#0" expanded="true" />
-                <element signature="e#7374#7375#0" expanded="true" />
-                <element signature="e#14934#14935#0" expanded="true" />
-                <element signature="e#14989#14990#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -139,7 +104,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScopeCollector.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScopeCollector.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="261">
@@ -172,6 +137,18 @@
                 <element signature="e#947#948#0" expanded="true" />
                 <element signature="e#983#984#0" expanded="true" />
                 <element signature="e#1083#1084#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boom.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -337,7 +314,6 @@
         <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
         <option value="$PROJECT_DIR$/src/Code/AST/Type/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Type/Type.java" />
-        <option value="$PROJECT_DIR$/src/Code/Boom.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/Scope/Scope.java" />
@@ -345,6 +321,7 @@
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/src/Code/AST/Node/DeclNode/ClassDecNode.java" />
         <option value="$PROJECT_DIR$/src/Code/ASTTraversal/ScopeCollector.java" />
+        <option value="$PROJECT_DIR$/src/Code/Boom.java" />
       </list>
     </option>
   </component>
@@ -700,7 +677,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29384965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24715263" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25482833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -709,7 +686,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32118452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32118452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1107,16 +1084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="40" column="35" lean-forward="true" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Node/ExprNode/MemberExprNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="507">
@@ -1283,6 +1250,16 @@
         <state relative-caret-position="261">
           <caret line="213" column="27" lean-forward="false" selection-start-line="213" selection-start-column="27" selection-end-line="213" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
