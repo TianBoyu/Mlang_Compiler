@@ -42,8 +42,11 @@ public class ScopeCollector implements ASTTraversal
     @Override
     public void visit(ClassDecNode node)
     {
+        if(!currentScope.isTop())
+            errorHandler.addError(node.getPosition(), "class defination should be at top scope");
         currentScope.addType(node);
         Scope scope = new Scope(currentScope);
+        scope.setClass(true);
         node.setInternalScope(scope);
         setCurrentScope(scope);
         for(FuncDecNode item : node.getMemberFunction())
@@ -56,6 +59,9 @@ public class ScopeCollector implements ASTTraversal
     @Override
     public void visit(FuncDecNode node)
     {
+        if(!currentScope.isTop() && !currentScope.isClass())
+            errorHandler.addError(node.getPosition(),
+                    "function defination should be in top scope or in a class");
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setFunction(true);
@@ -220,6 +226,7 @@ public class ScopeCollector implements ASTTraversal
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setLoop(true);
+        scope.setFunction(currentScope.isFunction());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getBlock());
@@ -232,6 +239,7 @@ public class ScopeCollector implements ASTTraversal
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setLoop(currentScope.isLoop());
+        scope.setFunction(currentScope.isFunction());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());
@@ -252,6 +260,7 @@ public class ScopeCollector implements ASTTraversal
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setLoop(true);
+        scope.setFunction(currentScope.isFunction());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());

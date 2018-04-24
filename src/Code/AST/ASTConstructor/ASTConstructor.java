@@ -109,11 +109,17 @@ public class ASTConstructor extends MlangBaseListener
         BlockNode blockNode = (BlockNode) map.get(ctx.block());
         Position pos = new Position(ctx.getStart().getLine());
         Type ret_type;
+        FuncDecObject func;
         if(ctx.type() != null)
+        {
             ret_type = new Type(ctx.type().getText(), 4);
+            func = new FuncDecObject(ctx.ID().getText(), paras, ret_type);
+        }
         else
+        {
             ret_type = new Type(ctx.ID().getText(), 4);
-        FuncDecObject func = new FuncDecObject(ctx.ID().getText(), paras, ret_type);
+            func = new FuncDecObject(ctx.ID().getText(), paras, ret_type, true);
+        }
         FuncDecNode funcDecNode = new FuncDecNode(pos, func, blockNode);
         map.put(ctx, funcDecNode);
     }

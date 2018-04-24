@@ -22,6 +22,7 @@ public class SemanticChecker implements ASTTraversal
     private Scope currentScope;
     public Stack<Scope> scopeStack = new Stack<>();
     private ErrorHandler errorHandler;
+    private FuncDecNode currentFunction;
 
     public SemanticChecker(Scope topScope, ErrorHandler handler)
     {
@@ -71,13 +72,14 @@ public class SemanticChecker implements ASTTraversal
     public void visit(FuncDecNode node)
     {
         if(node == null) return;
+        currentFunction = node;
         setCurrentScope(node.getInternalScope());
-        //TODO array type
         for(FuncParamNode item : node.getParameter())
             visit(item);
         visit(node.getBlock());
         node.setInternalScope(currentScope);
         exitCurrentScope();
+        currentFunction = null;
     }
 
     @Override
@@ -86,21 +88,10 @@ public class SemanticChecker implements ASTTraversal
         if(node == null) return;
         node.setScope(currentScope);
         visit(node.getValue());
-        try
-        {
-            visit(node.getType());
-        }
-        catch (Exception e)
-        {
-            errorHandler.addError(node.getPosition(), e.getMessage());
-        }
-        if(node.getType() instanceof ClassType)
-            node.setType(currentScope.findType(node.getType().getTypeName()));
         if(node.getValue() != null && node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
             errorHandler.addError(node.getPosition(),
                     node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
                             node.getName().toString() + '(' + node.getType().getTypeName() + ')');
-        currentScope.addNode(node);
     }
 
     @Override
@@ -378,7 +369,6 @@ public class SemanticChecker implements ASTTraversal
         if(!currentScope.isLoop())
 //            throw new RuntimeException("'break' must be in a loop");
             errorHandler.addError(node.getPosition(), "'continue' must be in a loop");
-
     }
 
     @Override
@@ -417,14 +407,13 @@ public class SemanticChecker implements ASTTraversal
     public void visit(ReturnNode node)
     {
         if(node == null) return;
-        if(node.getExprNode() == null) return;
-        while(!currentScope.isFunction())
-        {
-            currentScope = currentScope.getParent();
-            if(!currentScope.isFunction())
-                errorHandler.addError(node.getPosition(), "'return' must be in a function");
-        }
+        if(!currentScope.isFunction())
+            errorHandler.addError(node.getPosition(), "'return' must be in a function");
         visit(node.getExprNode());
+        if(node.getExprNode().getExprType().getTypeName() != currentFunction.getReturnType().getTypeName())
+            errorHandler.addError(node.getPosition(),
+                    "function " + currentFunction.getName().toString() + " should not return a "
+                    +node.getExprNode().getExprType().getTypeName().toString());
     }
 
     @Override

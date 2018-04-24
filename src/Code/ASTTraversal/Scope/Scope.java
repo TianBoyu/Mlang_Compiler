@@ -22,6 +22,7 @@ public class Scope
 
     private boolean isFunction;
     private boolean isLoop;
+    private boolean isClass;
 
     public Scope(boolean top)
     {
@@ -29,6 +30,7 @@ public class Scope
         isFunction = false;
         isLoop = false;
         this.parent = this;
+        isClass = false;
     }
     public Scope(Scope p)
     {
@@ -36,6 +38,7 @@ public class Scope
         this.parent = p;
         isFunction = false;
         isLoop = false;
+        isClass = false;
     }
     public void addNode(DeclNode node) throws RuntimeException
     {
@@ -116,6 +119,11 @@ public class Scope
         isLoop = loop;
     }
 
+    public void setClass(boolean c)
+    {
+        isClass = c;
+    }
+
     public boolean isFunction()
     {
         return isFunction;
@@ -124,6 +132,16 @@ public class Scope
     public boolean isLoop()
     {
         return isLoop;
+    }
+
+    public boolean isTop()
+    {
+        return isTop;
+    }
+
+    public boolean isClass()
+    {
+        return isClass;
     }
 
     public void InitializeBuiltInType()
@@ -135,7 +153,6 @@ public class Scope
     }
     public void InitializeBuiltInFunction()
     {
-        //TODO
         addNode(new FuncDecNode(new Position(0),
                                 new FuncDecObject("getInt", new ArrayList<>(), new BuiltInType("int", 4)),
                                 null));

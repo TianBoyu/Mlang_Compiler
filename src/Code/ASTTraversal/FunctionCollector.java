@@ -54,6 +54,8 @@ public class FunctionCollector implements ASTTraversal
         setCurrentScope(node.getInternalScope());
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
+        for(VarDecNode item : node.getMemberVarible())
+            visit(item);
         node.setInternalScope(currentScope);
         exitCurrentScope();
     }
@@ -63,7 +65,6 @@ public class FunctionCollector implements ASTTraversal
     {
         if(node == null) return;
         setCurrentScope(node.getInternalScope());
-        //TODO array type
         try
         {
             visit(node.getReturnType());
@@ -76,6 +77,7 @@ public class FunctionCollector implements ASTTraversal
             node.setReturnType(currentScope.findType(node.getReturnType().getTypeName()));
         for(FuncParamNode item : node.getParameter())
             visit(item);
+        visit(node.getBlock());
         node.getExternalScope().addNode(node);
         node.setInternalScope(currentScope);
         exitCurrentScope();
@@ -84,7 +86,18 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(VarDecNode node)
     {
-
+        if(node == null) return;
+        try
+        {
+            visit(node.getType());
+        }
+        catch (Exception e)
+        {
+            errorHandler.addError(node.getPosition(), e.getMessage());
+        }
+        if(node.getType() instanceof ClassType)
+            node.setType(currentScope.findType(node.getType().getTypeName()));
+        currentScope.addNode(node);
     }
 
     @Override
@@ -171,7 +184,6 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(MemberExprNode node)
     {
-        if(node == null) return;
     }
 
     @Override
@@ -226,7 +238,9 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(BlockNode node)
     {
-
+        if(node == null) return;
+        for(StatNode item : node.getStatements())
+            visit(item);
     }
 
     @Override
@@ -244,13 +258,23 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(ForNode node)
     {
-
+        if(node == null) return;
+        setCurrentScope(node.getInternalScope());
+        visit(node.getBlock());
+        node.setInternalScope(currentScope);
+        exitCurrentScope();
     }
 
     @Override
     public void visit(IfNode node)
     {
-
+        if(node == null) return;
+        setCurrentScope(node.getInternalScope());
+        visit(node.getThen());
+        if(node.getElseThen() != null)
+            visit(node.getElseThen());
+        node.setInternalScope(currentScope);
+        exitCurrentScope();
     }
 
     @Override
@@ -262,7 +286,11 @@ public class FunctionCollector implements ASTTraversal
     @Override
     public void visit(WhileNode node)
     {
-
+        if(node == null) return;
+        setCurrentScope(node.getInternalScope());
+        visit(node.getThen());
+        node.setInternalScope(currentScope);
+        exitCurrentScope();
     }
 
     @Override

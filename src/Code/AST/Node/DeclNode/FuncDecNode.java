@@ -82,6 +82,10 @@ public class FuncDecNode extends DeclNode
     {
         return function.getReturnType();
     }
+    public boolean isConstructor()
+    {
+        return function.isConstructor();
+    }
     public List<FuncParamNode> getParameter()
     {
         return function.getParameter();
