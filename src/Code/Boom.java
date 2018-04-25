@@ -18,8 +18,6 @@ public class Boom {
     {
         Scope topLevelScope = new Scope(true);
         ErrorHandler handler = new ErrorHandler();
-//        Initializer initializer = new Initializer(topLevelScope);
-//        initializer.Initialize();
         topLevelScope.Initialize();
         ScopeCollector scopeCollector = new ScopeCollector(topLevelScope, handler);
         scopeCollector.process(program);

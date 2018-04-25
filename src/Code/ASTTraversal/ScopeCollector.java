@@ -72,6 +72,7 @@ public class ScopeCollector implements ASTTraversal
         for(FuncParamNode item : node.getParameter())
             visit(item);
         visit(node.getBlock());
+        node.setInternalScope(node.getBlock().getScope());
         exitCurrentScope();
     }
 
