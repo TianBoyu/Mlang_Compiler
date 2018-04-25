@@ -272,6 +272,27 @@ public interface MlangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAndExpr(MlangParser.AndExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code wrongCreator}
+	 * labeled alternative in {@link MlangParser#creator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWrongCreator(MlangParser.WrongCreatorContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code arrayCreator}
+	 * labeled alternative in {@link MlangParser#creator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayCreator(MlangParser.ArrayCreatorContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code nonArrayCreator}
+	 * labeled alternative in {@link MlangParser#creator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNonArrayCreator(MlangParser.NonArrayCreatorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MlangParser#functionCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

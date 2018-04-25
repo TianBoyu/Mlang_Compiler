@@ -69,7 +69,7 @@ expression
     | op=('++'|'--') expression                                 #prefixExpr
     | op=('+'|'-') expression                                   #prefixExpr
     | op=('!'|'~') expression                                   #prefixExpr
-    | NEW type (('['expression']')+ ('[]')*)?                   #newExpr
+    | NEW creator                                               #newExpr
     | expression op=('*'|'/'|'%') expression                    #binaryExpr
     | expression op=('+'|'-') expression                        #binaryExpr
     | expression op=('<<'|'>>') expression                      #binaryExpr
@@ -89,6 +89,13 @@ expression
     | '(' expression ')'                                        #subExpr
     | THIS                                                      #thisExpr
     | expression '=' expression                                 #assignExpr
+    ;
+
+
+creator
+    : (userType | builtInType) ('[' expression ']')* ('[]')+ ('['expression']')+ #wrongCreator
+    | (userType | builtInType) ('[' expression ']')+ ('[]')*                    #arrayCreator
+    | userType                                                                     #nonArrayCreator
     ;
 
 functionCall

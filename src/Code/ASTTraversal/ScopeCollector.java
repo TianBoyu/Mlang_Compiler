@@ -162,6 +162,12 @@ public class ScopeCollector implements ASTTraversal
     }
 
     @Override
+    public void visit(CreatorNode node)
+    {
+
+    }
+
+    @Override
     public void visit(NullConstNode node)
     {
 

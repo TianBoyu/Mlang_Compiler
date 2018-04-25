@@ -306,15 +306,36 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitNewExpr(MlangParser.NewExprContext ctx)
     {
-        Type type = new Type(ctx.type().getText(), 4);
-        List<ExprNode> exprNodes = new ArrayList<>();
-        for (MlangParser.ExpressionContext item : ctx.expression())
-        {
-            exprNodes.add((ExprNode) map.get(item));
-        }
-        ExprListNode exprListNode = new ExprListNode(new Position(ctx.getStart().getLine()), exprNodes);
-        NewExprNode newExprNode = new NewExprNode(new Position(ctx.getStart().getLine()), type, exprListNode);
-        map.put(ctx, newExprNode);
+        CreatorNode creatorNode = (CreatorNode)map.get(ctx.creator());
+        map.put(ctx, new NewExprNode(new Position(ctx.getStart().getLine()), creatorNode));
+    }
+
+    @Override
+    public void exitWrongCreator(MlangParser.WrongCreatorContext ctx)
+    {
+//        super.exitWrongCreator(ctx);
+        throw new RuntimeException("wrong construction of array");
+    }
+
+    @Override
+    public void exitArrayCreator(MlangParser.ArrayCreatorContext ctx)
+    {
+        Type type;
+        if(ctx.userType() != null)
+            type = new Type(ctx.userType().ID().getText(), 1);
+        else type = new Type(ctx.builtInType().getText(), 1);
+        List<ExprNode> exprs = new ArrayList<>();
+        for(MlangParser.ExpressionContext item : ctx.expression())
+            exprs.add((ExprNode)map.get(item));
+        int dimension = getBracketNumber(ctx.getText());
+        map.put(ctx ,new CreatorNode(new Position(ctx.getStart().getLine()), type, exprs, dimension));
+    }
+
+    @Override
+    public void exitNonArrayCreator(MlangParser.NonArrayCreatorContext ctx)
+    {
+        Type type = new Type(ctx.userType().ID().getText(), 1);
+        map.put(ctx, new CreatorNode(new Position(ctx.getStart().getLine()), type, new ArrayList<>(), 0));
     }
 
     @Override
@@ -568,6 +589,17 @@ public class ASTConstructor extends MlangBaseListener
         if (ctx == null)
             return null;
         else return (StatNode) map.get(ctx);
+    }
+
+    private int getBracketNumber(String s)
+    {
+        int num = 0;
+        for(int i = 0; i < s.length(); ++i)
+        {
+            if(s.charAt(i) == '[')
+                ++num;
+        }
+        return num;
     }
 
 }

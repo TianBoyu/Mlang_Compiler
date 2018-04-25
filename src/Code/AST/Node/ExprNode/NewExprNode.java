@@ -6,27 +6,18 @@ import Code.ASTTraversal.ASTTraversal;
 
 public class NewExprNode extends ExprNode
 {
-    public NewExprNode(Position _pos, Type _type, ExprListNode _para)
+    public NewExprNode(Position _pos, CreatorNode c)
     {
         super(_pos);
-        type = _type;
-        parameter = _para;
+        creatorNode = c;
     }
-    private Type type;
-    private ExprListNode parameter;
+    private CreatorNode creatorNode;
 
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type)
+    public CreatorNode getCreatorNode()
     {
-        this.type = type;
+        return creatorNode;
     }
 
-    public ExprListNode getParameter() {
-        return parameter;
-    }
     @Override
     public void accept(ASTTraversal visitor)
     {

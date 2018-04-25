@@ -78,6 +78,12 @@ public class ASTPrinter implements ASTTraversal
     }
 
     @Override
+    public void visit(CreatorNode node)
+    {
+
+    }
+
+    @Override
     public void visit(VarDecNode node)
     {
         if(node == null) return;
@@ -216,12 +222,12 @@ public class ASTPrinter implements ASTTraversal
     @Override
     public void visit(NewExprNode node)
     {
-        if(node == null) return;
-        printStream.println(indent.toString() + node.getClass().getSimpleName());
-        Tab();
-        visit(node.getType());
-        visit(node.getParameter());
-        BackSpace();
+//        if(node == null) return;
+//        printStream.println(indent.toString() + node.getClass().getSimpleName());
+//        Tab();
+//        visit(node.getType());
+//        visit(node.getParameter());
+//        BackSpace();
     }
 
     @Override

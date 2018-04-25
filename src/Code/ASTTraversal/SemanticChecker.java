@@ -328,12 +328,27 @@ public class SemanticChecker implements ASTTraversal
     public void visit(NewExprNode node)
     {
         if(node == null) return;
-        visit(node.getParameter());
+        visit(node.getCreatorNode());
+        node.setExprType(node.getCreatorNode().getExprType());
+    }
+
+    @Override
+    public void visit(CreatorNode node)
+    {
+        if(node == null) return;
         if(!currentScope.containsType(node.getType().getTypeName()))
+        {
             errorHandler.addError(node.getPosition(),
-                    node.getType().getTypeName() + " is not declared");
-        node.setType(currentScope.findType(node.getType().getTypeName()));
-        node.setExprType(node.getType());
+                    node.getType().getTypeName().toString() + " is not declared");
+        }
+        if(node.getDimension() == 0)
+        {
+            node.setExprType(currentScope.findType(node.getType().getTypeName()));
+        }
+        else
+        {
+            node.setExprType(new ArrayType(node.getType(), node.getDimension()));
+        }
     }
 
     @Override
@@ -476,6 +491,10 @@ public class SemanticChecker implements ASTTraversal
         if(!currentScope.isFunction())
             errorHandler.addError(node.getPosition(), "'return' must be in a function");
         if(node.getExprNode() == null) return;
+        if(currentFunction.isConstructor() && node.getExprNode() != null)
+        {
+            errorHandler.addError(node.getPosition(), "cannot return any value in constructors");
+        }
         visit(node.getExprNode());
         if(!Type.equal(currentFunction.getReturnType(), node.getExprNode().getExprType()))
             errorHandler.addError(node.getPosition(),

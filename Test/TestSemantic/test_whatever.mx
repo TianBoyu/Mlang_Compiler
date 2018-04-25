@@ -1,18 +1,20 @@
-int b;
-int c;
+
 int main() {
+    int[] int_arr = (new int[2][])[3];
+
 }
-int c;
+
 
 
 
 /*!! metadata:
 === comment ===
-var-2-5100309127-hetianxing.mx
+noname-515030910637-xuzhenjia.txt
+trivial test
 === assert ===
-failure_compile
+success_compile
 === phase ===
-semantic pretest
+semantic extended
 === is_public ===
 True
 

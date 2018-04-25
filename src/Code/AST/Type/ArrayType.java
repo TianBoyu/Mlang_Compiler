@@ -17,6 +17,18 @@ public class ArrayType extends Type
             this.basic_type  = new ArrayType(_name, dimension - 1, _basic);
         }
     }
+    public ArrayType(Type _basic, int dimension)
+    {
+        super(_basic.getTypeName().toString(), 1);
+        if(dimension <= 1)
+        {
+            this.basic_type = _basic;
+        }
+        else
+        {
+            this.basic_type  = new ArrayType(_basic.getTypeName().toString(), dimension - 1, _basic);
+        }
+    }
 
     public final Type getBasic_type()
     {

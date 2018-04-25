@@ -28,6 +28,7 @@ public interface ASTTraversal
     void visit(IntConstNode node);
     void visit(MemberExprNode node);
     void visit(NewExprNode node);
+    void visit(CreatorNode node);
     void visit(NullConstNode node);
     void visit(OrExprNode node);
     void visit(PrefixExprNode node);

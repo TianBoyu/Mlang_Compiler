@@ -191,6 +191,12 @@ public class FunctionCollector implements ASTTraversal
     }
 
     @Override
+    public void visit(CreatorNode node)
+    {
+
+    }
+
+    @Override
     public void visit(NullConstNode node)
     {
 
