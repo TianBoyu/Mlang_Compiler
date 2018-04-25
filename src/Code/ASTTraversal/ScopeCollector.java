@@ -66,7 +66,7 @@ public class ScopeCollector implements ASTTraversal
         node.setExternalScope(currentScope);
         Scope scope = new Scope(currentScope);
         scope.setFunction(true);
-        scope.setClass(currentScope.isClass());
+//        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         for(FuncParamNode item : node.getParameter())
@@ -207,7 +207,7 @@ public class ScopeCollector implements ASTTraversal
     public void visit(BlockNode node)
     {
         Scope scope = new Scope(currentScope);
-        scope.setClass(currentScope.isClass());
+//        scope.setClass(currentScope.isClass());
         scope.setFunction(currentScope.isFunction());
         scope.setLoop(currentScope.isLoop());
         setCurrentScope(scope);
@@ -236,7 +236,7 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         scope.setLoop(true);
         scope.setFunction(currentScope.isFunction());
-        scope.setClass(currentScope.isClass());
+//        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getBlock());
@@ -250,7 +250,7 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         scope.setLoop(currentScope.isLoop());
         scope.setFunction(currentScope.isFunction());
-        scope.setClass(currentScope.isClass());
+//        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());
@@ -272,7 +272,7 @@ public class ScopeCollector implements ASTTraversal
         Scope scope = new Scope(currentScope);
         scope.setLoop(true);
         scope.setFunction(currentScope.isFunction());
-        scope.setClass(currentScope.isClass());
+//        scope.setClass(currentScope.isClass());
         node.setInternalScope(scope);
         setCurrentScope(scope);
         visit(node.getThen());

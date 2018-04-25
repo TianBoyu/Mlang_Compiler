@@ -63,7 +63,7 @@ public class SemanticChecker implements ASTTraversal
         if(node == null) return;
         currentClass = node;
         setCurrentScope(node.getInternalScope());
-        for(VarDecNode item : node.getMemberVarible()   )
+        for(VarDecNode item : node.getMemberVarible())
             visit(item);
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
