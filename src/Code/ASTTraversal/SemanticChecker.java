@@ -525,8 +525,9 @@ public class SemanticChecker implements ASTTraversal
     }
     private void exitCurrentScope()
     {
-        currentScope = currentScope.getParent();
+//        currentScope = currentScope.getParent();
         scopeStack.pop();
+        currentScope = scopeStack.peek();
     }
     private boolean isStringBuiltIn(Name name)
     {

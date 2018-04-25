@@ -1,17 +1,14 @@
-int a(int x) {
-	int x = 0;
-	return x;
-}
-
+int b;
+int c;
 int main() {
-	return 0;
 }
+int c;
 
 
 
 /*!! metadata:
 === comment ===
-var-4-5140309552-wancheng.mx
+var-2-5100309127-hetianxing.mx
 === assert ===
 failure_compile
 === phase ===
