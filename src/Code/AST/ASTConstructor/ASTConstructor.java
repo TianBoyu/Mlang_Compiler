@@ -18,6 +18,7 @@ import Code.AST.Type.Type;
 import Code.Parser.MlangBaseListener;
 import Code.Parser.MlangParser;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 import java.util.ArrayList;
@@ -112,7 +113,7 @@ public class ASTConstructor extends MlangBaseListener
         FuncDecObject func;
         if(ctx.type() != null)
         {
-            ret_type = new Type(ctx.type().getText(), 4);
+            ret_type = (Type)map.get(ctx.type());
             func = new FuncDecObject(ctx.ID().getText(), paras, ret_type);
         }
         else
@@ -313,7 +314,6 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitWrongCreator(MlangParser.WrongCreatorContext ctx)
     {
-//        super.exitWrongCreator(ctx);
         throw new RuntimeException("wrong construction of array");
     }
 
@@ -574,6 +574,12 @@ public class ASTConstructor extends MlangBaseListener
     {
         map.put(ctx, new AndExprNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression(0)),
                 getExpr(ctx.expression(1))));
+    }
+
+    @Override
+    public void visitErrorNode(ErrorNode node)
+    {
+        throw new RuntimeException(node.getText());
     }
 
     private ExprNode getExpr(MlangParser.ExpressionContext ctx)

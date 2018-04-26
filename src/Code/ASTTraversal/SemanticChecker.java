@@ -203,7 +203,8 @@ public class SemanticChecker implements ASTTraversal
         }
         if(BinaryOp.isArith(node.getOp()) && node.getLhs().getExprType().getTypeName() != Name.getName("int"))
         {
-            if(!(node.getOp() == BinaryOp.ADD && node.getLhs().getExprType().getTypeName() == Name.getName("string")))
+            if(!((node.getOp() == BinaryOp.ADD || BinaryOp.isCompare(node.getOp()))
+                    && node.getLhs().getExprType().getTypeName() == Name.getName("string")))
             {
                 errorHandler.addError(node.getPosition(),
                         "type " + node.getLhs().getExprType().getTypeName().toString() + " cannot operate");
