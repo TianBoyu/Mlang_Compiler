@@ -38,8 +38,10 @@ public class Boom {
 //        InputStream is = new FileInputStream("Test/TestSemantic/test_whatever.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
+        lexer.addErrorListener(MlangErrorListener.INSTANCE);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         MlangParser parser = new MlangParser(tokens);
+        parser.addErrorListener(MlangErrorListener.INSTANCE);
         ParseTree tree = parser.program();
 
         ParseTreeWalker walker = new ParseTreeWalker();

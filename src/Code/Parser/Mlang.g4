@@ -40,7 +40,7 @@ formal_parameter
     : parameter (','parameter)*
     ;
 
-arrayType : (builtInType | userType) ('[]')+;
+arrayType : (builtInType | userType) (LBRAC RBRAC)+;
 builtInType
     : BOOL | INT | STRING | VOID
     ;
@@ -93,8 +93,8 @@ expression
 
 
 creator
-    : (userType | builtInType) ('[' expression ']')* ('[]')+ ('['expression']')+ #wrongCreator
-    | (userType | builtInType) ('[' expression ']')+ ('[]')*                    #arrayCreator
+    : (userType | builtInType) ('[' expression ']')* (LBRAC RBRAC)+ ('['expression']')+ #wrongCreator
+    | (userType | builtInType) ('[' expression ']')+ (LBRAC RBRAC)*                    #arrayCreator
     | userType                                                                     #nonArrayCreator
     ;
 
@@ -133,6 +133,9 @@ MUL     : '*';
 DIV     : '/';
 ADD     : '+';
 SUB     : '-';
+
+LBRAC   : '[';
+RBRAC   : ']';
 
 ID      : [a-zA-Z]+[a-zA-Z_0-9]*;
 WS      : [ \t\n\r]+ -> skip;
