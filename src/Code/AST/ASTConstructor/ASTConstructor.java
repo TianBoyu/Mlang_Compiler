@@ -180,7 +180,7 @@ public class ASTConstructor extends MlangBaseListener
     {
         Type baseType;
         ArrayType arrayType;
-        int dimension = ctx.getChildCount() - 1;
+        int dimension = getBracketNumber(ctx.getText());
         if (ctx.builtInType() != null)
         {
             baseType = (Type) map.get(ctx.builtInType());
