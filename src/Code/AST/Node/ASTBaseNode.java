@@ -1,7 +1,7 @@
 package Code.AST.Node;
 
 import Code.AST.Tools.*;
-import Code.ASTTraversal.ASTTraversal;
+import Code.SemanticCheck.ASTTraversal;
 
 public abstract class ASTBaseNode
 {

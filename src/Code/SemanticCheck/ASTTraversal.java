@@ -1,4 +1,4 @@
-package Code.ASTTraversal;
+package Code.SemanticCheck;
 
 import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;

@@ -2,7 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
-import Code.ASTTraversal.ASTTraversal;
+import Code.SemanticCheck.ASTTraversal;
 
 public class IdExprNode extends ExprNode
 {

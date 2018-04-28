@@ -1,5 +1,5 @@
 package Code;
-
+//Boom is the main class
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -7,8 +7,8 @@ import java.io.InputStream;
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
 import Code.AST.Node.ProgNode;
-import Code.ASTTraversal.*;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.*;
+import Code.SemanticCheck.Scope.Scope;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import Code.Parser.*;
@@ -34,8 +34,8 @@ public class Boom {
     }
     public static void main(String[] args) throws Exception
     {
-        InputStream is = System.in;
-//        InputStream is = new FileInputStream("Test/TestSemantic/test_whatever.mx");
+//        InputStream is = System.in;
+        InputStream is = new FileInputStream("Test/TestSemantic/test_whatever.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
         lexer.addErrorListener(MlangErrorListener.INSTANCE);

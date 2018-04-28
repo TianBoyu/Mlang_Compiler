@@ -1,4 +1,4 @@
-package Code.ASTTraversal;
+package Code.SemanticCheck;
 
 import Code.AST.Tools.Position;
 import javafx.util.Pair;

@@ -2,7 +2,7 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
-import Code.ASTTraversal.ASTTraversal;
+import Code.SemanticCheck.ASTTraversal;
 
 public class ExprStatNode extends StatNode
 {

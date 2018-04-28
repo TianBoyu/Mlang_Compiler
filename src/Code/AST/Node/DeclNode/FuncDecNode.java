@@ -1,15 +1,13 @@
 package Code.AST.Node.DeclNode;
 
 import Code.AST.Node.StatNode.BlockNode;
-import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Object.FuncDecObject;
-import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.BuiltInType;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.ASTTraversal;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.ASTTraversal;
+import Code.SemanticCheck.Scope.Scope;
 
 import java.util.ArrayList;
 import java.util.List;

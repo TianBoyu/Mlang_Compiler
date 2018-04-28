@@ -3,9 +3,8 @@ package Code.AST.Node.DeclNode;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.ClassType;
-import Code.AST.Type.Type;
-import Code.ASTTraversal.ASTTraversal;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.ASTTraversal;
+import Code.SemanticCheck.Scope.Scope;
 
 import java.util.List;
 

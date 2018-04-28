@@ -1,7 +1,6 @@
-package Code.ASTTraversal.Scope;
+package Code.SemanticCheck.Scope;
 
 import Code.AST.Node.DeclNode.*;
-import Code.AST.Node.StatNode.StatNode;
 import Code.AST.Object.FuncDecObject;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Name;

@@ -1,4 +1,4 @@
-package Code.ASTTraversal;
+package Code.SemanticCheck;
 
 import Code.AST.Node.DeclNode.*;
 import Code.AST.Node.ExprNode.*;
@@ -12,7 +12,7 @@ import Code.AST.Type.ArrayType;
 import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.Scope.Scope;
 
 import java.util.List;
 import java.util.Stack;
@@ -21,7 +21,7 @@ import java.util.Stack;
 public class SemanticChecker implements ASTTraversal
 {
     private Scope currentScope;
-    public Stack<Scope> scopeStack = new Stack<>();
+    private Stack<Scope> scopeStack = new Stack<>();
     private ErrorHandler errorHandler;
     private FuncDecNode currentFunction;
     private ClassDecNode currentClass;

@@ -8,7 +8,6 @@ import Code.AST.Object.FuncDecObject;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Object.VarObject;
 import Code.AST.Tools.BinaryOp;
-import Code.AST.Tools.LoopBody;
 import Code.AST.Tools.Position;
 import Code.AST.Tools.UnaryOp;
 import Code.AST.Type.ArrayType;
@@ -41,10 +40,6 @@ public class ASTConstructor extends MlangBaseListener
     private ProgNode program;
     private ParseTreeProperty<Object> map = new ParseTreeProperty<>();
 
-    @Override
-    public void enterProgram(MlangParser.ProgramContext ctx)
-    {
-    }
 
     @Override
     public void exitProgram(MlangParser.ProgramContext ctx)
@@ -58,24 +53,6 @@ public class ASTConstructor extends MlangBaseListener
         program = new ProgNode(new Position(ctx.getStart().getLine()), declNodes);
     }
 
-    @Override
-    public void enterClassDecl(MlangParser.ClassDeclContext ctx)
-    {
-//        super.enterClassDecl(ctx);
-//        System.out.println("enter into class: " + ctx.ID().getText());
-    }
-
-    @Override
-    public void enterFunctionDecl(MlangParser.FunctionDeclContext ctx)
-    {
-//        System.out.println("enter into function: " + ctx.ID().getText());
-    }
-
-    @Override
-    public void enterVariableDecl(MlangParser.VariableDeclContext ctx)
-    {
-//        System.out.println("enter into varible: " + ctx.ID().getText());
-    }
 
     @Override
     public void exitClassDecl(MlangParser.ClassDeclContext ctx)
@@ -263,10 +240,10 @@ public class ASTConstructor extends MlangBaseListener
         ReturnNode returnNode;
         if (ctx.expression() != null)
         {
-            returnNode = new ReturnNode(new Position(ctx.getStart().getLine()), new LoopBody(), getExpr(ctx.expression()));
+            returnNode = new ReturnNode(new Position(ctx.getStart().getLine()), getExpr(ctx.expression()));
         } else
         {
-            returnNode = new ReturnNode(new Position(ctx.getStart().getLine()), new LoopBody(), null);
+            returnNode = new ReturnNode(new Position(ctx.getStart().getLine()), null);
         }
         map.put(ctx, returnNode);
     }
@@ -274,14 +251,14 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitBreakStat(MlangParser.BreakStatContext ctx)
     {
-        BreakNode breakNode = new BreakNode(new Position(ctx.getStart().getLine()), new LoopBody());
+        BreakNode breakNode = new BreakNode(new Position(ctx.getStart().getLine()));
         map.put(ctx, breakNode);
     }
 
     @Override
     public void exitContinueStat(MlangParser.ContinueStatContext ctx)
     {
-        ContinueNode continueNode = new ContinueNode(new Position(ctx.getStart().getLine()), new LoopBody());
+        ContinueNode continueNode = new ContinueNode(new Position(ctx.getStart().getLine()));
         map.put(ctx, continueNode);
     }
 

@@ -4,8 +4,8 @@ import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Object.VarObject;
 import Code.AST.Tools.*;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.ASTTraversal;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.ASTTraversal;
+import Code.SemanticCheck.Scope.Scope;
 
 public class VarDecNode extends DeclNode
 {

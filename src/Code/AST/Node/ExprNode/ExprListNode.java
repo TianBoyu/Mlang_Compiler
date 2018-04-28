@@ -1,7 +1,7 @@
 package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
-import Code.ASTTraversal.ASTTraversal;
+import Code.SemanticCheck.ASTTraversal;
 
 import java.util.List;
 

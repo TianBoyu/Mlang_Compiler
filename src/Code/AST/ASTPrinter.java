@@ -5,7 +5,7 @@ import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.ASTTraversal;
+import Code.SemanticCheck.ASTTraversal;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;

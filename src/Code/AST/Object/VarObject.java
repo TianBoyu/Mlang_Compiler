@@ -1,7 +1,7 @@
 package Code.AST.Object;
 
 import Code.AST.Type.Type;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.Scope.Scope;
 
 public class VarObject extends Object
 {

@@ -2,7 +2,6 @@ package Code.AST.Object;
 
 import Code.AST.Node.DeclNode.FuncParamNode;
 import Code.AST.Type.Type;
-import Code.ASTTraversal.Scope.Scope;
 
 import java.util.List;
 

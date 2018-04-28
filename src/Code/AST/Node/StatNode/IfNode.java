@@ -2,8 +2,8 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
-import Code.ASTTraversal.ASTTraversal;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.ASTTraversal;
+import Code.SemanticCheck.Scope.Scope;
 
 public class IfNode extends StatNode
 {

@@ -1,11 +1,8 @@
 package Code.AST.Node.DeclNode;
 
-import Code.AST.Node.ASTBaseNode;
 import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Position;
-import Code.AST.Type.Type;
-import Code.ASTTraversal.ASTTraversal;
-import Code.ASTTraversal.Scope.Scope;
+import Code.SemanticCheck.ASTTraversal;
 
 public class FuncParamNode extends VarDecNode
 {
