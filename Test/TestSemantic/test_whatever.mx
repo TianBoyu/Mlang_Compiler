@@ -1,23 +1,25 @@
-int main()
-{
-    int[][][] a = new int[3][2][1];
-    int[][] b = new int[2][1];
-    a = b;
+int[][][][] a;
+
+int main() {
+    a = new int[3][4][][];
+    int x = a.size();
+    println("size of a: " + toString(x));
+    return 0;
 }
 
 /*!! metadata:
 === comment ===
-516030910575 Test assignment between different dimension array
+Zhou Fan
 === is_public ===
 True
 === assert ===
-failure_compile
+success_compile
 === timeout ===
-0
+0.0
 === input ===
 
 === phase ===
-semantic extended
+semantic pretest
 === output ===
 
 === exitcode ===

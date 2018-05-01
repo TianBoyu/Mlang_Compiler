@@ -31,6 +31,7 @@ public class ArrayType extends Type
         {
             this.basic_type  = new ArrayType(_basic.getTypeName().toString(), dimension - 1, _basic);
         }
+        this.dimension = dimension;
     }
 
     public final Type getBasic_type()
