@@ -93,6 +93,8 @@ public class SemanticChecker implements ASTTraversal
     {
         if(node == null) return;
         node.setScope(currentScope);
+        if(node.getValue() == null) return;
+        visit(node.getValue());
         if(!(currentScope.isClass()))
         {
             if (node == null) return;
@@ -107,8 +109,6 @@ public class SemanticChecker implements ASTTraversal
         }
         if(node.getType() instanceof ClassType)
             node.setType(currentScope.findType(node.getType().getTypeName()));
-        if(node.getValue() == null) return;
-        visit(node.getValue());
         if(node.getValue().getExprType().getTypeName() != Name.getName("null"))
         {
             if (node.getType().getTypeName() != node.getValue().getExprType().getTypeName())

@@ -1,21 +1,23 @@
-int[][][][] a;
+int f(int anything) {
+	return 0;
+}
 
 int main() {
-    a = new int[3][4][][];
-    int x = a.size();
-    println("size of a: " + toString(x));
-    return 0;
+  int x = f(x);
+  return x;
 }
+
+
 
 /*!! metadata:
 === comment ===
-Zhou Fan
+Test self reference-5090379042-jiaxiao.mx
 === is_public ===
 True
 === assert ===
-success_compile
+failure_compile
 === timeout ===
-0
+0.0
 === input ===
 
 === phase ===
@@ -23,6 +25,6 @@ semantic pretest
 === output ===
 
 === exitcode ===
-0
+
 
 !!*/
