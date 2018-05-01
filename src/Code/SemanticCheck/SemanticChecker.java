@@ -172,11 +172,18 @@ public class SemanticChecker implements ASTTraversal
                     "assign operator can only be applied to a left value");
         visit(node.getLhs());
         visit(node.getRhs());
-        if(node.getRhs().getExprType() == null)
-            System.out.println(1);
         if(node.getRhs().getExprType().getTypeName() != Name.getName("null"))
         {
-            if (node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
+            if(node.getLhs().getExprType() instanceof ArrayType)
+            {
+                if(!(node.getRhs().getExprType() instanceof ArrayType))
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+                else if(node.getRhs().getExprType().getTypeName() != node.getLhs().getExprType().getTypeName())
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+                else if(((ArrayType) node.getLhs().getExprType()).getDimension() != ((ArrayType) node.getRhs().getExprType()).getDimension())
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+            }
+            else if (node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
                 errorHandler.addError(node.getPosition(), "cannot cast from "
                         + node.getLhs().getExprType().getTypeName().toString() + " to "
                         + node.getRhs().getExprType().getTypeName().toString());

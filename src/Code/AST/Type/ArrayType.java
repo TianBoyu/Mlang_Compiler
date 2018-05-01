@@ -1,5 +1,7 @@
 package Code.AST.Type;
 
+import Code.AST.Tools.Name;
+
 public class ArrayType extends Type
 {
     private Type basic_type;
@@ -16,6 +18,7 @@ public class ArrayType extends Type
         {
             this.basic_type  = new ArrayType(_name, dimension - 1, _basic);
         }
+        this.dimension = dimension;
     }
     public ArrayType(Type _basic, int dimension)
     {
@@ -47,4 +50,5 @@ public class ArrayType extends Type
             basic = ((ArrayType) basic).getBasic_type();
         return basic;
     }
+
 }
