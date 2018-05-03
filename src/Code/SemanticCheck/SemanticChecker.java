@@ -216,7 +216,7 @@ public class SemanticChecker implements ASTTraversal
         visit(node.getRhs());
         if(node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())
         {
-            if(!(node.getOp() == BinaryOp.EQU &&
+            if(!((node.getOp() == BinaryOp.EQU || node.getOp() == BinaryOp.NEQ)&&
                     (node.getLhs().getExprType().getTypeName() == Name.getName("null")
                     || node.getRhs().getExprType().getTypeName() == Name.getName("null"))))
                 errorHandler.addError(node.getPosition(), "cannot operate with type "

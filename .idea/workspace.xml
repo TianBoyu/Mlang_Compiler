@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/Mlang.g4" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/Mlang.g4" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$ArrayCreatorContext.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$ArrayCreatorContext.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$CreatorContext.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$CreatorContext.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$FunctionCallContext.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$FunctionCallContext.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$NonArrayCreatorContext.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$NonArrayCreatorContext.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$WrongCreatorContext.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser$WrongCreatorContext.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Parser/MlangParser.class" />
+      <change beforePath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" afterPath="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
       <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" afterPath="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" afterPath="$PROJECT_DIR$/src/Code/Parser/MlangParser.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" afterPath="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,16 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4131">
-              <caret line="451" column="41" lean-forward="false" selection-start-line="451" selection-start-column="41" selection-end-line="451" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="IRConstructor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/IR/IRConstructor.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,11 +36,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SemanticChecker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="225" column="43" lean-forward="true" selection-start-line="225" selection-start-column="43" selection-end-line="225" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="test_whatever.mx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="486">
+              <caret line="69" column="31" lean-forward="false" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/ErrorHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="201">
-              <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+              <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,16 +97,6 @@
                 <element signature="e#1446#1447#0" expanded="true" />
                 <element signature="e#1478#1479#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Type.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/AST/Type/Type.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -238,7 +231,6 @@
         <option value="$PROJECT_DIR$/src/Code/AST/Type/ArrayType.java" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test_failure.mx" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test_success.mx" />
-        <option value="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/src/Code/IR/IRUnit/Block.java" />
         <option value="$PROJECT_DIR$/src/Code/IR/IRUnit/BasicBlock.java" />
         <option value="$PROJECT_DIR$/src/Code/IR/IRUnit/Function.java" />
@@ -251,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/Code/IR/IRConstructor.java" />
         <option value="$PROJECT_DIR$/src/Code/Parser/Mlang.g4" />
         <option value="$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx" />
+        <option value="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" />
         <option value="$PROJECT_DIR$/src/Code/Boom.java" />
       </list>
     </option>
@@ -645,18 +638,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java</url>
-          <line>545</line>
+          <line>221</line>
           <properties />
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java</url>
-          <line>479</line>
-          <properties />
-          <option name="timeStamp" value="128" />
+          <option name="timeStamp" value="130" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="129" />
+      <option name="time" value="131" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -827,14 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/ErrorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1029,14 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4131">
-          <caret line="451" column="41" lean-forward="false" selection-start-line="451" selection-start-column="41" selection-end-line="451" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/AST/Type/Type.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1099,10 +1070,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/ErrorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestSemantic/test_whatever.mx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="486">
+          <caret line="69" column="31" lean-forward="false" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="225" column="43" lean-forward="true" selection-start-line="225" selection-start-column="43" selection-end-line="225" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1110,7 +1097,7 @@
     <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
-          <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+          <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
