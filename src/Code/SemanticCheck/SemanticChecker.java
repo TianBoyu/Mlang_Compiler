@@ -111,10 +111,19 @@ public class SemanticChecker implements ASTTraversal
         if(node.getValue() == null) return;
         if(node.getValue().getExprType().getTypeName() != Name.getName("null"))
         {
-            if (node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
-                errorHandler.addError(node.getPosition(),
-                        node.getValue().getExprType().getTypeName() + " cannot be assigned to " +
-                                node.getName().toString() + '(' + node.getType().getTypeName() + ')');
+            if(node.getType() instanceof ArrayType)
+            {
+                if(!(node.getValue().getExprType() instanceof ArrayType))
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+                else if(node.getValue().getExprType().getTypeName() != node.getType().getTypeName())
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+                else if(((ArrayType) node.getType()).getDimension() != ((ArrayType) node.getValue().getExprType()).getDimension())
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+            }
+            else if (node.getType().getTypeName() != node.getValue().getExprType().getTypeName())
+                errorHandler.addError(node.getPosition(), "cannot cast from "
+                        + node.getType().getTypeName().toString() + " to "
+                        + node.getValue().getExprType().getTypeName().toString());
         }
         else
         {
@@ -153,9 +162,8 @@ public class SemanticChecker implements ASTTraversal
     {
         visit(node.getArray());
         visit(node.getIndex());
-        if(node.getIndex().getExprType().getTypeName() != Name.getName("int"))
-            errorHandler.addError(node.getPosition(), "array index must be an integer"
-                    + ", finding " + node.getIndex().getExprType().getTypeName().toString());
+        if(!(node.getIndex().getExprType() instanceof BuiltInType) || node.getIndex().getExprType().getTypeName() != Name.getName("int"))
+            errorHandler.addError(node.getPosition(), "array index must be an integer");
         if(!(node.getArray().getExprType() instanceof ArrayType))
             errorHandler.addError(node.getPosition(),
                     "'[]' can not be applied to non-array element");
@@ -181,6 +189,11 @@ public class SemanticChecker implements ASTTraversal
                 else if(node.getRhs().getExprType().getTypeName() != node.getLhs().getExprType().getTypeName())
                     errorHandler.addError(node.getPosition(), "type mismatch");
                 else if(((ArrayType) node.getLhs().getExprType()).getDimension() != ((ArrayType) node.getRhs().getExprType()).getDimension())
+                    errorHandler.addError(node.getPosition(), "type mismatch");
+            }
+            else if(node.getRhs().getExprType() instanceof ArrayType)
+            {
+                if(!(node.getLhs().getExprType() instanceof ArrayType))
                     errorHandler.addError(node.getPosition(), "type mismatch");
             }
             else if (node.getLhs().getExprType().getTypeName() != node.getRhs().getExprType().getTypeName())

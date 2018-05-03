@@ -1,19 +1,18 @@
-int[][][][] a;
-
-int main() {
-    a = new int[3][4][][];
-    int x = a.size();
-    println("size of a: " + toString(x));
-    return 0;
+int main(){
+	int x;
+	int i;
+	for (i = (new int[3][])[2]; 1<2; ++x)
+		x = x + 1;
+	return 0;
 }
 
 /*!! metadata:
 === comment ===
-Zhou Fan
+蒋泽天 for initial expression test
 === is_public ===
 True
 === assert ===
-success_compile
+failure_compile
 === timeout ===
 0.0
 === input ===
