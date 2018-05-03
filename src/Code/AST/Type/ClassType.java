@@ -19,4 +19,11 @@ public class ClassType extends Type
     {
         return classNode;
     }
+    @Override
+    public int getTypeSize()
+    {
+        if(this.type_size != this.classNode.getSize())
+            this.type_size = this.classNode.getSize();
+        return this.type_size;
+    }
 }

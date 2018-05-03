@@ -5,7 +5,7 @@ import Code.AST.Tools.Name;
 
 public class Type {
     private Name type_name;
-    private int type_size;
+    protected int type_size;
     public Type(String _name, int _size)
     {
         type_name = Name.getName(_name);

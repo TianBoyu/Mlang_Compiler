@@ -69,7 +69,7 @@ expression
     | op=('++'|'--') expression                                 #prefixExpr
     | op=('+'|'-') expression                                   #prefixExpr
     | op=('!'|'~') expression                                   #prefixExpr
-    | NEW creator                                               #newExpr
+    | NEW creator'(' ')'                                        #newExpr
     | expression op=('*'|'/'|'%') expression                    #binaryExpr
     | expression op=('+'|'-') expression                        #binaryExpr
     | expression op=('<<'|'>>') expression                      #binaryExpr

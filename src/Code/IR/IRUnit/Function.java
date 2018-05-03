@@ -2,15 +2,16 @@ package Code.IR.IRUnit;
 
 import Code.AST.Tools.Name;
 import Code.AST.Type.Type;
+import Code.IR.BasicBlock;
 
 public class Function extends IRInstruction
 {
     private Name name;
     private Type ret_type;
-    private Block block;
+    private BasicBlock block;
     private Label label;
 
-    public Function(Label label, Name name, Type ret_type, Block block, Label label1)
+    public Function(Label label, Name name, Type ret_type, BasicBlock block, Label label1)
     {
         super(label);
         this.name = name;

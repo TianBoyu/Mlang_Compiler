@@ -2,7 +2,8 @@ package Code.AST.Node.DeclNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Object.VarObject;
-import Code.AST.Tools.*;
+import Code.AST.Tools.Name;
+import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;

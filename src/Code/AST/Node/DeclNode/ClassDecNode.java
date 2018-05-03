@@ -14,6 +14,7 @@ public class ClassDecNode extends DeclNode
     private List<FuncDecNode> member_function;
     private List<VarDecNode>  member_varible;
     private Scope internal_scope;
+    private int size;
 
     public ClassDecNode(Position pos, ClassType _type, List<FuncDecNode> func, List<VarDecNode> var)
     {
@@ -58,5 +59,15 @@ public class ClassDecNode extends DeclNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+
+    public void initTypeSize()
+    {
+        //TODO
+    }
+
+    public int getSize()
+    {
+        return this.size;
     }
 }

@@ -1,20 +1,22 @@
 package Code.IR.IRUnit;
 
+import Code.IR.BasicBlock;
+
 public class Label
 {
-    private Block block;
+    private BasicBlock block;
     private String name;
     private static int count = 0;
 
-    public Label(Block block, String _name)
+    public Label(String _name, BasicBlock.BlockType blockType)
     {
-        this.block = block;
+        block = new BasicBlock(blockType);
         if(_name == null)
             name = String.valueOf(count++);
         else name = _name;
     }
 
-    public Block getBlock()
+    public BasicBlock getBlock()
     {
         return block;
     }

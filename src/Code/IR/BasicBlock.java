@@ -1,8 +1,11 @@
-package Code.IR.IRUnit;
+package Code.IR;
 
-public class Block
+import Code.AST.Node.StatNode.BlockNode;
+import Code.IR.IRUnit.IRInstruction;
+
+public class BasicBlock
 {
-    enum BlockType
+    public enum BlockType
     {
         FUNC, IF, WHILE, FOR
     }
@@ -10,10 +13,14 @@ public class Block
     private IRInstruction tail;
     private BlockType blockType;
 
-    public Block(IRInstruction head, IRInstruction tail, BlockType blockType)
+    public BasicBlock(IRInstruction head, IRInstruction tail, BlockType blockType)
     {
         this.head = head;
         this.tail = tail;
+        this.blockType = blockType;
+    }
+    public BasicBlock(BlockType blockType)
+    {
         this.blockType = blockType;
     }
 

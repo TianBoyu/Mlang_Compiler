@@ -1,6 +1,6 @@
 package Code.AST.Node;
 
-import Code.AST.Tools.*;
+import Code.AST.Tools.Position;
 import Code.SemanticCheck.ASTTraversal;
 
 public abstract class ASTBaseNode

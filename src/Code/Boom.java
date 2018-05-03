@@ -1,17 +1,25 @@
 package Code;
 //Boom is the main class
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
 import Code.AST.Node.ProgNode;
-import Code.SemanticCheck.*;
+import Code.Parser.MlangErrorListener;
+import Code.Parser.MlangLexer;
+import Code.Parser.MlangParser;
+import Code.SemanticCheck.ErrorHandler;
+import Code.SemanticCheck.FunctionCollector;
 import Code.SemanticCheck.Scope.Scope;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
-import Code.Parser.*;
+import Code.SemanticCheck.ScopeCollector;
+import Code.SemanticCheck.SemanticChecker;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 public class Boom {
     public static void checkSemantic(ProgNode program)

@@ -5,27 +5,41 @@ import Code.AST.Node.ExprNode.*;
 import Code.AST.Node.ProgNode;
 import Code.AST.Node.StatNode.*;
 import Code.AST.Type.Type;
+import Code.IR.IRUnit.IRInstruction;
 import Code.SemanticCheck.ASTTraversal;
 
 public class IRConstructor implements ASTTraversal
 {
+    private IRInstruction currentInst;
+    public IRConstructor(IRInstruction entry)
+    {
+        currentInst = entry;
+    }
     @Override
     public void visit(ProgNode node)
     {
         for(DeclNode item : node.getDeclares())
-            visit(item);
+        {
+            if(item instanceof ClassDecNode)
+                ((ClassDecNode) item).initTypeSize();
+        }
     }
 
     @Override
     public void visit(DeclNode node)
     {
-
+        if(node == null) return;
+        node.accept(this);
     }
 
     @Override
     public void visit(ClassDecNode node)
     {
-
+        if(node == null) return;
+        for(FuncDecNode item : node.getMemberFunction())
+            visit(item);
+        for(VarDecNode item : node.getMemberVarible())
+            visit(item);
     }
 
     @Override
@@ -218,5 +232,12 @@ public class IRConstructor implements ASTTraversal
     public void visit(Type type) throws Exception
     {
 
+    }
+
+    private void addInst(IRInstruction instruction)
+    {
+        instruction.setLast(currentInst);
+        currentInst.setNext(instruction);
+        currentInst = instruction;
     }
 }

@@ -1,7 +1,5 @@
 package Code.AST.Type;
 
-import Code.AST.Tools.Name;
-
 public class ArrayType extends Type
 {
     private Type basic_type;

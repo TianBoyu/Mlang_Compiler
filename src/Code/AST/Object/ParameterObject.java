@@ -1,6 +1,5 @@
 package Code.AST.Object;
 
-import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 
 public class ParameterObject extends VarObject
