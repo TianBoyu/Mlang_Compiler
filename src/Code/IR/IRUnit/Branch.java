@@ -32,4 +32,10 @@ public class Branch extends Terminator
     {
         return condition;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Branch " + condition.toString() + " true: " + true_label.toString() + " false: " + false_label.toString();
+    }
 }

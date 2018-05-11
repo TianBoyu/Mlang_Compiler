@@ -1,0 +1,16 @@
+  Address a = alloca Immediate 4
+  Store Immediate 1 to Address a
+  _r1 = Load Address a
+  _r0 = _r1 SLT Immediate 10
+  Jump <Label> 0
+
+<Label> 0
+  Branch _r0 true: <Label> 1 false: <Label> 2
+
+<Label> 1
+  _r3 = Load Address a
+  _r2 = Immediate 1 ADD _r3
+  Jump <Label> 0
+
+<Label> 2
+  Return Immediate 0

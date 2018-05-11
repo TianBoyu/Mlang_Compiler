@@ -6,7 +6,7 @@ import Code.IR.IRUnit.Value.Register;
 
 public class BinaryOperation extends IRInstruction
 {
-    enum BinaryOp
+    public enum BinaryOp
     {
         ADD, SUB, MUL, DIV, MOD,
         SHL, SHR, AND, OR, XOR
@@ -24,4 +24,9 @@ public class BinaryOperation extends IRInstruction
     private IntegerValue lhs;
     private IntegerValue rhs;
 
+    @Override
+    public String toString()
+    {
+        return dest.toString() + " = " + lhs.toString() + " " + op.toString() + " " + rhs.toString();
+    }
 }

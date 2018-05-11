@@ -6,6 +6,8 @@ import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.BuiltInType;
 import Code.AST.Type.Type;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.Function;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
 
@@ -87,5 +89,10 @@ public class FuncDecNode extends DeclNode
     public List<FuncParamNode> getParameter()
     {
         return function.getParameter();
+    }
+    @Override
+    public Function accept(IRTraversal visitor)
+    {
+        return visitor.visit(this);
     }
 }

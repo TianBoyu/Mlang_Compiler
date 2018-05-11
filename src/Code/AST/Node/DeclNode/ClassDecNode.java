@@ -2,9 +2,15 @@ package Code.AST.Node.DeclNode;
 
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
+import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.IRInstruction;
+import Code.IR.Type.BuiltIn;
+import Code.IR.Type.Class;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
+import Code.Widget.ConstValue;
 
 import java.util.List;
 
@@ -22,6 +28,7 @@ public class ClassDecNode extends DeclNode
         type = _type;
         member_function = func;
         member_varible = var;
+        size = -1;
     }
     public ClassType getType()
     {
@@ -60,10 +67,17 @@ public class ClassDecNode extends DeclNode
     {
         visitor.visit(this);
     }
-
+    @Override
+    public IRInstruction accept(IRTraversal visitor)
+    {
+        visitor.visit(this);
+        return null;
+    }
     public void initTypeSize()
     {
-        //TODO
+        if(this.size != -1)
+            return;
+        this.size = ConstValue.ADDRESS_WIDTH * member_varible.size();
     }
 
     public int getSize()

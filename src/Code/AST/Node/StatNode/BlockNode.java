@@ -1,6 +1,9 @@
 package Code.AST.Node.StatNode;
 
 import Code.AST.Tools.Position;
+import Code.IR.BasicBlock;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.IRInstruction;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
 
@@ -22,6 +25,11 @@ public class BlockNode extends StatNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public IRInstruction accept(IRTraversal visitor)
+    {
+        return visitor.visit(this);
     }
 
     public Scope getScope()

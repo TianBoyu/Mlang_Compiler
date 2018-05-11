@@ -5,6 +5,8 @@ import Code.AST.Object.VarObject;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.Value.Address;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
 
@@ -51,5 +53,10 @@ public class VarDecNode extends DeclNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public Address accept(IRTraversal visitor)
+    {
+        return visitor.visit(this);
     }
 }

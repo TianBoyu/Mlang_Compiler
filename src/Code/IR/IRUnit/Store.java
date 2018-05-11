@@ -1,6 +1,8 @@
 package Code.IR.IRUnit;
 
+import Code.IR.IRUnit.Value.Address;
 import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRUnit.Value.VirtualRegister;
 
 public class Store extends IRInstruction
 {
@@ -22,5 +24,11 @@ public class Store extends IRInstruction
     public IntegerValue getData()
     {
         return data;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Store " + data.toString() + " to " + address.toString();
     }
 }

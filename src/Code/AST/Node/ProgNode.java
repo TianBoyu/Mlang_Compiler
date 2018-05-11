@@ -2,6 +2,7 @@ package Code.AST.Node;
 
 import Code.AST.Node.DeclNode.DeclNode;
 import Code.AST.Tools.Position;
+import Code.IR.IRTraversal;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
 
@@ -46,5 +47,11 @@ public class ProgNode extends ASTBaseNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public Object accept(IRTraversal visitor)
+    {
+        visitor.visit(this);
+        return null;
     }
 }

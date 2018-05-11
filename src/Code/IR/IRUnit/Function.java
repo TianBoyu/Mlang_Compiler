@@ -1,22 +1,30 @@
 package Code.IR.IRUnit;
 
 import Code.AST.Tools.Name;
-import Code.AST.Type.Type;
 import Code.IR.BasicBlock;
+import Code.IR.Type.*;
+
+import java.util.prefs.BackingStoreException;
 
 public class Function extends IRInstruction
 {
     private Name name;
-    private Type ret_type;
+    private IRType ret_type;
+//    private Label internal_label;
     private BasicBlock block;
-    private Label label;
 
-    public Function(Label label, Name name, Type ret_type, BasicBlock block, Label label1)
+    public Function(Label label, Name name, IRType ret_type, Label internal_label, BasicBlock block)
     {
         super(label);
         this.name = name;
         this.ret_type = ret_type;
         this.block = block;
-        this.label = label1;
+//        this.internal_label = label;
+    }
+
+    @Override
+    public String toString()
+    {
+        return null;
     }
 }

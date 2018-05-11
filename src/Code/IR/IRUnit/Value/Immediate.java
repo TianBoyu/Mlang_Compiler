@@ -13,4 +13,10 @@ public class Immediate extends IntegerValue
     {
         return value;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Immediate " + String.valueOf(value);
+    }
 }

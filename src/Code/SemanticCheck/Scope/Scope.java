@@ -8,6 +8,8 @@ import Code.AST.Tools.Position;
 import Code.AST.Type.BuiltInType;
 import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
+import Code.IR.IRScope;
+import Code.IR.Type.IRType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,8 @@ public class Scope
     private boolean isLoop;
     private boolean isClass;
 
+    private IRScope irScope;
+
     public Scope(boolean top)
     {
         this.isTop = top;
@@ -33,6 +37,8 @@ public class Scope
         isLoop = false;
         this.parent = this;
         isClass = false;
+
+        irScope = new IRScope(top);
     }
     public Scope(Scope p)
     {
@@ -41,6 +47,8 @@ public class Scope
         isFunction = false;
         isLoop = false;
         isClass = false;
+
+        this.irScope = new IRScope(p.getIRScope());
     }
     public void addNode(DeclNode node) throws RuntimeException
     {
@@ -109,6 +117,11 @@ public class Scope
         if(this.isTop)
             return this;
         else return this.parent;
+    }
+
+    public IRScope getIRScope()
+    {
+        return irScope;
     }
 
     public void setFunction(boolean function)

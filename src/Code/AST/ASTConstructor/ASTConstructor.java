@@ -299,8 +299,8 @@ public class ASTConstructor extends MlangBaseListener
     {
         Type type;
         if(ctx.userType() != null)
-            type = new Type(ctx.userType().ID().getText(), 1);
-        else type = new Type(ctx.builtInType().getText(), 1);
+            type = new Type(ctx.userType().ID().getText(), -1);
+        else type = new Type(ctx.builtInType().getText(), -1);
         List<ExprNode> exprs = new ArrayList<>();
         for(MlangParser.ExpressionContext item : ctx.expression())
             exprs.add((ExprNode)map.get(item));

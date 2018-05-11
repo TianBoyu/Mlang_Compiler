@@ -7,11 +7,11 @@ public class ClassType extends Type
     private ClassDecNode classNode;
     public ClassType(String _name, int _size)
     {
-        super(_name, _size);
+        super(_name, -1);
     }
     public ClassType(ClassDecNode node)
     {
-        super(node.getName().toString(), 4);
+        super(node.getName().toString(), -1);
         classNode = node;
     }
     @Override
@@ -22,8 +22,11 @@ public class ClassType extends Type
     @Override
     public int getTypeSize()
     {
-        if(this.type_size != this.classNode.getSize())
-            this.type_size = this.classNode.getSize();
+        if(this.classNode.getSize() == -1)
+        {
+            this.classNode.initTypeSize();
+        }
+        this.type_size = this.classNode.getSize();
         return this.type_size;
     }
 }

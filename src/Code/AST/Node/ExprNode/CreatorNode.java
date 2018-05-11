@@ -2,6 +2,8 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.Value.IntegerValue;
 import Code.SemanticCheck.ASTTraversal;
 
 import java.util.List;
@@ -45,5 +47,10 @@ public class CreatorNode extends ExprNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public IntegerValue accept(IRTraversal visitor)
+    {
+        return visitor.visit(this);
     }
 }

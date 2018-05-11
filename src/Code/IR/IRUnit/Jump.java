@@ -9,4 +9,10 @@ public class Jump extends Terminator
         super(label);
         this.target = target;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Jump " + target.toString();
+    }
 }

@@ -3,7 +3,11 @@ package Code;
 
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
+import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Node.ProgNode;
+import Code.IR.IRConstructor;
+import Code.IR.IRPrinter;
+import Code.IR.IRUnit.IRInstruction;
 import Code.Parser.MlangErrorListener;
 import Code.Parser.MlangLexer;
 import Code.Parser.MlangParser;
@@ -40,10 +44,20 @@ public class Boom {
         ASTPrinter printer = new ASTPrinter();
         printer.PrintAST(program, outputStream);
     }
+    public static void printIR(ProgNode program) throws Exception
+    {
+        FileOutputStream outputStream = new FileOutputStream("Test/TestIR/test_result.txt");
+        IRConstructor irConstructor = new IRConstructor(program);
+        irConstructor.BuildIR();
+        IRInstruction entry = irConstructor.getEntry();
+        IRPrinter irPrinter = new IRPrinter(entry, outputStream);
+        irPrinter.printIR();
+    }
+
     public static void main(String[] args) throws Exception
     {
         InputStream is = System.in;
-//        InputStream is = new FileInputStream("Test/TestSemantic/test_whatever.mx");
+//        InputStream is = new FileInputStream("Test/TestIR/test_while.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
         lexer.addErrorListener(MlangErrorListener.INSTANCE);
@@ -56,8 +70,7 @@ public class Boom {
         ASTConstructor constructor = new ASTConstructor();
         walker.walk(constructor, tree);
 
-//        printAST(constructor.getProgram());
-
         checkSemantic(constructor.getProgram());
+//        printIR(constructor.getProgram());
     }
 }

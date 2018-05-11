@@ -1,6 +1,8 @@
 package Code.AST.Node;
 
 import Code.AST.Tools.Position;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.IRInstruction;
 import Code.SemanticCheck.ASTTraversal;
 
 public abstract class ASTBaseNode
@@ -19,4 +21,5 @@ public abstract class ASTBaseNode
         return position;
     }
     public abstract void accept(ASTTraversal visitor);
+    public abstract Object accept(IRTraversal visitor);
 }

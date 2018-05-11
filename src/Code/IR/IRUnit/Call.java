@@ -25,4 +25,10 @@ public class Call extends IRInstruction
     {
         return params;
     }
+
+    @Override
+    public String toString()
+    {
+        return null;
+    }
 }

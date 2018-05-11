@@ -17,6 +17,7 @@ public abstract class IRInstruction
     {
         this.label = label;
     }
+    public IRInstruction(){}
 
     public Label getLabel()
     {
@@ -42,4 +43,6 @@ public abstract class IRInstruction
     {
         this.last = last;
     }
+
+    public abstract String toString();
 }

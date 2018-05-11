@@ -2,6 +2,8 @@ package Code.AST.Node.DeclNode;
 
 import Code.AST.Object.ParameterObject;
 import Code.AST.Tools.Position;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.Value.Address;
 import Code.SemanticCheck.ASTTraversal;
 
 public class FuncParamNode extends VarDecNode
@@ -23,5 +25,11 @@ public class FuncParamNode extends VarDecNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public Address accept(IRTraversal visitor)
+    {
+        visitor.visit(this);
+        return null;
     }
 }

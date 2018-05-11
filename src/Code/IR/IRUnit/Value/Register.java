@@ -1,16 +1,24 @@
 package Code.IR.IRUnit.Value;
 
+import Code.AST.Tools.Name;
+
 public class Register extends IntegerValue
 {
-    private String name;
+    private Name name;
 
-    public Register(String name)
+    public Register(Name name)
     {
         this.name = name;
     }
 
-    public String getName()
+    public Name getName()
     {
         return name;
+    }
+
+    @Override
+    public String toString()
+    {
+        return name.toString();
     }
 }

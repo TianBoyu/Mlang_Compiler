@@ -2,7 +2,7 @@ package Code.IR.IRUnit;
 
 import Code.IR.BasicBlock;
 
-public class Label
+public class Label extends IRInstruction
 {
     private BasicBlock block;
     private String name;
@@ -16,6 +16,7 @@ public class Label
         else name = _name;
     }
 
+
     public BasicBlock getBlock()
     {
         return block;
@@ -24,5 +25,11 @@ public class Label
     public String getName()
     {
         return name;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "<Label> " + name;
     }
 }

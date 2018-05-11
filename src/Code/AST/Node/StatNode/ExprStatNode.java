@@ -2,6 +2,8 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.IRInstruction;
 import Code.SemanticCheck.ASTTraversal;
 
 public class ExprStatNode extends StatNode
@@ -21,5 +23,11 @@ public class ExprStatNode extends StatNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public IRInstruction accept(IRTraversal visitor)
+    {
+        visitor.visit(this);
+        return null;
     }
 }

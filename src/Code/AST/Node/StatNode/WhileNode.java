@@ -3,6 +3,8 @@ package Code.AST.Node.StatNode;
 
 import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Position;
+import Code.IR.IRTraversal;
+import Code.IR.IRUnit.IRInstruction;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
 
@@ -48,5 +50,11 @@ public class WhileNode extends StatNode
     public void accept(ASTTraversal visitor)
     {
         visitor.visit(this);
+    }
+    @Override
+    public IRInstruction accept(IRTraversal visitor)
+    {
+        visitor.visit(this);
+        return null;
     }
 }
