@@ -1,16 +1,42 @@
-  Address a = alloca Immediate 4
-  Store Immediate 1 to Address a
-  _r1 = Load Address a
-  _r0 = _r1 SLT Immediate 10
-  Jump <Label> 0
+__________________________________________
+========IntermediateRepresentation========
+
+
+define i64 @main()
+  [Address a] = alloca i64
+  Store Immediate 1 to [Address a]
+  _r1 = Load [Address a]
+  _r0 = _r1 EQU Immediate 2
+  Branch _r0 true: <Label> 0 false: <Label> 1
 
 <Label> 0
-  Branch _r0 true: <Label> 1 false: <Label> 2
+  [Address b] = alloca i64
+  Store Immediate 1 to [Address b]
+  _r3 = Load [Address b]
+  _r2 = _r3 EQU Immediate 5
+  Branch _r2 true: <Label> 3 false: <Label> 4
+
+<Label> 3
+  [Address d] = alloca i64
+  Store Immediate 100 to [Address d]
+  Jump <Label> 5
+
+<Label> 4
+  [Address d] = alloca i64
+  Store Immediate 300 to [Address d]
+  Jump <Label> 5
+
+<Label> 5
+  Jump <Label> 2
 
 <Label> 1
-  _r3 = Load Address a
-  _r2 = Immediate 1 ADD _r3
-  Jump <Label> 0
+  [Address c] = alloca i64
+  Store Immediate 2 to [Address c]
+  Jump <Label> 2
 
 <Label> 2
   Return Immediate 0
+
+
+__________________________________________
+===================TYPE===================

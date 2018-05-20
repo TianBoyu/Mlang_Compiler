@@ -4,6 +4,14 @@ int main()
     if(a == 2)
     {
         int b = 1;
+        if(b == 5)
+        {
+            int d = 100;
+        }
+        else
+        {
+            int d = 300;
+        }
     }
     else
     {

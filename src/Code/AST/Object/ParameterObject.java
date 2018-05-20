@@ -7,6 +7,12 @@ public class ParameterObject extends VarObject
     public ParameterObject(String _name, Type _type)
     {
         super(_name, false, _type);
+
     }
-    private Type type;
+
+    @Override
+    public Type getType()
+    {
+        return super.getType();
+    }
 }

@@ -257,6 +257,7 @@ public class SemanticChecker implements ASTTraversal
                     node.getFuncName().toString() + " is not a function");
         visit(node.getParam());
         node.setExprType(function.getReturnType());
+        node.setFunction(function);
         checkParameterMatch(function, node);
     }
     private void checkParameterMatch(FuncDecNode decl, CallExprNode call)
@@ -338,6 +339,8 @@ public class SemanticChecker implements ASTTraversal
             node.setExprType(func.getReturnType());
             visit(node.getFunctionCall().getParam());
             checkParameterMatch(func, node.getFunctionCall());
+//            visit(node.getFunctionCall());
+            node.getFunctionCall().setFunction(func);
         }
         else
         {

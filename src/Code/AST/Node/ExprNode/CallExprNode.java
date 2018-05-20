@@ -1,5 +1,6 @@
 package Code.AST.Node.ExprNode;
 
+import Code.AST.Node.DeclNode.FuncDecNode;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.IR.IRTraversal;
@@ -22,9 +23,21 @@ public class CallExprNode extends ExprNode
         return param;
     }
 
+    public FuncDecNode getFunction()
+    {
+        return function;
+    }
+
+    public void setFunction(FuncDecNode function)
+    {
+        this.function = function;
+    }
+
     private Name func_name;
 //    private ExprNode function;
     private ExprListNode param;
+    private FuncDecNode function;
+
     @Override
     public void accept(ASTTraversal visitor)
     {
@@ -34,5 +47,10 @@ public class CallExprNode extends ExprNode
     public IntegerValue accept(IRTraversal visitor)
     {
         return visitor.visit(this);
+    }
+
+    public void setFunctionName(Name name)
+    {
+        this.func_name = name;
     }
 }

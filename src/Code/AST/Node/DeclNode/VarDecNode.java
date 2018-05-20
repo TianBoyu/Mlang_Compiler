@@ -17,6 +17,8 @@ public class VarDecNode extends DeclNode
         super(_pos);
         var = _var;
         value = v;
+        this.isMember = false;
+        this.memberNumber = 0;
     }
     public final VarObject getVar()
     {
@@ -33,6 +35,8 @@ public class VarDecNode extends DeclNode
     }
     private VarObject var;
     private ExprNode value;
+    private boolean isMember;
+    private int memberNumber;
     public void setScope(Scope scope)
     {
         var.setScope(scope);
@@ -49,6 +53,27 @@ public class VarDecNode extends DeclNode
     {
         return var.getType();
     }
+
+    public boolean isMember()
+    {
+        return isMember;
+    }
+
+    public void setMember(boolean member)
+    {
+        isMember = member;
+    }
+
+    public int getMemberNumber()
+    {
+        return memberNumber;
+    }
+
+    public void setMemberNumber(int memberNumber)
+    {
+        this.memberNumber = memberNumber;
+    }
+
     @Override
     public void accept(ASTTraversal visitor)
     {

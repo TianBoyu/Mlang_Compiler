@@ -12,10 +12,10 @@ import Code.AST.Type.ClassType;
 import Code.AST.Type.Type;
 import Code.IR.IRUnit.*;
 import Code.IR.IRUnit.Value.*;
+import Code.IR.Type.Array;
 import Code.IR.Type.BuiltIn;
 import Code.IR.Type.Class;
 import Code.IR.Type.IRType;
-import jdk.nashorn.api.tree.ImportEntryTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,34 +24,36 @@ import java.util.Stack;
 //TODO
 /*
  * Class(This
- * Function(FuncParam)
- * FunctionCall(ExprList)
- * Assign(ClassType & ArrayType)
- * Member
- * New(Creator)
- * Array
  */
 
 public class IRConstructor implements IRTraversal
 {
-    private IRInstruction currentInst;
-    private Label currentLabel;
+    private IRInstruction   currentInst;
+    private Label           currentLabel;
+    private IRScope         currentIRScope;
+    private FunctionScope   currentFunction;
+    private ClassDecNode    currentClass;
+
     private Label nextLabel;
     private Stack<Label> nextLabelStack = new Stack<>();
-    private IRScope currentIRScope;
-    private FunctionScope currentFunction;
     private IRInstruction entry;
     private ProgNode program;
+    private List<Class> types = new ArrayList<>();
     public IRConstructor(ProgNode progNode)
     {
         this.program = progNode;
         currentFunction = new FunctionScope(new Name("GLOBAL"));
-        setNextLabel(new Label("GLOBAL", null));
+        setNextLabel(new Label("GLOBAL"));
     }
 
     public IRInstruction getEntry()
     {
         return entry;
+    }
+
+    public List<Class> getTypes()
+    {
+        return types;
     }
 
     public void BuildIR()
@@ -81,51 +83,87 @@ public class IRConstructor implements IRTraversal
     @Override
     public IRInstruction visit(ClassDecNode node)
     {
+        currentClass = node;
+        Class classType = new Class(node.getName());
         if(node == null) return null;
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
         for(VarDecNode item : node.getMemberVarible())
-            visit(item);
+        {
+//            visit(item);
+            classType.addContainType(convertType(item.getType()));
+        }
+        addType(classType);
+        currentClass = null;
         return null;
     }
 
     @Override
     public Function visit(FuncDecNode node)
     {
-//        currentFunction = new FunctionScope(node.getName());
-//        setIRScope(node.getInternalScope().getIRScope());
+        IRType type = visit(node.getReturnType());
+        List<IRType> params = new ArrayList<>();
+        if(currentClass != null)
+            params.add(new Class(currentClass.getName()));
+        for(FuncParamNode item : node.getParameter())
+            params.add(convertType(item.getType()));
+        Name name = FunctionRename(node.getName());
+        addInst(new Function(currentLabel, name, type, params));
+        currentFunction = new FunctionScope(node.getName());
+        currentFunction.setFuncDecNode(node);
+        setIRScope(node.getInternalScope().getIRScope());
+//        visitFormalParameter(node.getParameter());
         visit(node.getBlock());
-//        IRType type;
-//        if(node.getReturnType() instanceof ClassType)
-//        {
-//            type = visit(node.getReturnType().getClassNode());
-//        }
-//        else if(node.getReturnType() instanceof BuiltInType)
-//        {
-//            switch (node.getReturnType().getTypeName().toString())
-//            {
-//                case "int": break;
-//                case "string": break;
-//            }
-//        }
+        exitIRScope();
         return null;
+    }
 
+    private Name FunctionRename(Name origin_name)
+    {
+        Name new_name = currentClass == null? origin_name :
+                new Name("__" + currentClass.getName().toString() + "__" + origin_name.toString());
+        return new_name;
+    }
+
+    private void visitFormalParameter(List<FuncParamNode> parameters)
+    {
+//        for(FuncParamNode item : parameters)
+//        {
+//            VirtualRegister register = currentFunction.getRegister();
+//            Address param = new Address(item.getName());
+//            addInst(new Alloca(currentLabel, param, new Immediate(item.getType().getTypeSize())));
+//            addInst(new Store(currentLabel, param, register));
+//        }
     }
 
     @Override
     public Address visit(VarDecNode node)
     {
-        Address register = new Address(node.getName());
-        addInst(new Alloca(currentLabel, register,  new Immediate(node.getType().getTypeSize())));
+        Address address = new Address(node.getName());
+        addInst(new Alloca(currentLabel, address,  convertType(node.getType())));
         if(node.getValue() != null)
         {
-            addInst(new Store(currentLabel, register, visit(node.getValue())));
+            IntegerValue right = visit(node.getValue());
+            if(right instanceof Address)
+            {
+                VirtualRegister register = currentFunction.getRegister();
+                addInst(new Load(currentLabel, register, (Address)right));
+                addInst(new Store(currentLabel, address, register));
+            }
+            else if(right instanceof Register)
+            {
+                addInst(new Store(currentLabel, address, right));
+            }
+            else
+            {
+                addInst(new Store(currentLabel, address, right));
+            }
         }
-        return register;
+        return address;
     }
 
     @Override
-    public Address visit(FuncParamNode node)
+    public IRType visit(FuncParamNode node)
     {
         return null;
     }
@@ -136,6 +174,7 @@ public class IRConstructor implements IRTraversal
         if(node == null) return null;
         return (IntegerValue) node.accept(this);
     }
+
 
     @Override
     public Immediate visit(AndExprNode node)
@@ -152,19 +191,30 @@ public class IRConstructor implements IRTraversal
         //should return address
         IntegerValue index = visit(node.getIndex());
         Address array = (Address)visit(node.getArray());
-        return null;
+        return new Address(array.getName(), index);
     }
 
     @Override
     public IntegerValue visit(AssignExprNode node)
     {
-        if(node.getLhs().getExprType() instanceof BuiltInType)
+        IntegerValue left = visit(node.getLhs());
+        IntegerValue right = visit(node.getRhs());
+        if(right instanceof Address)
         {
-            addInst(new Store(currentLabel, visit(node.getLhs()), visit(node.getRhs())));
+            if(node.getRhs().getExprType() instanceof BuiltInType)
+            {
+                VirtualRegister register = currentFunction.getRegister();
+                addInst(new Load(currentLabel, register, (Address) right));
+                addInst(new Store(currentLabel, left, register));
+            }
+            else
+            {
+                addInst(new MemCopy(currentLabel, (Address)right, (Address)left));
+            }
         }
-        else
+        else if(right instanceof Register)
         {
-            //memcpy
+            addInst(new Store(currentLabel, left, right));
         }
         return null;
     }
@@ -223,7 +273,18 @@ public class IRConstructor implements IRTraversal
     @Override
     public IntegerValue visit(CallExprNode node)
     {
-        return null;
+        //should assign a register to the return value
+        Address address = new Address(currentFunction.getRegister().getName());
+        addInst(new Alloca(currentLabel, address, convertType(node.getFunction().getReturnType())));
+        List<IntegerValue> params = new ArrayList<>();
+        for(ExprNode item : node.getParam().getExprs())
+        {
+            params.add(visit(item));
+        }
+        addInst(new Call(currentLabel, address, FunctionRename(node.getFuncName()), params));
+        if(node.getFunction().getReturnType() instanceof BuiltInType)
+            return getRegisterValue(address);
+        else return address;
     }
 
     @Override
@@ -236,14 +297,6 @@ public class IRConstructor implements IRTraversal
     public IntegerValue visit(IdExprNode node)
     {
         if(node == null) return null;
-//        if(!(currentIRScope.containsName(node.getName())))
-//        {
-//            VirtualRegister register = currentFunction.getRegister();
-//            currentIRScope.addRegister(node.getName(), register);
-//            addInst(new Load(currentLabel, register, new Address(node.getName())));
-//            return register;
-//        }
-//        return currentIRScope.getRegister(node.getName());
         return new Address(node.getName());
     }
 
@@ -259,19 +312,41 @@ public class IRConstructor implements IRTraversal
     public IntegerValue visit(MemberExprNode node)
     {
         //should return address
-        return null;
+        IntegerValue ret;
+        if(node == null) return null;
+        Address base = (Address)visit(node.getExpr());
+        if(node.isFunctionCall())
+        {
+            Name name = node.getExpr().getExprType().getTypeName();
+            node.getFunctionCall().setFunctionName(new Name("__" + name.toString() + "__" + node.getFunctionCall().getFuncName()));
+            ret = visit(node.getFunctionCall());
+        }
+        else
+        {
+            VarDecNode var = (VarDecNode)node.getExpr().getExprType().getClassNode().getInternalScope().findNode(node.getName());
+            int offset = var.getMemberNumber();
+            ret = new Address(base.getName(), new Immediate(offset));
+        }
+
+        return ret;
     }
 
     @Override
     public IntegerValue visit(NewExprNode node)
     {
-        return null;
+        if(node == null) return null;
+        return visit(node.getCreatorNode());
+//        return null;
     }
 
     @Override
     public IntegerValue visit(CreatorNode node)
     {
-        return null;
+        if(node == null)
+            return null;
+        Address address = new Address(currentFunction.getRegister().getName());
+        addInst(new Alloca(currentLabel, address, convertType(node.getType())));
+        return address;
     }
 
     @Override
@@ -324,6 +399,7 @@ public class IRConstructor implements IRTraversal
     @Override
     public IntegerValue visit(StringConstNode node)
     {
+        //TODO
         return null;
     }
 
@@ -349,6 +425,7 @@ public class IRConstructor implements IRTraversal
     @Override
     public IntegerValue visit(ThisExprNode node)
     {
+        //TODO
         return null;
     }
 
@@ -394,9 +471,9 @@ public class IRConstructor implements IRTraversal
         if(node.getBeginCondition() != null)
             visit(node.getBeginCondition());
 
-        Label for_label = new Label(null, BasicBlock.BlockType.FOR);
-        Label true_label = new Label(null, BasicBlock.BlockType.FOR);
-        Label false_label = new Label(null, BasicBlock.BlockType.FOR);
+        Label for_label = new Label(null);
+        Label true_label = new Label(null);
+        Label false_label = new Label(null);
 
         addInst(new Jump(currentLabel, for_label));
         currentLabel = for_label;
@@ -405,7 +482,6 @@ public class IRConstructor implements IRTraversal
         VirtualRegister reg = (VirtualRegister) visit(node.getEndCondition());
         IRInstruction branch = new Branch(currentLabel, true_label, false_label, reg);
         addInst(branch);
-
 
         addInst(true_label);
         currentLabel = true_label;
@@ -425,26 +501,30 @@ public class IRConstructor implements IRTraversal
     public IRInstruction visit(IfNode node)
     {
         VirtualRegister condition = (VirtualRegister)visit(node.getCondition());
-        Label true_label = new Label(null, BasicBlock.BlockType.IF);
-        Label false_label = new Label(null, BasicBlock.BlockType.ELSE);
-        Label end_label = new Label(null, null);
+        Label true_label = new Label(null);
+        Label false_label = new Label(null);
+        Label end_label = new Label(null);
         if(node.getElseThen() == null)
         {
             addInst(new Branch(currentLabel, true_label, end_label, condition));
             addInst(true_label);
+            currentLabel = true_label;
             visit(node.getThen());
         }
         else
         {
             addInst(new Branch(currentLabel, true_label, false_label, condition));
             addInst(true_label);
+            currentLabel = true_label;
             visit(node.getThen());
             addInst(new Jump(currentLabel, end_label));
             addInst(false_label);
+            currentLabel = false_label;
             visit(node.getElseThen());
             addInst(new Jump(currentLabel, end_label));
         }
         addInst(end_label);
+        currentLabel = end_label;
 
         return null;
     }
@@ -452,9 +532,11 @@ public class IRConstructor implements IRTraversal
     @Override
     public IRInstruction visit(ReturnNode node)
     {
-//        VirtualRegister register = (VirtualRegister)visit(node.getExprNode());
         IntegerValue integerValue = visit(node.getExprNode());
-        addInst(new Return(currentLabel, integerValue));
+        if(currentFunction.getFuncDecNode().getReturnType() instanceof BuiltInType)
+            addInst(new Return(currentLabel, getRegisterValue(integerValue)));
+        else
+            addInst(new Return(currentLabel, integerValue));
         return null;
     }
 
@@ -462,17 +544,22 @@ public class IRConstructor implements IRTraversal
     public IRInstruction visit(WhileNode node)
     {
         VirtualRegister condition = (VirtualRegister)visit(node.getCondition());
-        Label while_label = new Label(null, BasicBlock.BlockType.WHILE);
+        Label while_label = new Label(null);
         addInst(new Jump(currentLabel, while_label));
+
         addInst(while_label);
         currentLabel = while_label;
-        Label true_label = new Label(null, BasicBlock.BlockType.WHILE);
-        Label false_label = new Label(null, null);
+
+        Label true_label = new Label(null);
+        Label false_label = new Label(null);
+
         addInst(new Branch(currentLabel, true_label, false_label, condition));
         addInst(true_label);
+        currentLabel = true_label;
         visit(node.getThen());
         addInst(new Jump(currentLabel, while_label));
         addInst(false_label);
+        currentLabel = false_label;
         return null;
     }
 
@@ -485,9 +572,9 @@ public class IRConstructor implements IRTraversal
     }
 
     @Override
-    public void visit(Type type) throws Exception
+    public IRType visit(Type type)
     {
-
+        return convertType(type);
     }
 
     private void addInst(IRInstruction instruction)
@@ -501,6 +588,12 @@ public class IRConstructor implements IRTraversal
         instruction.setLast(currentInst);
         currentInst.setNext(instruction);
         currentInst = instruction;
+        currentLabel.addInst(instruction);
+    }
+
+    private void addType(Class classType)
+    {
+        types.add(classType);
     }
 
     private void setIRScope(IRScope irScope)
@@ -535,4 +628,19 @@ public class IRConstructor implements IRTraversal
         }
         else return value;
     }
+
+    private IRType convertType(Type type)
+    {
+        //CAN OPTIMIZE
+        //By building a map instead of new
+        IRType irType;
+        if(type instanceof BuiltInType)
+            irType = new BuiltIn();
+        else if(type instanceof ClassType)
+            irType = new Class(type.getTypeName());
+        else
+            irType = new Array(convertType(((ArrayType)type).getBasic_type()), null);
+        return irType;
+    }
+
 }

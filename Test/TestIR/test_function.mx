@@ -1,0 +1,23 @@
+class A
+{
+    int a;
+    int b;
+    int foo()
+    {
+        return 1;
+    }
+}
+
+A function(A a, int b)
+{
+    A x;
+    return x;
+}
+
+int main()
+{
+    A a;
+    int c = a.foo();
+    int d = a.a;
+    return 0;
+}

@@ -1,0 +1,13 @@
+class A
+{
+    int b;
+    int foo(){}
+}
+
+int main()
+{
+    int x = 0;
+    A a;
+    int y = a.foo();
+    return 0;
+}

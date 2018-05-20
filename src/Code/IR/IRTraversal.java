@@ -21,7 +21,7 @@ public interface IRTraversal
     IRInstruction visit(ClassDecNode node);
     Function visit(FuncDecNode node);
     Address visit(VarDecNode node);
-    Address visit(FuncParamNode node);
+    IRType visit(FuncParamNode node);
 
     IntegerValue visit(ExprNode node);
     Immediate    visit(AndExprNode node);
@@ -53,5 +53,5 @@ public interface IRTraversal
     IRInstruction visit(WhileNode node);
     IRInstruction visit(ExprStatNode node);
 
-    void visit(Type type) throws Exception;
+    IRType visit(Type type);
 }

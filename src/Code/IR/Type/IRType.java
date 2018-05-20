@@ -1,6 +1,10 @@
 package Code.IR.Type;
 
-public abstract class IRType
+public class IRType
 {
-
+    @Override
+    public String toString()
+    {
+        return "IRType";
+    }
 }

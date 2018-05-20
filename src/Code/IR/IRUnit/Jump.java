@@ -10,6 +10,11 @@ public class Jump extends Terminator
         this.target = target;
     }
 
+    public Label getTarget()
+    {
+        return target;
+    }
+
     @Override
     public String toString()
     {

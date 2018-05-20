@@ -1,7 +1,9 @@
 package Code.AST.Node.DeclNode;
 
 import Code.AST.Object.ParameterObject;
+import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
+import Code.AST.Type.Type;
 import Code.IR.IRTraversal;
 import Code.IR.IRUnit.Value.Address;
 import Code.SemanticCheck.ASTTraversal;
@@ -31,5 +33,17 @@ public class FuncParamNode extends VarDecNode
     {
         visitor.visit(this);
         return null;
+    }
+
+    @Override
+    public Type getType()
+    {
+        return param.getType();
+    }
+
+    @Override
+    public Name getName()
+    {
+        return param.getName();
     }
 }

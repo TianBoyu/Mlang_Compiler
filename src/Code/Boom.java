@@ -8,6 +8,7 @@ import Code.AST.Node.ProgNode;
 import Code.IR.IRConstructor;
 import Code.IR.IRPrinter;
 import Code.IR.IRUnit.IRInstruction;
+import Code.IR.Type.Class;
 import Code.Parser.MlangErrorListener;
 import Code.Parser.MlangLexer;
 import Code.Parser.MlangParser;
@@ -24,6 +25,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.List;
 
 public class Boom {
     public static void checkSemantic(ProgNode program)
@@ -50,14 +52,15 @@ public class Boom {
         IRConstructor irConstructor = new IRConstructor(program);
         irConstructor.BuildIR();
         IRInstruction entry = irConstructor.getEntry();
-        IRPrinter irPrinter = new IRPrinter(entry, outputStream);
+        List<Class> typeList = irConstructor.getTypes();
+        IRPrinter irPrinter = new IRPrinter(entry, outputStream, typeList);
         irPrinter.printIR();
     }
 
     public static void main(String[] args) throws Exception
     {
-        InputStream is = System.in;
-//        InputStream is = new FileInputStream("Test/TestIR/test_while.mx");
+//        InputStream is = System.in;
+        InputStream is = new FileInputStream("Test/TestIR/test_if.mx");
         ANTLRInputStream input = new ANTLRInputStream(is);
         MlangLexer lexer = new MlangLexer(input);
         lexer.addErrorListener(MlangErrorListener.INSTANCE);
@@ -71,6 +74,6 @@ public class Boom {
         walker.walk(constructor, tree);
 
         checkSemantic(constructor.getProgram());
-//        printIR(constructor.getProgram());
+        printIR(constructor.getProgram());
     }
 }

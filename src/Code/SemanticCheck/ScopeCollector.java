@@ -52,8 +52,13 @@ public class ScopeCollector implements ASTTraversal
         setCurrentScope(scope);
         for(FuncDecNode item : node.getMemberFunction())
             visit(item);
+        int i = 0;
         for(VarDecNode item : node.getMemberVarible())
+        {
+            item.setMember(true);
+            item.setMemberNumber(i++);
             visit(item);
+        }
         exitCurrentScope();
     }
 
