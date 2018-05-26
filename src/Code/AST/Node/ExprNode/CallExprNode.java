@@ -4,7 +4,7 @@ import Code.AST.Node.DeclNode.FuncDecNode;
 import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.IR.IRTraversal;
-import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.SemanticCheck.ASTTraversal;
 
 public class CallExprNode extends ExprNode

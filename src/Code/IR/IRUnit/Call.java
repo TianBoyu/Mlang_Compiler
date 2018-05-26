@@ -1,25 +1,37 @@
 package Code.IR.IRUnit;
 
 import Code.AST.Tools.Name;
-import Code.IR.IRUnit.Value.IntegerValue;
-import Code.IR.IRUnit.Value.VirtualRegister;
-import Code.IR.Type.IRType;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.IntegerValue;
+import Code.IR.IRUnit.Oprands.PhysicalRegister;
+import Code.IR.IRUnit.Oprands.VirtualRegister;
 
 import java.util.List;
-import java.util.NavigableMap;
 
 public class Call extends IRInstruction
 {
     private Name functionName;
     private List<IntegerValue> params;
-    private IntegerValue dest;
+    private VirtualRegister dest;
 
-    public Call(Label label, IntegerValue dest, Name function, List<IntegerValue> params)
+    private PhysicalRegister destReg;
+
+    public Call(Label label, VirtualRegister dest, Name function, List<IntegerValue> params)
     {
         super(label);
         this.dest = dest;
         this.functionName = function;
         this.params = params;
+    }
+
+    public PhysicalRegister getDestReg()
+    {
+        return destReg;
+    }
+
+    public void setDestReg(PhysicalRegister dest_reg)
+    {
+        this.destReg = dest_reg;
     }
 
     public Name getFunction()
@@ -55,5 +67,10 @@ public class Call extends IRInstruction
         }
         ret += ")";
         return ret;
+    }
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }

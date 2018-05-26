@@ -1,6 +1,7 @@
 package Code.IR.IRUnit;
 
 import Code.IR.BasicBlock;
+import Code.IR.IRInstTraversal;
 
 public class Label extends IRInstruction
 {
@@ -35,6 +36,12 @@ public class Label extends IRInstruction
     @Override
     public String toString()
     {
-        return "<Label> " + name;
+        return "label" + name;
+    }
+
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }

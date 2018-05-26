@@ -2,11 +2,8 @@ package Code.IR;
 
 import Code.AST.Node.DeclNode.FuncDecNode;
 import Code.AST.Tools.Name;
-import Code.IR.IRUnit.Function;
-import Code.IR.IRUnit.Value.VirtualRegister;
+import Code.IR.IRUnit.Oprands.VirtualRegister;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 public class FunctionScope
@@ -15,13 +12,14 @@ public class FunctionScope
     private int currentNumber = 0;
     private Name name;
     private FuncDecNode funcDecNode;
+    private int usedSlotNumber = 0;
     public FunctionScope(Name name)
     {
         this.name = name;
     }
     public VirtualRegister getRegister()
     {
-        VirtualRegister register = new VirtualRegister(new Name("_r" + String.valueOf(currentNumber++)));
+        VirtualRegister register = new VirtualRegister(Name.getName("%r" + String.valueOf(currentNumber++)));
         registerMap.addElement(register);
         return register;
     }
@@ -38,6 +36,16 @@ public class FunctionScope
     public FuncDecNode getFuncDecNode()
     {
         return funcDecNode;
+    }
+
+    public int getUsedSlotNumber()
+    {
+        return usedSlotNumber;
+    }
+
+    public void increSlotNumber()
+    {
+        ++usedSlotNumber;
     }
 
     public void setFuncDecNode(FuncDecNode funcDecNode)

@@ -1,5 +1,7 @@
 package Code.IR.IRUnit;
 
+import Code.IR.IRInstTraversal;
+
 public class Jump extends Terminator
 {
     private Label target;
@@ -19,5 +21,11 @@ public class Jump extends Terminator
     public String toString()
     {
         return "Jump " + target.toString();
+    }
+
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }

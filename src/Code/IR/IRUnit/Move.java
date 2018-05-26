@@ -1,6 +1,7 @@
 package Code.IR.IRUnit;
 
-import Code.IR.IRUnit.Value.Register;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Register;
 
 public class Move extends IRInstruction
 {
@@ -19,5 +20,11 @@ public class Move extends IRInstruction
     public String toString()
     {
         return dest.toString() + " = Move " + data.toString();
+    }
+
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }

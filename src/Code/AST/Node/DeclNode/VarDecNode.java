@@ -6,7 +6,7 @@ import Code.AST.Tools.Name;
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 import Code.IR.IRTraversal;
-import Code.IR.IRUnit.Value.Address;
+import Code.IR.IRUnit.Oprands.Address;
 import Code.SemanticCheck.ASTTraversal;
 import Code.SemanticCheck.Scope.Scope;
 

@@ -7,10 +7,9 @@ import Code.AST.Node.StatNode.*;
 import Code.AST.Type.Type;
 import Code.IR.IRUnit.Function;
 import Code.IR.IRUnit.IRInstruction;
-import Code.IR.IRUnit.Value.Address;
-import Code.IR.IRUnit.Value.Immediate;
-import Code.IR.IRUnit.Value.IntegerValue;
-import Code.IR.Type.Class;
+import Code.IR.IRUnit.Oprands.Address;
+import Code.IR.IRUnit.Oprands.Immediate;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.Type.IRType;
 
 public interface IRTraversal

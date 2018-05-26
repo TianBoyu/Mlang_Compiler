@@ -1,0 +1,7 @@
+int main()
+{
+    string a = "hello";
+    string b = "hello";
+    string c = "world";
+    return 0;
+}

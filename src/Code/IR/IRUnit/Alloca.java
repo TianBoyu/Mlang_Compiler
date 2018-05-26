@@ -1,8 +1,9 @@
 package Code.IR.IRUnit;
 
-import Code.IR.IRUnit.Value.Address;
-import Code.IR.IRUnit.Value.IntegerValue;
-import Code.IR.IRUnit.Value.VirtualRegister;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
+import Code.IR.IRUnit.Oprands.IntegerValue;
+import Code.IR.IRUnit.Oprands.PhysicalRegister;
 import Code.IR.Type.IRType;
 
 public class Alloca extends IRInstruction
@@ -25,6 +26,11 @@ public class Alloca extends IRInstruction
         this.type = type;
     }
 
+    public Address getDest()
+    {
+        return dest;
+    }
+
     @Override
     public String toString()
     {
@@ -32,5 +38,11 @@ public class Alloca extends IRInstruction
             return (dest.toString() + " = " + "alloca " + size.toString());
         else
             return (dest.toString() + " = " + "alloca " + type.toString());
+    }
+
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }

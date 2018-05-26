@@ -3,7 +3,7 @@ package Code.AST.Node.ExprNode;
 import Code.AST.Tools.Position;
 import Code.AST.Type.Type;
 import Code.IR.IRTraversal;
-import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.SemanticCheck.ASTTraversal;
 
 import java.util.List;

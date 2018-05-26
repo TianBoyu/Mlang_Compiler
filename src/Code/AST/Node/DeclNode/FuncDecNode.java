@@ -21,6 +21,14 @@ public class FuncDecNode extends DeclNode
     private Scope external_scope;
     private Scope internal_scope;
 
+    public FuncDecNode(boolean isBuiltIn, Position pos, FuncDecObject _function, BlockNode _block)
+    {
+        super(pos, isBuiltIn);
+        function = _function;
+        block = _block;
+        is_func = true;
+    }
+
     public FuncDecNode(Position pos, FuncDecObject _function, BlockNode _block)
     {
         super(pos);

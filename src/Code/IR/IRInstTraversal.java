@@ -4,6 +4,7 @@ import Code.IR.IRUnit.*;
 
 public interface IRInstTraversal
 {
+    void visit(IRInstruction inst);
     void visit(Alloca inst);
     void visit(BinaryOperation inst);
     void visit(Branch inst);

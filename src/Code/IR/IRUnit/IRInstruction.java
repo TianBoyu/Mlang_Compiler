@@ -1,5 +1,7 @@
 package Code.IR.IRUnit;
 
+import Code.IR.IRInstTraversal;
+
 public abstract class IRInstruction
 {
     private Label label;
@@ -45,4 +47,6 @@ public abstract class IRInstruction
     }
 
     public abstract String toString();
+
+    public abstract void accept(IRInstTraversal visitor);
 }

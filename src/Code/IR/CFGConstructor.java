@@ -10,6 +10,22 @@ public class CFGConstructor implements IRInstTraversal
     public CFGConstructor(IRInstruction entry)
     {
         this.entry = entry;
+
+    }
+
+    public void BuildCFG()
+    {
+        IRInstruction ir = entry;
+        while(ir != null)
+        {
+            visit(ir);
+        }
+    }
+
+    @Override
+    public void visit(IRInstruction inst)
+    {
+        inst.accept(this);
     }
 
     @Override
@@ -25,11 +41,10 @@ public class CFGConstructor implements IRInstTraversal
     @Override
     public void visit(Branch inst)
     {
-        //currentBlock.addInstruction(inst);
-        BasicBlock true_block = inst.getTrue_label().getBlock();
+        BasicBlock true_block = inst.getTrueLabel().getBlock();
         currentBlock.addSuccessor(true_block);
         true_block.addPredecessor(true_block);
-        BasicBlock false_block = inst.getFalse_label().getBlock();
+        BasicBlock false_block = inst.getFalseLabel().getBlock();
         currentBlock.addSuccessor(false_block);
         currentBlock.addPredecessor(false_block);
 

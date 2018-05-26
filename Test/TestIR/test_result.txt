@@ -1,42 +1,28 @@
 __________________________________________
-========IntermediateRepresentation========
+===================TEXT===================
 
 
 define i64 @main()
   [Address a] = alloca i64
-  Store Immediate 1 to [Address a]
-  _r1 = Load [Address a]
-  _r0 = _r1 EQU Immediate 2
-  Branch _r0 true: <Label> 0 false: <Label> 1
-
-<Label> 0
+  Store Immediate 5 to [Address a]
   [Address b] = alloca i64
-  Store Immediate 1 to [Address b]
-  _r3 = Load [Address b]
-  _r2 = _r3 EQU Immediate 5
-  Branch _r2 true: <Label> 3 false: <Label> 4
-
-<Label> 3
-  [Address d] = alloca i64
-  Store Immediate 100 to [Address d]
-  Jump <Label> 5
-
-<Label> 4
-  [Address d] = alloca i64
-  Store Immediate 300 to [Address d]
-  Jump <Label> 5
-
-<Label> 5
-  Jump <Label> 2
-
-<Label> 1
   [Address c] = alloca i64
-  Store Immediate 2 to [Address c]
-  Jump <Label> 2
-
-<Label> 2
-  Return Immediate 0
+  %r0 = Load [Address a]
+  %r1 = %r0 add Immediate 1
+  Store %r0 to [Address c]
+  %r2 = Load [Address c]
+  Store %r2 to [Address b]
+  %r3 = Load [Address b]
+  %r4 = Load [Address c]
+  %r3 = %r3 add %r4
+  %r5 = Load [Address a]
+  %r3 = %r3 add %r5
+  Return %r3
 
 
 __________________________________________
 ===================TYPE===================
+
+
+__________________________________________
+===================DATA===================

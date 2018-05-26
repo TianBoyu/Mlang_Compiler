@@ -159,6 +159,11 @@ public class Scope
         return isClass;
     }
 
+    public Map<Name, DeclNode> getScopeNodes()
+    {
+        return scopeNodes;
+    }
+
     public void InitializeBuiltInType()
     {
         addType(new BuiltInType("int", 4));
@@ -168,43 +173,51 @@ public class Scope
     }
     public void InitializeBuiltInFunction()
     {
-        addNode(new FuncDecNode(new Position(0),
-                                new FuncDecObject("getInt", new ArrayList<>(), new BuiltInType("int", 4)),
+        addNode(new FuncDecNode(true, new Position(0),
+                                new FuncDecObject("getInt", new ArrayList<>(),
+                                                    new BuiltInType("int", 4)),
                                 null));
         List<FuncParamNode> paras = new ArrayList<>();
-        paras.add(new FuncParamNode(new Position(0), new ParameterObject("a", new Type("string", 0))));
-        addNode(new FuncDecNode(new Position(0),
-                                new FuncDecObject("print", paras, new BuiltInType("void", 0)),
+        paras.add(new FuncParamNode(new Position(0),
+                new ParameterObject("a", new Type("string", 0))));
+        addNode(new FuncDecNode(true, new Position(0),
+                                new FuncDecObject("print", paras,
+                                                    new BuiltInType("void", 0)),
                                 null));
-        addNode(new FuncDecNode(new Position(0),
-                                new FuncDecObject("println", paras, new BuiltInType("void", 0)),
+        addNode(new FuncDecNode(true, new Position(0),
+                                new FuncDecObject("println", paras,
+                                                    new BuiltInType("void", 0)),
                                 null));
-        addNode(new FuncDecNode(new Position(0),
-                                new FuncDecObject("getString", new ArrayList<>(), new BuiltInType("string", 0)),
+        addNode(new FuncDecNode(true, new Position(0),
+                                new FuncDecObject("getString",
+                                        new ArrayList<>(), new BuiltInType("string", 0)),
                                 null));
         paras.clear();
-        paras.add(new FuncParamNode(new Position(0), new ParameterObject("a", new Type("int", 4))));
-        addNode(new FuncDecNode(new Position(0),
-                                new FuncDecObject("toString", paras, new BuiltInType("string", 4)),
+        paras.add(new FuncParamNode(new Position(0),
+                new ParameterObject("a", new Type("int", 4))));
+        addNode(new FuncDecNode(true, new Position(0),
+                                new FuncDecObject("toString", paras,
+                                                    new BuiltInType("string", 4)),
                                 null));
-        addNode(new FuncDecNode(new Position(0),
-                                new FuncDecObject("size", new ArrayList<>(), new BuiltInType("int", 4)),
+        addNode(new FuncDecNode(true, new Position(0),
+                                new FuncDecObject("size", new ArrayList<>(),
+                                        new BuiltInType("int", 4)),
                                 null));
-        addNode(new FuncDecNode(new Position(0),
+        addNode(new FuncDecNode(true, new Position(0),
                 new FuncDecObject("length", new ArrayList<>(), new BuiltInType("int", 4)),
                 null));
         paras.clear();
         paras.add(new FuncParamNode(new Position(0), new ParameterObject("left", new Type("int", 4))));
         paras.add(new FuncParamNode(new Position(0), new ParameterObject("right", new Type("int", 4))));
-        addNode(new FuncDecNode(new Position(0),
+        addNode(new FuncDecNode(true, new Position(0),
                 new FuncDecObject("substring", paras, new BuiltInType("string", 4)),
                 null));
-        addNode(new FuncDecNode(new Position(0),
+        addNode(new FuncDecNode(true, new Position(0),
                 new FuncDecObject("parseInt", new ArrayList<>(), new BuiltInType("int", 4)),
                 null));
         paras.clear();
         paras.add(new FuncParamNode(new Position(0), new ParameterObject("pos", new Type("int", 4))));
-        addNode(new FuncDecNode(new Position(0),
+        addNode(new FuncDecNode(true, new Position(0),
                 new FuncDecObject("ord", paras, new BuiltInType("int", 4)),
                 null));
     }

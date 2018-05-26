@@ -1,7 +1,6 @@
 package Code.IR.Type;
 
 import Code.AST.Tools.Name;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;

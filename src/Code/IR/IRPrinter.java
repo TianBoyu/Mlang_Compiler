@@ -14,22 +14,29 @@ public class IRPrinter
     private IRInstruction entry;
     private FileOutputStream outputStream;
     private List<Class> typeList;
-    public IRPrinter(IRInstruction entry, FileOutputStream outputStream, List<Class> typeList)
+    private DataSection dataSection;
+    public IRPrinter(IRInstruction entry, FileOutputStream outputStream, List<Class> typeList, DataSection dataSection)
     {
         this.entry = entry;
         this.outputStream = outputStream;
         this.typeList = typeList;
+        this.dataSection = dataSection;
     }
     public void printIR()
     {
         IRInstruction current = entry;
         PrintStream printStream = new PrintStream(outputStream);
         printStream.println("__________________________________________");
-        printStream.println("========IntermediateRepresentation========");
+        printStream.println("===================TEXT===================");
         printStream.println("");
         while(current != null)
         {
-            if(current instanceof Label || current instanceof Function)
+            if(current instanceof Label)
+            {
+                printStream.println("");
+                printStream.println("  " + current.toString());
+            }
+            else if(current instanceof Function)
             {
                 printStream.println("");
                 printStream.println(current.toString());
@@ -43,5 +50,12 @@ public class IRPrinter
         printStream.println("===================TYPE===================");
         for(Class item : typeList)
             printStream.println(item.toFullInfoString());
+        printStream.println("\n");
+        printStream.println("__________________________________________");
+        printStream.println("===================DATA===================");
+        for(DataSection.DataPiece item : dataSection.getDataPieces())
+            printStream.println(item.toString());
+
+
     }
 }

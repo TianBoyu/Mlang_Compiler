@@ -1,7 +1,7 @@
 package Code.IR.IRUnit;
 
-import Code.IR.IRUnit.Value.Address;
-import Code.IR.Type.IRType;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
 
 public class MemCopy extends IRInstruction
 {
@@ -15,9 +15,25 @@ public class MemCopy extends IRInstruction
         this.to_address = address2;
     }
 
+    public Address getFromAddress()
+    {
+        return from_address;
+    }
+
+    public Address getToAddress()
+    {
+        return to_address;
+    }
+
     @Override
     public String toString()
     {
         return "MemCopy " + from_address.toString() + " to " + to_address.toString();
+    }
+
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }

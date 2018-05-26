@@ -3,7 +3,7 @@ package Code.AST.Node.ExprNode;
 import Code.AST.Tools.Position;
 import Code.AST.Tools.UnaryOp;
 import Code.IR.IRTraversal;
-import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 
 public abstract class UnaryExprNode extends ExprNode
 {

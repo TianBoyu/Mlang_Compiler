@@ -1,6 +1,6 @@
 package Code.IR.Type;
 
-import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 
 public class Array extends IRType
 {
@@ -18,6 +18,6 @@ public class Array extends IRType
     {
         if(size != null)
             return "[" + baseType.toString() + " * " + size.toString() + "]";
-        else return "[ArrayType: " + baseType.toString() + "[] ]";
+        else return "[ArrayType: " + baseType.toString() + "[]]";
     }
 }

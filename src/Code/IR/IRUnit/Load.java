@@ -1,31 +1,51 @@
 package Code.IR.IRUnit;
 
-import Code.IR.IRUnit.Value.Address;
-import Code.IR.IRUnit.Value.Immediate;
-import Code.IR.IRUnit.Value.IntegerValue;
-import Code.IR.IRUnit.Value.Register;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.*;
 
 public class Load extends IRInstruction
 {
-    private Register dest;
+    private VirtualRegister dest;
     private Address address;
     private Immediate value;
+    private PhysicalRegister destReg;
+    private PhysicalRegister sourceReg; //Used when the address is a parameter
 
-    public Load(Label label, Register dest, Address address)
+    public Load(Label label, VirtualRegister dest, Address address)
     {
         super(label);
         this.dest = dest;
         this.address = address;
     }
 
-    public Load(Label label, Register dest, Immediate value)
+    public Load(Label label, VirtualRegister dest, Immediate value)
     {
         super(label);
         this.dest = dest;
         this.value = value;
     }
 
-    public Register getDest()
+    public PhysicalRegister getDestReg()
+    {
+        return destReg;
+    }
+
+    public void setDestReg(PhysicalRegister dest_reg)
+    {
+        this.destReg = dest_reg;
+    }
+
+    public PhysicalRegister getSourceReg()
+    {
+        return sourceReg;
+    }
+
+    public void setSourceReg(PhysicalRegister sourceReg)
+    {
+        this.sourceReg = sourceReg;
+    }
+
+    public VirtualRegister getDest()
     {
         return dest;
     }
@@ -35,6 +55,11 @@ public class Load extends IRInstruction
         return address;
     }
 
+    public Immediate getValue()
+    {
+        return value;
+    }
+
     @Override
     public String toString()
     {
@@ -42,4 +67,11 @@ public class Load extends IRInstruction
             return dest.toString() + " = Load " + address.toString();
         else return dest.toString() + " = Load " + value.toString();
     }
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
+    }
+
+
 }

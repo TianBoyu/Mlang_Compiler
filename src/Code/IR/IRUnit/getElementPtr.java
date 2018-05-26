@@ -1,8 +1,9 @@
 package Code.IR.IRUnit;
 
-import Code.IR.IRUnit.Value.Address;
-import Code.IR.IRUnit.Value.IntegerValue;
-import Code.IR.IRUnit.Value.VirtualRegister;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
+import Code.IR.IRUnit.Oprands.IntegerValue;
+import Code.IR.IRUnit.Oprands.VirtualRegister;
 import Code.IR.Type.IRType;
 
 public class getElementPtr extends IRInstruction
@@ -29,5 +30,11 @@ public class getElementPtr extends IRInstruction
         return dest.toString() + " = " + "getElementPtr %" +
                 type.toString() + " % " + baseAddress.toString() + " " +
                 String.valueOf(pos1) + " " + String.valueOf(pos2);
+    }
+
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        throw new RuntimeException("can't reach here");
     }
 }

@@ -2,5 +2,7 @@ int main()
 {
     int a = 1;
     int b = a;
+    int c = 100;
+    int d = 200;
     return 0;
 }

@@ -3,7 +3,7 @@ package Code.AST.Node.ExprNode;
 import Code.AST.Tools.Position;
 import Code.AST.Type.BuiltInType;
 import Code.IR.IRTraversal;
-import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.SemanticCheck.ASTTraversal;
 
 public class NullConstNode extends ConstExprNode

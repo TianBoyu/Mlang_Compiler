@@ -2,7 +2,7 @@ package Code.AST.Node.ExprNode;
 
 import Code.AST.Tools.Position;
 import Code.IR.IRTraversal;
-import Code.IR.IRUnit.Value.Immediate;
+import Code.IR.IRUnit.Oprands.Immediate;
 import Code.SemanticCheck.ASTTraversal;
 
 public class AndExprNode extends ConditionExprNode

@@ -1,8 +1,8 @@
 package Code.IR;
 
 import Code.AST.Tools.Name;
-import Code.IR.IRUnit.Value.Address;
-import Code.IR.IRUnit.Value.VirtualRegister;
+import Code.IR.IRUnit.Oprands.Address;
+import Code.IR.IRUnit.Oprands.VirtualRegister;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,14 +36,20 @@ public class IRScope
             return registerMap.get(name);
         else return Parent.getRegister(name);
     }
-    public boolean containsName(Name name)
+
+    public Address findAddress(Name name)
     {
-        if(registerMap.containsKey(name))
-            return true;
-        else if(this.isTop)
-            return false;
-        else return Parent.containsName(name);
+        if(addressMap.containsKey(name))
+            return addressMap.get(name);
+        else
+            return this.Parent.findAddress(name);
     }
+    public void addAddress(Name name, Address address)
+    {
+        addressMap.put(name, address);
+    }
+
+
 
     public IRScope getParent()
     {

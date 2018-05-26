@@ -1,31 +1,44 @@
 package Code.IR.IRUnit;
 
-import Code.IR.IRUnit.Value.IntegerValue;
+import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.IntegerValue;
+import Code.IR.IRUnit.Oprands.PhysicalRegister;
 
 public class Branch extends Terminator
 {
-    private Label true_label;
-    private Label false_label;
+    private Label trueLabel;
+    private Label falseLabel;
     private IntegerValue condition;
+
+    private PhysicalRegister conditionReg;
 
     public Branch(Label label, Label true_label, Label false_label, IntegerValue condition)
     {
         //condition branch
         super(label);
-        this.true_label = true_label;
-        this.false_label = false_label;
+        this.trueLabel = true_label;
+        this.falseLabel = false_label;
         this.condition = condition;
     }
 
-
-    public Label getTrue_label()
+    public PhysicalRegister getConditionReg()
     {
-        return true_label;
+        return conditionReg;
     }
 
-    public Label getFalse_label()
+    public void setConditionReg(PhysicalRegister condition_reg)
     {
-        return false_label;
+        this.conditionReg = condition_reg;
+    }
+
+    public Label getTrueLabel()
+    {
+        return trueLabel;
+    }
+
+    public Label getFalseLabel()
+    {
+        return falseLabel;
     }
 
     public IntegerValue getCondition()
@@ -36,6 +49,12 @@ public class Branch extends Terminator
     @Override
     public String toString()
     {
-        return "Branch " + condition.toString() + " true: " + true_label.toString() + " false: " + false_label.toString();
+        return "Branch " + condition.toString() + " true: " + trueLabel.toString() +
+                " false: " + falseLabel.toString();
+    }
+    @Override
+    public void accept(IRInstTraversal visitor)
+    {
+        visitor.visit(this);
     }
 }
