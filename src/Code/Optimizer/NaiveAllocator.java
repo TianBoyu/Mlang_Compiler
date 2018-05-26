@@ -12,14 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 完全不分配寄存器,通用寄存器全用作特殊用途
- * 把函数的局部变量和表达式都放在栈帧里
- * 每次只使用一个寄存器
- * 函数的前6个参数通过寄存器来传递
- * 返回之前,把返回值读到寄存器里面
- */
-
 public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
 {
     private IRInstruction entry;

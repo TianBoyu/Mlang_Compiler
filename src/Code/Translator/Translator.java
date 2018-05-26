@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-//TODO 会开出没用过的地址(if,else中)
+//TODO
 
 public class Translator implements IRInstTraversal
 {
