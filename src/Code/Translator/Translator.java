@@ -5,7 +5,6 @@ import Code.IR.IRUnit.*;
 import Code.IR.IRUnit.Oprands.Address;
 import Code.IR.IRUnit.Oprands.Immediate;
 import Code.IR.IRUnit.Oprands.IntegerValue;
-import Code.IR.Type.BuiltIn;
 
 import java.util.HashMap;
 import java.util.LinkedList;
