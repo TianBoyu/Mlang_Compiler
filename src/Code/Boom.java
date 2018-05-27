@@ -44,7 +44,7 @@ public class Boom {
 
         checkSemantic(program);
         IRConstructor constructor = constructIR(program);
-        printIR(constructor);
+//        printIR(constructor);
         optimizeIR(constructor);
         translate(constructor, out);
     }
