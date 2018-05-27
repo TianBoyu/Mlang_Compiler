@@ -3,21 +3,11 @@ __________________________________________
 
 
 define i64 @main()
-  [Address a] = alloca i64
-  Store Immediate 5 to [Address a]
-  [Address b] = alloca i64
-  [Address c] = alloca i64
-  %r0 = Load [Address a]
-  %r1 = %r0 add Immediate 1
-  Store %r0 to [Address c]
-  %r2 = Load [Address c]
-  Store %r2 to [Address b]
-  %r3 = Load [Address b]
-  %r4 = Load [Address c]
-  %r3 = %r3 add %r4
-  %r5 = Load [Address a]
-  %r3 = %r3 add %r5
-  Return %r3
+  [Address str] = alloca i64
+  %r0 = Load [Address String_0]
+  Store %r0 to [Address str]
+  %r1 = Call @print([Address str])
+  Return Immediate 0
 
 
 __________________________________________
@@ -26,3 +16,4 @@ __________________________________________
 
 __________________________________________
 ===================DATA===================
+String_0: abcd

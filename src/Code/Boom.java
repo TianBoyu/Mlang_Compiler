@@ -32,18 +32,19 @@ import java.io.OutputStream;
 import java.util.List;
 
 public class Boom {
-    //String, Array, Class, Function
+    //String, Array, Class,
+    //Add builtin function
     public static void main(String[] args) throws Exception
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test573.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test_print.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 
         checkSemantic(program);
         IRConstructor constructor = constructIR(program);
-//        printIR(constructor);
+        printIR(constructor);
         optimizeIR(constructor);
         translate(constructor, out);
     }
@@ -106,9 +107,9 @@ public class Boom {
     }
     public static void translate(IRConstructor irConstructor, OutputStream outputStream)
     {
-        Translator translator = new Translator(irConstructor.getEntry());
+        Translator translator = new Translator(irConstructor.getEntry(), irConstructor.getDataSection());
         translator.process();
-        NasmPrinter nasmPrinter = new NasmPrinter(translator.getNasmInsts(),
+        NasmPrinter nasmPrinter = new NasmPrinter(translator.getNasmInsts(), translator.getDataInsts(),
                 irConstructor.getGlobalName(), outputStream);
         nasmPrinter.printNasm();
     }

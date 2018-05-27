@@ -31,6 +31,6 @@ public class StackSlot
     @Override
     public String toString()
     {
-        return type.toString() + " [rbp-" + String.valueOf(endPos) + "]";
+        return type.toString() + " [rbp-" + String.valueOf(beginPos) + "]";
     }
 }

@@ -492,7 +492,7 @@ public class ASTConstructor extends MlangBaseListener
     @Override
     public void exitStringConstExpr(MlangParser.StringConstExprContext ctx)
     {
-        String value = ctx.getText();
+        String value = ctx.getText().substring(1, ctx.getText().length() - 1);
         map.put(ctx, new StringConstNode(new Position(ctx.getStart().getLine()), value));
     }
 

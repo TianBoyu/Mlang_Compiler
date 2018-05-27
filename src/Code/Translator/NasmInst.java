@@ -1,10 +1,12 @@
 package Code.Translator;
 
+import java.util.List;
+
 public class NasmInst
 {
     public enum Instruction
     {
-        mov, push, pop, call, ret,
+        mov, push, pop, call, ret, db, dq,
 
         add, sub, imul, xor, or, and, inc, dec,
         neg, not, shl, shr, idivq,

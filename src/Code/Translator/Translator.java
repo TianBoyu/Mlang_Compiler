@@ -1,5 +1,7 @@
 package Code.Translator;
 
+import Code.AST.Tools.Name;
+import Code.IR.DataSection;
 import Code.IR.IRInstTraversal;
 import Code.IR.IRUnit.*;
 import Code.IR.IRUnit.Oprands.Address;
@@ -15,23 +17,28 @@ import java.util.Map;
 public class Translator implements IRInstTraversal
 {
     private IRInstruction entry;
+    private DataSection dataSection;
     private Map<Address, StackSlot> addressStackSlotMap;
     private int rsp_position;
     private List<NasmInst> nasmInsts;
+    private List<NasmInst> dataInsts;
     private Function currentFunction;
     private String[] parameterRegName = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
     private String[] spareRegName = {"rax", "rbx", "rsp", "rbp", "r10", "r11",
                                     "r12", "r13", "r14", "r15"};
-    public Translator(IRInstruction entry)
+    public Translator(IRInstruction entry, DataSection dataSection)
     {
         this.entry = entry;
+        this.dataSection = dataSection;
         rsp_position = 0;
         nasmInsts = new LinkedList<>();
+        dataInsts = new LinkedList<>();
         addressStackSlotMap = new HashMap<>();
     }
 
     public void process()
     {
+        processDataSection();
         IRInstruction cur = entry;
         while(cur != null)
         {
@@ -40,9 +47,24 @@ public class Translator implements IRInstTraversal
         }
     }
 
+    private void processDataSection()
+    {
+        for(DataSection.DataPiece piece : dataSection.getDataPieces())
+        {
+            addDataInst(NasmInst.Instruction.dq, String.valueOf(piece.getLength()), null);
+            addDataInst(NasmInst.Instruction.NULL, piece.getName().toString(), null);
+            addDataInst(NasmInst.Instruction.db, stringToAscii(piece.getValue()), null);
+        }
+    }
+
     public List<NasmInst> getNasmInsts()
     {
         return nasmInsts;
+    }
+
+    public List<NasmInst> getDataInsts()
+    {
+        return dataInsts;
     }
 
     @Override
@@ -183,6 +205,13 @@ public class Translator implements IRInstTraversal
     {
         if(inst.getAddress() != null)
         {
+            if(!addressStackSlotMap.containsKey(inst.getAddress())) //means it is an address of string
+            {
+                String destReg = inst.getDestReg().toString();
+                addInst(NasmInst.Instruction.mov, destReg, inst.getAddress().getName().toString());
+                StackSlot slot = mapAddressToSlot(inst.getAddress());
+                addInst(NasmInst.Instruction.mov, slot.toString(), destReg);
+            }
             addInst(NasmInst.Instruction.mov, inst.getDestReg().toString(),
                     addressStackSlotMap.get(inst.getAddress()).toString());
         }
@@ -243,6 +272,17 @@ public class Translator implements IRInstTraversal
         nasmInsts.add(new NasmInst(inst, operand1, operand2));
     }
 
+    private void addDataInst(NasmInst.Instruction inst, String operand1, String operand2)
+    {
+        if(inst == null)
+            inst = NasmInst.Instruction.NULL;
+        if(operand1 == null)
+            operand1 = "NULL";
+        if(operand2 == null)
+            operand2 = "NULL";
+        dataInsts.add(new NasmInst(inst, operand1, operand2));
+    }
+
     private StackSlot mapAddressToSlot(Address address)
     {
         StackSlot.SlotType type = StackSlot.SlotType.qword;
@@ -250,6 +290,18 @@ public class Translator implements IRInstTraversal
         addressStackSlotMap.put(address, slot);
         rsp_position += 8;
         return slot;
+    }
+
+
+    private String stringToAscii(String value)
+    {
+        StringBuffer sbu = new StringBuffer();
+        char[] chars = value.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            sbu.append((int)chars[i]).append(", ");
+        }
+        sbu.append('0');
+        return sbu.toString();
     }
 
 }
