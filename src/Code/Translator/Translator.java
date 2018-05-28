@@ -87,13 +87,23 @@ public class Translator implements IRInstTraversal
             addInst(NasmInst.Instruction.mov, inst.getDestReg().toString(),
                     String.valueOf(((Immediate)inst.getLhs()).getValue()));
         else
+        {
+            addInst(NasmInst.Instruction.mov, inst.getLhsReg().toString(),
+                    addressStackSlotMap.get(inst.getLhs()).toString());
             addInst(NasmInst.Instruction.mov, inst.getDestReg().toString(), inst.getLhsReg().toString());
+        }
         if(inst.getRhs() instanceof Immediate)
             addInst(NasmInst.Instruction.valueOf(inst.getOp().toString()),
                     inst.getDestReg().toString(), String.valueOf(((Immediate)inst.getRhs()).getValue()));
         else
+        {
+            addInst(NasmInst.Instruction.mov, inst.getRhsReg().toString(),
+                    addressStackSlotMap.get(inst.getRhs()).toString());
             addInst(NasmInst.Instruction.valueOf(inst.getOp().toString()),
-                inst.getDestReg().toString(), inst.getRhsReg().toString());
+                    inst.getDestReg().toString(), inst.getRhsReg().toString());
+        }
+        addInst(NasmInst.Instruction.mov, addressStackSlotMap.get(inst.getDest()).toString(),
+                inst.getDestReg().toString());
     }
 
     @Override

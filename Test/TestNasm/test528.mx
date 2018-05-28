@@ -4,6 +4,10 @@ int main() {
     int c;
     c = a++;
     b = c;
+    println(toString(a));
+    println(toString(b));
+    println(toString(c));
+    println(toString(b+c+a));
     return b+c+a;
 }
 

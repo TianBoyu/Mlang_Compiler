@@ -474,33 +474,29 @@ public class IRConstructor implements IRTraversal
         VirtualRegister new_reg = currentFunction.getRegister();
         VirtualRegister origin_reg = currentFunction.getRegister();
         IRType irType;
-        Address address;
+        irType = new BuiltIn();
+
+        Address origin_address = new Address(origin_reg.getName(), irType);
+        Address new_address = new Address(new_reg.getName(), irType);
+
+        addInst(new Alloca(currentLabel, origin_address, irType));
+        currentFunction.increSlotNumber();
+        currentIRScope.addAddress(origin_reg.getName(), origin_address);
+        addInst(new Store(currentLabel, origin_address, value));
+
         switch(node.getOp())
         {
             case SUF_DECRE:
-                irType = new BuiltIn();
-                address = new Address(origin_reg.getName(), irType);
-                addInst(new Alloca(currentLabel, address, irType));
-                currentFunction.increSlotNumber();
-                currentIRScope.addAddress(new_reg.getName(), address);
-                addInst(new Store(currentLabel, address, value));
 
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.sub,
-                        address, value, new Immediate(1)));
-                addInst(new Store(currentLabel, value, new_reg));
-                return address;
+                        (Address) value, value, new Immediate(1)));
+//                addInst(new Store(currentLabel, value, new_address));
+                return origin_address;
             case SUF_INCRE:
-                irType = new BuiltIn();
-                address = new Address(origin_reg.getName(), irType);
-                addInst(new Alloca(currentLabel, address, irType));
-                currentFunction.increSlotNumber();
-                currentIRScope.addAddress(new_reg.getName(), address);
-                addInst(new Store(currentLabel, address, value));
-
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.add,
-                        address, value, new Immediate(1)));
-                addInst(new Store(currentLabel, value, new_reg));
-                return address;
+                        (Address) value, value, new Immediate(1)));
+//                addInst(new Store(currentLabel, value, new_address));
+                return origin_address;
         }
         throw new RuntimeException("you should not be here");
     }

@@ -44,6 +44,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     public void visit(IRInstruction inst)
     {
         resetAvailable();
+        registerMap.clear();
         inst.accept(this);
     }
 
@@ -55,7 +56,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     public void visit(BinaryOperation inst)
     {
         //const value folded
-        PhysicalRegister destPr = getPhysicalRegister((VirtualRegister) inst.getDest());
+        PhysicalRegister destPr = getPhysicalRegister(inst.getDest());
         inst.setDestReg(destPr);
         if(inst.getLhs() instanceof VirtualRegister)
         {
