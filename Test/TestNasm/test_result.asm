@@ -17,63 +17,43 @@ section .text
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  128
-       mov  qword [rbp-8],  5
-       mov  rax,  qword [rbp-8]
+       sub  rsp,  72
+       mov  qword [rbp-8],  10
+       mov  qword [rbp-16],  0
+       mov  qword [rbp-24],  1
+       mov  qword [rbp-40],  1
+       jmp  label0
+label0:
+       mov  rcx,  qword [rbp-40]
+       mov  rdx,  qword [rbp-8]
+       cmp  rcx,  rdx
+       jge  label2
+label1:
+       mov  rcx,  qword [rbp-16]
+       mov  rax,  rcx
+       mov  rdx,  qword [rbp-24]
+       add  rax,  rdx
+       mov  qword [rbp-56],  rax
+       mov  rax,  qword [rbp-56]
        mov  qword [rbp-32],  rax
-       mov  rax,  qword [rbp-8]
-       add  rax,  1
-       mov  qword [rbp-8],  rax
-       mov  rax,  qword [rbp-32]
-       mov  qword [rbp-24],  rax
        mov  rax,  qword [rbp-24]
        mov  qword [rbp-16],  rax
-       mov  rdi,  qword [rbp-8]
-       call  toString
-       mov  qword [rbp-48],  rax
-       mov  rdi,  qword [rbp-48]
-       call  println
+       mov  rax,  qword [rbp-32]
+       mov  qword [rbp-24],  rax
+       mov  rax,  qword [rbp-40]
+       add  rax,  1
        mov  qword [rbp-40],  rax
-       mov  rdi,  qword [rbp-16]
+       mov  qword [rbp-40],  rax
+       jmp  label0
+label2:
+       mov  rdi,  qword [rbp-32]
        call  toString
-       mov  qword [rbp-64],  rax
-       mov  rdi,  qword [rbp-64]
-       call  println
-       mov  qword [rbp-56],  rax
-       mov  rdi,  qword [rbp-24]
-       call  toString
-       mov  qword [rbp-80],  rax
-       mov  rdi,  qword [rbp-80]
-       call  println
        mov  qword [rbp-72],  rax
-       mov  rcx,  qword [rbp-16]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-24]
-       add  rax,  rdx
-       mov  qword [rbp-104],  rax
-       mov  rcx,  qword [rbp-104]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-8]
-       add  rax,  rdx
-       mov  qword [rbp-112],  rax
-       mov  rdi,  qword [rbp-112]
-       call  toString
-       mov  qword [rbp-96],  rax
-       mov  rdi,  qword [rbp-96]
+       mov  rdi,  qword [rbp-72]
        call  println
-       mov  qword [rbp-88],  rax
-       mov  rcx,  qword [rbp-16]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-24]
-       add  rax,  rdx
-       mov  qword [rbp-120],  rax
-       mov  rcx,  qword [rbp-120]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-8]
-       add  rax,  rdx
-       mov  qword [rbp-128],  rax
-       mov  rax,  qword [rbp-128]
-       add  rsp,  128
+       mov  qword [rbp-64],  rax
+       mov  rax,  qword [rbp-32]
+       add  rsp,  72
        pop  rbp
        ret  
 

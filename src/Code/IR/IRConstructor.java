@@ -221,22 +221,7 @@ public class IRConstructor implements IRTraversal
     {
         IntegerValue left = visit(node.getLhs());
         IntegerValue right = visit(node.getRhs());
-        if(right instanceof Address)
-        {
-            if(node.getRhs().getExprType() instanceof BuiltInType)
-            {
-                VirtualRegister register = currentFunction.getRegister();
-                addInst(new Store(currentLabel, left, right));
-            }
-            else
-            {
-                addInst(new MemCopy(currentLabel, (Address)right, (Address)left));
-            }
-        }
-        else if(right instanceof Register)
-        {
-            addInst(new Store(currentLabel, left, right));
-        }
+        addInst(new Store(currentLabel, left, right));
         return null;
     }
 

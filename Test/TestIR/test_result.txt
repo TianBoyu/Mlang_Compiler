@@ -3,40 +3,38 @@ __________________________________________
 
 
 define i64 @main()
-  [a] = alloca i64
-  Store Immediate 5 to [a]
-  [b] = alloca i64
-  [c] = alloca i64
+  [n] = alloca i64
+  Store Immediate 10 to [n]
+  [f0] = alloca i64
+  Store Immediate 0 to [f0]
+  [f1] = alloca i64
+  Store Immediate 1 to [f1]
+  [f2] = alloca i64
+  [i] = alloca i64
+  Store Immediate 1 to [i]
+  Jump label0
+
+  label0
+  [%r0] = alloca i64
+  [%r0] = [i] SLT [n]
+  Branch [%r0] true: label1 false: label2
+
+  label1
   [%r1] = alloca i64
-  Store [a] to [%r1]
-  [a] = [a] add Immediate 1
-  Store [%r1] to [c]
-  Store [c] to [b]
+  [%r1] = [f0] add [f1]
+  Store [%r1] to [f2]
+  Store [f1] to [f0]
+  Store [f2] to [f1]
+  [i] = [i] add Immediate 1
+  Store %r2 to [i]
+  Jump label0
+
+  label2
+  [%r3] = alloca i64
   [%r4] = alloca i64
-  [%r5] = alloca i64
-  [%r5] = Call @toString([a])
-  [%r4] = Call @println([%r5])
-  [%r6] = alloca i64
-  [%r7] = alloca i64
-  [%r7] = Call @toString([b])
-  [%r6] = Call @println([%r7])
-  [%r8] = alloca i64
-  [%r9] = alloca i64
-  [%r9] = Call @toString([c])
-  [%r8] = Call @println([%r9])
-  [%r10] = alloca i64
-  [%r11] = alloca i64
-  [%r12] = alloca i64
-  [%r12] = [b] add [c]
-  [%r13] = alloca i64
-  [%r13] = [%r12] add [a]
-  [%r11] = Call @toString([%r13])
-  [%r10] = Call @println([%r11])
-  [%r14] = alloca i64
-  [%r14] = [b] add [c]
-  [%r15] = alloca i64
-  [%r15] = [%r14] add [a]
-  Return [%r15]
+  [%r4] = Call @toString([f2])
+  [%r3] = Call @println([%r4])
+  Return [f2]
 
 
 __________________________________________
