@@ -2,6 +2,7 @@ package Code.IR.IRUnit;
 
 
 import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
 import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 import Code.IR.IRUnit.Oprands.Register;
@@ -9,7 +10,7 @@ import Code.IR.IRUnit.Oprands.Register;
 public class BinaryOperation extends IRInstruction
 {
     private BinaryOp op;
-    private Register dest;
+    private Address dest;
     private IntegerValue lhs;
     private IntegerValue rhs;
 
@@ -23,7 +24,7 @@ public class BinaryOperation extends IRInstruction
         shl, shr, and, or, xor,
         neg, not
     }
-    public BinaryOperation(Label label, BinaryOp _op, Register reg, IntegerValue left, IntegerValue right)
+    public BinaryOperation(Label label, BinaryOp _op, Address reg, IntegerValue left, IntegerValue right)
     {
         super(label);
         op = _op;
@@ -67,7 +68,7 @@ public class BinaryOperation extends IRInstruction
         return op;
     }
 
-    public Register getDest()
+    public Address getDest()
     {
         return dest;
     }

@@ -79,7 +79,9 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     @Override
     public void visit(Call inst)
     {
-
+        PhysicalRegister destPr = physicalRegisters.get(0);
+        inst.setDestReg(destPr);
+        isAvailable[0] = false;
     }
 
     @Override

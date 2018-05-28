@@ -3,6 +3,7 @@ package Code.AST.Node.ExprNode;
 import Code.AST.Tools.Position;
 import Code.IR.IRTraversal;
 import Code.IR.IRUnit.Oprands.Immediate;
+import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.SemanticCheck.ASTTraversal;
 
 public class AndExprNode extends ConditionExprNode
@@ -17,7 +18,7 @@ public class AndExprNode extends ConditionExprNode
         visitor.visit(this);
     }
     @Override
-    public Immediate accept(IRTraversal visitor)
+    public IntegerValue accept(IRTraversal visitor)
     {
         return visitor.visit(this);
     }

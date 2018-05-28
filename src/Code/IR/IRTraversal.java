@@ -23,7 +23,7 @@ public interface IRTraversal
     IRType visit(FuncParamNode node);
 
     IntegerValue visit(ExprNode node);
-    Immediate    visit(AndExprNode node);
+    IntegerValue visit(AndExprNode node);
     IntegerValue visit(ArrayExprNode node);
     IntegerValue visit(AssignExprNode node);
     IntegerValue visit(BinaryExprNode node);

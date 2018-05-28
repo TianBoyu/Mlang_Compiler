@@ -11,7 +11,7 @@ public class NasmInst
         add, sub, imul, xor, or, and, inc, dec,
         neg, not, shl, shr, idivq,
 
-        jz, jnz, jmp,
+        jz, jnz, jmp, je, jne, jg, jge, jl, jle,
 
         cmp, cmove, cmovne, cmovl, cmovg, cmovge, cmovle,
 

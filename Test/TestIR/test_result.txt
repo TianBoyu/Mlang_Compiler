@@ -2,24 +2,21 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @min(i64, i64)
-  %r0 = [a] SEQ [b]
+define i64 @foo(i64, i64)
   [%r0] = alloca i64
-  Branch %r0 true: label0 false: label2
-
-  label0
-  Return [a]
-
-  label2
-  Return [b]
+  [%r0] = [a] add [b]
+  Return [%r0]
 
 define i64 @main()
-  [x] = alloca i64
-  Store Immediate 10 to [x]
-  [y] = alloca i64
-  Store Immediate 20 to [y]
-  %r0 = Call @min([x], [y])
-  Return %r0
+  [a] = alloca i64
+  Store Immediate 1 to [a]
+  [b] = alloca i64
+  Store Immediate 2 to [b]
+  [c] = alloca i64
+  [%r0] = alloca i64
+  [%r0] = Call @foo([a], [b])
+  Store [%r0] to [c]
+  Return Immediate 0
 
 
 __________________________________________

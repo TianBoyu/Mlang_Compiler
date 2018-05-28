@@ -4,15 +4,9 @@ import Code.AST.Tools.Name;
 import Code.IR.DataSection;
 import Code.IR.IRInstTraversal;
 import Code.IR.IRUnit.*;
-import Code.IR.IRUnit.Oprands.Address;
-import Code.IR.IRUnit.Oprands.Immediate;
-import Code.IR.IRUnit.Oprands.IntegerValue;
-import Code.IR.IRUnit.Oprands.VirtualRegister;
+import Code.IR.IRUnit.Oprands.*;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 //TODO
 
 public class Translator implements IRInstTraversal
@@ -31,7 +25,7 @@ public class Translator implements IRInstTraversal
     {
         this.entry = entry;
         this.dataSection = dataSection;
-        rsp_position = 0;
+        rsp_position = 8;//cannot begin with 0
         nasmInsts = new LinkedList<>();
         dataInsts = new LinkedList<>();
         addressStackSlotMap = new HashMap<>();
@@ -43,6 +37,11 @@ public class Translator implements IRInstTraversal
         IRInstruction cur = entry;
         while(cur != null)
         {
+            if(cur instanceof Function)
+            {
+                addressStackSlotMap.clear();
+                rsp_position = 8;
+            }
             visit(cur);
             cur = cur.getNext();
         }
@@ -95,14 +94,37 @@ public class Translator implements IRInstTraversal
         else
             addInst(NasmInst.Instruction.valueOf(inst.getOp().toString()),
                 inst.getDestReg().toString(), inst.getRhsReg().toString());
-
     }
 
     @Override
     public void visit(Branch inst)
     {
-        //TODO true_label
-        addInst(NasmInst.Instruction.jnz, inst.getFalseLabel().toString(), null);
+        if(inst.getOp() != null)
+        {
+            switch (inst.getOp())
+            {
+                case BEQ:
+                    addInst(NasmInst.Instruction.jl, inst.getFalseLabel().toString(), null);
+                    break;
+                case EQU:
+                    addInst(NasmInst.Instruction.jne, inst.getFalseLabel().toString(), null);
+                    break;
+                case NEQ:
+                    addInst(NasmInst.Instruction.je, inst.getFalseLabel().toString(), null);
+                    break;
+                case SEQ:
+                    addInst(NasmInst.Instruction.jg, inst.getFalseLabel().toString(), null);
+                    break;
+                case SGT:
+                    addInst(NasmInst.Instruction.jle, inst.getFalseLabel().toString(), null);
+                    break;
+                case SLT:
+                    addInst(NasmInst.Instruction.jge, inst.getFalseLabel().toString(), null);
+                    break;
+            }
+        }
+        else
+            addInst(NasmInst.Instruction.jnz, inst.getFalseLabel().toString(), null);
     }
 
     @Override
@@ -129,46 +151,34 @@ public class Translator implements IRInstTraversal
             ++i;
         }
         addInst(NasmInst.Instruction.call, inst.getFunction().toString(), null);
+//        StackSlot slot = mapAddressToSlot(inst.getDest());
+        addInst(NasmInst.Instruction.mov, addressStackSlotMap.get(inst.getDest()).toString(),
+                inst.getDestReg().toString());
     }
 
     @Override
     public void visit(Compare inst)
     {
         String dest = inst.getDestReg().toString();
-        switch (inst.getCondition())
+        String left;
+        String right;
+        if(inst.getLhs() instanceof Immediate)
+            left = String.valueOf(((Immediate) inst.getLhs()).getValue());
+        else
         {
-            case SLT:
-            {
-                addInst(NasmInst.Instruction.cmovl, dest, "1");
-                break;
-            }
-            case SGT:
-            {
-                addInst(NasmInst.Instruction.cmovg, dest, "1");
-                break;
-            }
-            case SEQ:
-            {
-                addInst(NasmInst.Instruction.cmovle, dest, "1");
-                break;
-            }
-            case BEQ:
-            {
-                addInst(NasmInst.Instruction.cmovge, dest, "1");
-                break;
-            }
-            case EQU:
-            {
-                addInst(NasmInst.Instruction.cmove, dest, "1");
-                break;
-            }
-            case NEQ:
-            {
-                addInst(NasmInst.Instruction.cmovne, dest, "1");
-                break;
-            }
+            addInst(NasmInst.Instruction.mov, inst.getLhsReg().toString(),
+                    addressStackSlotMap.get(inst.getLhs()).toString());
+            left = inst.getLhsReg().toString();
         }
-        addInst(NasmInst.Instruction.cmp, dest, "0");
+        if(inst.getRhs() instanceof Immediate)
+            right = String.valueOf(((Immediate) inst.getRhs()).getValue());
+        else
+        {
+            addInst(NasmInst.Instruction.mov, inst.getRhsReg().toString(),
+                    addressStackSlotMap.get(inst.getRhs()).toString());
+            right = inst.getRhsReg().toString();
+        }
+        addInst(NasmInst.Instruction.cmp, left, right);
     }
 
     @Override
@@ -246,19 +256,25 @@ public class Translator implements IRInstTraversal
     @Override
     public void visit(Return inst)
     {
-        if(inst.getValueReg() != null)
+        try
         {
-            addInst(NasmInst.Instruction.mov, inst.getValueReg().toString(),
-                    addressStackSlotMap.get(inst.getValue()).toString());
-            if(!inst.getValueReg().toString().equals("rax"))
-                addInst(NasmInst.Instruction.mov, "rax", inst.getValueReg().toString());
+            if (inst.getValueReg() != null)
+            {
+                addInst(NasmInst.Instruction.mov, inst.getValueReg().toString(),
+                        addressStackSlotMap.get(inst.getValue()).toString());
+                if (!inst.getValueReg().toString().equals("rax"))
+                    addInst(NasmInst.Instruction.mov, "rax", inst.getValueReg().toString());
+            } else
+                addInst(NasmInst.Instruction.mov, "rax",
+                        String.valueOf(((Immediate) inst.getValue()).getValue()));
+            addInst(NasmInst.Instruction.add, "rsp", String.valueOf(currentFunction.getUsedSlotNumber() * 8));
+            addInst(NasmInst.Instruction.pop, "rbp", null);
+            addInst(NasmInst.Instruction.ret, null, null);
         }
-        else
-            addInst(NasmInst.Instruction.mov, "rax",
-                    String.valueOf(((Immediate)inst.getValue()).getValue()));
-        addInst(NasmInst.Instruction.add, "rsp", String.valueOf(currentFunction.getUsedSlotNumber() * 8));
-        addInst(NasmInst.Instruction.pop, "rbp", null);
-        addInst(NasmInst.Instruction.ret, null, null);
+        catch (Exception e)
+        {
+            System.out.println(1);
+        }
     }
 
     @Override

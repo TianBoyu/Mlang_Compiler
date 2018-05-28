@@ -1,3 +1,8 @@
+int foo()
+{
+    return 1;
+}
+
 int function(int a, int b)
 {
     int x = a + b;
@@ -8,6 +13,6 @@ int main()
 {
     int a = 1;
     int b = 2;
-    int c = function(a, b);
+    int c = function(foo(), b);
     return 0;
 }

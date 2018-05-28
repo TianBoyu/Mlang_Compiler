@@ -2,6 +2,7 @@ package Code.IR.IRUnit;
 
 import Code.AST.Tools.Name;
 import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
 import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 import Code.IR.IRUnit.Oprands.VirtualRegister;
@@ -12,11 +13,11 @@ public class Call extends IRInstruction
 {
     private Name functionName;
     private List<IntegerValue> params;
-    private VirtualRegister dest;
+    private Address dest;
 
     private PhysicalRegister destReg;
 
-    public Call(Label label, VirtualRegister dest, Name function, List<IntegerValue> params)
+    public Call(Label label, Address dest, Name function, List<IntegerValue> params)
     {
         super(label);
         this.dest = dest;
@@ -27,6 +28,11 @@ public class Call extends IRInstruction
     public PhysicalRegister getDestReg()
     {
         return destReg;
+    }
+
+    public Address getDest()
+    {
+        return dest;
     }
 
     public void setDestReg(PhysicalRegister dest_reg)

@@ -9,6 +9,7 @@ public class Branch extends Terminator
     private Label trueLabel;
     private Label falseLabel;
     private IntegerValue condition;
+    private Compare.Condition op;
 
     private PhysicalRegister conditionReg;
 
@@ -19,6 +20,21 @@ public class Branch extends Terminator
         this.trueLabel = true_label;
         this.falseLabel = false_label;
         this.condition = condition;
+    }
+
+    public Branch(Label label, Label true_label, Label false_label, IntegerValue condition, Compare.Condition op)
+    {
+        //condition branch
+        super(label);
+        this.trueLabel = true_label;
+        this.falseLabel = false_label;
+        this.condition = condition;
+        this.op = op;
+    }
+
+    public Compare.Condition getOp()
+    {
+        return op;
     }
 
     public PhysicalRegister getConditionReg()
