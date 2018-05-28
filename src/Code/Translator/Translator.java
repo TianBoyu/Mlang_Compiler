@@ -248,6 +248,8 @@ public class Translator implements IRInstTraversal
     {
         if(inst.getValueReg() != null)
         {
+            addInst(NasmInst.Instruction.mov, inst.getValueReg().toString(),
+                    addressStackSlotMap.get(inst.getValue()).toString());
             if(!inst.getValueReg().toString().equals("rax"))
                 addInst(NasmInst.Instruction.mov, "rax", inst.getValueReg().toString());
         }
@@ -263,11 +265,22 @@ public class Translator implements IRInstTraversal
     public void visit(Store inst)
     {
         if(inst.getData() instanceof Address)
-            addInst(NasmInst.Instruction.mov, inst.getDataReg().toString(),
+        {
+            StackSlot slot = null;
+            if(addressStackSlotMap.containsKey(inst.getData())) //the address is obtained by alloca
+                addInst(NasmInst.Instruction.mov, inst.getDataReg().toString(),
                     addressStackSlotMap.get(inst.getData()).toString());
+            else //the address is a string
+            {
+                slot = mapAddressToSlot((Address) inst.getData());
+                addInst(NasmInst.Instruction.mov, inst.getDataReg().toString(),
+                        ((Address) inst.getData()).getName().toString());
+                addInst(NasmInst.Instruction.mov, slot.toString(), inst.getDataReg().toString());
+            }
+        }
         if(inst.getDataReg() != null)
             addInst(NasmInst.Instruction.mov, addressStackSlotMap.get(inst.getAddress()).toString(), inst.getDataReg().toString());
-        else
+        else //means store an Immediate
             addInst(NasmInst.Instruction.mov, addressStackSlotMap.get(inst.getAddress()).toString(),
                     String.valueOf(((Immediate)inst.getData()).getValue()));
     }
