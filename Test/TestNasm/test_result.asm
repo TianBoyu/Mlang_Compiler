@@ -17,22 +17,22 @@ section .text
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  8
-       mov  rax,  String_0
+       sub  rsp,  32
+       mov  qword [rbp-0],  1
+       mov  rax,  qword [rbp-0]
        mov  qword [rbp-8],  rax
-       mov  rax,  qword [rbp-8]
+       mov  rax,  qword [rbp-0]
+       mov  qword [rbp-24],  rax
+       add  rax,  1
        mov  qword [rbp-0],  rax
-       mov  rdi,  qword [rbp-0]
-       call  print
+       mov  rax,  qword [rbp-24]
+       mov  qword [rbp-16],  rax
        mov  rax,  0
-       add  rsp,  8
+       add  rsp,  32
        pop  rbp
        ret  
 
 section .data
-       dq  4
-String_0:
-       db  97, 98, 99, 100, 0
 
 section .bss
 

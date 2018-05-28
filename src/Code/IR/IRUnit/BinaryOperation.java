@@ -14,7 +14,8 @@ public class BinaryOperation extends IRInstruction
     private IntegerValue rhs;
 
     private PhysicalRegister destReg;
-    private PhysicalRegister sourceReg;
+    private PhysicalRegister lhsReg;
+    private PhysicalRegister rhsReg;
 
     public enum BinaryOp
     {
@@ -41,14 +42,24 @@ public class BinaryOperation extends IRInstruction
         this.destReg = dest_reg;
     }
 
-    public PhysicalRegister getSourceReg()
+    public PhysicalRegister getLhsReg()
     {
-        return sourceReg;
+        return lhsReg;
     }
 
-    public void setSourceReg(PhysicalRegister source_reg)
+    public void setLhsReg(PhysicalRegister source_reg)
     {
-        this.sourceReg = source_reg;
+        this.lhsReg = source_reg;
+    }
+
+    public PhysicalRegister getRhsReg()
+    {
+        return rhsReg;
+    }
+
+    public void setRhsReg(PhysicalRegister rhsReg)
+    {
+        this.rhsReg = rhsReg;
     }
 
     public BinaryOp getOp()

@@ -17,16 +17,16 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     private IRInstruction entry;
     private Map<VirtualRegister, PhysicalRegister> registerMap = new HashMap<>();
     private List<PhysicalRegister> physicalRegisters;
-//    private List<PhysicalRegister> parameterRegisters;
     private String[] registerNames = {"rax", "rcx", "rdx", "rbx", "rsp", "rbp", "rsi", "rdi",
             "r8",  "r9",  "r10", "r11", "r12", "r13", "r14", "r15"};
     private String[] parameterRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
-    private Map<String, Boolean> isAvailable;
+    private boolean[] isAvailable;
     public NaiveAllocator(IRInstruction entry)
     {
         this.entry = entry;
         physicalRegisters = new ArrayList<>(16);
-        isAvailable = new HashMap<>();
+//        isAvailable = new HashMap<>();
+        isAvailable = new boolean[16];
         initRegisterList();
     }
 
@@ -43,8 +43,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     @Override
     public void visit(IRInstruction inst)
     {
-//        if(!(inst instanceof Load))
-//            resetAvailable();
+        resetAvailable();
         inst.accept(this);
     }
 
@@ -56,13 +55,17 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     public void visit(BinaryOperation inst)
     {
         //const value folded
-        PhysicalRegister lhsPr = getPhysicalRegister((VirtualRegister) inst.getDest());
-        inst.setDestReg(lhsPr);
+        PhysicalRegister destPr = getPhysicalRegister((VirtualRegister) inst.getDest());
+        inst.setDestReg(destPr);
+        if(inst.getLhs() instanceof VirtualRegister)
+        {
+            PhysicalRegister lhsPr = getPhysicalRegister((VirtualRegister) inst.getLhs());
+            inst.setLhsReg(lhsPr);
+        }
         if(inst.getRhs() instanceof VirtualRegister)
         {
             PhysicalRegister rhsPr = getPhysicalRegister((VirtualRegister) inst.getRhs());
-            inst.setSourceReg(rhsPr);
-            resetGivenPhysicalRegister(rhsPr);
+            inst.setRhsReg(rhsPr);
         }
 //        resetGivenPhysicalRegister(lhsPr);
     }
@@ -82,15 +85,18 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     @Override
     public void visit(Compare inst)
     {
-        PhysicalRegister lhsPr = getPhysicalRegister(inst.getDest());
-        inst.setDestReg(lhsPr);
+        PhysicalRegister destPr = getPhysicalRegister(inst.getDest());
+        inst.setDestReg(destPr);
+        if(inst.getLhs() instanceof VirtualRegister)
+        {
+            PhysicalRegister lhsPr = getPhysicalRegister((VirtualRegister) inst.getLhs());
+            inst.setLhsReg(lhsPr);
+        }
         if(inst.getRhs() instanceof VirtualRegister)
         {
             PhysicalRegister rhsPr = getPhysicalRegister((VirtualRegister) inst.getRhs());
-            inst.setSourceReg(rhsPr);
-            resetGivenPhysicalRegister(rhsPr);
+            inst.setRhsReg(rhsPr);
         }
-        resetGivenPhysicalRegister(lhsPr);
     }
 
     @Override
@@ -109,22 +115,6 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     public void visit(Label inst)
     {
 
-    }
-
-    @Override
-    public void visit(Load inst)
-    {
-        PhysicalRegister pr = getAvailablePhysicalRegister();
-        registerMap.put(inst.getDest(), pr);
-        inst.setDestReg(pr);
-//        if(inst.getAddress().isParam() && inst.getAddress().getParamPosition() < 6)
-//        {
-//            int pos = inst.getAddress().getParamPosition();
-//            isAlwaysOccupied.put(parameterRegNames[pos], true);
-//            PhysicalRegister ppr =  new PhysicalRegister(Name.getName(parameterRegNames[pos]));
-//            registerMap.put(inst.getDest(), ppr);
-//            inst.setSourceReg(ppr);
-//        }
     }
 
     @Override
@@ -147,7 +137,6 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
         {
             PhysicalRegister pr = getPhysicalRegister((VirtualRegister) inst.getValue());
             inst.setValueReg(pr);
-            resetGivenPhysicalRegister(pr);
         }
     }
 
@@ -158,7 +147,6 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
         {
             PhysicalRegister pr = getPhysicalRegister((VirtualRegister) inst.getData());
             inst.setDataReg(pr);
-            resetGivenPhysicalRegister(pr);
         }
     }
 
@@ -176,18 +164,10 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
 
     private void resetAvailable()
     {
-//        for(int i = 0; i < 24; ++i)
-//            isAvailable[i] = true;
         for(int i = 0; i < 16; ++i)
-        {
-            isAvailable.put(registerNames[i], true);
-        }
+            isAvailable[i] = true;
     }
 
-    private void resetGivenPhysicalRegister(PhysicalRegister pr)
-    {
-        isAvailable.put(pr.toString(), true);
-    }
 
     private PhysicalRegister getPhysicalRegister(VirtualRegister vr)
     {
@@ -206,12 +186,11 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
         int i = 0;
         while(true)
         {
-            String s = physicalRegisters.get(i).toString();
-            if(!isAvailable.get(s))
+            if(!isAvailable[i])
                 ++i;
             else break;
         }
-        isAvailable.put(physicalRegisters.get(i).toString(), false);
+        isAvailable[i] = false;
         return physicalRegisters.get(i);
     }
 

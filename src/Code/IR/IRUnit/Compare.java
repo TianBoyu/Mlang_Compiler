@@ -15,7 +15,8 @@ public class Compare extends IRInstruction
     private IntegerValue lhs;
     private IntegerValue rhs;
     private VirtualRegister dest;
-    private PhysicalRegister sourceReg;
+    private PhysicalRegister lhsReg;
+    private PhysicalRegister rhsReg;
     private PhysicalRegister destReg;
 
     public Compare(Label label, Condition condition, VirtualRegister dest, IntegerValue lhs, IntegerValue rhs)
@@ -52,14 +53,24 @@ public class Compare extends IRInstruction
         this.destReg = destReg;
     }
 
-    public PhysicalRegister getSourceReg()
+    public PhysicalRegister getLhsReg()
     {
-        return sourceReg;
+        return lhsReg;
     }
 
-    public void setSourceReg(PhysicalRegister sourceReg)
+    public void setLhsReg(PhysicalRegister sourceReg)
     {
-        this.sourceReg = sourceReg;
+        this.lhsReg = sourceReg;
+    }
+
+    public PhysicalRegister getRhsReg()
+    {
+        return rhsReg;
+    }
+
+    public void setRhsReg(PhysicalRegister rhsReg)
+    {
+        this.rhsReg = rhsReg;
     }
 
     public Condition getCondition()

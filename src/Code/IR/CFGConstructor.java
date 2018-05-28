@@ -82,11 +82,6 @@ public class CFGConstructor implements IRInstTraversal
         currentBlock = inst.getBlock();
     }
 
-    @Override
-    public void visit(Load inst)
-    {
-        //currentBlock.addInstruction(inst);
-    }
 
     @Override
     public void visit(MemCopy inst)
