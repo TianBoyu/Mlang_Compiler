@@ -7,19 +7,32 @@ public class DataSection
 {
     public class DataPiece
     {
-        private String str_value;
+        private String strValue;
+        private int intValue;
         private String name;
         private int length;
 
         public DataPiece(String name, String str_value)
         {
-            this.str_value = str_value;
+            this.strValue = str_value;
             this.name = name;
             this.length = str_value.length();
         }
+
+        public DataPiece(String name, int intValue)
+        {
+            this.intValue = intValue;
+            this.name = name;
+        }
+
+        public int getIntValue()
+        {
+            return intValue;
+        }
+
         public String getValue()
         {
-            return str_value;
+            return strValue;
         }
         public String getName()
         {
@@ -31,7 +44,7 @@ public class DataSection
         }
         public String toString()
         {
-            return name + ": " + str_value;
+            return name + ": " + strValue;
         }
     }
 
@@ -43,6 +56,11 @@ public class DataSection
     public String addData(String name, String value)
     {
         dataPieces.add(new DataPiece(name, value));
+        return name;
+    }
+    public String addData(String name, int value)
+    {
+        dataPieces.add(new DataPiece(name,value));
         return name;
     }
 

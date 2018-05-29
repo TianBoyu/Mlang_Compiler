@@ -56,11 +56,33 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     public void visit(BinaryOperation inst)
     {
         //const value folded
-        PhysicalRegister destPr = getPhysicalRegister(inst.getDest());
-        inst.setDestReg(destPr);
+        if(inst.getOp() == BinaryOperation.BinaryOp.idiv)
+        {
+            inst.setDestReg(physicalRegisters.get(0));
+            isAvailable[0] = false;
+        }
+        else if(inst.getOp() == BinaryOperation.BinaryOp.mod)
+        {
+            inst.setOp(BinaryOperation.BinaryOp.idiv);
+            inst.setDestReg(physicalRegisters.get(2));
+            isAvailable[2] = false;
+        }
+        else
+        {
+            PhysicalRegister destPr = getPhysicalRegister(inst.getDest());
+            inst.setDestReg(destPr);
+        }
+
         if(inst.getLhs() instanceof VirtualRegister)
         {
-            PhysicalRegister lhsPr = getPhysicalRegister((VirtualRegister) inst.getLhs());
+            PhysicalRegister lhsPr;
+            if(inst.getOp() == BinaryOperation.BinaryOp.idiv)
+            {
+                lhsPr = physicalRegisters.get(0);
+                isAvailable[0] = false;
+            }
+            else
+                lhsPr = getPhysicalRegister((VirtualRegister) inst.getLhs());
             inst.setLhsReg(lhsPr);
         }
         if(inst.getRhs() instanceof VirtualRegister)
@@ -183,7 +205,6 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
             return pr;
         }
     }
-
     private PhysicalRegister getAvailablePhysicalRegister()
     {
         int i = 0;

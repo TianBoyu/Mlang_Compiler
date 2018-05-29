@@ -1,6 +1,7 @@
 package Code.IR.IRUnit;
 
 import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
 import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 import Code.IR.IRUnit.Oprands.VirtualRegister;
@@ -14,12 +15,12 @@ public class Compare extends IRInstruction
     private Condition condition;
     private IntegerValue lhs;
     private IntegerValue rhs;
-    private VirtualRegister dest;
+    private Address dest;
     private PhysicalRegister lhsReg;
     private PhysicalRegister rhsReg;
     private PhysicalRegister destReg;
 
-    public Compare(Label label, Condition condition, VirtualRegister dest, IntegerValue lhs, IntegerValue rhs)
+    public Compare(Label label, Condition condition, Address dest, IntegerValue lhs, IntegerValue rhs)
     {
         super(label);
         this.condition = condition;
@@ -28,7 +29,7 @@ public class Compare extends IRInstruction
         this.rhs = rhs;
     }
 
-    public VirtualRegister getDest()
+    public Address getDest()
     {
         return dest;
     }

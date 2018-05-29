@@ -3,38 +3,84 @@ __________________________________________
 
 
 define i64 @main()
-  [n] = alloca i64
-  Store Immediate 10 to [n]
-  [f0] = alloca i64
-  Store Immediate 0 to [f0]
-  [f1] = alloca i64
-  Store Immediate 1 to [f1]
-  [f2] = alloca i64
-  [i] = alloca i64
-  Store Immediate 1 to [i]
-  Jump label0
-
-  label0
+  [a] = alloca i64
+  Store Immediate 5 to [a]
+  [b] = alloca i64
+  Store Immediate 0 to [b]
+  [c] = alloca i64
+  [d] = alloca i64
   [%r0] = alloca i64
-  [%r0] = [i] SLT [n]
-  Branch [%r0] true: label1 false: label2
-
-  label1
-  [%r1] = alloca i64
-  [%r1] = [f0] add [f1]
-  Store [%r1] to [f2]
-  Store [f1] to [f0]
-  Store [f2] to [f1]
-  [i] = [i] add Immediate 1
-  Store %r2 to [i]
-  Jump label0
+  [%r0] = [b] NEQ Immediate 0
+  Branch [%r0] true: label0 false: label2
 
   label2
+  Store [%r0] to [d]
+  Jump label1
+
+  label0
+  [%r1] = alloca i64
+  [%r1] = [a] idiv [b]
+  [%r2] = alloca i64
+  [%r2] = [%r1] NEQ Immediate 1
+  Store [%r2] to [d]
+  Jump label1
+
+  label1
+  Branch [d] true: label3 false: label4
+
+  label3
+  Store Immediate 10 to [c]
+  Jump label5
+
+  label4
+  Store Immediate 20 to [c]
+  Jump label5
+
+  label5
+  [e] = alloca i64
   [%r3] = alloca i64
+  [%r3] = [c] EQU Immediate 10
+  Branch [%r3] true: label9 false: label11
+
+  label11
+  Store [%r3] to [e]
+  Jump label10
+
+  label9
   [%r4] = alloca i64
-  [%r4] = Call @toString([f2])
-  [%r3] = Call @println([%r4])
-  Return [f2]
+  [%r4] = [a] idiv [b]
+  [%r5] = alloca i64
+  [%r5] = [%r4] EQU Immediate 0
+  Store [%r5] to [e]
+  Jump label10
+
+  label10
+  Branch [%r5] true: label6 false: label8
+
+  label8
+  Store [%r5] to [e]
+  Jump label7
+
+  label6
+  [%r6] = alloca i64
+  [%r6] = [a] EQU Immediate 5
+  Store [%r6] to [e]
+  Jump label7
+
+  label7
+  [%r7] = alloca i64
+  [%r7] = [%r6] xor Immediate 1
+  Branch [e] true: label12 false: label14
+
+  label12
+  Store Immediate 30 to [c]
+
+  label14
+  [%r8] = alloca i64
+  [%r9] = alloca i64
+  [%r9] = Call @toString([c])
+  [%r8] = Call @println([%r9])
+  Return [c]
 
 
 __________________________________________

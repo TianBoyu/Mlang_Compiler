@@ -6,8 +6,8 @@ class A
 
 int main()
 {
-    int x = 0;
+//    int x = 0;
     A a;
-    int y = a.foo();
+    int c = a.b;
     return 0;
 }

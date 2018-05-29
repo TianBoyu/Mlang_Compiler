@@ -9,7 +9,7 @@ public class NasmInst
         mov, push, pop, call, ret, db, dq,
 
         add, sub, imul, xor, or, and, inc, dec,
-        neg, not, shl, shr, idivq,
+        neg, not, shl, shr, idiv,
 
         jz, jnz, jmp, je, jne, jg, jge, jl, jle,
 

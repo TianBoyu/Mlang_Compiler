@@ -38,7 +38,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test538.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test593.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 
@@ -48,7 +48,6 @@ public class Boom {
         optimizeIR(constructor);
         translate(constructor, out);
     }
-
 
     public static ProgNode constructAST(InputStream is) throws Exception
     {

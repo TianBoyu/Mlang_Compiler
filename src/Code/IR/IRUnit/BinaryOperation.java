@@ -20,7 +20,7 @@ public class BinaryOperation extends IRInstruction
 
     public enum BinaryOp
     {
-        add, sub, imul, idivq, mod,
+        add, sub, imul, idiv, mod,
         shl, shr, and, or, xor,
         neg, not
     }
@@ -66,6 +66,11 @@ public class BinaryOperation extends IRInstruction
     public BinaryOp getOp()
     {
         return op;
+    }
+
+    public void setOp(BinaryOp op)
+    {
+        this.op = op;
     }
 
     public Address getDest()
