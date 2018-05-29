@@ -403,8 +403,11 @@ public class IRConstructor implements IRTraversal
         Address base = (Address)visit(node.getExpr());
         if(node.isFunctionCall())
         {
-            Name name = node.getExpr().getExprType().getTypeName();
-            node.getFunctionCall().setFunctionName(Name.getName("__" + name.toString() + "__" + node.getFunctionCall().getFuncName()));
+            if(node.getExpr().getExprType() instanceof ClassType)
+            {
+                Name name = node.getExpr().getExprType().getTypeName();
+                node.getFunctionCall().setFunctionName(Name.getName("__" + name.toString() + "__" + node.getFunctionCall().getFuncName()));
+            }
             ret = visit(node.getFunctionCall());
         }
         else

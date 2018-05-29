@@ -8,6 +8,7 @@ import Code.IR.IRUnit.Oprands.*;
 
 import java.util.*;
 //TODO
+//In a function, should pop before sub rsp
 
 public class Translator implements IRInstTraversal
 {
@@ -157,6 +158,7 @@ public class Translator implements IRInstTraversal
     public void visit(Call inst)
     {
         int i = 0; //have you ++i?
+        int rsp_move = 0;
         for(IntegerValue value : inst.getParams())
         {
             if(i < 6)
@@ -169,12 +171,20 @@ public class Translator implements IRInstTraversal
             }
             else
             {
-                addInst(NasmInst.Instruction.mov, spareRegName[i - 6], getStackPos((Address) value));
-                addInst(NasmInst.Instruction.push, spareRegName[i - 6], null);
+                if(value instanceof Immediate)
+                    addInst(NasmInst.Instruction.mov, spareRegName[0],
+                            String.valueOf(((Immediate)value).getValue()));
+                else
+                    addInst(NasmInst.Instruction.mov, spareRegName[0], getStackPos((Address) value));
+                addInst(NasmInst.Instruction.push, spareRegName[0], null);
+                rsp_move += 8;
+                rsp_position -= 8;
             }
             ++i;
         }
         addInst(NasmInst.Instruction.call, inst.getFunction().toString(), null);
+        if(rsp_move != 0)
+            addInst(NasmInst.Instruction.add, "rsp", String.valueOf(rsp_move));
 //        StackSlot slot = mapAddressToSlot(inst.getDest());
         addInst(NasmInst.Instruction.mov, getStackPos(inst.getDest()), inst.getDestReg().toString());
     }
@@ -207,13 +217,16 @@ public class Translator implements IRInstTraversal
     @Override
     public void visit(Function inst)
     {
+        //TODO
+        //should not use pop, just use it
         currentFunction = inst;
         addInst(null, inst.getName().toString(), null);
+        int i = 0;
         addInst(NasmInst.Instruction.push, "rbp", null);
         addInst(NasmInst.Instruction.mov, "rbp", "rsp");
         addInst(NasmInst.Instruction.sub, "rsp",
                 String.valueOf(inst.getUsedSlotNumber() * 8));
-        int i = 0;
+        int paramNumber = inst.getParameter().size();
         for(Parameter item : inst.getParameter())
         {
             if(item.isAdded()) continue;
@@ -222,8 +235,11 @@ public class Translator implements IRInstTraversal
                 addInst(NasmInst.Instruction.mov, slot.toString(), parameterRegName[i]);
             else
             {
-                addInst(NasmInst.Instruction.pop, spareRegName[i - 6], null);
-                addInst(NasmInst.Instruction.mov, slot.toString(), spareRegName[i - 6]);
+                int paramPos = (paramNumber - i + 1) * 8;
+                StackSlot slot1 = new StackSlot(paramPos, StackSlot.SlotType.qword);
+                addInst(NasmInst.Instruction.mov, spareRegName[0], slot1.toString());
+//                addInst(NasmInst.Instruction.pop, spareRegName[0], null);
+                addInst(NasmInst.Instruction.mov, slot.toString(), spareRegName[0]);
             }
             ++i;
         }

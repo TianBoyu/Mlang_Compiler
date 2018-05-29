@@ -31,14 +31,21 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+//TODO
+/*
+ * Class, Array
+ * Global Varible
+ * Input
+ */
+
+
 public class Boom {
     //String, Array, Class,
-    //Add builtin function
     public static void main(String[] args) throws Exception
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test593.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test555.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 

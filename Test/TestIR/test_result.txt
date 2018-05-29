@@ -2,85 +2,45 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @main()
-  [a] = alloca i64
-  Store Immediate 5 to [a]
-  [b] = alloca i64
-  Store Immediate 0 to [b]
-  [c] = alloca i64
-  [d] = alloca i64
+define i64 @a(i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64)
   [%r0] = alloca i64
-  [%r0] = [b] NEQ Immediate 0
-  Branch [%r0] true: label0 false: label2
-
-  label2
-  Store [%r0] to [d]
-  Jump label1
-
-  label0
+  [%r0] = [a1] add [a2]
   [%r1] = alloca i64
-  [%r1] = [a] idiv [b]
+  [%r1] = [%r0] add [a3]
   [%r2] = alloca i64
-  [%r2] = [%r1] NEQ Immediate 1
-  Store [%r2] to [d]
-  Jump label1
-
-  label1
-  Branch [d] true: label3 false: label4
-
-  label3
-  Store Immediate 10 to [c]
-  Jump label5
-
-  label4
-  Store Immediate 20 to [c]
-  Jump label5
-
-  label5
-  [e] = alloca i64
+  [%r2] = [%r1] add [a4]
   [%r3] = alloca i64
-  [%r3] = [c] EQU Immediate 10
-  Branch [%r3] true: label9 false: label11
-
-  label11
-  Store [%r3] to [e]
-  Jump label10
-
-  label9
+  [%r3] = [%r2] add [a5]
   [%r4] = alloca i64
-  [%r4] = [a] idiv [b]
+  [%r4] = [%r3] add [a6]
   [%r5] = alloca i64
-  [%r5] = [%r4] EQU Immediate 0
-  Store [%r5] to [e]
-  Jump label10
-
-  label10
-  Branch [%r5] true: label6 false: label8
-
-  label8
-  Store [%r5] to [e]
-  Jump label7
-
-  label6
+  [%r5] = [%r4] add [a7]
   [%r6] = alloca i64
-  [%r6] = [a] EQU Immediate 5
-  Store [%r6] to [e]
-  Jump label7
-
-  label7
+  [%r6] = [%r5] add [a8]
   [%r7] = alloca i64
-  [%r7] = [%r6] xor Immediate 1
-  Branch [e] true: label12 false: label14
-
-  label12
-  Store Immediate 30 to [c]
-
-  label14
+  [%r7] = [%r6] add [a9]
   [%r8] = alloca i64
+  [%r8] = [%r7] add [a10]
   [%r9] = alloca i64
-  [%r9] = Call @toString([c])
-  [%r8] = Call @println([%r9])
-  Return [c]
+  [%r9] = [%r8] add [a11]
+  [%r10] = alloca i64
+  [%r10] = [%r9] add [a12]
+  [%r11] = alloca i64
+  [%r11] = [%r10] add [a13]
+  [%r12] = alloca i64
+  [%r12] = [%r11] add [a14]
+  [%r13] = alloca i64
+  [%r13] = [%r12] add [a15]
+  Return [%r13]
+
+define i64 @main()
+  [%r0] = alloca i64
+  [%r1] = alloca i64
+  [%r2] = alloca i64
+  [%r2] = Call @a(Immediate 1, Immediate 2, Immediate 3, Immediate 4, Immediate 5, Immediate 6, Immediate 7, Immediate 8, Immediate 9, Immediate 10, Immediate 11, Immediate 12, Immediate 13, Immediate 14, Immediate 15)
+  [%r1] = Call @toString([%r2])
+  [%r0] = Call @println([%r1])
+  Return Immediate 0
 
 
 __________________________________________
