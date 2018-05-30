@@ -17,71 +17,40 @@ section .text
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  64
-       mov  qword [rbp-8],  5
-       mov  rcx,  qword [rbp-8]
-       add  rcx,  1
-       mov  rdi,  rcx
-       call  malloc
-       mov  qword [rbp-24],  rax
-       mov  rcx,  qword [rbp-8]
-       mov  rax,  qword [rbp-24]
-       mov  qword [rax + 0],  rcx
-       mov  rax,  qword [rbp-24]
+       sub  rsp,  16
+       mov  rax,  String_0
        mov  qword [rbp-16],  rax
-       mov  qword [rbp-32],  0
-       mov  qword [rbp-40],  0
-       jmp  label0
-label0:
-       mov  rcx,  qword [rbp-40]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
-       jge  label2
-label1:
-       mov  rax,  qword [rbp-32]
-       add  rax,  1
-       mov  qword [rbp-32],  rax
-       mov  rdx,  qword [rbp-32]
        mov  rax,  qword [rbp-16]
-       mov  rcx,  qword [rbp-40]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rdx
-       mov  rax,  qword [rbp-40]
-       add  rax,  1
+       mov  qword [rbp-8],  rax
+       mov  rax,  String_1
+       mov  qword [rbp-32],  rax
+       mov  rax,  qword [rbp-32]
+       mov  qword [rbp-24],  rax
+       mov  rax,  qword [rbp-8]
+       mov  rdi,  rax
+       mov  rax,  qword [rbp-24]
+       mov  rsi,  rax
+       call  Str_ADD
        mov  qword [rbp-40],  rax
-       jmp  label0
-label2:
-       mov  qword [rbp-56],  0
-       mov  qword [rbp-40],  0
-       jmp  label3
-label3:
-       mov  rcx,  qword [rbp-40]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
-       jge  label5
-label4:
-       mov  rax,  qword [rbp-56]
-       mov  rdx,  qword [rbp-16]
-       mov  rbx,  qword [rbp-40]
-       add  rbx,  1
-       mov  rsi,  qword [rdx + rbx * 8]
-       add  rax,  rsi
-       mov  qword [rbp-72],  rax
-       mov  rax,  qword [rbp-72]
-       mov  qword [rbp-56],  rax
        mov  rax,  qword [rbp-40]
-       add  rax,  1
-       mov  qword [rbp-40],  rax
-       jmp  label3
-label5:
-       mov  rax,  qword [rbp-56]
-       add  rsp,  64
+       mov  rdi,  rax
+       call  println
+       mov  rax,  0
+       add  rsp,  16
        pop  rbp
        ret  
 
 section .data
+       dq  4
+String_0:
+       db  97, 98, 99, 100, 0
+       dq  4
+String_1:
+       db  113, 119, 101, 114, 0
 
 section .bss
+
+
 
 section .data
 intbuffer:

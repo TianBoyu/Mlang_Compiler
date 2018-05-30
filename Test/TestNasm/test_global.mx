@@ -1,0 +1,12 @@
+int x = 8;
+int r;
+
+int main()
+{
+    int y = x;
+    x = 2;
+    println(toString(x));
+    println(toString(y));
+    println(toString(r));
+    return 0;
+}

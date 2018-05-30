@@ -36,6 +36,7 @@ import java.util.List;
  * Class, Array
  * Global Varible
  * Input
+ * String storage & builtin function
  */
 
 
@@ -45,7 +46,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test591.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test_print.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);
@@ -114,9 +115,11 @@ public class Boom {
     }
     public static void translate(IRConstructor irConstructor, OutputStream outputStream)
     {
-        Translator translator = new Translator(irConstructor.getEntry(), irConstructor.getDataSection());
+        Translator translator = new Translator(irConstructor.getEntry(), irConstructor.getDataSection(),
+                irConstructor.getDataZone(), irConstructor.getBssZone());
         translator.process();
         NasmPrinter nasmPrinter = new NasmPrinter(translator.getNasmInsts(), translator.getDataInsts(),
+                translator.getDataZoneInsts(), translator.getBssZoneInsts(),
                 irConstructor.getGlobalName(), outputStream);
         nasmPrinter.printNasm();
     }

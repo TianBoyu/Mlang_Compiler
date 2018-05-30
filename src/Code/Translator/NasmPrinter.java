@@ -11,6 +11,8 @@ public class NasmPrinter
 {
     private List<NasmInst> nasmInsts;
     private List<NasmInst> dataInsts;
+    private List<NasmInst> dataZone;
+    private List<NasmInst> bssZone;
     private List<Name> globalNames;
     private OutputStream outputStream;
     private String[] builtInFunctionNames = {"extern scanf",
@@ -24,12 +26,15 @@ public class NasmPrinter
             "extern strcmp"};
 
 
-    public NasmPrinter(List<NasmInst> nasmInsts, List<NasmInst> dataInsts, List<Name> globalNames, OutputStream outputStream)
+    public NasmPrinter(List<NasmInst> nasmInsts, List<NasmInst> dataInsts, List<NasmInst> dataZone,
+                       List<NasmInst> bssZone,   List<Name> globalNames, OutputStream outputStream)
     {
         this.nasmInsts = nasmInsts;
         this.dataInsts = dataInsts;
         this.globalNames = globalNames;
         this.outputStream = outputStream;
+        this.dataZone = dataZone;
+        this.bssZone = bssZone;
     }
 
     public void printNasm()
@@ -60,7 +65,22 @@ public class NasmPrinter
             else
                 printStream.println(indent + nasmInst.toString());
         }
+        for(NasmInst nasmInst : dataZone)
+        {
+            if(nasmInst.getInst() == NasmInst.Instruction.NULL)
+                printStream.println(nasmInst.toString() + ':');
+            else
+                printStream.println(indent + nasmInst.toString());
+        }
         printStream.println("\nsection .bss\n");
+        for(NasmInst nasmInst : bssZone)
+        {
+            if(nasmInst.getInst() == NasmInst.Instruction.NULL)
+                printStream.print(nasmInst.toString() + ":");
+            else
+                printStream.println(indent + nasmInst.toString());
+        }
+        printStream.println("\n");
         try
         {
             List<String> clibCode = getClibCode();

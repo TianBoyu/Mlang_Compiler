@@ -313,12 +313,14 @@ public class SemanticChecker implements ASTTraversal
                     && node.isFunctionCall()
                     && node.getFunctionCall().getFuncName() == Name.getName("size"))
             {
+                visit(node.getFunctionCall());
                 node.setExprType(new BuiltInType("int", 4));
             }
             else if (node.getExpr().getExprType().getTypeName() == Name.getName("string")
                 && node.isFunctionCall()
                 && isStringBuiltIn(node.getFunctionCall().getFuncName()))
             {
+                visit(node.getFunctionCall());
                 FuncDecNode func = (FuncDecNode)currentScope.findNode(node.getName());
                 node.setExprType(func.getReturnType());
             }
@@ -339,7 +341,7 @@ public class SemanticChecker implements ASTTraversal
             node.setExprType(func.getReturnType());
             visit(node.getFunctionCall().getParam());
             checkParameterMatch(func, node.getFunctionCall());
-//            visit(node.getFunctionCall());
+            visit(node.getFunctionCall());
             node.getFunctionCall().setFunction(func);
         }
         else

@@ -7,6 +7,7 @@ public class NasmInst
     public enum Instruction
     {
         mov, push, pop, call, ret, db, dq,
+        resq, resb,
 
         add, sub, imul, xor, or, and, inc, dec,
         neg, not, shl, shr, idiv,

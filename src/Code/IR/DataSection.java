@@ -1,5 +1,7 @@
 package Code.IR;
 
+import Code.IR.IRUnit.Oprands.Address;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,29 +10,32 @@ public class DataSection
     public class DataPiece
     {
         private String strValue;
-        private int intValue;
+        private String otherValue;
+        private String op;
         private String name;
         private int length;
 
         public DataPiece(String name, String str_value)
         {
-            this.strValue = str_value;
-            this.name = name;
-            this.length = str_value.length();
-        }
-
-        public DataPiece(String name, int intValue)
-        {
-            this.intValue = intValue;
+            if(str_value != null)
+            {
+                this.strValue = str_value;
+                this.length = str_value.length();
+            }
             this.name = name;
         }
 
-        public int getIntValue()
+        public DataPiece(String name, String value, String op)
         {
-            return intValue;
+            this.name = name;
+            this.otherValue = value;
+            this.op = op;
         }
 
-        public String getValue()
+        public String getOtherValue(){
+            return otherValue;
+        }
+        public String getStrValue()
         {
             return strValue;
         }
@@ -58,9 +63,9 @@ public class DataSection
         dataPieces.add(new DataPiece(name, value));
         return name;
     }
-    public String addData(String name, int value)
+    public String addData(String name, String value, String op)
     {
-        dataPieces.add(new DataPiece(name,value));
+        dataPieces.add(new DataPiece(name, value, op));
         return name;
     }
 

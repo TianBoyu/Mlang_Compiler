@@ -1,6 +1,7 @@
 int main()
 {
-    string str = "abcd";
-    print(str);
+    string str1 = "abcd";
+    string str2 = "qwer";
+    println(str1 + str2);
     return 0;
 }

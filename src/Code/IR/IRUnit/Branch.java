@@ -65,8 +65,12 @@ public class Branch extends Terminator
     @Override
     public String toString()
     {
-        return "Branch " + condition.toString() + " true: " + trueLabel.toString() +
+        String ret = "Branch ";
+        if(condition != null)
+            ret += condition.toString();
+        ret += " true: " + trueLabel.toString() +
                 " false: " + falseLabel.toString();
+        return ret;
     }
     @Override
     public void accept(IRInstTraversal visitor)

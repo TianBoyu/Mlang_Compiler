@@ -15,27 +15,37 @@ public class Translator implements IRInstTraversal
     private static final int ARGUMENT_NUMBER = 6;
     private IRInstruction entry;
     private DataSection dataSection;
+    private DataSection dataZone;
+    private DataSection bssZone;
     private Map<Address, StackSlot> addressStackSlotMap;
     private int rsp_position;
     private List<NasmInst> nasmInsts;
     private List<NasmInst> dataInsts;
+    private List<NasmInst> dataZoneInsts;
+    private List<NasmInst> bssZoneInsts;
     private Function currentFunction;
     private String[] parameterRegName = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
-    private String[] spareRegName = {"rax", "rbx", "rsp", "rbp", "r10", "r11",
+    private String[] spareRegName = {"rax", "rbx", "r10", "r11",
                                     "r12", "r13", "r14", "r15"};
-    public Translator(IRInstruction entry, DataSection dataSection)
+    public Translator(IRInstruction entry, DataSection dataSection, DataSection dataZone, DataSection bssZone)
     {
         this.entry = entry;
         this.dataSection = dataSection;
+        this.dataZone = dataZone;
+        this.bssZone = bssZone;
         rsp_position = 8;//cannot begin with 0
         nasmInsts = new LinkedList<>();
         dataInsts = new LinkedList<>();
+        dataZoneInsts = new LinkedList<>();
+        bssZoneInsts = new LinkedList<>();
         addressStackSlotMap = new HashMap<>();
     }
 
     public void process()
     {
         processDataSection();
+        processDataZone();
+        processBssZone();
         IRInstruction cur = entry;
         while(cur != null)
         {
@@ -54,9 +64,27 @@ public class Translator implements IRInstTraversal
     {
         for(DataSection.DataPiece piece : dataSection.getDataPieces())
         {
-            addDataInst(NasmInst.Instruction.dq, String.valueOf(piece.getLength()), null);
-            addDataInst(NasmInst.Instruction.NULL, piece.getName().toString(), null);
-            addDataInst(NasmInst.Instruction.db, stringToAscii(piece.getValue()), null);
+            addDataInst(dataInsts, NasmInst.Instruction.dq, String.valueOf(piece.getLength()), null);
+            addDataInst(dataInsts, NasmInst.Instruction.NULL, piece.getName().toString(), null);
+            addDataInst(dataInsts, NasmInst.Instruction.db, stringToAscii(piece.getStrValue()), null);
+        }
+    }
+
+    private void processDataZone()
+    {
+        for(DataSection.DataPiece piece : dataZone.getDataPieces())
+        {
+            addDataInst(dataZoneInsts, NasmInst.Instruction.NULL, piece.getName().toString(), null);
+            addDataInst(dataZoneInsts, NasmInst.Instruction.dq, piece.getOtherValue(), null);
+        }
+    }
+
+    private void processBssZone()
+    {
+        for(DataSection.DataPiece piece: bssZone.getDataPieces())
+        {
+            addDataInst(bssZoneInsts, NasmInst.Instruction.NULL, piece.getName().toString(), null);
+            addDataInst(bssZoneInsts, NasmInst.Instruction.resq, "1", null);
         }
     }
 
@@ -68,6 +96,16 @@ public class Translator implements IRInstTraversal
     public List<NasmInst> getDataInsts()
     {
         return dataInsts;
+    }
+
+    public List<NasmInst> getDataZoneInsts()
+    {
+        return dataZoneInsts;
+    }
+
+    public List<NasmInst> getBssZoneInsts()
+    {
+        return bssZoneInsts;
     }
 
     @Override
@@ -90,16 +128,18 @@ public class Translator implements IRInstTraversal
         {
             ((Immediate) inst.getSize()).addValue(1);
             sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
-//            ((Immediate) inst.getSize()).addValue(-1);
+            addInst(NasmInst.Instruction.mov, "rdi", sizeIntegerValue);
+            addInst(NasmInst.Instruction.call, "malloc", null);
+            ((Immediate) inst.getSize()).addValue(-1);
         }
         else
         {
             sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
             addInst(NasmInst.Instruction.add, inst.getSizeReg().toString(), "1");
-//            addInst(NasmInst.Instruction.sub, inst.getSizeReg().toString(), "1");
+            addInst(NasmInst.Instruction.mov, "rdi", sizeIntegerValue);
+            addInst(NasmInst.Instruction.call, "malloc", null);
+            addInst(NasmInst.Instruction.sub, inst.getSizeReg().toString(), "1");
         }
-        addInst(NasmInst.Instruction.mov, "rdi", sizeIntegerValue);
-        addInst(NasmInst.Instruction.call, "malloc", null);
         addInst(NasmInst.Instruction.mov, getStackPos(inst.getReturnAddress()), "rax");
     }
 
@@ -116,7 +156,7 @@ public class Translator implements IRInstTraversal
         String rightIntegerValue = processIntegerValue(inst.getRhs(), inst.getRhsReg());
         addInst(NasmInst.Instruction.valueOf(inst.getOp().toString()),
                 inst.getDestReg().toString(), rightIntegerValue);
-        addInst(NasmInst.Instruction.mov, processAddress(inst.getDest()), inst.getDestReg().toString());
+        addInst(NasmInst.Instruction.mov, processAddress(inst.getDest(), null), inst.getDestReg().toString());
     }
 
     private void visitDivBinaryOp(BinaryOperation inst)
@@ -131,29 +171,36 @@ public class Translator implements IRInstTraversal
         else
         {
             addInst(NasmInst.Instruction.mov, inst.getLhsReg().toString(),
-                    processAddress((Address)inst.getLhs()));
+                    processAddress((Address)inst.getLhs(), null));
             addInst(NasmInst.Instruction.mov, inst.getDestReg().toString(), inst.getLhsReg().toString());
         }
         if(inst.getRhs() instanceof Immediate)
         {
+            addInst(NasmInst.Instruction.mov, inst.getRhsReg().toString(),
+                    processIntegerValue(inst.getRhs(), null));
             addInst(NasmInst.Instruction.mov, "rdx", "0");
-            addInst(NasmInst.Instruction.idiv, String.valueOf(((Immediate) inst.getRhs()).getValue()),
-                    null);
+            addInst(NasmInst.Instruction.idiv, inst.getRhsReg().toString(), null);
         }
         else
         {
             addInst(NasmInst.Instruction.mov, inst.getRhsReg().toString(),
-                    processAddress((Address)inst.getRhs()));
+                    processAddress((Address)inst.getRhs(), null));
             addInst(NasmInst.Instruction.mov, "rdx", "0");
             addInst(NasmInst.Instruction.idiv, inst.getRhsReg().toString(), null);
         }
-        addInst(NasmInst.Instruction.mov, processAddress(inst.getDest()),
+        addInst(NasmInst.Instruction.mov, processAddress(inst.getDest(), null),
                 inst.getDestReg().toString());
     }
 
     @Override
     public void visit(Branch inst)
     {
+        if(inst.getCondition() == null)
+        {
+            addInst(NasmInst.Instruction.jmp, inst.getTrueLabel().toString(), null);
+            return;
+        }
+
         if(inst.getOp() != null)
         {
             switch (inst.getOp())
@@ -189,7 +236,7 @@ public class Translator implements IRInstTraversal
         int rsp_move = 0;
         for(IntegerValue value : inst.getParams())
         {
-            String argumentIntegerValue = processIntegerValue(value, null);
+            String argumentIntegerValue = processIntegerValue(value, new PhysicalRegister(Name.getName("rax")));
             if(i < ARGUMENT_NUMBER)
             {
                 addInst(NasmInst.Instruction.mov, parameterRegName[i], argumentIntegerValue);
@@ -206,7 +253,8 @@ public class Translator implements IRInstTraversal
         addInst(NasmInst.Instruction.call, inst.getFunction().toString(), null);
         if(rsp_move != 0)
             addInst(NasmInst.Instruction.add, "rsp", String.valueOf(rsp_move));
-        addInst(NasmInst.Instruction.mov, processAddress(inst.getDest()), inst.getDestReg().toString());
+        if(inst.getDest() != null)
+            addInst(NasmInst.Instruction.mov, processAddress(inst.getDest(), null), inst.getDestReg().toString());
     }
 
     @Override
@@ -262,8 +310,8 @@ public class Translator implements IRInstTraversal
     @Override
     public void visit(MemCopy inst)
     {
-        addInst(NasmInst.Instruction.mov, processAddress(inst.getFromAddress()),
-                processAddress(inst.getToAddress()));
+        addInst(NasmInst.Instruction.mov, processAddress(inst.getFromAddress(), null),
+                processAddress(inst.getToAddress(), null));
     }
 
     @Override
@@ -286,7 +334,7 @@ public class Translator implements IRInstTraversal
     public void visit(Store inst)
     {
         String storeIntegerValue = processIntegerValue(inst.getData(), inst.getDataReg());
-        addInst(NasmInst.Instruction.mov, processAddress((Address) inst.getAddress()), storeIntegerValue);
+        addInst(NasmInst.Instruction.mov, processAddress((Address) inst.getAddress(), null), storeIntegerValue);
     }
 
 
@@ -301,7 +349,7 @@ public class Translator implements IRInstTraversal
         nasmInsts.add(new NasmInst(inst, operand1, operand2));
     }
 
-    private void addDataInst(NasmInst.Instruction inst, String operand1, String operand2)
+    private void addDataInst(List<NasmInst> insts, NasmInst.Instruction inst, String operand1, String operand2)
     {
         if(inst == null)
             inst = NasmInst.Instruction.NULL;
@@ -309,8 +357,9 @@ public class Translator implements IRInstTraversal
             operand1 = "NULL";
         if(operand2 == null)
             operand2 = "NULL";
-        dataInsts.add(new NasmInst(inst, operand1, operand2));
+        insts.add(new NasmInst(inst, operand1, operand2));
     }
+
 
     private StackSlot mapAddressToSlot(Address address)
     {
@@ -360,18 +409,10 @@ public class Translator implements IRInstTraversal
         String ret;
         if(value instanceof Address)
         {
-            if(!addressStackSlotMap.containsKey(value) && ((Address) value).getBase() == null) //global variable
+            ret = processAddress((Address) value, pr);
+            if(pr != null)
             {
-                StackSlot slot = mapAddressToSlot((Address)value);
-                addInst(NasmInst.Instruction.mov, pr.toString(),
-                        ((Address)value).getName().toString());
-                addInst(NasmInst.Instruction.mov, slot.toString(), pr.toString());
-            } // local variable
-            if (pr == null)
-                ret = processAddress((Address) value);
-            else
-            {
-                addInst(NasmInst.Instruction.mov, pr.toString(), processAddress((Address) value));
+                addInst(NasmInst.Instruction.mov, pr.toString(), ret);
                 ret = pr.toString();
             }
         }
@@ -384,16 +425,31 @@ public class Translator implements IRInstTraversal
         return ret;
     }
 
-    private String processAddress(Address address)
+    private String processAddress(Address address, PhysicalRegister pr)
     {
 //        return getStackPos(address);
-        if(address.getBase() == null)
-            return getStackPos(address);
+
+        if (address.getBase() == null)
+        {
+            if(address.isGlobal())
+            {
+                return "qword["+address.getName().toString() + "]";
+            }
+            else if(!addressStackSlotMap.containsKey(address))
+            {
+                StackSlot slot = mapAddressToSlot(address);
+                addInst(NasmInst.Instruction.mov, pr.toString(), (address).getName().toString());
+                addInst(NasmInst.Instruction.mov, slot.toString(), pr.toString());
+                return slot.toString();
+            }
+            else
+                return getStackPos(address);
+        }
         else//ArrayType or ClassType
         {
             addInst(NasmInst.Instruction.mov, address.getBaseReg().toString(),
-                    processAddress(address.getBase()));
-            if(address.getOffset() instanceof Immediate)
+                    processAddress(address.getBase(), null));
+            if (address.getOffset() instanceof Immediate)
                 return "qword [" + address.getBaseReg().toString() + " + " +
                         String.valueOf(((Immediate) address.getOffset()).getValue() * 8 + 8) + "]";
             else
@@ -404,6 +460,7 @@ public class Translator implements IRInstTraversal
                 return "qword [" + address.getBaseReg().toString() + " + " + offset + " * 8]";
             }
         }
+
     }
 
 }

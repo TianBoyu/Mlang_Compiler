@@ -9,6 +9,7 @@ public class Address extends VirtualRegister
     private Address base;
     private IntegerValue offset;
     private IRType irType;
+    private boolean isGlobal = false;
 
     private PhysicalRegister baseReg;
     private PhysicalRegister offsetReg;
@@ -26,6 +27,18 @@ public class Address extends VirtualRegister
         this.name = name;
         this.base = base;
         this.offset = offset;
+    }
+
+    public Address(Name name, boolean isGlobal) //global variable
+    {
+        super(name);
+        this.name = name;
+        this.isGlobal = isGlobal;
+    }
+
+    public boolean isGlobal()
+    {
+        return isGlobal;
     }
 
     public Name getName()
