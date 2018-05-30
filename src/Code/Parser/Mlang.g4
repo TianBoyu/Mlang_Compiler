@@ -94,8 +94,8 @@ expression
 
 creator
     : (userType | builtInType) ('[' expression ']')* (LBRAC RBRAC)+ ('['expression']')+ #wrongCreator
-    | (userType | builtInType) ('[' expression ']')+ (LBRAC RBRAC)*                    #arrayCreator
-    | userType                                                                     #nonArrayCreator
+    | (userType | builtInType) ('[' expression ']')+ (LBRAC RBRAC)*                     #arrayCreator
+    | userType                                                                          #nonArrayCreator
     ;
 
 functionCall

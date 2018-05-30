@@ -34,6 +34,12 @@ public class CFGConstructor implements IRInstTraversal
     }
 
     @Override
+    public void visit(Malloc inst)
+    {
+
+    }
+
+    @Override
     public void visit(BinaryOperation inst)
     {
     }

@@ -254,8 +254,7 @@ public class IRConstructor implements IRTraversal
         //should return address
         IntegerValue index = visit(node.getIndex());
         Address array = (Address)visit(node.getArray());
-        return new Address(Name.getName("_" + array.getName().toString() + "_" + index.toString()),
-                            array, index);
+        return new Address(array.getName(), array, index);
     }
 
     @Override
@@ -414,8 +413,7 @@ public class IRConstructor implements IRTraversal
         {
             VarDecNode var = (VarDecNode)node.getExpr().getExprType().getClassNode().getInternalScope().findNode(node.getName());
             int offset = var.getMemberNumber();
-            ret = new Address(Name.getName("_" + node.getExpr().getExprType().getTypeName().toString() +
-                     "_" + node.getName().toString()), base, new Immediate(offset));
+            ret = new Address(node.getName(), base, new Immediate(offset));
         }
 
         return ret;
@@ -434,12 +432,23 @@ public class IRConstructor implements IRTraversal
     {
         if(node == null)
             return null;
-        IRType irType = convertType(node.getType());
-        Address address = new Address(currentFunction.getRegister().getName(), irType);
-        currentIRScope.addAddress(address.getName(), address);
-        addInst(new Alloca(currentLabel, address, irType));
-        currentFunction.increSlotNumber();
-        return address;
+        if(node.getExprNodes().size() == 0)//class
+        {
+            throw new RuntimeException("cannot be here now");
+        }
+        else if(node.getExprNodes().size() == 1) //one dimension array
+        {
+            IRType irType = convertType(node.getType());
+            Address address = new Address(currentFunction.getRegister().getName(), irType);
+            addInst(new Alloca(currentLabel, address, new BuiltIn()));
+            IntegerValue value = visit(node.getExprNodes().get(0));
+            addInst(new Malloc(currentLabel,value,address));
+            return address;
+        }
+        else //multi dimension array
+        {
+            throw new RuntimeException("cannot be here now");
+        }
     }
 
     @Override
@@ -534,7 +543,6 @@ public class IRConstructor implements IRTraversal
         switch(node.getOp())
         {
             case SUF_DECRE:
-
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.sub,
                         (Address) value, value, new Immediate(1)));
                 return origin_address;
@@ -838,7 +846,9 @@ public class IRConstructor implements IRTraversal
         else if(type instanceof ClassType)
             irType = new Class(type.getTypeName());
         else
-            irType = new Array(convertType(((ArrayType)type).getBasic_type()), null);
+        {
+            irType = new Array(convertType(((ArrayType) type).getBasic_type()), null);
+        }
         return irType;
     }
 

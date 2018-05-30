@@ -2,45 +2,19 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @a(i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64)
-  [%r0] = alloca i64
-  [%r0] = [a1] add [a2]
-  [%r1] = alloca i64
-  [%r1] = [%r0] add [a3]
-  [%r2] = alloca i64
-  [%r2] = [%r1] add [a4]
-  [%r3] = alloca i64
-  [%r3] = [%r2] add [a5]
-  [%r4] = alloca i64
-  [%r4] = [%r3] add [a6]
-  [%r5] = alloca i64
-  [%r5] = [%r4] add [a7]
-  [%r6] = alloca i64
-  [%r6] = [%r5] add [a8]
-  [%r7] = alloca i64
-  [%r7] = [%r6] add [a9]
-  [%r8] = alloca i64
-  [%r8] = [%r7] add [a10]
-  [%r9] = alloca i64
-  [%r9] = [%r8] add [a11]
-  [%r10] = alloca i64
-  [%r10] = [%r9] add [a12]
-  [%r11] = alloca i64
-  [%r11] = [%r10] add [a13]
-  [%r12] = alloca i64
-  [%r12] = [%r11] add [a14]
-  [%r13] = alloca i64
-  [%r13] = [%r12] add [a15]
-  Return [%r13]
-
 define i64 @main()
+  [a] = alloca [ArrayType: i64[]]
   [%r0] = alloca i64
+  Malloc
+  Store [%r0] to [a]
+  Store Immediate 10 to [Address a + offset Immediate 0 * i64]
   [%r1] = alloca i64
   [%r2] = alloca i64
-  [%r2] = Call @a(Immediate 1, Immediate 2, Immediate 3, Immediate 4, Immediate 5, Immediate 6, Immediate 7, Immediate 8, Immediate 9, Immediate 10, Immediate 11, Immediate 12, Immediate 13, Immediate 14, Immediate 15)
-  [%r1] = Call @toString([%r2])
-  [%r0] = Call @println([%r1])
-  Return Immediate 0
+  [%r2] = Call @toString([Address a + offset Immediate 0 * i64])
+  [%r1] = Call @println([%r2])
+  [%r3] = alloca i64
+  [%r3] = [Address a + offset Immediate 0 * i64] add Immediate 20
+  Return [%r3]
 
 
 __________________________________________

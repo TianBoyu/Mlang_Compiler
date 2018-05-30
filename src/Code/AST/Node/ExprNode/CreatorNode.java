@@ -38,6 +38,11 @@ public class CreatorNode extends ExprNode
         return dimension;
     }
 
+    public List<ExprNode> getExprNodes()
+    {
+        return exprNodes;
+    }
+
     public Type getType()
     {
         return type;

@@ -1,5 +1,4 @@
 global    main
-global    a
 
 
 section .data
@@ -15,147 +14,30 @@ extern strcmp
 
 section .text
 
-a:
-       push  rbp
-       mov  rbp,  rsp
-       sub  rsp,  232
-       mov  qword [rbp-8],  rdi
-       mov  qword [rbp-16],  rsi
-       mov  qword [rbp-24],  rdx
-       mov  qword [rbp-32],  rcx
-       mov  qword [rbp-40],  r8
-       mov  qword [rbp-48],  r9
-       mov  rax,  qword [rbp+80]
-       mov  qword [rbp-56],  rax
-       mov  rax,  qword [rbp+72]
-       mov  qword [rbp-64],  rax
-       mov  rax,  qword [rbp+64]
-       mov  qword [rbp-72],  rax
-       mov  rax,  qword [rbp+56]
-       mov  qword [rbp-80],  rax
-       mov  rax,  qword [rbp+48]
-       mov  qword [rbp-88],  rax
-       mov  rax,  qword [rbp+40]
-       mov  qword [rbp-96],  rax
-       mov  rax,  qword [rbp+32]
-       mov  qword [rbp-104],  rax
-       mov  rax,  qword [rbp+24]
-       mov  qword [rbp-112],  rax
-       mov  rax,  qword [rbp+16]
-       mov  qword [rbp-120],  rax
-       mov  rcx,  qword [rbp-8]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-16]
-       add  rax,  rdx
-       mov  qword [rbp-128],  rax
-       mov  rcx,  qword [rbp-128]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-24]
-       add  rax,  rdx
-       mov  qword [rbp-136],  rax
-       mov  rcx,  qword [rbp-136]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-32]
-       add  rax,  rdx
-       mov  qword [rbp-144],  rax
-       mov  rcx,  qword [rbp-144]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-40]
-       add  rax,  rdx
-       mov  qword [rbp-152],  rax
-       mov  rcx,  qword [rbp-152]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-48]
-       add  rax,  rdx
-       mov  qword [rbp-160],  rax
-       mov  rcx,  qword [rbp-160]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-56]
-       add  rax,  rdx
-       mov  qword [rbp-168],  rax
-       mov  rcx,  qword [rbp-168]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-64]
-       add  rax,  rdx
-       mov  qword [rbp-176],  rax
-       mov  rcx,  qword [rbp-176]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-72]
-       add  rax,  rdx
-       mov  qword [rbp-184],  rax
-       mov  rcx,  qword [rbp-184]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-80]
-       add  rax,  rdx
-       mov  qword [rbp-192],  rax
-       mov  rcx,  qword [rbp-192]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-88]
-       add  rax,  rdx
-       mov  qword [rbp-200],  rax
-       mov  rcx,  qword [rbp-200]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-96]
-       add  rax,  rdx
-       mov  qword [rbp-208],  rax
-       mov  rcx,  qword [rbp-208]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-104]
-       add  rax,  rdx
-       mov  qword [rbp-216],  rax
-       mov  rcx,  qword [rbp-216]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-112]
-       add  rax,  rdx
-       mov  qword [rbp-224],  rax
-       mov  rcx,  qword [rbp-224]
-       mov  rax,  rcx
-       mov  rdx,  qword [rbp-120]
-       add  rax,  rdx
-       mov  qword [rbp-232],  rax
-       mov  rax,  qword [rbp-232]
-       add  rsp,  232
-       pop  rbp
-       ret  
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  24
+       sub  rsp,  32
        mov  rdi,  1
-       mov  rsi,  2
-       mov  rdx,  3
-       mov  rcx,  4
-       mov  r8,  5
-       mov  r9,  6
-       mov  rax,  7
-       push  rax
-       mov  rax,  8
-       push  rax
-       mov  rax,  9
-       push  rax
-       mov  rax,  10
-       push  rax
-       mov  rax,  11
-       push  rax
-       mov  rax,  12
-       push  rax
-       mov  rax,  13
-       push  rax
-       mov  rax,  14
-       push  rax
-       mov  rax,  15
-       push  rax
-       call  a
-       add  rsp,  72
-       mov  qword [rbp-24],  rax
-       mov  rdi,  qword [rbp-24]
-       call  toString
+       call  malloc
        mov  qword [rbp-16],  rax
-       mov  rdi,  qword [rbp-16]
-       call  println
+       mov  rax,  qword [rbp-16]
        mov  qword [rbp-8],  rax
-       mov  rax,  0
-       add  rsp,  24
+       mov  rax,  qword [rbp-8]
+       mov  qword [rax + 0],  10
+       mov  rax,  qword [rbp-8]
+       mov  rdi,  qword [rax + 0]
+       call  toString
+       mov  qword [rbp-32],  rax
+       mov  rdi,  qword [rbp-32]
+       call  println
+       mov  qword [rbp-24],  rax
+       mov  rcx,  qword [rbp-8]
+       mov  rax,  qword [rcx + 0]
+       add  rax,  20
+       mov  qword [rbp-40],  rax
+       mov  rax,  qword [rbp-40]
+       add  rsp,  32
        pop  rbp
        ret  
 

@@ -3,10 +3,9 @@ package Code.Optimizer;
 import Code.AST.Tools.Name;
 import Code.IR.IRInstTraversal;
 import Code.IR.IRUnit.*;
-import Code.IR.IRUnit.Oprands.Immediate;
-import Code.IR.IRUnit.Oprands.PhysicalRegister;
-import Code.IR.IRUnit.Oprands.VirtualRegister;
+import Code.IR.IRUnit.Oprands.*;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +52,15 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     }
 
     @Override
+    public void visit(Malloc inst)
+    {
+        inst.setReturnReg(physicalRegisters.get(0));
+        isAvailable[0] = false;
+        if(inst.getSize() instanceof VirtualRegister)
+            inst.setSizeReg(getPhysicalRegister((VirtualRegister) inst.getSize()));
+    }
+
+    @Override
     public void visit(BinaryOperation inst)
     {
         //const value folded
@@ -90,7 +98,6 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
             PhysicalRegister rhsPr = getPhysicalRegister((VirtualRegister) inst.getRhs());
             inst.setRhsReg(rhsPr);
         }
-//        resetGivenPhysicalRegister(lhsPr);
     }
 
     @Override
@@ -102,6 +109,11 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     @Override
     public void visit(Call inst)
     {
+        for(IntegerValue parameter : inst.getParams())
+        {
+            if(parameter instanceof VirtualRegister)
+                allocRegisterForAddress((VirtualRegister) parameter);
+        }
         PhysicalRegister destPr = physicalRegisters.get(0);
         inst.setDestReg(destPr);
         isAvailable[0] = false;
@@ -168,6 +180,8 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     @Override
     public void visit(Store inst)
     {
+        if(inst.getAddress() instanceof VirtualRegister)
+            allocRegisterForAddress((VirtualRegister) inst.getAddress());
         if(inst.getData() instanceof VirtualRegister)
         {
             PhysicalRegister pr = getPhysicalRegister((VirtualRegister) inst.getData());
@@ -194,8 +208,25 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     }
 
 
+    private void allocRegisterForAddress(VirtualRegister vr)
+    {
+        if(vr instanceof Address)
+        {
+            if(((Address) vr).getBase() != null)
+            {
+                PhysicalRegister basePr = getAvailablePhysicalRegister();
+                ((Address) vr).setBaseReg(basePr);
+                if (!(((Address) vr).getOffset() instanceof Immediate))
+                {
+                    PhysicalRegister offsetPr = getAvailablePhysicalRegister();
+                    ((Address) vr).setOffsetReg(offsetPr);
+                }
+            }
+        }
+    }
     private PhysicalRegister getPhysicalRegister(VirtualRegister vr)
     {
+        allocRegisterForAddress(vr);
         if(registerMap.containsKey(vr))
             return registerMap.get(vr);
         else
@@ -205,6 +236,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
             return pr;
         }
     }
+
     private PhysicalRegister getAvailablePhysicalRegister()
     {
         int i = 0;
