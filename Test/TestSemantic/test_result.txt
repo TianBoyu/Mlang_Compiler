@@ -1,22 +1,19 @@
 ProgNode
-  *FunctionDeclaration: f
-    Type: int
-    BlockNode
-      ForNode
-        *VariableDeclaration: a
-          Type: int
-          IntConstNode  value = 1
-      ReturnNode
-  *FunctionDeclaration: g
-    Type: int
-    BlockNode
-      WhileNode
-        BoolConstNode  value = true
-        *VariableDeclaration: b
-          Type: int
-          IntConstNode  value = 1
-      ReturnNode
   *FunctionDeclaration: main
-    Type: int
+    BuiltInType: int
     BlockNode
+      *VariableDeclaration: a
+        ArrayType: int
+      *VariableDeclaration: b
+        BuiltInType: int
+        MemberExprNode
+          IdExprNode  ID name: a
+          CallExprNode  Function Name: size
+            ExprListNode
+      ExprStatNode
+        CallExprNode  Function Name: println
+          ExprListNode
+            CallExprNode  Function Name: toString
+              ExprListNode
+                IdExprNode  ID name: b
       ReturnNode

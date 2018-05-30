@@ -16,7 +16,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     private IRInstruction entry;
     private Map<VirtualRegister, PhysicalRegister> registerMap = new HashMap<>();
     private List<PhysicalRegister> physicalRegisters;
-    private String[] registerNames = {"rax", "rcx", "rdx", "rbx", "rsp", "rbp", "rsi", "rdi",
+    private String[] registerNames = {"rax", "rcx", "rdx", "rbx", "rsi", "rdi",
             "r8",  "r9",  "r10", "r11", "r12", "r13", "r14", "r15"};
     private String[] parameterRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
     private boolean[] isAvailable;

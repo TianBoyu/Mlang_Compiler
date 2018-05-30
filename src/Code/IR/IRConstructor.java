@@ -169,7 +169,7 @@ public class IRConstructor implements IRTraversal
     {
         IRType irType = convertType(node.getType());
         Address address = new Address(node.getName(), irType);
-        addInst(new Alloca(currentLabel, address,  irType));
+        addInst(new Alloca(currentLabel, address, irType));
         currentFunction.increSlotNumber();
 
         currentIRScope.addAddress(node.getName(), address);
@@ -407,6 +407,7 @@ public class IRConstructor implements IRTraversal
                 Name name = node.getExpr().getExprType().getTypeName();
                 node.getFunctionCall().setFunctionName(Name.getName("__" + name.toString() + "__" + node.getFunctionCall().getFuncName()));
             }
+            node.getFunctionCall().addParam(node.getExpr(), 0);
             ret = visit(node.getFunctionCall());
         }
         else
@@ -443,6 +444,8 @@ public class IRConstructor implements IRTraversal
             addInst(new Alloca(currentLabel, address, new BuiltIn()));
             IntegerValue value = visit(node.getExprNodes().get(0));
             addInst(new Malloc(currentLabel,value,address));
+            addInst(new Store(currentLabel, new Address(Name.getName(address.getName().toString() + "_size"),
+                    address, new Immediate(-1)), value));
             return address;
         }
         else //multi dimension array
@@ -503,12 +506,12 @@ public class IRConstructor implements IRTraversal
             case DECRE:
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.sub, (Address) value,
                         value, new Immediate(1)));
-                addInst(new Store(currentLabel, value, register));
+//                addInst(new Store(currentLabel, value, register));
                 return value;
             case INCRE:
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.add, (Address) value,
                         value, new Immediate(1)));
-                addInst(new Store(currentLabel, value, register));
+//                addInst(new Store(currentLabel, value, register));
                 return value;
         }
 //        return register;

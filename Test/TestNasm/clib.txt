@@ -40,7 +40,7 @@ printInt:
     ret
 
 size:
-    mov rax,[rdi-8]
+    mov rax,[rdi]
     ret
 
 print:

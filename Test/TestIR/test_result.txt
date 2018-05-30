@@ -3,18 +3,50 @@ __________________________________________
 
 
 define i64 @main()
+  [la] = alloca i64
+  Store Immediate 5 to [la]
   [a] = alloca [ArrayType: i64[]]
   [%r0] = alloca i64
   Malloc
+  Store [la] to [Address %r0_size + offset Immediate -1 * i64]
   Store [%r0] to [a]
-  Store Immediate 10 to [Address a + offset Immediate 0 * i64]
+  [cnt] = alloca i64
+  Store Immediate 0 to [cnt]
+  [i] = alloca i64
+  Store Immediate 0 to [i]
+  Jump label0
+
+  label0
   [%r1] = alloca i64
-  [%r2] = alloca i64
-  [%r2] = Call @toString([Address a + offset Immediate 0 * i64])
-  [%r1] = Call @println([%r2])
-  [%r3] = alloca i64
-  [%r3] = [Address a + offset Immediate 0 * i64] add Immediate 20
-  Return [%r3]
+  [%r1] = [i] SLT [la]
+  Branch [%r1] true: label1 false: label2
+
+  label1
+  [cnt] = [cnt] add Immediate 1
+  Store [cnt] to [Address a + offset [i] * i64]
+  [i] = [i] add Immediate 1
+  Jump label0
+
+  label2
+  [sum] = alloca i64
+  Store Immediate 0 to [sum]
+  Store Immediate 0 to [i]
+  Jump label3
+
+  label3
+  [%r4] = alloca i64
+  [%r4] = [i] SLT [la]
+  Branch [%r4] true: label4 false: label5
+
+  label4
+  [%r5] = alloca i64
+  [%r5] = [sum] add [Address a + offset [i] * i64]
+  Store [%r5] to [sum]
+  [i] = [i] add Immediate 1
+  Jump label3
+
+  label5
+  Return [sum]
 
 
 __________________________________________

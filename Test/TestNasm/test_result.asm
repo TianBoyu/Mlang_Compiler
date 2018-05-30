@@ -17,27 +17,65 @@ section .text
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  32
-       mov  rdi,  1
+       sub  rsp,  64
+       mov  qword [rbp-8],  5
+       mov  rcx,  qword [rbp-8]
+       add  rcx,  1
+       mov  rdi,  rcx
        call  malloc
-       mov  qword [rbp-16],  rax
-       mov  rax,  qword [rbp-16]
-       mov  qword [rbp-8],  rax
-       mov  rax,  qword [rbp-8]
-       mov  qword [rax + 0],  10
-       mov  rax,  qword [rbp-8]
-       mov  rdi,  qword [rax + 0]
-       call  toString
-       mov  qword [rbp-32],  rax
-       mov  rdi,  qword [rbp-32]
-       call  println
        mov  qword [rbp-24],  rax
        mov  rcx,  qword [rbp-8]
-       mov  rax,  qword [rcx + 0]
-       add  rax,  20
-       mov  qword [rbp-40],  rax
+       mov  rax,  qword [rbp-24]
+       mov  qword [rax + 0],  rcx
+       mov  rax,  qword [rbp-24]
+       mov  qword [rbp-16],  rax
+       mov  qword [rbp-32],  0
+       mov  qword [rbp-40],  0
+       jmp  label0
+label0:
+       mov  rcx,  qword [rbp-40]
+       mov  rdx,  qword [rbp-8]
+       cmp  rcx,  rdx
+       jge  label2
+label1:
+       mov  rax,  qword [rbp-32]
+       add  rax,  1
+       mov  qword [rbp-32],  rax
+       mov  rdx,  qword [rbp-32]
+       mov  rax,  qword [rbp-16]
+       mov  rcx,  qword [rbp-40]
+       add  rcx,  1
+       mov  qword [rax + rcx * 8],  rdx
        mov  rax,  qword [rbp-40]
-       add  rsp,  32
+       add  rax,  1
+       mov  qword [rbp-40],  rax
+       jmp  label0
+label2:
+       mov  qword [rbp-56],  0
+       mov  qword [rbp-40],  0
+       jmp  label3
+label3:
+       mov  rcx,  qword [rbp-40]
+       mov  rdx,  qword [rbp-8]
+       cmp  rcx,  rdx
+       jge  label5
+label4:
+       mov  rax,  qword [rbp-56]
+       mov  rdx,  qword [rbp-16]
+       mov  rbx,  qword [rbp-40]
+       add  rbx,  1
+       mov  rsi,  qword [rdx + rbx * 8]
+       add  rax,  rsi
+       mov  qword [rbp-72],  rax
+       mov  rax,  qword [rbp-72]
+       mov  qword [rbp-56],  rax
+       mov  rax,  qword [rbp-40]
+       add  rax,  1
+       mov  qword [rbp-40],  rax
+       jmp  label3
+label5:
+       mov  rax,  qword [rbp-56]
+       add  rsp,  64
        pop  rbp
        ret  
 
@@ -87,7 +125,7 @@ printInt:
     ret
 
 size:
-    mov rax,[rdi-8]
+    mov rax,[rdi]
     ret
 
 print:

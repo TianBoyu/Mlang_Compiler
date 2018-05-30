@@ -85,7 +85,19 @@ public class Translator implements IRInstTraversal
     @Override
     public void visit(Malloc inst)
     {
-        String sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
+        String sizeIntegerValue;
+        if(inst.getSize() instanceof Immediate)
+        {
+            ((Immediate) inst.getSize()).addValue(1);
+            sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
+//            ((Immediate) inst.getSize()).addValue(-1);
+        }
+        else
+        {
+            sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
+            addInst(NasmInst.Instruction.add, inst.getSizeReg().toString(), "1");
+//            addInst(NasmInst.Instruction.sub, inst.getSizeReg().toString(), "1");
+        }
         addInst(NasmInst.Instruction.mov, "rdi", sizeIntegerValue);
         addInst(NasmInst.Instruction.call, "malloc", null);
         addInst(NasmInst.Instruction.mov, getStackPos(inst.getReturnAddress()), "rax");
@@ -220,7 +232,7 @@ public class Translator implements IRInstTraversal
         int paramNumber = inst.getParameter().size();
         for(Parameter item : inst.getParameter())
         {
-            if(item.isAdded()) continue;
+//            if(item.isAdded()) continue;
             StackSlot slot = mapAddressToSlot(item.getAddress());
             if(i < ARGUMENT_NUMBER)
                 addInst(NasmInst.Instruction.mov, slot.toString(), parameterRegName[i]);
@@ -383,10 +395,12 @@ public class Translator implements IRInstTraversal
                     processAddress(address.getBase()));
             if(address.getOffset() instanceof Immediate)
                 return "qword [" + address.getBaseReg().toString() + " + " +
-                        String.valueOf(((Immediate) address.getOffset()).getValue() * 8) + "]";
+                        String.valueOf(((Immediate) address.getOffset()).getValue() * 8 + 8) + "]";
             else
             {
+
                 String offset = processIntegerValue(address.getOffset(), address.getOffsetReg());
+                addInst(NasmInst.Instruction.add, address.getOffsetReg().toString(), "1");
                 return "qword [" + address.getBaseReg().toString() + " + " + offset + " * 8]";
             }
         }

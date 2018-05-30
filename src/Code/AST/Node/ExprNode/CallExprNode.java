@@ -22,6 +22,10 @@ public class CallExprNode extends ExprNode
     public ExprListNode getParam() {
         return param;
     }
+    public void addParam(ExprNode node, int pos)
+    {
+        this.param.addExpr(node, pos);
+    }
 
     public FuncDecNode getFunction()
     {

@@ -15,9 +15,9 @@ public class ExprListNode extends ExprNode
         super(_pos);
         exprs = _expr;
     }
-    public void addExpr(ExprNode node)
+    public void addExpr(ExprNode node, int pos)
     {
-        exprs.add(node);
+        exprs.add(pos, node);
     }
 
     public List<ExprNode> getExprs()

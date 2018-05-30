@@ -216,6 +216,9 @@ public class ASTPrinter implements ASTTraversal
         printStream.println(indent.toString() + node.getClass().getSimpleName());
         Tab();
         visit(node.getExpr());
+        if(node.isFunctionCall())
+            visit(node.getFunctionCall());
+        else printStream.println(indent.toString() + node.getId());
         BackSpace();
     }
 
