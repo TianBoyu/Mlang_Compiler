@@ -209,7 +209,9 @@ public class IRConstructor implements IRTraversal
         {
             if(node.getValue() instanceof ConditionExprNode ||
                     (node.getValue() instanceof UnaryExprNode &&
-                     ((UnaryExprNode) node.getValue()).getOp() == UnaryOp.NOT))
+                     ((UnaryExprNode) node.getValue()).getOp() == UnaryOp.NOT) ||
+                    (node.getValue() instanceof BinaryExprNode &&
+                            BinaryOp.isCompare(((BinaryExprNode) node.getValue()).getOp())))
             {
                 this.addressForCond = address;
                 isVarForFond = true;
@@ -296,7 +298,9 @@ public class IRConstructor implements IRTraversal
         IntegerValue right;
         if(node.getRhs() instanceof ConditionExprNode ||
                 (node.getRhs() instanceof UnaryExprNode &&
-                        ((UnaryExprNode) node.getRhs()).getOp() == UnaryOp.NOT))
+                        ((UnaryExprNode) node.getRhs()).getOp() == UnaryOp.NOT) ||
+                (node.getRhs() instanceof BinaryExprNode &&
+                        BinaryOp.isCompare(((BinaryExprNode) node.getRhs()).getOp())))
         {
             addressForCond = (Address) left;
             isVarForFond = true;
@@ -369,15 +373,39 @@ public class IRConstructor implements IRTraversal
             Compare.Condition condition;
             switch(op)
             {
-                case SLT: condition = Compare.Condition.SLT; break;
-                case SGT: condition = Compare.Condition.SGT; break;
-                case SEQ: condition = Compare.Condition.SEQ; break;
-                case BEQ: condition = Compare.Condition.BEQ; break;
-                case EQU: condition = Compare.Condition.EQU; break;
-                case NEQ: condition = Compare.Condition.NEQ; break;
+                case SLT:
+                    condition = Compare.Condition.SLT;
+                    break;
+                case SGT:
+                    condition = Compare.Condition.SGT;
+                    break;
+                case SEQ:
+                    condition = Compare.Condition.SEQ;
+                    break;
+                case BEQ:
+                    condition = Compare.Condition.BEQ;
+                    break;
+                case EQU:
+                    condition = Compare.Condition.EQU;
+                    break;
+                case NEQ:
+                    condition = Compare.Condition.NEQ;
+                    break;
                 default: condition = null; break;
             }
             addInst(new Compare(currentLabel, condition, dest, left, right));
+            if(isVarForFond)
+            {
+                Label trueLabel = new Label(null);
+                Label falseLabel = new Label(null);
+                addInst(new Branch(currentLabel, trueLabel, falseLabel, null, condition));
+                addInst(trueLabel);
+                currentLabel = trueLabel;
+                addInst(new Store(currentLabel, dest, new Immediate(1)));
+                addInst(falseLabel);
+                addInst(new Store(currentLabel, dest, new Immediate(0)));
+                addInst(new Compare(currentLabel, condition, dest, dest, new Immediate(0)));
+            }
         }
         else
         {
@@ -499,7 +527,12 @@ public class IRConstructor implements IRTraversal
             return null;
         if(node.getExprNodes().size() == 0)//class
         {
-            throw new RuntimeException("cannot be here now");
+//            throw new RuntimeException("cannot be here now");
+            IRType irType = convertType(node.getExprType());
+            Address address = new Address(currentFunction.getRegister().getName(), irType);
+            addInst(new Alloca(currentLabel, address, new Immediate(8)));
+            addInst(new Malloc(currentLabel, new Immediate(node.getExprType().getTypeSize()), address));
+            return address;
         }
         else if(node.getExprNodes().size() == 1) //one dimension array
         {

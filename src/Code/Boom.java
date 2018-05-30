@@ -34,9 +34,9 @@ import java.util.List;
 //TODO
 /*
  * Class, Array
- * Global Varible
+ * Global Variable(only int now)
  * Input
- * String storage & builtin function
+ * String storage & builtin function(done)
  */
 
 
@@ -46,7 +46,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test_print.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test579.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);

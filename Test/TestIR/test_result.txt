@@ -3,21 +3,51 @@ __________________________________________
 
 
 define i64 @main()
-  [str1] = alloca i64
-  Store [String_0] to [str1]
-  [str2] = alloca i64
-  Store [String_1] to [str2]
+  [obj] = alloca [struct C2]
+  [%r0] = alloca Immediate 8
+  Malloc
+  Store [%r0] to [obj]
+  Store Immediate 10 to [Address x + offset Immediate 0 * i64]
+  Store Immediate 20 to [Address y + offset Immediate 1 * i64]
   [%r1] = alloca i64
-  [%r1] = Call @Str_ADD([str1], [str2])
-  Call @println([%r1])
-  Return Immediate 0
+  [%r1] = [Address x + offset Immediate 0 * i64] SGT [Address y + offset Immediate 1 * i64]
+  Branch  true: label0 false: label1
+
+  label0
+  Store Immediate 1 to [%r1]
+
+  label1
+  Store Immediate 0 to [%r1]
+  [%r1] = [%r1] SGT Immediate 0
+  Branch [Address b + offset Immediate 2 * i64] true: label2 false: label3
+
+  label2
+  Store Immediate 40 to [Address z + offset Immediate 3 * i64]
+  Jump label4
+
+  label3
+  Store Immediate 80 to [Address z + offset Immediate 3 * i64]
+  Jump label4
+
+  label4
+  [%r3] = alloca i64
+  [%r4] = alloca i64
+  [%r4] = [Address x + offset Immediate 0 * i64] add [Address y + offset Immediate 1 * i64]
+  [%r5] = alloca i64
+  [%r5] = [%r4] add [Address z + offset Immediate 3 * i64]
+  [%r3] = Call @toString([%r5])
+  Call @println([%r3])
+  [%r6] = alloca i64
+  [%r6] = [Address x + offset Immediate 0 * i64] add [Address y + offset Immediate 1 * i64]
+  [%r7] = alloca i64
+  [%r7] = [%r6] add [Address z + offset Immediate 3 * i64]
+  Return [%r7]
 
 
 __________________________________________
 ===================TYPE===================
+struct C2 = type {i64 i64 i64 i64 }
 
 
 __________________________________________
 ===================DATA===================
-String_0: abcd
-String_1: qwer

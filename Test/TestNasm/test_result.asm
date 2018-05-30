@@ -17,36 +17,73 @@ section .text
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  16
-       mov  rax,  String_0
+       sub  rsp,  56
+       mov  rdi,  33
+       call  malloc
        mov  qword [rbp-16],  rax
        mov  rax,  qword [rbp-16]
        mov  qword [rbp-8],  rax
-       mov  rax,  String_1
-       mov  qword [rbp-32],  rax
-       mov  rax,  qword [rbp-32]
-       mov  qword [rbp-24],  rax
        mov  rax,  qword [rbp-8]
-       mov  rdi,  rax
+       mov  qword [rax + 8],  10
+       mov  rax,  qword [rbp-8]
+       mov  qword [rax + 16],  20
+       mov  rcx,  qword [rbp-8]
+       mov  rdx,  qword [rcx + 8]
+       mov  rbx,  qword [rbp-8]
+       mov  rsi,  qword [rbx + 16]
+       cmp  rdx,  rsi
+       jmp  label0
+label0:
+       mov  qword [rbp-24],  1
+label1:
+       mov  qword [rbp-24],  0
        mov  rax,  qword [rbp-24]
-       mov  rsi,  rax
-       call  Str_ADD
+       cmp  rax,  0
+       jz  label3
+label2:
+       mov  rax,  qword [rbp-8]
+       mov  qword [rax + 32],  40
+       jmp  label4
+label3:
+       mov  rax,  qword [rbp-8]
+       mov  qword [rax + 32],  80
+       jmp  label4
+label4:
+       mov  rcx,  qword [rbp-8]
+       mov  rax,  qword [rcx + 8]
+       mov  rbx,  qword [rbp-8]
+       mov  rsi,  qword [rbx + 16]
+       add  rax,  rsi
        mov  qword [rbp-40],  rax
        mov  rax,  qword [rbp-40]
+       mov  rdx,  qword [rbp-8]
+       mov  rbx,  qword [rdx + 32]
+       add  rax,  rbx
+       mov  qword [rbp-48],  rax
+       mov  rax,  qword [rbp-48]
+       mov  rdi,  rax
+       call  toString
+       mov  qword [rbp-32],  rax
+       mov  rax,  qword [rbp-32]
        mov  rdi,  rax
        call  println
-       mov  rax,  0
-       add  rsp,  16
+       mov  rcx,  qword [rbp-8]
+       mov  rax,  qword [rcx + 8]
+       mov  rbx,  qword [rbp-8]
+       mov  rsi,  qword [rbx + 16]
+       add  rax,  rsi
+       mov  qword [rbp-56],  rax
+       mov  rax,  qword [rbp-56]
+       mov  rdx,  qword [rbp-8]
+       mov  rbx,  qword [rdx + 32]
+       add  rax,  rbx
+       mov  qword [rbp-64],  rax
+       mov  rax,  qword [rbp-64]
+       add  rsp,  56
        pop  rbp
        ret  
 
 section .data
-       dq  4
-String_0:
-       db  97, 98, 99, 100, 0
-       dq  4
-String_1:
-       db  113, 119, 101, 114, 0
 
 section .bss
 
