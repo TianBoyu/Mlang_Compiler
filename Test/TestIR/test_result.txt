@@ -2,75 +2,20 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @main()
-  [a] = alloca i64
-  Store Immediate 5 to [a]
-  [b] = alloca i64
-  Store Immediate 0 to [b]
-  [c] = alloca i64
-  [%r0] = alloca i64
-  [%r0] = [b] NEQ Immediate 0
-  Branch [%r0] true: label0 false: label1
-  Branch [%r0] true: label3 false: label1
-
-  label3
+define i64 @foo(i64, i64, i64)
   [%r1] = alloca i64
-  [%r1] = [a] idiv [b]
   [%r2] = alloca i64
-  [%r2] = [%r1] NEQ Immediate 1
-  Branch [%r2] true: label0 false: label1
-  Branch [%r2] true: label0 false: label1
+  [%r2] = [d] imul Immediate 1000
+  [%r3] = alloca i64
+  [%r3] = [x] imul Immediate 10
+  [%r4] = alloca i64
+  [%r4] = [%r2] add [%r3]
+  [%r5] = alloca i64
+  [%r5] = [%r4] add [y]
+  [%r1] = Call @toString([%r5])
+  Call @println([%r1])
+  [%r6] = alloca i64
+  [%r6] = [d] EQU Immediate 1
+  Branch [%r6] true: label0 false: label1
 
   label0
-  Store Immediate 10 to [c]
-  Jump label2
-
-  label1
-  Store Immediate 20 to [c]
-  Jump label2
-
-  label2
-  [%r3] = alloca i64
-  [%r3] = [c] EQU Immediate 10
-  Branch [%r3] true: label4 false: label5
-  Branch [%r3] true: label8 false: label5
-
-  label8
-  [%r4] = alloca i64
-  [%r4] = [a] idiv [b]
-  [%r5] = alloca i64
-  [%r5] = [%r4] EQU Immediate 0
-  Branch [%r5] true: label4 false: label5
-  Branch [%r5] true: label4 false: label5
-  Branch [%r5] true: label7 false: label5
-
-  label7
-  [%r6] = alloca i64
-  [%r6] = [a] EQU Immediate 5
-  Branch [%r6] true: label4 false: label5
-  Branch [%r6] true: label4 false: label5
-  [%r7] = alloca i64
-  [%r7] = [%r6] xor Immediate 1
-  [%r8] = [%r7] EQU Immediate 0
-  Branch [%r7] true: label4 false: label5
-
-  label4
-  Store Immediate 30 to [c]
-  Jump label6
-
-  label5
-  Jump label6
-
-  label6
-  [%r10] = alloca i64
-  [%r10] = Call @toString([c])
-  Call @println([%r10])
-  Return [c]
-
-
-__________________________________________
-===================TYPE===================
-
-
-__________________________________________
-===================DATA===================
