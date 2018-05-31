@@ -10,6 +10,7 @@ public class Address extends VirtualRegister
     private IntegerValue offset;
     private IRType irType;
     private boolean isGlobal = false;
+    private boolean isPointer = false;//only works with global variable
 
     private PhysicalRegister baseReg;
     private PhysicalRegister offsetReg;
@@ -19,6 +20,7 @@ public class Address extends VirtualRegister
         super(name, true);
         this.name = name;
         this.irType = irType;
+        this.isGlobal = false;
     }
 
     public Address(Name name, Address base, IntegerValue offset)
@@ -27,6 +29,7 @@ public class Address extends VirtualRegister
         this.name = name;
         this.base = base;
         this.offset = offset;
+        this.isGlobal = false;
     }
 
     public Address(Name name, boolean isGlobal) //global variable
@@ -39,6 +42,21 @@ public class Address extends VirtualRegister
     public boolean isGlobal()
     {
         return isGlobal;
+    }
+
+    public void setGlobal(boolean global)
+    {
+        isGlobal = global;
+    }
+
+    public boolean isPointer()
+    {
+        return isPointer;
+    }
+
+    public void setPointer(boolean pointer)
+    {
+        isPointer = pointer;
     }
 
     public Name getName()
@@ -87,6 +105,6 @@ public class Address extends VirtualRegister
         if(this.offset == null)
             return "[" + name.toString() + "]";
         else
-            return "[Address " + name.toString() + " + offset " + offset.toString() + " * i64]";
+            return "[Address " + name.toString() + ":" + base.toString() + "+offset " + offset.toString() + "*i64]";
     }
 }

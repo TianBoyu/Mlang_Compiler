@@ -1,9 +1,11 @@
 package Code.IR;
 
+import Code.AST.Tools.Name;
 import Code.IR.IRUnit.Function;
 import Code.IR.IRUnit.IRInstruction;
 import Code.IR.IRUnit.Label;
 import Code.IR.Type.Class;
+import Code.Translator.NasmInst;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -12,12 +14,14 @@ import java.util.List;
 public class IRPrinter
 {
     private IRInstruction entry;
+    private IRInstruction initializeEntry;
     private FileOutputStream outputStream;
     private List<Class> typeList;
     private DataSection dataSection;
-    public IRPrinter(IRInstruction entry, FileOutputStream outputStream, List<Class> typeList, DataSection dataSection)
+    public IRPrinter(IRInstruction entry, IRInstruction initializeEntry, FileOutputStream outputStream, List<Class> typeList, DataSection dataSection)
     {
         this.entry = entry;
+        this.initializeEntry = initializeEntry;
         this.outputStream = outputStream;
         this.typeList = typeList;
         this.dataSection = dataSection;
@@ -40,6 +44,15 @@ public class IRPrinter
             {
                 printStream.println("");
                 printStream.println(current.toString());
+                if(((Function) current).getName() == Name.getName("main"))
+                {
+                    IRInstruction cur = initializeEntry;
+                    while(cur != null)
+                    {
+                        printStream.println("  " + cur.toString());
+                        cur = cur.getNext();
+                    }
+                }
             }
             else
                 printStream.println("  " + current.toString());

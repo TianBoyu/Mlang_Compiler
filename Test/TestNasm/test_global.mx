@@ -1,12 +1,9 @@
-int x = 8;
-int r;
+int[] x = new int[8];
+int k = 1;
 
 int main()
 {
-    int y = x;
-    x = 2;
-    println(toString(x));
-    println(toString(y));
-    println(toString(r));
+    int y = x[2];
+    int h = k;
     return 0;
 }

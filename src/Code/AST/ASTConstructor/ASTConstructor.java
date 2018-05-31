@@ -304,7 +304,7 @@ public class ASTConstructor extends MlangBaseListener
         else
             type = (Type)map.get(ctx.builtInType());
 //            type = new Type(ctx.builtInType().getText(), -1);
-        List<ExprNode> exprs = new ArrayList<>();
+        List<ExprNode> exprs = new LinkedList<>();
         for(MlangParser.ExpressionContext item : ctx.expression())
             exprs.add((ExprNode)map.get(item));
         int dimension = getBracketNumber(ctx.getText());

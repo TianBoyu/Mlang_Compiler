@@ -8,11 +8,11 @@ public class MemCopy extends IRInstruction
     private Address from_address;
     private Address to_address;
 
-    public MemCopy(Label label, Address address1, Address address2)
+    public MemCopy(Label label, Address from_address, Address to_address)
     {
         super(label);
-        this.from_address = address1;
-        this.to_address = address2;
+        this.from_address = from_address;
+        this.to_address = to_address;
     }
 
     public Address getFromAddress()

@@ -1,8 +1,16 @@
-int main() {
+int foo()
+{
     string s1 = "aaa";
     string s2 = "bbbbb";
     string s3 = s1 + s2;
     return s3.length() + s3.ord(5);
+}
+
+
+int main() {
+    int b = foo();
+    println(toString(b));
+    return 0;
 }
 
 

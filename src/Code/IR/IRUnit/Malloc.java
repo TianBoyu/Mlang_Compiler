@@ -60,6 +60,6 @@ public class Malloc extends IRInstruction
     @Override
     public String toString()
     {
-        return "Malloc";
+        return returnAddress.toString() + " = Malloc " + size.toString();
     }
 }

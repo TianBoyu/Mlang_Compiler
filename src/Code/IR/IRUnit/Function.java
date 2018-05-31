@@ -62,6 +62,11 @@ public class Function extends IRInstruction
         return usedSlotNumber;
     }
 
+    public void addUsedSlotNumber(int value)
+    {
+        this.usedSlotNumber += value;
+    }
+
     public void setUsedSlotNumber(int usedSlotNumber)
     {
         this.usedSlotNumber = usedSlotNumber;

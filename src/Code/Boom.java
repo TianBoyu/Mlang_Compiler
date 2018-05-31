@@ -37,6 +37,7 @@ import java.util.List;
  * Global Variable(only int now)
  * Input
  * String storage & builtin function(done)
+ * test585 ! combined with AndExpr OrExpr
  */
 
 
@@ -46,7 +47,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test579.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test_multiarray.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);
@@ -105,18 +106,18 @@ public class Boom {
         IRInstruction entry = irConstructor.getEntry();
         List<Class> typeList = irConstructor.getTypes();
         DataSection dataSection = irConstructor.getDataSection();
-        IRPrinter irPrinter = new IRPrinter(entry, outputStream, typeList ,dataSection);
+        IRPrinter irPrinter = new IRPrinter(entry, irConstructor.getInitializeEntry(), outputStream, typeList ,dataSection);
         irPrinter.printIR();
     }
     public static void optimizeIR(IRConstructor irConstructor)
     {
-        NaiveAllocator naiveAllocator = new NaiveAllocator(irConstructor.getEntry());
+        NaiveAllocator naiveAllocator = new NaiveAllocator(irConstructor.getEntry(), irConstructor.getInitializeEntry());
         naiveAllocator.process();
     }
     public static void translate(IRConstructor irConstructor, OutputStream outputStream)
     {
-        Translator translator = new Translator(irConstructor.getEntry(), irConstructor.getDataSection(),
-                irConstructor.getDataZone(), irConstructor.getBssZone());
+        Translator translator = new Translator(irConstructor.getEntry(), irConstructor.getInitializeEntry(),
+                irConstructor.getDataSection(), irConstructor.getDataZone(), irConstructor.getBssZone());
         translator.process();
         NasmPrinter nasmPrinter = new NasmPrinter(translator.getNasmInsts(), translator.getDataInsts(),
                 translator.getDataZoneInsts(), translator.getBssZoneInsts(),

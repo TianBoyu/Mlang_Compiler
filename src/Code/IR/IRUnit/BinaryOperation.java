@@ -91,7 +91,10 @@ public class BinaryOperation extends IRInstruction
     @Override
     public String toString()
     {
-        return dest.toString() + " = " + lhs.toString() + " " + op.toString() + " " + rhs.toString();
+        String ret = dest.toString() + " = " + lhs.toString() + " " + op.toString();
+        if(rhs != null)
+            ret += " " + rhs.toString();
+        return ret;
     }
     @Override
     public void accept(IRInstTraversal visitor)

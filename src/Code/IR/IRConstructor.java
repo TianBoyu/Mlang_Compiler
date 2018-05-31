@@ -29,16 +29,22 @@ import java.util.Stack;
 public class IRConstructor implements IRTraversal
 {
     private IRInstruction   currentInst;
+    private IRInstruction   initializeGlobalInst;
     private Label           currentLabel;
     private IRScope         currentIRScope;
     private FunctionScope   currentFunction;
     private ClassDecNode    currentClass;
+    private boolean isHeapAllocate = false;
+
+    private boolean isInitializeInst = false;
 
     private Label nextLabel;
+    private boolean isReturned = false;
     private Address addressForCond;
     private boolean isVarForFond;
     private Stack<Label> nextLabelStack = new Stack<>();
     private IRInstruction entry;
+    private IRInstruction initializeEntry;
     private ProgNode program;
     private List<Class> types = new ArrayList<>();
     private DataSection dataSection = new DataSection();
@@ -57,6 +63,11 @@ public class IRConstructor implements IRTraversal
     public IRInstruction getEntry()
     {
         return entry;
+    }
+
+    public IRInstruction getInitializeEntry()
+    {
+        return initializeEntry;
     }
 
     public List<Class> getTypes()
@@ -106,22 +117,48 @@ public class IRConstructor implements IRTraversal
                 continue;
             }
             visit(item);
+            if(item instanceof FuncDecNode)
+            {
+                if(((FuncDecNode) item).getReturnType().getTypeName() == Name.getName("void"))
+                {
+                    addInst(new Return(currentLabel, null));
+                }
+                isReturned = false;
+            }
         }
     }
 
     private void addGlobalVariable(VarDecNode node)
     {
-        //only support int now
+        //only support int and one-dim array now
+        Address address = new Address(node.getName(), true);
         if(node.getValue() == null) //bssZone
         {
             bssZone.addData(node.getName().toString(), null);
         }
         else //dataZone
         {
-            Immediate value = (Immediate) visit(node.getValue());
-            dataZone.addData(node.getName().toString(), String.valueOf(value.getValue()), "dq");
+            if(node.getType() instanceof BuiltInType)
+            {
+                Immediate value = (Immediate) visit(node.getValue());
+                dataZone.addData(node.getName().toString(), String.valueOf(value.getValue()), "dq");
+            }
+            else// if(node.getType() instanceof ArrayType or ClassType
+            {
+                isHeapAllocate = true;
+                isInitializeInst = true;
+//                address = new Address(node.getName(), true);
+//                addInst(new Malloc(currentLabel, new Immediate(8), address));
+                IntegerValue value = visit(node.getValue());
+                addInst(new MemCopy(currentLabel, (Address) value, address));
+                bssZone.addData(node.getName().toString(), null);
+                isInitializeInst = false;
+                isHeapAllocate = false;
+                address.setPointer(true);
+            }
+
         }
-        currentIRScope.addAddress(node.getName(), new Address(node.getName(), true));
+        currentIRScope.addAddress(node.getName(), address);
     }
 
     @Override
@@ -525,7 +562,7 @@ public class IRConstructor implements IRTraversal
     {
         if(node == null)
             return null;
-        if(node.getExprNodes().size() == 0)//class
+        if(node.getDimension() == 0)//class
         {
 //            throw new RuntimeException("cannot be here now");
             IRType irType = convertType(node.getExprType());
@@ -534,7 +571,7 @@ public class IRConstructor implements IRTraversal
             addInst(new Malloc(currentLabel, new Immediate(node.getExprType().getTypeSize()), address));
             return address;
         }
-        else if(node.getExprNodes().size() == 1) //one dimension array
+        else if(node.getDimension() == 1) //one dimension array
         {
             IRType irType = convertType(node.getType());
             Address address = new Address(currentFunction.getRegister().getName(), irType);
@@ -547,8 +584,42 @@ public class IRConstructor implements IRTraversal
         }
         else //multi dimension array
         {
-            throw new RuntimeException("cannot be here now");
+//            throw new RuntimeException("cannot be here now");
+            Address address = new Address(currentFunction.getRegister().getName(), convertType(node.getType()));
+            memoryAllocate(node.getExprNodes(), node.getType(), true, address);
+            return address;
         }
+    }
+
+    private Address memoryAllocate(List<ExprNode> node, Type type, boolean isTop, Address address)
+    {
+        IRType irType = node.size() == 0 ? new BuiltIn() : convertType(type);
+        IntegerValue size = visit(node.get(0));
+        node.remove(0);
+        if(isTop)
+            addInst(new Alloca(currentLabel, address, new BuiltIn()));
+        addInst(new Malloc(currentLabel, size, address));
+        addInst(new Store(currentLabel, new Address(Name.getName(address.getName().toString() + "_size"),
+                address, new Immediate(-1)), size));
+        Label trueLabel = new Label(null);
+        Label falseLabel = new Label(null);
+        Address offset = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+        addInst(new Alloca(currentLabel, offset, new BuiltIn()));
+        addInst(new Store(currentLabel, offset, new Immediate(0)));
+        if(node.size() != 0)
+        {
+            addInst(trueLabel);
+            Address address1 = new Address(currentFunction.getRegister().getName(),
+                    address, offset);
+            memoryAllocate(node, type, false, address1);
+            Address compareDest = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+            addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.add,
+                    offset, offset, new Immediate(1)));
+            addInst(new Compare(currentLabel, Compare.Condition.SEQ, compareDest, offset, size));
+            addInst(new Branch(currentLabel, trueLabel, falseLabel, compareDest, Compare.Condition.SEQ));
+            addInst(falseLabel);
+        }
+        return address;
     }
 
     @Override
@@ -586,7 +657,7 @@ public class IRConstructor implements IRTraversal
             case NEG:
                 addInst(new Alloca(currentLabel, address, new BuiltIn()));
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.neg, address,
-                        value, new Immediate(0)));
+                        value, null));
                 return address;
             case NOT:
                 addInst(new Alloca(currentLabel, address, new BuiltIn()));
@@ -797,6 +868,7 @@ public class IRConstructor implements IRTraversal
     {
         IntegerValue integerValue = visit(node.getExprNode());
         addInst(new Return(currentLabel, integerValue));
+        isReturned = true;
         return null;
     }
 
@@ -851,6 +923,11 @@ public class IRConstructor implements IRTraversal
 
     private void addInst(IRInstruction instruction)
     {
+        if(isInitializeInst)
+        {
+            addInitailizeInst(instruction);
+            return;
+        }
         if(currentInst == null)
         {
             currentInst = instruction;
@@ -861,6 +938,19 @@ public class IRConstructor implements IRTraversal
         currentInst.setNext(instruction);
         currentInst = instruction;
         currentLabel.addInst(instruction);
+    }
+    private void addInitailizeInst(IRInstruction instruction)
+    {
+        if(initializeGlobalInst == null)
+        {
+            initializeGlobalInst = instruction;
+            initializeEntry = instruction;
+            return;
+        }
+        instruction.setLast(initializeGlobalInst);
+        initializeGlobalInst.setNext(instruction);
+        initializeGlobalInst = instruction;
+//        currentLabel.addInst(instruction);
     }
 
     private void addType(Class classType)

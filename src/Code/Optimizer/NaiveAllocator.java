@@ -14,15 +14,17 @@ import java.util.Map;
 public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
 {
     private IRInstruction entry;
+    private IRInstruction initializeEntry;
     private Map<VirtualRegister, PhysicalRegister> registerMap = new HashMap<>();
     private List<PhysicalRegister> physicalRegisters;
     private String[] registerNames = {"rax", "rcx", "rdx", "rbx", "rsi", "rdi",
             "r8",  "r9",  "r10", "r11", "r12", "r13", "r14", "r15"};
     private String[] parameterRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
     private boolean[] isAvailable;
-    public NaiveAllocator(IRInstruction entry)
+    public NaiveAllocator(IRInstruction entry, IRInstruction initializeEntry)
     {
         this.entry = entry;
+        this.initializeEntry = initializeEntry;
         physicalRegisters = new ArrayList<>(16);
 //        isAvailable = new HashMap<>();
         isAvailable = new boolean[16];
@@ -36,6 +38,12 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
         {
             visit(cur);
             cur = cur.getNext();
+        }
+        IRInstruction curr = initializeEntry;
+        while(curr != null)
+        {
+            visit(curr);
+            curr = curr.getNext();
         }
     }
 
@@ -229,6 +237,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
                     PhysicalRegister offsetPr = getAvailablePhysicalRegister();
                     ((Address) vr).setOffsetReg(offsetPr);
                 }
+                allocRegisterForAddress(((Address) vr).getBase());
             }
         }
     }
