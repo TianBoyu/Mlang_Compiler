@@ -173,7 +173,7 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     @Override
     public void visit(MemCopy inst)
     {
-
+        inst.setDataReg(getPhysicalRegister(inst.getFromAddress()));
     }
 
     @Override

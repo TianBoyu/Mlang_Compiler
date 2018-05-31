@@ -1,10 +1,12 @@
+int[] d = new int[100];
 int main() {
     int a = 5;
     int b;
     int c;
     c = a++;
     b = c;
-    println(toString(a));
+    int x = d[2];
+    println(toString(d[5]));
     println(toString(b));
     println(toString(c));
     println(toString(b+c+a));

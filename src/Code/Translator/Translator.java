@@ -149,19 +149,21 @@ public class Translator implements IRInstTraversal
         String sizeIntegerValue;
         if(inst.getSize() instanceof Immediate)
         {
-            ((Immediate) inst.getSize()).addValue(1);
-            sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
+//            ((Immediate) inst.getSize()).addValue(1);
+            sizeIntegerValue = String.valueOf((((Immediate) inst.getSize()).getValue() + 1) * 8);
             addInst(NasmInst.Instruction.mov, "rdi", sizeIntegerValue);
             addInst(NasmInst.Instruction.call, "malloc", null);
-            ((Immediate) inst.getSize()).addValue(-1);
+//            ((Immediate) inst.getSize()).addValue(-1);
         }
         else
         {
             sizeIntegerValue = processIntegerValue(inst.getSize(), inst.getSizeReg());
-            addInst(NasmInst.Instruction.add, inst.getSizeReg().toString(), "1");
-            addInst(NasmInst.Instruction.mov, "rdi", sizeIntegerValue);
+            addInst(NasmInst.Instruction.mov, "r15", sizeIntegerValue);
+            addInst(NasmInst.Instruction.add, "r15", "1");
+            addInst(NasmInst.Instruction.imul, "r15", "8");
+            addInst(NasmInst.Instruction.mov, "rdi", "r15");
             addInst(NasmInst.Instruction.call, "malloc", null);
-            addInst(NasmInst.Instruction.sub, inst.getSizeReg().toString(), "1");
+//            addInst(NasmInst.Instruction.sub, inst.getSizeReg().toString(), "1");
         }
 //        addInst(NasmInst.Instruction.mov, getStackPos(inst.getReturnAddress()), "rax");
 //        addInst(NasmInst.Instruction.mov, inst.getReturnAddress().getName().toString(), "rax");
@@ -339,8 +341,8 @@ public class Translator implements IRInstTraversal
     @Override
     public void visit(MemCopy inst)
     {
-        addInst(NasmInst.Instruction.mov, inst.getToAddress().getName().toString(),
-                processAddress(inst.getFromAddress(), null));
+        addInst(NasmInst.Instruction.mov, processAddress(inst.getToAddress(), null),
+                processIntegerValue(inst.getFromAddress(), inst.getDataReg()));
     }
 
     @Override
@@ -470,10 +472,10 @@ public class Translator implements IRInstTraversal
         {
             if(address.isGlobal())
             {
-                if(address.isPointer())
+                /*if(address.isPointer())
                     return address.getName().toString();
-                else
-                    return "qword["+address.getName().toString() + "]";
+                else*/
+                return "qword["+address.getName().toString() + "]";
             }
             else if(!addressStackSlotMap.containsKey(address))
             {

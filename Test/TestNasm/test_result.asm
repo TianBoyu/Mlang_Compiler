@@ -17,37 +17,33 @@ section .text
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  16
-       mov  rdi,  3
+       sub  rsp,  48
+       mov  rdi,  168
        call  malloc
        mov  qword [rbp-16],  rax
        mov  rax,  qword [rbp-16]
-       mov  qword [rax + 0],  2
-       mov  qword [rbp-24],  0
-label0:
-       mov  rdi,  6
-       call  malloc
-       mov  rcx,  qword [rbp-16]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  qword [rcx + rdx * 8],  rax
-       mov  rcx,  qword [rbp-16]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rax,  qword [rcx + rdx * 8]
-       mov  qword [rax + 0],  5
-       mov  qword [rbp-32],  0
-       mov  rax,  qword [rbp-24]
-       add  rax,  1
-       mov  qword [rbp-24],  rax
-       mov  rcx,  qword [rbp-24]
-       cmp  rcx,  2
-       jg  label1
-label1:
+       mov  qword [rax + 0],  20
        mov  rax,  qword [rbp-16]
        mov  qword [rbp-8],  rax
-       mov  rax,  0
-       add  rsp,  16
+       mov  rax,  qword [rbp-8]
+       mov  rdi,  rax
+       call  size
+       mov  qword [rbp-32],  rax
+       mov  rax,  qword [rbp-32]
+       mov  qword [rbp-24],  rax
+       mov  rax,  qword [rbp-24]
+       mov  rdi,  rax
+       call  toString
+       mov  qword [rbp-40],  rax
+       mov  rax,  qword [rbp-40]
+       mov  rdi,  rax
+       call  println
+       mov  rax,  qword [rbp-8]
+       mov  rdi,  rax
+       call  size
+       mov  qword [rbp-48],  rax
+       mov  rax,  qword [rbp-48]
+       add  rsp,  48
        pop  rbp
        ret  
 
