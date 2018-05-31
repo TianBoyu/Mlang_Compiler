@@ -1,0 +1,15 @@
+int main()
+{
+    int a = 1;
+    int b = 2;
+    bool c = a > b;
+    if(a == 1 || b == 3)
+    {
+        println(toString(1));
+    }
+    else
+    {
+        println(toString(2));
+    }
+    return 0;
+}

@@ -47,14 +47,14 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test578.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test585.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);
 
         checkSemantic(program);
         IRConstructor constructor = constructIR(program);
-//        printIR(constructor);
+        printIR(constructor);
         optimizeIR(constructor);
         translate(constructor, out);
     }

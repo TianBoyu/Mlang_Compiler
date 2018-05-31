@@ -229,7 +229,6 @@ public class Translator implements IRInstTraversal
             addInst(NasmInst.Instruction.jmp, inst.getTrueLabel().toString(), null);
             return;
         }
-
         if(inst.getOp() != null)
         {
             switch (inst.getOp())

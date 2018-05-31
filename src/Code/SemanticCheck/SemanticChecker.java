@@ -390,9 +390,9 @@ public class SemanticChecker implements ASTTraversal
     {
         if(node == null) return;
         visit(node.getCond1());
-        visit(node.getCond1());
+        visit(node.getCond2());
         if(node.getCond1().getExprType().getTypeName() != Name.getName("bool")
-                || node.getCond1().getExprType().getTypeName() != Name.getName("bool"))
+                || node.getCond2().getExprType().getTypeName() != Name.getName("bool"))
             errorHandler.addError(node.getPosition(), "condition must be of bool type");
         node.setExprType(node.getCond1().getExprType());
     }

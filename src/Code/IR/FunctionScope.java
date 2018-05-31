@@ -12,7 +12,7 @@ public class FunctionScope
     private int currentNumber = 0;
     private Name name;
     private FuncDecNode funcDecNode;
-    private int usedSlotNumber = 0;
+    private int usedSlotNumber = 2;
     public FunctionScope(Name name)
     {
         this.name = name;
