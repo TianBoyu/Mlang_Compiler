@@ -1,19 +1,19 @@
-global    getPrime
+global    origin
 global    M
-global    i
+global    b
+global    tmp
+global    N
+global    gps
+global    getPrime
 global    prime
 global    result
-global    getResult
-global    origin
-global    tmp
-global    gps
+global    i
 global    printF
-global    N
-global    j
-global    main
-global    resultCount
-global    b
 global    primeCount
+global    resultCount
+global    j
+global    getResult
+global    main
 
 
 section .data
@@ -34,24 +34,24 @@ origin:
        mov  rbp,  rsp
        sub  rsp,  80
        mov  qword [rbp-8],  rdi
-       mov  rcx,  qword [rbp-8]
-       mov  r15,  rcx
+       mov  rbx,  qword [rbp-8]
+       mov  r15,  rbx
        add  r15,  1
        imul  r15,  8
        mov  rdi,  r15
        call  malloc
        mov  qword [rbp-16],  rax
-       mov  rcx,  qword [rbp-8]
+       mov  rbx,  qword [rbp-8]
        mov  rax,  qword [rbp-16]
-       mov  qword [rax + 0],  rcx
+       mov  qword [rax + 0],  rbx
        mov  qword [rbp-24],  0
        mov  rax,  qword [rbp-16]
        mov  qword[result],  rax
        mov  qword[i],  0
 label4:
-       mov  rcx,  qword[i]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[i]
+       mov  r10,  qword [rbp-8]
+       cmp  rbx,  r10
        jge  label7
 label6:
        mov  qword [rbp-32],  1
@@ -59,30 +59,30 @@ label6:
 label7:
        mov  qword [rbp-32],  0
 label8:
-       mov  rcx,  qword [rbp-32]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-32]
+       cmp  rbx,  0
        jz  label3
 label2:
-       mov  rcx,  qword [rbp-8]
-       mov  r15,  rcx
+       mov  rbx,  qword [rbp-8]
+       mov  r15,  rbx
        add  r15,  1
        imul  r15,  8
        mov  rdi,  r15
        call  malloc
        mov  qword [rbp-40],  rax
-       mov  rcx,  qword [rbp-8]
+       mov  rbx,  qword [rbp-8]
        mov  rax,  qword [rbp-40]
-       mov  qword [rax + 0],  rcx
-       mov  rdx,  qword [rbp-40]
+       mov  qword [rax + 0],  rbx
+       mov  r10,  qword [rbp-40]
        mov  rax,  qword[result]
-       mov  rcx,  qword[i]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rdx
+       mov  rbx,  qword[i]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  r10
        mov  qword[j],  0
 label11:
-       mov  rcx,  qword[j]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[j]
+       mov  r10,  qword [rbp-8]
+       cmp  rbx,  r10
        jge  label14
 label13:
        mov  qword [rbp-48],  1
@@ -90,17 +90,17 @@ label13:
 label14:
        mov  qword [rbp-48],  0
 label15:
-       mov  rcx,  qword [rbp-48]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-48]
+       cmp  rbx,  0
        jz  label10
 label9:
-       mov  rdx,  qword[result]
-       mov  rbx,  qword[i]
+       mov  r10,  qword[result]
+       mov  r11,  qword[i]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
+       mov  rbx,  qword[j]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
-       mov  rcx,  qword[j]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  0
+       mov  qword [rax + rbx * 8],  0
 label12:
        mov  rax,  qword[j]
        mov  qword [rbp-56],  rax
@@ -131,9 +131,9 @@ getPrime:
        mov  qword [rbp-16],  2
        mov  qword [rbp-24],  2
 label18:
-       mov  rcx,  qword [rbp-24]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
+       mov  rbx,  qword [rbp-24]
+       mov  r10,  qword [rbp-8]
+       cmp  rbx,  r10
        jg  label21
 label20:
        mov  qword [rbp-32],  1
@@ -141,15 +141,15 @@ label20:
 label21:
        mov  qword [rbp-32],  0
 label22:
-       mov  rcx,  qword [rbp-32]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-32]
+       cmp  rbx,  0
        jz  label17
 label16:
-       mov  rcx,  qword[b]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rbx,  qword [rcx + rdx * 8]
-       cmp  rbx,  1
+       mov  rbx,  qword[b]
+       mov  r10,  qword [rbp-24]
+       add  r10,  1
+       mov  r11,  qword [rbx + r10 * 8]
+       cmp  r11,  1
        jne  label27
 label26:
        mov  qword [rbp-40],  1
@@ -157,41 +157,41 @@ label26:
 label27:
        mov  qword [rbp-40],  0
 label28:
-       mov  rcx,  qword [rbp-40]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-40]
+       cmp  rbx,  0
        jz  label24
 label23:
-       mov  rcx,  qword[tmp]
-       mov  rax,  qword [rcx + 8]
+       mov  rbx,  qword[tmp]
+       mov  rax,  qword [rbx + 8]
        add  rax,  1
        mov  qword [rbp-48],  rax
-       mov  rcx,  qword [rbp-48]
+       mov  rbx,  qword [rbp-48]
        mov  rax,  qword[tmp]
-       mov  qword [rax + 8],  rcx
-       mov  rbx,  qword [rbp-24]
+       mov  qword [rax + 8],  rbx
+       mov  r11,  qword [rbp-24]
        mov  rax,  qword[prime]
-       mov  rdx,  qword[tmp]
-       mov  rcx,  qword [rdx + 8]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rbx
-       mov  rdx,  qword[tmp]
-       mov  rbx,  qword [rdx + 8]
+       mov  r10,  qword[tmp]
+       mov  rbx,  qword [r10 + 8]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  r11
+       mov  r10,  qword[tmp]
+       mov  r11,  qword [r10 + 8]
        mov  rax,  qword[gps]
-       mov  rcx,  qword [rbp-24]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rbx
+       mov  rbx,  qword [rbp-24]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  r11
        jmp  label25
 label24:
        jmp  label25
 label25:
 label31:
        mov  rax,  qword [rbp-24]
-       mov  rdx,  qword [rbp-16]
-       imul  rax,  rdx
+       mov  r10,  qword [rbp-16]
+       imul  rax,  r10
        mov  qword [rbp-56],  rax
-       mov  rcx,  qword [rbp-56]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
+       mov  rbx,  qword [rbp-56]
+       mov  r10,  qword [rbp-8]
+       cmp  rbx,  r10
        jg  label33
 label32:
        mov  qword [rbp-64],  1
@@ -199,18 +199,18 @@ label32:
 label33:
        mov  qword [rbp-64],  0
 label34:
-       mov  rcx,  qword [rbp-64]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-64]
+       cmp  rbx,  0
        jz  label30
 label29:
        mov  rax,  qword [rbp-24]
-       mov  rdx,  qword [rbp-16]
-       imul  rax,  rdx
+       mov  r10,  qword [rbp-16]
+       imul  rax,  r10
        mov  qword [rbp-72],  rax
        mov  rax,  qword[b]
-       mov  rcx,  qword [rbp-72]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  0
+       mov  rbx,  qword [rbp-72]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  0
        mov  rax,  qword [rbp-16]
        add  rax,  1
        mov  qword [rbp-80],  rax
@@ -240,15 +240,15 @@ getResult:
        mov  rax,  1
        neg  rax
        mov  qword [rbp-32],  rax
-       mov  rbx,  qword[result]
-       mov  rsi,  qword [rbp-16]
-       add  rsi,  1
-       mov  rcx,  qword [rbx + rsi * 8]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rdi,  qword [rcx + rdx * 8]
-       mov  r8,  qword [rbp-32]
-       cmp  rdi,  r8
+       mov  r11,  qword[result]
+       mov  r12,  qword [rbp-16]
+       add  r12,  1
+       mov  rbx,  qword [r11 + r12 * 8]
+       mov  r10,  qword [rbp-24]
+       add  r10,  1
+       mov  r13,  qword [rbx + r10 * 8]
+       mov  r14,  qword [rbp-32]
+       cmp  r13,  r14
        jne  label39
 label38:
        mov  qword [rbp-40],  1
@@ -256,26 +256,26 @@ label38:
 label39:
        mov  qword [rbp-40],  0
 label40:
-       mov  rcx,  qword [rbp-40]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-40]
+       cmp  rbx,  0
        jz  label36
 label35:
-       mov  rcx,  qword[prime]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rax,  qword [rcx + rdx * 8]
+       mov  rbx,  qword[prime]
+       mov  r10,  qword [rbp-24]
+       add  r10,  1
+       mov  rax,  qword [rbx + r10 * 8]
        imul  rax,  2
        mov  qword [rbp-48],  rax
        mov  rax,  qword [rbp-48]
-       mov  rdx,  qword[prime]
-       mov  rbx,  qword [rbp-16]
-       add  rbx,  1
-       mov  rsi,  qword [rdx + rbx * 8]
-       sub  rax,  rsi
+       mov  r10,  qword[prime]
+       mov  r11,  qword [rbp-16]
+       add  r11,  1
+       mov  r12,  qword [r10 + r11 * 8]
+       sub  rax,  r12
        mov  qword [rbp-56],  rax
-       mov  rcx,  qword [rbp-56]
-       mov  rdx,  qword [rbp-8]
-       cmp  rcx,  rdx
+       mov  rbx,  qword [rbp-56]
+       mov  r10,  qword [rbp-8]
+       cmp  rbx,  r10
        jg  label45
 label44:
        mov  qword [rbp-64],  1
@@ -283,28 +283,28 @@ label44:
 label45:
        mov  qword [rbp-64],  0
 label46:
-       mov  rcx,  qword [rbp-64]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-64]
+       cmp  rbx,  0
        jz  label42
 label41:
-       mov  rcx,  qword[prime]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rax,  qword [rcx + rdx * 8]
+       mov  rbx,  qword[prime]
+       mov  r10,  qword [rbp-24]
+       add  r10,  1
+       mov  rax,  qword [rbx + r10 * 8]
        imul  rax,  2
        mov  qword [rbp-72],  rax
        mov  rax,  qword [rbp-72]
-       mov  rdx,  qword[prime]
-       mov  rbx,  qword [rbp-16]
-       add  rbx,  1
-       mov  rsi,  qword [rdx + rbx * 8]
-       sub  rax,  rsi
+       mov  r10,  qword[prime]
+       mov  r11,  qword [rbp-16]
+       add  r11,  1
+       mov  r12,  qword [r10 + r11 * 8]
+       sub  rax,  r12
        mov  qword [rbp-80],  rax
-       mov  rcx,  qword[b]
-       mov  rdx,  qword [rbp-80]
-       add  rdx,  1
-       mov  rbx,  qword [rcx + rdx * 8]
-       cmp  rbx,  0
+       mov  rbx,  qword[b]
+       mov  r10,  qword [rbp-80]
+       add  r10,  1
+       mov  r11,  qword [rbx + r10 * 8]
+       cmp  r11,  0
        je  label51
 label50:
        mov  qword [rbp-88],  1
@@ -312,45 +312,45 @@ label50:
 label51:
        mov  qword [rbp-88],  0
 label52:
-       mov  rcx,  qword [rbp-88]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-88]
+       cmp  rbx,  0
        jz  label48
 label47:
-       mov  rcx,  qword[prime]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rax,  qword [rcx + rdx * 8]
+       mov  rbx,  qword[prime]
+       mov  r10,  qword [rbp-24]
+       add  r10,  1
+       mov  rax,  qword [rbx + r10 * 8]
        imul  rax,  2
        mov  qword [rbp-104],  rax
        mov  rax,  qword [rbp-104]
-       mov  rdx,  qword[prime]
-       mov  rbx,  qword [rbp-16]
-       add  rbx,  1
-       mov  rsi,  qword [rdx + rbx * 8]
-       sub  rax,  rsi
+       mov  r10,  qword[prime]
+       mov  r11,  qword [rbp-16]
+       add  r11,  1
+       mov  r12,  qword [r10 + r11 * 8]
+       sub  rax,  r12
        mov  qword [rbp-112],  rax
        mov  rax,  qword [rbp-8]
        mov  rdi,  rax
        mov  rax,  qword [rbp-24]
        mov  rsi,  rax
        mov  rax,  qword[gps]
-       mov  rcx,  qword [rbp-112]
-       add  rcx,  1
-       mov  rax,  qword [rax + rcx * 8]
+       mov  rbx,  qword [rbp-112]
+       add  rbx,  1
+       mov  rax,  qword [rax + rbx * 8]
        mov  rdx,  rax
        call  getResult
        mov  qword [rbp-96],  rax
        mov  rax,  qword [rbp-96]
        add  rax,  1
        mov  qword [rbp-120],  rax
-       mov  rsi,  qword [rbp-120]
-       mov  rdx,  qword[result]
-       mov  rbx,  qword [rbp-16]
+       mov  r12,  qword [rbp-120]
+       mov  r10,  qword[result]
+       mov  r11,  qword [rbp-16]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
+       mov  rbx,  qword [rbp-24]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
-       mov  rcx,  qword [rbp-24]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rsi
+       mov  qword [rax + rbx * 8],  r12
        jmp  label49
 label48:
        jmp  label49
@@ -366,15 +366,15 @@ label37:
        mov  rax,  1
        neg  rax
        mov  qword [rbp-128],  rax
-       mov  rbx,  qword[result]
-       mov  rsi,  qword [rbp-16]
-       add  rsi,  1
-       mov  rcx,  qword [rbx + rsi * 8]
-       mov  rdx,  qword [rbp-24]
-       add  rdx,  1
-       mov  rdi,  qword [rcx + rdx * 8]
-       mov  r8,  qword [rbp-128]
-       cmp  rdi,  r8
+       mov  r11,  qword[result]
+       mov  r12,  qword [rbp-16]
+       add  r12,  1
+       mov  rbx,  qword [r11 + r12 * 8]
+       mov  r10,  qword [rbp-24]
+       add  r10,  1
+       mov  r13,  qword [rbx + r10 * 8]
+       mov  r14,  qword [rbp-128]
+       cmp  r13,  r14
        jne  label57
 label56:
        mov  qword [rbp-136],  1
@@ -382,29 +382,29 @@ label56:
 label57:
        mov  qword [rbp-136],  0
 label58:
-       mov  rcx,  qword [rbp-136]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-136]
+       cmp  rbx,  0
        jz  label54
 label53:
-       mov  rdx,  qword[result]
-       mov  rbx,  qword [rbp-16]
+       mov  r10,  qword[result]
+       mov  r11,  qword [rbp-16]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
+       mov  rbx,  qword [rbp-24]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
-       mov  rcx,  qword [rbp-24]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  1
+       mov  qword [rax + rbx * 8],  1
        jmp  label55
 label54:
        jmp  label55
 label55:
-       mov  rdx,  qword[result]
-       mov  rbx,  qword [rbp-16]
+       mov  r10,  qword[result]
+       mov  r11,  qword [rbp-16]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
+       mov  rbx,  qword [rbp-24]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
-       mov  rcx,  qword [rbp-24]
-       add  rcx,  1
-       mov  rsi,  qword [rax + rcx * 8]
-       mov  rax,  rsi
+       mov  r12,  qword [rax + rbx * 8]
+       mov  rax,  r12
        add  rsp,  160
        pop  rbp
        ret  
@@ -426,8 +426,8 @@ printF:
        mov  rdi,  rax
        call  print
 label61:
-       mov  rcx,  qword [rbp-24]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-24]
+       cmp  rbx,  0
        jle  label63
 label62:
        mov  qword [rbp-40],  1
@@ -435,8 +435,8 @@ label62:
 label63:
        mov  qword [rbp-40],  0
 label64:
-       mov  rcx,  qword [rbp-40]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-40]
+       cmp  rbx,  0
        jz  label60
 label59:
        mov  rax,  String_0
@@ -455,19 +455,19 @@ label59:
        imul  rax,  2
        mov  qword [rbp-64],  rax
        mov  rax,  qword [rbp-64]
-       mov  rdx,  qword [rbp-8]
-       sub  rax,  rdx
+       mov  r10,  qword [rbp-8]
+       sub  rax,  r10
        mov  qword [rbp-72],  rax
        mov  rax,  qword [rbp-72]
        mov  qword [rbp-16],  rax
        mov  rax,  qword [rbp-8]
-       mov  rdx,  qword [rbp-16]
-       add  rax,  rdx
+       mov  r10,  qword [rbp-16]
+       add  rax,  r10
        mov  qword [rbp-80],  rax
        mov  rax,  qword [rbp-80]
-       mov  rcx,  2
+       mov  rbx,  2
        mov  rdx,  0
-       idiv  rcx
+       idiv  rbx
        mov  qword [rbp-88],  rax
        mov  rax,  qword [rbp-88]
        mov  qword [rbp-8],  rax
@@ -534,9 +534,9 @@ label67:
        mov  rax,  qword[N]
        add  rax,  1
        mov  qword [rbp-16],  rax
-       mov  rcx,  qword[i]
-       mov  rdx,  qword [rbp-16]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[i]
+       mov  r10,  qword [rbp-16]
+       cmp  rbx,  r10
        jge  label70
 label69:
        mov  qword [rbp-24],  1
@@ -544,18 +544,18 @@ label69:
 label70:
        mov  qword [rbp-24],  0
 label71:
-       mov  rcx,  qword [rbp-24]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-24]
+       cmp  rbx,  0
        jz  label66
 label65:
        mov  rax,  qword[b]
-       mov  rcx,  qword[i]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  1
+       mov  rbx,  qword[i]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  1
        mov  rax,  qword[gps]
-       mov  rcx,  qword[i]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  0
+       mov  rbx,  qword[i]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  0
 label68:
        mov  rax,  qword[i]
        add  rax,  1
@@ -569,9 +569,9 @@ label74:
        mov  rax,  qword[M]
        add  rax,  1
        mov  qword [rbp-40],  rax
-       mov  rcx,  qword[i]
-       mov  rdx,  qword [rbp-40]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[i]
+       mov  r10,  qword [rbp-40]
+       cmp  rbx,  r10
        jge  label77
 label76:
        mov  qword [rbp-48],  1
@@ -579,14 +579,14 @@ label76:
 label77:
        mov  qword [rbp-48],  0
 label78:
-       mov  rcx,  qword [rbp-48]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-48]
+       cmp  rbx,  0
        jz  label73
 label72:
        mov  rax,  qword[prime]
-       mov  rcx,  qword[i]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  0
+       mov  rbx,  qword[i]
+       add  rbx,  1
+       mov  qword [rax + rbx * 8],  0
 label75:
        mov  rax,  qword[i]
        add  rax,  1
@@ -597,9 +597,9 @@ label75:
 label73:
        mov  qword[i],  0
 label81:
-       mov  rcx,  qword[i]
-       mov  rdx,  qword[M]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[i]
+       mov  r10,  qword[M]
+       cmp  rbx,  r10
        jg  label84
 label83:
        mov  qword [rbp-64],  1
@@ -607,15 +607,15 @@ label83:
 label84:
        mov  qword [rbp-64],  0
 label85:
-       mov  rcx,  qword [rbp-64]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-64]
+       cmp  rbx,  0
        jz  label80
 label79:
        mov  qword[j],  0
 label88:
-       mov  rcx,  qword[j]
-       mov  rdx,  qword[M]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[j]
+       mov  r10,  qword[M]
+       cmp  rbx,  r10
        jg  label91
 label90:
        mov  qword [rbp-72],  1
@@ -623,21 +623,21 @@ label90:
 label91:
        mov  qword [rbp-72],  0
 label92:
-       mov  rcx,  qword [rbp-72]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-72]
+       cmp  rbx,  0
        jz  label87
 label86:
        mov  rax,  1
        neg  rax
        mov  qword [rbp-80],  rax
-       mov  rsi,  qword [rbp-80]
-       mov  rdx,  qword[result]
-       mov  rbx,  qword[i]
+       mov  r12,  qword [rbp-80]
+       mov  r10,  qword[result]
+       mov  r11,  qword[i]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
+       mov  rbx,  qword[j]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
-       mov  rcx,  qword[j]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rsi
+       mov  qword [rax + rbx * 8],  r12
 label89:
        mov  rax,  qword[j]
        add  rax,  1
@@ -659,13 +659,13 @@ label80:
        call  getPrime
        mov  qword [rbp-104],  rax
        mov  rax,  qword[tmp]
-       mov  rcx,  qword [rax + 8]
-       mov  qword[primeCount],  rcx
+       mov  rbx,  qword [rax + 8]
+       mov  qword[primeCount],  rbx
        mov  qword[i],  1
 label95:
-       mov  rcx,  qword[i]
-       mov  rdx,  qword[primeCount]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[i]
+       mov  r10,  qword[primeCount]
+       cmp  rbx,  r10
        jge  label98
 label97:
        mov  qword [rbp-112],  1
@@ -673,8 +673,8 @@ label97:
 label98:
        mov  qword [rbp-112],  0
 label99:
-       mov  rcx,  qword [rbp-112]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-112]
+       cmp  rbx,  0
        jz  label94
 label93:
        mov  rax,  qword[i]
@@ -683,9 +683,9 @@ label93:
        mov  rax,  qword [rbp-120]
        mov  qword[j],  rax
 label102:
-       mov  rcx,  qword[j]
-       mov  rdx,  qword[primeCount]
-       cmp  rcx,  rdx
+       mov  rbx,  qword[j]
+       mov  r10,  qword[primeCount]
+       cmp  rbx,  r10
        jg  label105
 label104:
        mov  qword [rbp-128],  1
@@ -693,22 +693,22 @@ label104:
 label105:
        mov  qword [rbp-128],  0
 label106:
-       mov  rcx,  qword [rbp-128]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-128]
+       cmp  rbx,  0
        jz  label101
 label100:
        mov  rax,  1
        neg  rax
        mov  qword [rbp-136],  rax
-       mov  rbx,  qword[result]
-       mov  rsi,  qword[i]
-       add  rsi,  1
-       mov  rcx,  qword [rbx + rsi * 8]
-       mov  rdx,  qword[j]
-       add  rdx,  1
-       mov  rdi,  qword [rcx + rdx * 8]
-       mov  r8,  qword [rbp-136]
-       cmp  rdi,  r8
+       mov  r11,  qword[result]
+       mov  r12,  qword[i]
+       add  r12,  1
+       mov  rbx,  qword [r11 + r12 * 8]
+       mov  r10,  qword[j]
+       add  r10,  1
+       mov  r13,  qword [rbx + r10 * 8]
+       mov  r14,  qword [rbp-136]
+       cmp  r13,  r14
        jne  label111
 label110:
        mov  qword [rbp-144],  1
@@ -716,8 +716,8 @@ label110:
 label111:
        mov  qword [rbp-144],  0
 label112:
-       mov  rcx,  qword [rbp-144]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-144]
+       cmp  rbx,  0
        jz  label108
 label107:
        mov  rax,  qword[N]
@@ -728,22 +728,22 @@ label107:
        mov  rdx,  rax
        call  getResult
        mov  qword [rbp-152],  rax
-       mov  rsi,  qword [rbp-152]
-       mov  rdx,  qword[result]
-       mov  rbx,  qword[i]
+       mov  r12,  qword [rbp-152]
+       mov  r10,  qword[result]
+       mov  r11,  qword[i]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
+       mov  rbx,  qword[j]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
-       mov  rcx,  qword[j]
-       add  rcx,  1
-       mov  qword [rax + rcx * 8],  rsi
-       mov  rbx,  qword[result]
-       mov  rsi,  qword[i]
-       add  rsi,  1
-       mov  rcx,  qword [rbx + rsi * 8]
-       mov  rdx,  qword[j]
-       add  rdx,  1
-       mov  rdi,  qword [rcx + rdx * 8]
-       cmp  rdi,  1
+       mov  qword [rax + rbx * 8],  r12
+       mov  r11,  qword[result]
+       mov  r12,  qword[i]
+       add  r12,  1
+       mov  rbx,  qword [r11 + r12 * 8]
+       mov  r10,  qword[j]
+       add  r10,  1
+       mov  r13,  qword [rbx + r10 * 8]
+       cmp  r13,  1
        jle  label117
 label116:
        mov  qword [rbp-160],  1
@@ -751,27 +751,27 @@ label116:
 label117:
        mov  qword [rbp-160],  0
 label118:
-       mov  rcx,  qword [rbp-160]
-       cmp  rcx,  0
+       mov  rbx,  qword [rbp-160]
+       cmp  rbx,  0
        jz  label114
 label113:
        mov  rax,  qword[prime]
-       mov  rcx,  qword[i]
-       add  rcx,  1
-       mov  rax,  qword [rax + rcx * 8]
-       mov  rdi,  rax
-       mov  rdx,  qword[prime]
-       mov  rbx,  qword[j]
+       mov  rbx,  qword[i]
        add  rbx,  1
-       mov  rax,  qword [rdx + rbx * 8]
+       mov  rax,  qword [rax + rbx * 8]
+       mov  rdi,  rax
+       mov  r10,  qword[prime]
+       mov  r11,  qword[j]
+       add  r11,  1
+       mov  rax,  qword [r10 + r11 * 8]
        mov  rsi,  rax
-       mov  r8,  qword[result]
-       mov  r9,  qword[i]
-       add  r9,  1
-       mov  rsi,  qword [r8 + r9 * 8]
-       mov  rdi,  qword[j]
-       add  rdi,  1
-       mov  rax,  qword [rsi + rdi * 8]
+       mov  r14,  qword[result]
+       mov  r15,  qword[i]
+       add  r15,  1
+       mov  r12,  qword [r14 + r15 * 8]
+       mov  r13,  qword[j]
+       add  r13,  1
+       mov  rax,  qword [r12 + r13 * 8]
        mov  rdx,  rax
        call  printF
        mov  qword [rbp-168],  rax
