@@ -167,7 +167,11 @@ public class SemanticChecker implements ASTTraversal
         if(!(node.getArray().getExprType() instanceof ArrayType))
             errorHandler.addError(node.getPosition(),
                     "'[]' can not be applied to non-array element");
-        node.setExprType(((ArrayType)node.getArray().getExprType()).getBasic_type());
+//        node.setType(currentScope.findType(node.getType().getTypeName()));
+        if(node.getArray().getExprType() instanceof ArrayType)
+            node.setExprType(((ArrayType)node.getArray().getExprType()).getBasic_type());
+        else
+            node.setExprType(currentScope.findType(((ArrayType)node.getArray().getExprType()).getBasic_type().getTypeName()));
         //TODO set Expr type
     }
 
@@ -294,6 +298,8 @@ public class SemanticChecker implements ASTTraversal
                     node.getName().toString() + " have not been declared");
         VarDecNode var = (VarDecNode)currentScope.findNode(node.getName());
         node.setExprType(var.getType());
+        if(node.getExprType() == null)
+            System.out.println(1);
     }
 
     @Override
@@ -364,6 +370,8 @@ public class SemanticChecker implements ASTTraversal
     public void visit(CreatorNode node)
     {
         if(node == null) return;
+        for(ExprNode item : node.getExprNodes())
+            visit(item);
         if(!currentScope.containsType(node.getType().getTypeName()))
         {
             errorHandler.addError(node.getPosition(),

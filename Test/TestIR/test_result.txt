@@ -2,20 +2,210 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @foo(i64, i64, i64)
+define i64 @main()
+  [a] = alloca [ArrayType: [ArrayType: i64[]][]]
+  [%r0] = alloca i64
+  [%r0] = Malloc Immediate 100
+  Store Immediate 100 to [Address %r0_size:[%r0]+offset Immediate -1*i64]
   [%r1] = alloca i64
-  [%r2] = alloca i64
-  [%r2] = [d] imul Immediate 1000
-  [%r3] = alloca i64
-  [%r3] = [x] imul Immediate 10
-  [%r4] = alloca i64
-  [%r4] = [%r2] add [%r3]
-  [%r5] = alloca i64
-  [%r5] = [%r4] add [y]
-  [%r1] = Call @toString([%r5])
-  Call @println([%r1])
-  [%r6] = alloca i64
-  [%r6] = [d] EQU Immediate 1
-  Branch [%r6] true: label0 false: label1
+  Store Immediate 0 to [%r1]
+  Store [%r0] to [a]
+  [i] = alloca i64
+  [j] = alloca i64
+  Store Immediate 0 to [i]
 
-  label0
+  label4
+  [%r2] = alloca i64
+  [%r2] = [i] SLT Immediate 100
+  Branch [%r2] true: label2 false: label3
+
+  label2
+  [%r3] = alloca i64
+  [%r3] = Malloc Immediate 100
+  Store Immediate 100 to [Address %r3_size:[%r3]+offset Immediate -1*i64]
+  Store [%r3] to [Address a:[a]+offset [i]*i64]
+
+  label5
+  [%r5] = alloca i64
+  Store [i] to [%r5]
+  [i] = [i] add Immediate 1
+  Jump label4
+
+  label3
+  [sum] = alloca i64
+  Store Immediate 0 to [sum]
+  Store Immediate 0 to [i]
+
+  label8
+  [%r6] = alloca i64
+  [%r6] = [i] SLT Immediate 100
+  Branch [%r6] true: label6 false: label7
+
+  label6
+  Store Immediate 0 to [j]
+
+  label12
+  [%r7] = alloca i64
+  [%r7] = [j] SLT Immediate 100
+  Branch [%r7] true: label10 false: label11
+
+  label10
+  Store Immediate 0 to [Address a:[Address a:[a]+offset [i]*i64]+offset [j]*i64]
+
+  label13
+  [%r9] = alloca i64
+  Store [j] to [%r9]
+  [j] = [j] add Immediate 1
+  Jump label12
+
+  label11
+
+  label9
+  [%r11] = alloca i64
+  Store [i] to [%r11]
+  [i] = [i] add Immediate 1
+  Jump label8
+
+  label7
+  [quotient] = alloca i64
+  [remainder] = alloca i64
+  Store Immediate 0 to [i]
+
+  label16
+  [%r12] = alloca i64
+  [%r12] = [i] SLT Immediate 100
+  Branch [%r12] true: label14 false: label15
+
+  label14
+  [%r13] = alloca i64
+  [%r13] = [i] SGT Immediate 20
+  Branch [%r13] true: label18 false: label19
+  Branch [%r13] true: label21 false: label19
+
+  label21
+  [%r14] = alloca i64
+  [%r14] = [i] SLT Immediate 80
+  Branch [%r14] true: label18 false: label19
+  Branch [%r14] true: label18 false: label19
+
+  label18
+  Store Immediate 0 to [j]
+
+  label24
+  [%r15] = alloca i64
+  [%r15] = [j] SLT Immediate 100
+  Branch [%r15] true: label22 false: label23
+
+  label22
+  [%r16] = alloca i64
+  [%r16] = [j] SGT Immediate 5
+  Branch [%r16] true: label26 false: label27
+  Branch [%r16] true: label26 false: label29
+
+  label29
+  [%r17] = alloca i64
+  [%r17] = [i] SLT Immediate 90
+  Branch [%r17] true: label26 false: label27
+  Branch [%r17] true: label26 false: label27
+
+  label26
+  [%r18] = alloca i64
+  [%r18] = [j] imul Immediate 4
+  [%r19] = alloca i64
+  [%r19] = [%r18] idiv Immediate 100
+  Store [%r19] to [quotient]
+  [%r20] = alloca i64
+  [%r20] = [j] imul Immediate 4
+  [%r21] = alloca i64
+  [%r21] = [%r20] mod Immediate 100
+  Store [%r21] to [remainder]
+  [%r22] = alloca i64
+  [%r22] = [i] add [quotient]
+  [%r23] = alloca i64
+  [%r23] = Immediate 100 sub Immediate 1
+  [%r24] = alloca i64
+  [%r24] = [%r23] add Immediate 1
+  [%r25] = alloca i64
+  [%r25] = [%r24] sub Immediate 1
+  [%r26] = alloca i64
+  [%r26] = [%r25] add Immediate 1
+  [%r27] = alloca i64
+  [%r27] = [%r26] idiv Immediate 2
+  [%r28] = alloca i64
+  [%r28] = [j] add [%r27]
+  Store [%r28] to [Address a:[Address a:[a]+offset [%r22]*i64]+offset [remainder]*i64]
+  Jump label28
+
+  label27
+  Jump label28
+
+  label28
+
+  label25
+  [%r30] = alloca i64
+  Store [j] to [%r30]
+  [j] = [j] add Immediate 1
+  Jump label24
+
+  label23
+  Jump label20
+
+  label19
+  Jump label20
+
+  label20
+
+  label17
+  [%r32] = alloca i64
+  Store [i] to [%r32]
+  [i] = [i] add Immediate 1
+  Jump label16
+
+  label15
+  Store Immediate 0 to [i]
+
+  label32
+  [%r33] = alloca i64
+  [%r33] = [i] SLT Immediate 100
+  Branch [%r33] true: label30 false: label31
+
+  label30
+  Store Immediate 0 to [j]
+
+  label36
+  [%r34] = alloca i64
+  [%r34] = [j] SLT Immediate 100
+  Branch [%r34] true: label34 false: label35
+
+  label34
+  [%r35] = alloca i64
+  [%r35] = [sum] add [Address a:[Address a:[a]+offset [i]*i64]+offset [j]*i64]
+  Store [%r35] to [sum]
+
+  label37
+  [%r37] = alloca i64
+  Store [j] to [%r37]
+  [j] = [j] add Immediate 1
+  Jump label36
+
+  label35
+
+  label33
+  [%r39] = alloca i64
+  Store [i] to [%r39]
+  [i] = [i] add Immediate 1
+  Jump label32
+
+  label31
+  [%r41] = alloca i64
+  [%r41] = Call @toString([sum])
+  Call @println([%r41])
+  Return Immediate 0
+
+
+__________________________________________
+===================TYPE===================
+
+
+__________________________________________
+===================DATA===================

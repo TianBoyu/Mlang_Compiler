@@ -12,27 +12,17 @@ int main() {
 	for (;; e = d%a){
 		d = 0;
 		g = c*2;
-		println("haha");
 		if (g==0) break;
 
-		int i = 0;
 		for (b=c;;d=d*b){
-		    ++i;
-		    //print(toString(i));
 			d=d+f[b]*a;
-			println("hihi");
-			//println(toString(f[b]));
-			//println(toString(b));
-			//println(toString(d));
-			//println(toString(g));
 			f[b] = d%--g;
 			d=d/g--;
 			if (--b==0) break;
 		}
-		println("xixi");
+
 		c = c-14;
 		print(toString(e+d/a));
-		println("heihei");
 	}
 
   print("\n");

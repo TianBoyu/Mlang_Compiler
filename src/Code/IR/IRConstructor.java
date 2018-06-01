@@ -42,9 +42,11 @@ public class IRConstructor implements IRTraversal
     private Label nextTrueLabel;
     private Label nextFalseLabel;
     private Label nextJumpLabel;
+    private Label nextEndLoopLabel;
     private Stack<Label> trueLabelStack = new Stack<>();
     private Stack<Label> falseLabelStack = new Stack<>();
     private Stack<Label> jumpLabelStack = new Stack<>();
+    private Stack<Label> endLoopLabelStack = new Stack<>();
 
 //    private boolean isReturned = false;
 //    private Address addressForCond;
@@ -68,6 +70,7 @@ public class IRConstructor implements IRTraversal
         setTrueLabel(globalLabel);
         setFalseLabel(globalLabel);
         setJumpLabel(globalLabel);
+        setEndLoopLabel(globalLabel);
     }
 
     public IRInstruction getEntry()
@@ -365,7 +368,7 @@ public class IRConstructor implements IRTraversal
     @Override
     public IntegerValue visit(BinaryExprNode node)
     {
-        if(node.getLhs().getExprType().getTypeName() == Name.getName("string"))
+         if(node.getLhs().getExprType().getTypeName() == Name.getName("string"))
             return dealStringOperation(node);
 //        VirtualRegister dest = currentFunction.getRegister();
         IntegerValue left = visit(node.getLhs());
@@ -410,6 +413,11 @@ public class IRConstructor implements IRTraversal
             case BEQ:
                 addInst(new Call(currentLabel, address, Name.getName("Str_GE"), parameter));
                 break;
+        }
+        if(BinaryOp.isCompare(node.getOp()))
+        {
+            addInst(new Compare(currentLabel, Compare.Condition.BEQ, address, address, new Immediate(0)));
+            addInst(new Branch(currentLabel, nextTrueLabel, nextFalseLabel, address, Compare.Condition.SGT));
         }
         return address;
     }
@@ -705,6 +713,8 @@ public class IRConstructor implements IRTraversal
     {
         //TODO
         //Address type
+        if(node.getValue().equals("\\n"))
+            node.setValue("\n");
         String name = dataSection.addData(node.getValue());
         return new Address(Name.getName(name), new BuiltIn());
     }
@@ -771,7 +781,7 @@ public class IRConstructor implements IRTraversal
     @Override
     public IRInstruction visit(BreakNode node)
     {
-        IRInstruction inst = new Jump(currentLabel, nextFalseLabel);
+        IRInstruction inst = new Jump(currentLabel, nextEndLoopLabel);
         addInst(inst);
         return inst;
     }
@@ -796,6 +806,7 @@ public class IRConstructor implements IRTraversal
         setTrueLabel(trueLabel);
         setFalseLabel(falseLabel);
         setJumpLabel(jumpLabel);
+        setEndLoopLabel(falseLabel);
 
         if(node.getBeginCondition() != null)
             visit(node.getBeginCondition());
@@ -812,6 +823,7 @@ public class IRConstructor implements IRTraversal
         exitTrueLabel();
         exitFalseLabel();
         exitJumpLabel();
+        exitEndLoopLabel();
         exitIRScope();
 
         return null;
@@ -869,6 +881,7 @@ public class IRConstructor implements IRTraversal
         setTrueLabel(trueLabel);
         setFalseLabel(falseLabel);
         setJumpLabel(conditionLabel);
+        setEndLoopLabel(falseLabel);
 
         addInst(conditionLabel);
         if(node.getCondition() != null)
@@ -881,6 +894,7 @@ public class IRConstructor implements IRTraversal
         exitIRScope();
         exitTrueLabel();
         exitFalseLabel();
+        exitEndLoopLabel();
         exitJumpLabel();
         return null;
     }
@@ -980,6 +994,18 @@ public class IRConstructor implements IRTraversal
     {
         jumpLabelStack.pop();
         nextJumpLabel = jumpLabelStack.peek();
+    }
+
+    private void setEndLoopLabel(Label label)
+    {
+        nextEndLoopLabel = label;
+        endLoopLabelStack.push(label);
+    }
+
+    private void exitEndLoopLabel()
+    {
+        endLoopLabelStack.pop();
+        nextEndLoopLabel = endLoopLabelStack.peek();
     }
 
     private boolean isCondition(ExprNode node)

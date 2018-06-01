@@ -177,26 +177,26 @@ public class Scope
                                 new FuncDecObject("getInt", new ArrayList<>(),
                                                     new BuiltInType("int", 4)),
                                 null));
-        List<FuncParamNode> paras = new ArrayList<>();
-        paras.add(new FuncParamNode(new Position(0),
+        List<FuncParamNode> paras1 = new ArrayList<>();
+        paras1.add(new FuncParamNode(new Position(0),
                 new ParameterObject("a", new Type("string", 0))));
         addNode(new FuncDecNode(true, new Position(0),
-                                new FuncDecObject("print", paras,
+                                new FuncDecObject("print", paras1,
                                                     new BuiltInType("void", 0)),
                                 null));
         addNode(new FuncDecNode(true, new Position(0),
-                                new FuncDecObject("println", paras,
+                                new FuncDecObject("println", paras1,
                                                     new BuiltInType("void", 0)),
                                 null));
         addNode(new FuncDecNode(true, new Position(0),
                                 new FuncDecObject("getString",
                                         new ArrayList<>(), new BuiltInType("string", 0)),
                                 null));
-        paras.clear();
-        paras.add(new FuncParamNode(new Position(0),
+        List<FuncParamNode> paras2 = new ArrayList<>();
+        paras2.add(new FuncParamNode(new Position(0),
                 new ParameterObject("a", new Type("int", 4))));
         addNode(new FuncDecNode(true, new Position(0),
-                                new FuncDecObject("toString", paras,
+                                new FuncDecObject("toString", paras2,
                                                     new BuiltInType("string", 4)),
                                 null));
         addNode(new FuncDecNode(true, new Position(0),
@@ -206,19 +206,19 @@ public class Scope
         addNode(new FuncDecNode(true, new Position(0),
                 new FuncDecObject("length", new ArrayList<>(), new BuiltInType("int", 4)),
                 null));
-        paras.clear();
-        paras.add(new FuncParamNode(new Position(0), new ParameterObject("left", new Type("int", 4))));
-        paras.add(new FuncParamNode(new Position(0), new ParameterObject("right", new Type("int", 4))));
+        List<FuncParamNode> paras3 = new ArrayList<>();
+        paras3.add(new FuncParamNode(new Position(0), new ParameterObject("left", new Type("int", 4))));
+        paras3.add(new FuncParamNode(new Position(0), new ParameterObject("right", new Type("int", 4))));
         addNode(new FuncDecNode(true, new Position(0),
-                new FuncDecObject("substring", paras, new BuiltInType("string", 4)),
+                new FuncDecObject("substring", paras3, new BuiltInType("string", 4)),
                 null));
         addNode(new FuncDecNode(true, new Position(0),
                 new FuncDecObject("parseInt", new ArrayList<>(), new BuiltInType("int", 4)),
                 null));
-        paras.clear();
-        paras.add(new FuncParamNode(new Position(0), new ParameterObject("pos", new Type("int", 4))));
+        List<FuncParamNode> paras4 = new ArrayList<>();
+        paras4.add(new FuncParamNode(new Position(0), new ParameterObject("pos", new Type("int", 4))));
         addNode(new FuncDecNode(true, new Position(0),
-                new FuncDecObject("ord", paras, new BuiltInType("int", 4)),
+                new FuncDecObject("ord", paras4, new BuiltInType("int", 4)),
                 null));
     }
 

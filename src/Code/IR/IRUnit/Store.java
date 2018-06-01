@@ -41,6 +41,8 @@ public class Store extends IRInstruction
     @Override
     public String toString()
     {
+        if(data == null)
+            return "Store " + "NULL to " + address.toString();
         return "Store " + data.toString() + " to " + address.toString();
     }
     @Override

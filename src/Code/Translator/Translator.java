@@ -292,7 +292,13 @@ public class Translator implements IRInstTraversal
         String rightIntegerValue;
         leftIntegerValue = processIntegerValue(inst.getLhs(), inst.getLhsReg());
         rightIntegerValue = processIntegerValue(inst.getRhs(), inst.getRhsReg());
-        addInst(NasmInst.Instruction.cmp, leftIntegerValue, rightIntegerValue);
+        if(inst.getLhs() instanceof Immediate)
+        {
+            addInst(NasmInst.Instruction.mov, inst.getLhsReg().toString(), leftIntegerValue);
+            addInst(NasmInst.Instruction.cmp, inst.getLhsReg().toString(), rightIntegerValue);
+        }
+        else
+            addInst(NasmInst.Instruction.cmp, leftIntegerValue, rightIntegerValue);
     }
 
     @Override
@@ -366,8 +372,11 @@ public class Translator implements IRInstTraversal
     @Override
     public void visit(Store inst)
     {
-        String storeIntegerValue = processIntegerValue(inst.getData(), inst.getDataReg());
-        addInst(NasmInst.Instruction.mov, processAddress((Address) inst.getAddress(), null), storeIntegerValue);
+        if(inst.getData() != null)
+        {
+            String storeIntegerValue = processIntegerValue(inst.getData(), inst.getDataReg());
+            addInst(NasmInst.Instruction.mov, processAddress((Address) inst.getAddress(), null), storeIntegerValue);
+        }
     }
 
 
@@ -412,6 +421,8 @@ public class Translator implements IRInstTraversal
     private String stringToAscii(String value)
     {
         StringBuffer sbu = new StringBuffer();
+        if(value.equals("\\n"))
+            return String.valueOf(10);
         char[] chars = value.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             sbu.append((int)chars[i]).append(", ");
