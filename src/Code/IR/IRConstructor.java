@@ -759,7 +759,12 @@ public class IRConstructor implements IRTraversal
             if(charArray[i] == '\\')
             {
                 jump = true;
-                builder.append('\n');
+                if(charArray[i + 1] == 'n')
+                    builder.append('\n');
+                else if(charArray[i + 1] == '"')
+                    builder.append('\"');
+                else if(charArray[i + 1] == '\\')
+                    builder.append('\\');
             }
             else builder.append(charArray[i]);
         }
