@@ -138,7 +138,7 @@ public class IRConstructor implements IRTraversal
     {
         //only support int and one-dim array now
         String name = node.getName().toString();
-        if(node.getName() == Name.getName("ch"))
+        if(node.getName() == Name.getName("ch") || node.getName() == Name.getName("dx"))
             name += "_mine";
         Address address = new Address(Name.getName(name), true);
         if(node.getValue() == null) //bssZone
@@ -171,7 +171,7 @@ public class IRConstructor implements IRTraversal
 //                addInst(new Malloc(currentLabel, new Immediate(8), address));
                 IntegerValue value = visit(node.getValue());
                 addInst(new MemCopy(currentLabel, (Address) value, address));
-                bssZone.addData(node.getName().toString(), null);
+                bssZone.addData(name, null);
                 isInitializeInst = false;
                 isHeapAllocate = false;
                 address.setPointer(true);
@@ -259,7 +259,7 @@ public class IRConstructor implements IRTraversal
     {
         IRType irType = convertType(node.getType());
         String name = node.getName().toString();
-        if(node.getName() == Name.getName("ch"))
+        if(node.getName() == Name.getName("ch") || node.getName() == Name.getName("dx"))
             name += "_ch";
         Address address = new Address(Name.getName(name), irType);
         addInst(new Alloca(currentLabel, address, irType));
