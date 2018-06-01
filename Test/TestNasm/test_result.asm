@@ -1,6 +1,3 @@
-global    c
-global    lol
-global    x
 global    main
 
 
@@ -17,47 +14,60 @@ extern strcmp
 
 section .text
 
-lol:
-       push  rbp
-       mov  rbp,  rsp
-       sub  rsp,  32
-       mov  qword [rbp-8],  rdi
-       mov  rax,  qword [rbp-8]
-       add  rax,  1
-       mov  qword [rbp-16],  rax
-       mov  rax,  qword [rbp-16]
-       add  rsp,  32
-       pop  rbp
-       ret  
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  32
-       mov  rax,  qword[c]
-       mov  rdi,  rax
-       call  lol
-       mov  qword [rbp-8],  rax
+       sub  rsp,  96
+       mov  qword [rbp-8],  5
+       mov  qword [rbp-16],  0
+       mov  rcx,  qword [rbp-24]
+       cmp  rcx,  10
+       jne  label1
+       jne  label1
+label4:
        mov  rax,  qword [rbp-8]
-       mov  qword[x],  rax
-       mov  rax,  qword[x]
+       mov  rcx,  qword [rbp-16]
+       mov  rdx,  0
+       idiv  rcx
+       mov  qword [rbp-40],  rax
+       mov  rcx,  qword [rbp-40]
+       cmp  rcx,  0
+       jne  label1
+       jne  label1
+       jz  label1
+label3:
+       mov  rcx,  qword [rbp-8]
+       cmp  rcx,  5
+       jne  label1
+       jne  label1
+       mov  rax,  qword [rbp-56]
+       xor  rax,  1
+       mov  qword [rbp-64],  rax
+       mov  rcx,  qword [rbp-64]
+       cmp  rcx,  0
+       jz  label1
+label0:
+       mov  qword [rbp-24],  30
+       jmp  label2
+label1:
+       jmp  label2
+label2:
+       mov  rax,  qword [rbp-24]
        mov  rdi,  rax
        call  toString
-       mov  qword [rbp-8],  rax
-       mov  rax,  qword [rbp-8]
+       mov  qword [rbp-72],  rax
+       mov  rax,  qword [rbp-72]
        mov  rdi,  rax
        call  println
-       mov  rax,  qword[x]
-       add  rsp,  32
+       mov  rax,  qword [rbp-24]
+       add  rsp,  96
        pop  rbp
        ret  
 
 section .data
-c:
-       dq  123
 
 section .bss
 
-x:       resq  1
 
 
 section .data
