@@ -1,9 +1,8 @@
-int[] x = new int[8];
-int k = 1;
+int x = 1;
+int y = x;
 
 int main()
 {
-    int y = x[2];
-    int h = k;
+    println(toString(y));
     return 0;
 }

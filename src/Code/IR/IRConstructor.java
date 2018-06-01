@@ -152,8 +152,19 @@ public class IRConstructor implements IRTraversal
         {
             if(node.getType() instanceof BuiltInType)
             {
-                Immediate value = (Immediate) visit(node.getValue());
-                dataZone.addData(node.getName().toString(), String.valueOf(value.getValue()), "dq");
+                if(node.getValue() instanceof IntConstNode)
+                {
+                    Immediate value = (Immediate) visit(node.getValue());
+                    dataZone.addData(node.getName().toString(), String.valueOf(value.getValue()), "dq");
+                }
+                else
+                {
+                    isInitializeInst = true;
+                    IntegerValue value = visit(node.getValue());
+                    addInst(new Store(currentLabel, address, value));
+                    bssZone.addData(node.getName().toString(), null);
+                    isInitializeInst = false;
+                }
             }
             else// if(node.getType() instanceof ArrayType or ClassType
             {

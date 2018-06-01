@@ -2,56 +2,23 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
-    <bookmark url="file://$PROJECT_DIR$/src/Code/IR/IRConstructor.java" line="760" />
+    <bookmark url="file://$PROJECT_DIR$/src/Code/IR/IRConstructor.java" line="771" />
     <bookmark url="file://$PROJECT_DIR$/src/Code/IR/IRUnit/Call.java" line="64" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test523.mx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test525.mx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test543.mx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test553.mx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test557.mx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test559.mx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test569.mx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Test/TestNasm/test946.mx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Test/TestIR/test_result.txt" afterPath="$PROJECT_DIR$/Test/TestIR/test_result.txt" />
       <change beforePath="$PROJECT_DIR$/Test/TestNasm/a.out" afterPath="$PROJECT_DIR$/Test/TestNasm/a.out" />
-      <change beforePath="$PROJECT_DIR$/Test/TestNasm/test552.mx" afterPath="$PROJECT_DIR$/Test/TestNasm/test552.mx" />
+      <change beforePath="$PROJECT_DIR$/Test/TestNasm/test_global.mx" afterPath="$PROJECT_DIR$/Test/TestNasm/test_global.mx" />
       <change beforePath="$PROJECT_DIR$/Test/TestNasm/test_result.asm" afterPath="$PROJECT_DIR$/Test/TestNasm/test_result.asm" />
       <change beforePath="$PROJECT_DIR$/Test/TestNasm/test_result.o" afterPath="$PROJECT_DIR$/Test/TestNasm/test_result.o" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/AST/Node/ExprNode/StringConstNode.class" afterPath="$PROJECT_DIR$/bin/Code/AST/Node/ExprNode/StringConstNode.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/Boom.class" afterPath="$PROJECT_DIR$/bin/Code/Boom.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/IR/IRConstructor$1.class" afterPath="$PROJECT_DIR$/bin/Code/IR/IRConstructor$1.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/IR/IRConstructor.class" afterPath="$PROJECT_DIR$/bin/Code/IR/IRConstructor.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/IR/IRUnit/Compare.class" afterPath="$PROJECT_DIR$/bin/Code/IR/IRUnit/Compare.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/IR/IRUnit/Return.class" afterPath="$PROJECT_DIR$/bin/Code/IR/IRUnit/Return.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/IR/IRUnit/Store.class" afterPath="$PROJECT_DIR$/bin/Code/IR/IRUnit/Store.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/Optimizer/NaiveAllocator.class" afterPath="$PROJECT_DIR$/bin/Code/Optimizer/NaiveAllocator.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/SemanticCheck/Scope/Scope.class" afterPath="$PROJECT_DIR$/bin/Code/SemanticCheck/Scope/Scope.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/SemanticCheck/SemanticChecker.class" afterPath="$PROJECT_DIR$/bin/Code/SemanticCheck/SemanticChecker.class" />
-      <change beforePath="$PROJECT_DIR$/bin/Code/Translator/Translator.class" afterPath="$PROJECT_DIR$/bin/Code/Translator/Translator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/StringConstNode.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/AST/Node/ExprNode/StringConstNode.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Boom.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Boom.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRConstructor$1.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRConstructor$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRConstructor.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRConstructor.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRUnit/Compare.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRUnit/Compare.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRUnit/Return.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRUnit/Return.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRUnit/Store.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/IR/IRUnit/Store.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Optimizer/NaiveAllocator.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Optimizer/NaiveAllocator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/SemanticCheck/Scope/Scope.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/SemanticCheck/Scope/Scope.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/SemanticCheck/SemanticChecker.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/SemanticCheck/SemanticChecker.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Translator/Translator.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Translator/Translator.class" />
-      <change beforePath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/StringConstNode.java" afterPath="$PROJECT_DIR$/src/Code/AST/Node/ExprNode/StringConstNode.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/IR/IRConstructor.java" afterPath="$PROJECT_DIR$/src/Code/IR/IRConstructor.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/IR/IRUnit/Compare.java" afterPath="$PROJECT_DIR$/src/Code/IR/IRUnit/Compare.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/IR/IRUnit/Return.java" afterPath="$PROJECT_DIR$/src/Code/IR/IRUnit/Return.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/IR/IRUnit/Store.java" afterPath="$PROJECT_DIR$/src/Code/IR/IRUnit/Store.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Optimizer/NaiveAllocator.java" afterPath="$PROJECT_DIR$/src/Code/Optimizer/NaiveAllocator.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/SemanticCheck/Scope/Scope.java" afterPath="$PROJECT_DIR$/src/Code/SemanticCheck/Scope/Scope.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" afterPath="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Translator/Translator.java" afterPath="$PROJECT_DIR$/src/Code/Translator/Translator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,8 +42,8 @@
                 <file leaf-file-name="test_result.asm" pinned="false" current-in-tab="true">
                   <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_result.asm">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="0">
-                        <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <state relative-caret-position="864">
+                        <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
                         <folding />
                       </state>
                     </provider>
@@ -119,8 +86,8 @@
                 <file leaf-file-name="test_result.txt" pinned="false" current-in-tab="false">
                   <entry file="file://$PROJECT_DIR$/Test/TestIR/test_result.txt">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="1215">
-                        <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+                      <state relative-caret-position="324">
+                        <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
                         <folding />
                       </state>
                     </provider>
@@ -140,7 +107,7 @@
                   <entry file="file://$PROJECT_DIR$/Test/TestNasm/test561.mx">
                     <provider selected="true" editor-type-id="text-editor">
                       <state relative-caret-position="124">
-                        <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+                        <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
                         <folding />
                       </state>
                     </provider>
@@ -178,68 +145,66 @@
       <file leaf-file-name="IRConstructor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/IR/IRConstructor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+            <state relative-caret-position="3281">
+              <caret line="446" column="54" lean-forward="true" selection-start-line="446" selection-start-column="54" selection-end-line="446" selection-end-column="54" />
               <folding>
-                <element signature="method#visit#0;class#IRConstructor#0" expanded="false" />
-                <element signature="method#addGlobalVariable#0;class#IRConstructor#0" expanded="false" />
-                <element signature="e#4466#4528#0" expanded="false" />
+                <element signature="method#IRConstructor#0;class#IRConstructor#0" expanded="false" />
+                <element signature="e#4923#4985#0" expanded="false" />
                 <element signature="method#visit#1;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#2;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#3;class#IRConstructor#0" expanded="false" />
                 <element signature="method#FunctionRename#0;class#IRConstructor#0" expanded="false" />
-                <element signature="e#7224#7295#0" expanded="false" />
-                <element signature="method#visit#4;class#IRConstructor#0" expanded="false" />
-                <element signature="e#9464#9465#0" expanded="true" />
-                <element signature="e#9491#9492#0" expanded="true" />
+                <element signature="e#7681#7752#0" expanded="false" />
+                <element signature="e#9921#9922#0" expanded="true" />
+                <element signature="e#9948#9949#0" expanded="true" />
                 <element signature="method#visit#8;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#9;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#11;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#12;class#IRConstructor#0" expanded="false" />
-                <element signature="e#16768#16814#0" expanded="false" />
-                <element signature="e#17907#17908#0" expanded="true" />
-                <element signature="e#17934#17935#0" expanded="true" />
+                <element signature="e#17225#17271#0" expanded="false" />
+                <element signature="e#18364#18365#0" expanded="true" />
+                <element signature="e#18391#18392#0" expanded="true" />
                 <element signature="method#visit#14;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#15;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#16;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#17;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#18;class#IRConstructor#0" expanded="false" />
                 <element signature="method#memoryAllocate#0;class#IRConstructor#0" expanded="false" />
-                <element signature="e#23192#23193#0" expanded="true" />
-                <element signature="e#23219#23220#0" expanded="true" />
+                <element signature="e#23649#23650#0" expanded="true" />
+                <element signature="e#23676#23677#0" expanded="true" />
                 <element signature="method#visit#20;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#21;class#IRConstructor#0" expanded="false" />
-                <element signature="e#26110#26116#0" expanded="false" />
+                <element signature="e#26567#26573#0" expanded="false" />
                 <element signature="method#visit#23;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#24;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#25;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#26;class#IRConstructor#0" expanded="false" />
                 <element signature="method#visit#33;class#IRConstructor#0" expanded="false" />
-                <element signature="e#32075#32076#0" expanded="true" />
-                <element signature="e#32115#32116#0" expanded="true" />
+                <element signature="e#32532#32533#0" expanded="true" />
+                <element signature="e#32572#32573#0" expanded="true" />
                 <element signature="method#addInst#0;class#IRConstructor#0" expanded="false" />
                 <element signature="method#addInitailizeInst#0;class#IRConstructor#0" expanded="false" />
-                <element signature="e#33085#33086#0" expanded="true" />
-                <element signature="e#33121#33122#0" expanded="true" />
-                <element signature="e#33173#33174#0" expanded="true" />
-                <element signature="e#33218#33219#0" expanded="true" />
-                <element signature="e#33256#33257#0" expanded="true" />
-                <element signature="e#33320#33321#0" expanded="true" />
+                <element signature="e#33542#33543#0" expanded="true" />
+                <element signature="e#33578#33579#0" expanded="true" />
+                <element signature="e#33630#33631#0" expanded="true" />
+                <element signature="e#33675#33676#0" expanded="true" />
+                <element signature="e#33713#33714#0" expanded="true" />
+                <element signature="e#33777#33778#0" expanded="true" />
                 <element signature="method#isCondition#0;class#IRConstructor#0" expanded="false" />
-                <element signature="e#34704#34770#0" expanded="false" />
+                <element signature="e#35161#35227#0" expanded="false" />
                 <element signature="method#convertOp#0;class#IRConstructor#0" expanded="false" />
                 <element signature="method#convertType#0;class#IRConstructor#0" expanded="false" />
-                <element signature="e#36459#36473#0" expanded="false" />
+                <element signature="e#36916#36930#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Stack.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.base/java/util/Stack.java">
+      <file leaf-file-name="test_global.mx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_global.mx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -248,8 +213,8 @@
       <file leaf-file-name="Boom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="54" column="37" lean-forward="false" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+            <state relative-caret-position="378">
+              <caret line="60" column="31" lean-forward="true" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -367,7 +332,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Array</find>
       <find>processInte</find>
       <find>processInteg</find>
       <find>isVarForFond</find>
@@ -397,6 +361,7 @@
       <find>ArrayE</find>
       <find>Str_LT</find>
       <find>Crea</find>
+      <find>isHeapAllocate</find>
     </findStrings>
     <replaceStrings>
       <replace>actuall_parameters</replace>
@@ -427,7 +392,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Code/IR/IRScope.java" />
         <option value="$PROJECT_DIR$/src/Code/Translator/NasmInst.java" />
         <option value="$PROJECT_DIR$/src/Code/IR/DataSection.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test_print.mx" />
@@ -438,7 +402,6 @@
         <option value="$PROJECT_DIR$/src/Code/IR/IRUnit/Function.java" />
         <option value="$PROJECT_DIR$/src/Code/IR/IRPrinter.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test_array.mx" />
-        <option value="$PROJECT_DIR$/Test/TestNasm/test_global.mx" />
         <option value="$PROJECT_DIR$/src/Code/AST/ASTConstructor/ASTConstructor.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test_multiarray.mx" />
         <option value="$PROJECT_DIR$/src/Code/IR/IRUnit/Malloc.java" />
@@ -475,8 +438,10 @@
         <option value="$PROJECT_DIR$/Test/TestNasm/test557.mx" />
         <option value="$PROJECT_DIR$/src/Code/Optimizer/NaiveAllocator.java" />
         <option value="$PROJECT_DIR$/src/Code/SemanticCheck/SemanticChecker.java" />
-        <option value="$PROJECT_DIR$/src/Code/IR/IRConstructor.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test561.mx" />
+        <option value="$PROJECT_DIR$/src/Code/IR/IRConstructor.java" />
+        <option value="$PROJECT_DIR$/Test/TestNasm/test_global.mx" />
+        <option value="$PROJECT_DIR$/Test/TestNasm/test946.mx" />
         <option value="$PROJECT_DIR$/src/Code/Boom.java" />
       </list>
     </option>
@@ -800,7 +765,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28018224" sideWeight="0.50429183" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28018224" sideWeight="0.49570817" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28018224" sideWeight="0.49570817" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3189066" sideWeight="0.49570817" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -903,12 +868,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Code/IR/IRConstructor.java</url>
-          <line>896</line>
+          <line>907</line>
           <properties />
           <option name="timeStamp" value="369" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="370" />
+      <option name="time" value="371" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -974,21 +939,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Test/TestNasm/clib2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2985">
-          <caret line="153" column="36" lean-forward="false" selection-start-line="153" selection-start-column="36" selection-end-line="153" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Translator/NasmPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="38" lean-forward="false" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestNasm/test541.mx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1212,8 +1162,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestIR/test_result.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="324">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1413,68 +1363,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_result.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/IR/IRConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+        <state relative-caret-position="3281">
+          <caret line="446" column="54" lean-forward="true" selection-start-line="446" selection-start-column="54" selection-end-line="446" selection-end-column="54" />
           <folding>
-            <element signature="method#visit#0;class#IRConstructor#0" expanded="false" />
-            <element signature="method#addGlobalVariable#0;class#IRConstructor#0" expanded="false" />
-            <element signature="e#4466#4528#0" expanded="false" />
+            <element signature="method#IRConstructor#0;class#IRConstructor#0" expanded="false" />
+            <element signature="e#4923#4985#0" expanded="false" />
             <element signature="method#visit#1;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#2;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#3;class#IRConstructor#0" expanded="false" />
             <element signature="method#FunctionRename#0;class#IRConstructor#0" expanded="false" />
-            <element signature="e#7224#7295#0" expanded="false" />
-            <element signature="method#visit#4;class#IRConstructor#0" expanded="false" />
-            <element signature="e#9464#9465#0" expanded="true" />
-            <element signature="e#9491#9492#0" expanded="true" />
+            <element signature="e#7681#7752#0" expanded="false" />
+            <element signature="e#9921#9922#0" expanded="true" />
+            <element signature="e#9948#9949#0" expanded="true" />
             <element signature="method#visit#8;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#9;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#11;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#12;class#IRConstructor#0" expanded="false" />
-            <element signature="e#16768#16814#0" expanded="false" />
-            <element signature="e#17907#17908#0" expanded="true" />
-            <element signature="e#17934#17935#0" expanded="true" />
+            <element signature="e#17225#17271#0" expanded="false" />
+            <element signature="e#18364#18365#0" expanded="true" />
+            <element signature="e#18391#18392#0" expanded="true" />
             <element signature="method#visit#14;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#15;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#16;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#17;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#18;class#IRConstructor#0" expanded="false" />
             <element signature="method#memoryAllocate#0;class#IRConstructor#0" expanded="false" />
-            <element signature="e#23192#23193#0" expanded="true" />
-            <element signature="e#23219#23220#0" expanded="true" />
+            <element signature="e#23649#23650#0" expanded="true" />
+            <element signature="e#23676#23677#0" expanded="true" />
             <element signature="method#visit#20;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#21;class#IRConstructor#0" expanded="false" />
-            <element signature="e#26110#26116#0" expanded="false" />
+            <element signature="e#26567#26573#0" expanded="false" />
             <element signature="method#visit#23;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#24;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#25;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#26;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#33;class#IRConstructor#0" expanded="false" />
-            <element signature="e#32075#32076#0" expanded="true" />
-            <element signature="e#32115#32116#0" expanded="true" />
+            <element signature="e#32532#32533#0" expanded="true" />
+            <element signature="e#32572#32573#0" expanded="true" />
             <element signature="method#addInst#0;class#IRConstructor#0" expanded="false" />
             <element signature="method#addInitailizeInst#0;class#IRConstructor#0" expanded="false" />
-            <element signature="e#33085#33086#0" expanded="true" />
-            <element signature="e#33121#33122#0" expanded="true" />
-            <element signature="e#33173#33174#0" expanded="true" />
-            <element signature="e#33218#33219#0" expanded="true" />
-            <element signature="e#33256#33257#0" expanded="true" />
-            <element signature="e#33320#33321#0" expanded="true" />
+            <element signature="e#33542#33543#0" expanded="true" />
+            <element signature="e#33578#33579#0" expanded="true" />
+            <element signature="e#33630#33631#0" expanded="true" />
+            <element signature="e#33675#33676#0" expanded="true" />
+            <element signature="e#33713#33714#0" expanded="true" />
+            <element signature="e#33777#33778#0" expanded="true" />
             <element signature="method#isCondition#0;class#IRConstructor#0" expanded="false" />
-            <element signature="e#34704#34770#0" expanded="false" />
+            <element signature="e#35161#35227#0" expanded="false" />
             <element signature="method#convertOp#0;class#IRConstructor#0" expanded="false" />
             <element signature="method#convertType#0;class#IRConstructor#0" expanded="false" />
-            <element signature="e#36459#36473#0" expanded="false" />
+            <element signature="e#36916#36930#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1482,15 +1422,39 @@
     <entry file="file://$PROJECT_DIR$/Test/TestNasm/test561.mx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
-          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_result.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_global.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test946.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="54" column="37" lean-forward="false" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+        <state relative-caret-position="378">
+          <caret line="60" column="31" lean-forward="true" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
           <folding />
         </state>
       </provider>
