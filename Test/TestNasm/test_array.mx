@@ -1,7 +1,12 @@
 int main()
 {
-    int[] a = new int[5];
-    int b = a.size();
-    print(toString(b));
-    return 0;
-}
+    string a = "\n";
+    string b = "\r";
+    a + b
+    string c = "\n + \r";
+    print("\n")
+}""
+
+
+a :
+  db \ n

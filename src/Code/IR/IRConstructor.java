@@ -137,10 +137,13 @@ public class IRConstructor implements IRTraversal
     private void addGlobalVariable(VarDecNode node)
     {
         //only support int and one-dim array now
-        Address address = new Address(node.getName(), true);
+        String name = node.getName().toString();
+        if(node.getName() == Name.getName("ch"))
+            name += "_mine";
+        Address address = new Address(Name.getName(name), true);
         if(node.getValue() == null) //bssZone
         {
-            bssZone.addData(node.getName().toString(), null);
+            bssZone.addData(name, null);
         }
         else //dataZone
         {
@@ -149,14 +152,14 @@ public class IRConstructor implements IRTraversal
                 if(node.getValue() instanceof IntConstNode)
                 {
                     Immediate value = (Immediate) visit(node.getValue());
-                    dataZone.addData(node.getName().toString(), String.valueOf(value.getValue()), "dq");
+                    dataZone.addData(name, String.valueOf(value.getValue()), "dq");
                 }
                 else
                 {
                     isInitializeInst = true;
                     IntegerValue value = visit(node.getValue());
                     addInst(new Store(currentLabel, address, value));
-                    bssZone.addData(node.getName().toString(), null);
+                    bssZone.addData(name, null);
                     isInitializeInst = false;
                 }
             }
@@ -255,7 +258,10 @@ public class IRConstructor implements IRTraversal
     public Address visit(VarDecNode node)
     {
         IRType irType = convertType(node.getType());
-        Address address = new Address(node.getName(), irType);
+        String name = node.getName().toString();
+        if(node.getName() == Name.getName("ch"))
+            name += "_ch";
+        Address address = new Address(Name.getName(name), irType);
         addInst(new Alloca(currentLabel, address, irType));
         currentFunction.increSlotNumber();
 
@@ -730,10 +736,34 @@ public class IRConstructor implements IRTraversal
     {
         //TODO
         //Address type
-        if(node.getValue().equals("\\n"))
-            node.setValue("\n");
+//        if(node.getValue().equals("\\n"))
+//            node.setValue("\n");
+        node.setValue(processString(node.getValue()));
         String name = dataSection.addData(node.getValue());
         return new Address(Name.getName(name), new BuiltIn());
+    }
+
+    private String processString(String data)
+    {
+        StringBuilder builder = new StringBuilder();
+        char[] charArray = data.toCharArray();
+        int length = data.length();
+        boolean jump = false;
+        for (int i = 0; i < length; ++i)
+        {
+            if(jump)
+            {
+                jump = false;
+                continue;
+            }
+            if(charArray[i] == '\\')
+            {
+                jump = true;
+                builder.append('\n');
+            }
+            else builder.append(charArray[i]);
+        }
+        return builder.toString();
     }
 
     @Override

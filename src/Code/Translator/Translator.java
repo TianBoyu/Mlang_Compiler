@@ -291,7 +291,10 @@ public class Translator implements IRInstTraversal
         String leftIntegerValue;
         String rightIntegerValue;
         leftIntegerValue = processIntegerValue(inst.getLhs(), inst.getLhsReg());
-        rightIntegerValue = processIntegerValue(inst.getRhs(), inst.getRhsReg());
+        if(inst.getRhs() != null)
+            rightIntegerValue = processIntegerValue(inst.getRhs(), inst.getRhsReg());
+        else
+            rightIntegerValue = "0";
         if(inst.getLhs() instanceof Immediate)
         {
             addInst(NasmInst.Instruction.mov, inst.getLhsReg().toString(), leftIntegerValue);
