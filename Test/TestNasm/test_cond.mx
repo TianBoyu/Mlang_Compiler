@@ -1,9 +1,18 @@
+bool check(int x)
+{
+    return x==1;
+}
+
+bool[] qq = new bool[10];
+
 int main()
 {
     int a = 1;
     int b = 2;
     bool c = a > b;
-    if(a == 1 || b == 3)
+    qq[1] = true;
+    qq[2] = false;
+    if(!qq[b])
     {
         println(toString(1));
     }

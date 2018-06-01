@@ -1,5 +1,26 @@
 int main()
 {
-    int[][][] a = new int[2][5][];
+    int[][] a = new int[4][];
+    int i;
+    int j;
+    for(i = 0; i < 4; ++i)
+    {
+        a[i]  = new int[5];
+    }
+    for(i = 0; i < 4; ++i)
+    {
+        for(j = 0; j < 5; ++j)
+        {
+            a[i][j] = i + j;
+        }
+    }
+    for(i = 0; i < 4; ++i)
+        {
+            for(j = 0; j < 5; ++j)
+            {
+                println(toString(i) + ", " + toString(j));
+                println(toString(a[i][j]));
+            }
+        }
     return 0;
 }

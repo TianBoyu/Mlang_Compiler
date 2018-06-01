@@ -2,52 +2,279 @@ __________________________________________
 ===================TEXT===================
 
 
+define i64 @printNum(i64)
+  [%r1] = alloca i64
+  [%r1] = Call @toString([num])
+  Call @println([%r1])
+  Return
+
 define i64 @main()
-  [a] = alloca i64
-  Store Immediate 5 to [a]
-  [b] = alloca i64
-  Store Immediate 0 to [b]
-  [c] = alloca i64
   [%r0] = alloca i64
-  [%r0] = [c] EQU Immediate 10
-  Branch [%r0] true: label0 false: label1
-  Branch [%r0] true: label4 false: label1
+  [%r0] = Malloc Immediate 4
+  Store Immediate 4 to [Address %r0_size:[%r0]+offset Immediate -1*i64]
+  [%r1] = alloca i64
+  Store Immediate 0 to [%r1]
+  MemCopy [%r0] to [a]
+  [%r2] = alloca i64
+  [%r2] = Malloc Immediate 5
+  Store Immediate 5 to [Address %r2_size:[%r2]+offset Immediate -1*i64]
+  MemCopy [%r2] to [b]
+  Store Immediate 0 to [i]
 
   label4
-  [%r1] = alloca i64
-  [%r1] = [a] idiv [b]
-  [%r2] = alloca i64
-  [%r2] = [%r1] EQU Immediate 0
-  Branch [%r2] true: label0 false: label1
-  Branch [%r2] true: label0 false: label1
-  Branch [%r2] true: label3 false: label1
+  [%r0] = alloca i64
+  [%r0] = [i] SLT Immediate 4
+  Branch [%r0] true: label6 false: label7
 
-  label3
-  [%r3] = alloca i64
-  [%r3] = [a] EQU Immediate 5
-  Branch [%r3] true: label0 false: label1
-  Branch [%r3] true: label0 false: label1
-  [%r4] = alloca i64
-  [%r4] = [%r3] xor Immediate 1
-  [%r5] = [%r4] EQU Immediate 0
-  Branch [%r4] true: label0 false: label1
+  label6
+  Store Immediate 1 to [%r0]
+  Jump label8
 
-  label0
-  Store Immediate 30 to [c]
-  Jump label2
+  label7
+  Store Immediate 0 to [%r0]
 
-  label1
-  Jump label2
+  label8
+  [%r1] = [%r0] NEQ Immediate 0
+  Branch [%r0] true: label2 false: label3
 
   label2
+  [%r2] = alloca i64
+  [%r2] = Malloc Immediate 11
+  Store Immediate 11 to [Address %r2_size:[%r2]+offset Immediate -1*i64]
+  Store [%r2] to [Address a:[a]+offset [i]*i64]
+
+  label5
+  [%r4] = alloca i64
+  Store [i] to [%r4]
+  [i] = [i] add Immediate 1
+  Jump label4
+
+  label3
+  Store Immediate 0 to [i]
+
+  label11
+  [%r5] = alloca i64
+  [%r5] = [i] SLT Immediate 4
+  Branch [%r5] true: label13 false: label14
+
+  label13
+  Store Immediate 1 to [%r5]
+  Jump label15
+
+  label14
+  Store Immediate 0 to [%r5]
+
+  label15
+  [%r6] = [%r5] NEQ Immediate 0
+  Branch [%r5] true: label9 false: label10
+
+  label9
+  Store Immediate 0 to [j]
+
+  label18
   [%r7] = alloca i64
-  [%r7] = Call @toString([c])
-  Call @println([%r7])
-  Return [c]
+  [%r7] = [j] SLT Immediate 10
+  Branch [%r7] true: label20 false: label21
+
+  label20
+  Store Immediate 1 to [%r7]
+  Jump label22
+
+  label21
+  Store Immediate 0 to [%r7]
+
+  label22
+  [%r8] = [%r7] NEQ Immediate 0
+  Branch [%r7] true: label16 false: label17
+
+  label16
+  Store Immediate 888 to [Address a:[Address a:[a]+offset [i]*i64]+offset [j]*i64]
+
+  label19
+  [%r10] = alloca i64
+  Store [j] to [%r10]
+  [j] = [j] add Immediate 1
+  Jump label18
+
+  label17
+
+  label12
+  [%r12] = alloca i64
+  Store [i] to [%r12]
+  [i] = [i] add Immediate 1
+  Jump label11
+
+  label10
+  Store Immediate 0 to [i]
+
+  label25
+  [%r13] = alloca i64
+  [%r13] = [i] SLT Immediate 5
+  Branch [%r13] true: label27 false: label28
+
+  label27
+  Store Immediate 1 to [%r13]
+  Jump label29
+
+  label28
+  Store Immediate 0 to [%r13]
+
+  label29
+  [%r14] = [%r13] NEQ Immediate 0
+  Branch [%r13] true: label23 false: label24
+
+  label23
+  [%r15] = alloca Immediate 8
+  [%r15] = Malloc Immediate 16
+  Store [%r15] to [Address b:[b]+offset [i]*i64]
+  [%r16] = alloca i64
+  [%r16] = Immediate 1 neg
+  Store [%r16] to [Address num:[Address b:[b]+offset [i]*i64]+offset Immediate 0*i64]
+
+  label26
+  [%r18] = alloca i64
+  Store [i] to [%r18]
+  [i] = [i] add Immediate 1
+  Jump label25
+
+  label24
+  [%r19] = alloca i64
+  [%r19] = Call @printNum([Address a:[Address a:[a]+offset Immediate 3*i64]+offset Immediate 9*i64])
+  Store Immediate 0 to [i]
+
+  label32
+  [%r20] = alloca i64
+  [%r20] = [i] SEQ Immediate 3
+  Branch [%r20] true: label34 false: label35
+
+  label34
+  Store Immediate 1 to [%r20]
+  Jump label36
+
+  label35
+  Store Immediate 0 to [%r20]
+
+  label36
+  [%r21] = [%r20] NEQ Immediate 0
+  Branch [%r20] true: label30 false: label31
+
+  label30
+  Store Immediate 0 to [j]
+
+  label39
+  [%r22] = alloca i64
+  [%r22] = [j] SEQ Immediate 9
+  Branch [%r22] true: label41 false: label42
+
+  label41
+  Store Immediate 1 to [%r22]
+  Jump label43
+
+  label42
+  Store Immediate 0 to [%r22]
+
+  label43
+  [%r23] = [%r22] NEQ Immediate 0
+  Branch [%r22] true: label37 false: label38
+
+  label37
+  [%r24] = alloca i64
+  [%r24] = [i] imul Immediate 10
+  [%r25] = alloca i64
+  [%r25] = [%r24] add [j]
+  Store [%r25] to [Address a:[Address a:[a]+offset [i]*i64]+offset [j]*i64]
+
+  label40
+  [%r27] = alloca i64
+  Store [j] to [%r27]
+  [j] = [j] add Immediate 1
+  Jump label39
+
+  label38
+
+  label33
+  [%r29] = alloca i64
+  Store [i] to [%r29]
+  [i] = [i] add Immediate 1
+  Jump label32
+
+  label31
+  Store Immediate 0 to [i]
+
+  label46
+  [%r30] = alloca i64
+  [%r30] = [i] SEQ Immediate 3
+  Branch [%r30] true: label48 false: label49
+
+  label48
+  Store Immediate 1 to [%r30]
+  Jump label50
+
+  label49
+  Store Immediate 0 to [%r30]
+
+  label50
+  [%r31] = [%r30] NEQ Immediate 0
+  Branch [%r30] true: label44 false: label45
+
+  label44
+  Store Immediate 0 to [j]
+
+  label53
+  [%r32] = alloca i64
+  [%r32] = [j] SEQ Immediate 9
+  Branch [%r32] true: label55 false: label56
+
+  label55
+  Store Immediate 1 to [%r32]
+  Jump label57
+
+  label56
+  Store Immediate 0 to [%r32]
+
+  label57
+  [%r33] = [%r32] NEQ Immediate 0
+  Branch [%r32] true: label51 false: label52
+
+  label51
+  [%r34] = alloca i64
+  [%r34] = Call @printNum([Address a:[Address a:[a]+offset [i]*i64]+offset [j]*i64])
+
+  label54
+  [%r36] = alloca i64
+  Store [j] to [%r36]
+  [j] = [j] add Immediate 1
+  Jump label53
+
+  label52
+
+  label47
+  [%r38] = alloca i64
+  Store [i] to [%r38]
+  [i] = [i] add Immediate 1
+  Jump label46
+
+  label45
+  Store Immediate 0 to [Address a:[Address a:[a]+offset Immediate 2*i64]+offset Immediate 10*i64]
+  [%r39] = alloca i64
+  [%r39] = Call @printNum([Address a:[Address a:[a]+offset Immediate 2*i64]+offset Immediate 10*i64])
+  [%r40] = alloca i64
+  [%r40] = Immediate 2 neg
+  Store [%r40] to [Address num:[Address b:[b]+offset Immediate 0*i64]+offset Immediate 0*i64]
+  [%r41] = alloca i64
+  [%r41] = Immediate 10 neg
+  Store [%r41] to [Address num:[Address b:[b]+offset [Address a:[Address a:[a]+offset Immediate 2*i64]+offset Immediate 10*i64]*i64]+offset Immediate 0*i64]
+  [%r42] = alloca i64
+  [%r42] = Call @printNum([Address num:[Address b:[b]+offset Immediate 0*i64]+offset Immediate 0*i64])
+  [%r43] = alloca i64
+  [%r43] = Call @printNum([Address num:[Address b:[b]+offset Immediate 1*i64]+offset Immediate 0*i64])
+  Return Immediate 0
+  Return
 
 
 __________________________________________
 ===================TYPE===================
+struct rec = type {i64 i64 }
 
 
 __________________________________________

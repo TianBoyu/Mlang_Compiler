@@ -168,7 +168,8 @@ public class SemanticChecker implements ASTTraversal
             errorHandler.addError(node.getPosition(),
                     "'[]' can not be applied to non-array element");
 //        node.setType(currentScope.findType(node.getType().getTypeName()));
-        if(node.getArray().getExprType() instanceof ArrayType)
+//        if(node.getArray().getExprType() instanceof ArrayType)
+        if(((ArrayType)node.getArray().getExprType()).getDimension() > 1)
             node.setExprType(((ArrayType)node.getArray().getExprType()).getBasic_type());
         else
             node.setExprType(currentScope.findType(((ArrayType)node.getArray().getExprType()).getBasic_type().getTypeName()));

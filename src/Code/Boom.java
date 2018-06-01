@@ -35,12 +35,12 @@ import java.util.List;
 /*
  * Class, Array
  * Global Variable(only int and one dim array now)
- * Input
  * String storage & builtin function(done)
- * test585 ! combined with AndExpr OrExpr
- * semantic check, get Expr Type(ArrayType)
- * substring
+ * test585 ! combined with AndExpr OrExpr(done)
+ * semantic check, get Expr Type(ArrayType)(done)
+ * substring(done)
  * null
+ * memory allocate for multiarray
  */
 
 
@@ -50,7 +50,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test585.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test560.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);

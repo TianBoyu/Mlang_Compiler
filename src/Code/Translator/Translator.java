@@ -63,7 +63,7 @@ public class Translator implements IRInstTraversal
             visit(cur);
             if (cur instanceof Function && ((Function) cur).getName() == Name.getName("main"))
             {
-                for(NasmInst inst : initializeInsts)
+                for (NasmInst inst : initializeInsts)
                     nasmInsts.add(inst);
             }
             cur = cur.getNext();

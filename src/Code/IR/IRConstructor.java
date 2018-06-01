@@ -228,6 +228,7 @@ public class IRConstructor implements IRTraversal
         visit(node.getBlock());
         exitIRScope();
         function.setUsedSlotNumber(currentFunction.getUsedSlotNumber());
+        addInst(new Return(currentLabel, null));
         return null;
     }
 
@@ -599,6 +600,8 @@ public class IRConstructor implements IRTraversal
                     address, offset);
             memoryAllocate(node, type, false, address1);
             Address compareDest = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+            addInst(new Alloca(currentLabel, compareDest, new BuiltIn()));
+            currentFunction.increSlotNumber();
             addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.add,
                     offset, offset, new Immediate(1)));
             addInst(new Compare(currentLabel, Compare.Condition.SEQ, compareDest, offset, size));
@@ -808,7 +811,7 @@ public class IRConstructor implements IRTraversal
             endCondition = visit(node.getEndCondition());
         if(endCondition != null)
         {
-            addInst(new Compare(currentLabel, Compare.Condition.EQU,
+            addInst(new Compare(currentLabel, Compare.Condition.NEQ,
                     new Address(currentFunction.getRegister().getName(), new BuiltIn()),
                     endCondition, new Immediate(0)));
             addInst(new Branch(currentLabel, trueLabel, falseLabel, endCondition));
@@ -836,7 +839,7 @@ public class IRConstructor implements IRTraversal
         Label endLabel = new Label(null);
 
         IntegerValue condition = visit(node.getCondition());
-        addInst(new Compare(currentLabel, Compare.Condition.EQU,
+        addInst(new Compare(currentLabel, Compare.Condition.NEQ,
                 new Address(currentFunction.getRegister().getName(), new BuiltIn()),
                 condition, new Immediate(0)));
         addInst(new Branch(currentLabel, trueLabel, falseLabel, condition));
@@ -877,7 +880,7 @@ public class IRConstructor implements IRTraversal
             endCondition = visit(node.getCondition());
         if(endCondition != null)
         {
-            addInst(new Compare(currentLabel, Compare.Condition.EQU,
+            addInst(new Compare(currentLabel, Compare.Condition.NEQ,
                     new Address(currentFunction.getRegister().getName(), new BuiltIn()),
                     endCondition, new Immediate(0)));
             addInst(new Branch(currentLabel, trueLabel, falseLabel, endCondition));
