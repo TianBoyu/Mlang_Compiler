@@ -1,0 +1,32 @@
+int[][] make;
+
+int foo()
+{
+    make = new int[4][];
+    int i;
+    for(i = 0; i < 4; ++i)
+    {
+        make[i] = new int [5];
+        int j;
+        for(j = 0; j < 5; ++j)
+        {
+            make[i][j] = i + j;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    int x = foo();
+    int i;
+    int j;
+    for(i = 0; i < 4; ++i)
+    {
+        for(j = 0; j < 5; ++j)
+        {
+            println(toString(make[i][j]));
+        }
+    }
+    return 0;
+}

@@ -286,15 +286,21 @@ public class IRConstructor implements IRTraversal
     {
         if(node == null) return null;
         Label midLabel = new Label(null);
+        Label midTrueLabel = new Label(null);
         Label trueLabel = new Label(null);
         Label falseLabel = new Label(null);
         Label endLabel = new Label(null);
 
         IntegerValue lhs = visit(node.getCond1());
-        Compare.Condition lhsOp = null;
-        if(node.getCond1() instanceof BinaryExprNode)
-            lhsOp = convertOp(((BinaryExprNode) node.getCond1()).getOp());
-        addInst(new Branch(currentLabel, midLabel, falseLabel, lhs, lhsOp));
+//        Compare.Condition lhsOp = null;
+//        if(node.getCond1() instanceof BinaryExprNode)
+//            lhsOp = convertOp(((BinaryExprNode) node.getCond1()).getOp());
+        addInst(new Compare(currentLabel, Compare.Condition.NEQ,
+                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                lhs, new Immediate(0)));
+        addInst(new Branch(currentLabel, midLabel, falseLabel, lhs));
+//        addInst(midTrueLabel);
+//        addInst(new Jump(currentLabel, trueLabel));
         addInst(midLabel);
         IntegerValue rhs = visit(node.getCond2());
         Compare.Condition rhsOp = null;
@@ -304,7 +310,11 @@ public class IRConstructor implements IRTraversal
         Address returnAddress = new Address(currentFunction.getRegister().getName(), new BuiltIn());
         addInst(new Alloca(currentLabel, returnAddress, new BuiltIn()));
         currentFunction.increSlotNumber();
-        addInst(new Branch(currentLabel, trueLabel, falseLabel, rhs, rhsOp));
+//        addInst(new Branch(currentLabel, trueLabel, falseLabel, rhs, rhsOp));
+        addInst(new Compare(currentLabel, Compare.Condition.NEQ,
+                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                rhs, new Immediate(0)));
+        addInst(new Branch(currentLabel, trueLabel, falseLabel, returnAddress));
         storeCompareResult(returnAddress, trueLabel, falseLabel, endLabel);
         return returnAddress;
     }
@@ -622,15 +632,21 @@ public class IRConstructor implements IRTraversal
     {
         if(node == null) return null;
         Label midLabel = new Label(null);
+        Label midTrueLabel = new Label(null);
         Label trueLabel = new Label(null);
         Label falseLabel = new Label(null);
         Label endLabel = new Label(null);
 
         IntegerValue lhs = visit(node.getCond1());
-        Compare.Condition lhsOp = null;
-        if(node.getCond1() instanceof BinaryExprNode)
-            lhsOp = convertOp(((BinaryExprNode) node.getCond1()).getOp());
-        addInst(new Branch(currentLabel, trueLabel, midLabel, lhs, lhsOp));
+//        Compare.Condition lhsOp = null;
+//        if(node.getCond1() instanceof BinaryExprNode)
+//            lhsOp = convertOp(((BinaryExprNode) node.getCond1()).getOp());
+        addInst(new Compare(currentLabel, Compare.Condition.NEQ,
+                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                lhs, new Immediate(0)));
+        addInst(new Branch(currentLabel, trueLabel, midLabel, lhs));
+        addInst(midTrueLabel);
+        addInst(new Jump(currentLabel, trueLabel));
         addInst(midLabel);
         IntegerValue rhs = visit(node.getCond2());
         Compare.Condition rhsOp = null;
@@ -639,9 +655,13 @@ public class IRConstructor implements IRTraversal
         Address returnAddress = new Address(currentFunction.getRegister().getName(), new BuiltIn());
         addInst(new Alloca(currentLabel, returnAddress, new BuiltIn()));
         currentFunction.increSlotNumber();
-        addInst(new Branch(currentLabel, trueLabel, falseLabel, rhs, rhsOp));
+//        addInst(new Branch(currentLabel, trueLabel, falseLabel, rhs, rhsOp));
+        addInst(new Compare(currentLabel, Compare.Condition.NEQ,
+                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                rhs, new Immediate(0)));
+        addInst(new Branch(currentLabel, trueLabel, falseLabel, returnAddress));
         storeCompareResult(returnAddress, trueLabel, falseLabel, endLabel);
-        return rhs;
+        return returnAddress;
     }
 
     @Override
