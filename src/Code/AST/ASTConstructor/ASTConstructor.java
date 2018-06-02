@@ -386,8 +386,6 @@ public class ASTConstructor extends MlangBaseListener
     public void exitBinaryExpr(MlangParser.BinaryExprContext ctx)
     {
         BinaryOp op;
-        if(ctx.op == null)
-            System.out.println(1);
         switch (ctx.op.getText())
         {
             case "+":

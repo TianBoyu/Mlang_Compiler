@@ -2,33 +2,588 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @__A__foo([struct A])
-  Store Immediate 2 to [Address A_data:[null]+offset Immediate 0*i64]
+define i64 @__vector__init([struct vector], [ArrayType: i64[]])
+  [Address%r0:] = alloca i64
+  [Address%r0:] = [Addressvec:] EQU 
+  Branch [Address%r0:] true: label3 false: label4
+
+  label3
+  Store Immediate 1 to [Address%r0:]
+  Jump label5
+
+  label4
+  Store Immediate 0 to [Address%r0:]
+
+  label5
+  [Address%r1:] = [Address%r0:] NEQ Immediate 0
+  Branch [Address%r0:] true: label0 false: label1
+
+  label0
+  Return
+  Jump label2
+
+  label1
+  Jump label2
+
+  label2
+  [Address%r2:] = alloca i64
+  [Address%r3:] = alloca i64
+  [Address%r3:] = Call @size([Addressvec:])
+  [Address%r2:] = Malloc [Address%r3:]
+  Store [Address%r3:] to [Address%r2_size:[Address%r2:]+offset Immediate -1*i64]
+  Store [Address%r2:] to [Addressvector_data:[Addressnull:]+offset Immediate 0*i64]
+  [Addressi:] = alloca i64
+  Store Immediate 0 to [Addressi:]
+
+  label8
+  [Address%r4:] = alloca i64
+  [Address%r4:] = Call @size([Addressvec:])
+  [Address%r5:] = alloca i64
+  [Address%r5:] = [Addressi:] SLT [Address%r4:]
+  Branch [Address%r5:] true: label10 false: label11
+
+  label10
+  Store Immediate 1 to [Address%r5:]
+  Jump label12
+
+  label11
+  Store Immediate 0 to [Address%r5:]
+
+  label12
+  [Address%r6:] = [Address%r5:] NEQ Immediate 0
+  Branch [Address%r5:] true: label6 false: label7
+
+  label6
+  Store [Addressvec:[Addressvec:]+offset [Addressi:]*i64] to [Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
+
+  label9
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label8
+
+  label7
+  Return
+
+define i64 @__vector__getDim([struct vector])
+  [Address%r0:] = alloca i64
+  [Address%r0:] = [Addressvector_data:[Addressnull:]+offset Immediate 0*i64] EQU 
+  Branch [Address%r0:] true: label16 false: label17
+
+  label16
+  Store Immediate 1 to [Address%r0:]
+  Jump label18
+
+  label17
+  Store Immediate 0 to [Address%r0:]
+
+  label18
+  [Address%r1:] = [Address%r0:] NEQ Immediate 0
+  Branch [Address%r0:] true: label13 false: label14
+
+  label13
+  Return Immediate 0
+  Jump label15
+
+  label14
+  Jump label15
+
+  label15
+  [Address%r2:] = alloca i64
+  [Address%r2:] = Call @size([Addressvector_data:[Addressnull:]+offset Immediate 0*i64])
+  Return [Address%r2:]
+  Return
+
+define i64 @__vector__dot([struct vector], [struct vector])
+  [Addressi:] = alloca i64
+  Store Immediate 0 to [Addressi:]
+  [Addressresult:] = alloca i64
+  Store Immediate 0 to [Addressresult:]
+
+  label21
+  [Address%r0:] = alloca i64
+  [Address%r0:] = Call @getDim()
+  [Address%r1:] = alloca i64
+  [Address%r1:] = [Addressi:] SLT [Address%r0:]
+  Branch [Address%r1:] true: label22 false: label23
+
+  label22
+  Store Immediate 1 to [Address%r1:]
+  Jump label24
+
+  label23
+  Store Immediate 0 to [Address%r1:]
+
+  label24
+  [Address%r2:] = [Address%r1:] NEQ Immediate 0
+  Branch [Address%r1:] true: label19 false: label20
+
+  label19
+  [Address%r3:] = alloca i64
+  [Address%r3:] = [Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64] imul [Addressdata:[Addressdata:[Addressrhs:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
+  Store [Address%r3:] to [Addressresult:]
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label21
+
+  label20
+  Return [Addressresult:]
+  Return
+
+define [struct vector] @__vector__scalarInPlaceMultiply([struct vector], i64)
+  [Address%r0:] = alloca i64
+  [Address%r0:] = [Addressvector_data:[Addressnull:]+offset Immediate 0*i64] EQU 
+  Branch [Address%r0:] true: label28 false: label29
+
+  label28
+  Store Immediate 1 to [Address%r0:]
+  Jump label30
+
+  label29
+  Store Immediate 0 to [Address%r0:]
+
+  label30
+  [Address%r1:] = [Address%r0:] NEQ Immediate 0
+  Branch [Address%r0:] true: label25 false: label26
+
+  label25
+  Return
+  Jump label27
+
+  label26
+  Jump label27
+
+  label27
+  [Addressi:] = alloca i64
+  Store Immediate 0 to [Addressi:]
+
+  label33
+  [Address%r2:] = alloca i64
+  [Address%r2:] = Call @getDim()
+  [Address%r3:] = alloca i64
+  [Address%r3:] = [Addressi:] SLT [Address%r2:]
+  Branch [Address%r3:] true: label35 false: label36
+
+  label35
+  Store Immediate 1 to [Address%r3:]
+  Jump label37
+
+  label36
+  Store Immediate 0 to [Address%r3:]
+
+  label37
+  [Address%r4:] = [Address%r3:] NEQ Immediate 0
+  Branch [Address%r3:] true: label31 false: label32
+
+  label31
+  [Address%r5:] = alloca i64
+  [Address%r5:] = [Addressc:] imul [Addressdata:[Addressdata:+offset Immediate 0*i64]+offset [Addressi:]*i64]
+  Store [Address%r5:] to [Addressdata:[Addressdata:+offset Immediate 0*i64]+offset [Addressi:]*i64]
+
+  label34
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label33
+
+  label32
+  Return
+  Return
+
+define [struct vector] @__vector__add([struct vector], [struct vector])
+  [Address%r0:] = alloca i64
+  [Address%r0:] = Call @getDim()
+  [Address%r1:] = alloca i64
+  [Address%r1:] = Call @__vector__getDim([Addressrhs:])
+  [Address%r2:] = alloca i64
+  [Address%r2:] = [Address%r0:] NEQ [Address%r1:]
+  Branch [Address%r2:] true: label46 false: label47
+
+  label46
+  Store Immediate 1 to [Address%r2:]
+  Jump label48
+
+  label47
+  Store Immediate 0 to [Address%r2:]
+
+  label48
+  [Address%r3:] = [Address%r2:] NEQ Immediate 0
+  Branch [Address%r2:] true: label43 false: label41
+
+  label42
+  Jump label43
+
+  label41
+  [Address%r4:] = alloca i64
+  [Address%r4:] = Call @getDim()
+  [Address%r5:] = alloca i64
+  [Address%r5:] = [Address%r4:] EQU Immediate 0
+  Branch [Address%r5:] true: label49 false: label50
+
+  label49
+  Store Immediate 1 to [Address%r5:]
+  Jump label51
+
+  label50
+  Store Immediate 0 to [Address%r5:]
+
+  label51
+  [Address%r6:] = alloca i64
+  [Address%r7:] = [Address%r5:] NEQ Immediate 0
+  Branch [Address%r6:] true: label43 false: label44
+
+  label43
+  Store Immediate 1 to [Address%r6:]
+  Jump label45
+
+  label44
+  Store Immediate 0 to [Address%r6:]
+
+  label45
+  [Address%r8:] = [Address%r6:] NEQ Immediate 0
+  Branch [Address%r6:] true: label38 false: label39
+
+  label38
+  Return
+  Jump label40
+
+  label39
+  Jump label40
+
+  label40
+  [Addresstemp:] = alloca [struct vector]
+  [Address%r9:] = alloca Immediate 8
+  [Address%r9:] = Malloc Immediate 8
+  Store [Address%r9:] to [Addresstemp:]
+  [Addressi:] = alloca i64
+  [Address%r10:] = alloca i64
+  [Address%r11:] = alloca i64
+  [Address%r11:] = Call @getDim()
+  [Address%r10:] = Malloc [Address%r11:]
+  Store [Address%r11:] to [Address%r10_size:[Address%r10:]+offset Immediate -1*i64]
+  Store [Address%r10:] to [Addressdata:[Addresstemp:]+offset Immediate 0*i64]
+  Store Immediate 0 to [Addressi:]
+
+  label54
+  [Address%r12:] = alloca i64
+  [Address%r12:] = Call @getDim()
+  [Address%r13:] = alloca i64
+  [Address%r13:] = [Addressi:] SLT [Address%r12:]
+  Branch [Address%r13:] true: label56 false: label57
+
+  label56
+  Store Immediate 1 to [Address%r13:]
+  Jump label58
+
+  label57
+  Store Immediate 0 to [Address%r13:]
+
+  label58
+  [Address%r14:] = [Address%r13:] NEQ Immediate 0
+  Branch [Address%r13:] true: label52 false: label53
+
+  label52
+  [Address%r15:] = alloca i64
+  [Address%r15:] = [Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64] add [Addressdata:[Addressdata:[Addressrhs:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
+  Store [Address%r15:] to [Addressdata:[Addressdata:[Addresstemp:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
+
+  label55
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label54
+
+  label53
+  Return [Addresstemp:]
+  Return
+
+define i64 @__vector__set([struct vector], i64, i64)
+  [Address%r0:] = alloca i64
+  [Address%r0:] = Call @getDim()
+  [Address%r1:] = alloca i64
+  [Address%r1:] = [Address%r0:] SLT [Addressidx:]
+  Branch [Address%r1:] true: label62 false: label63
+
+  label62
+  Store Immediate 1 to [Address%r1:]
+  Jump label64
+
+  label63
+  Store Immediate 0 to [Address%r1:]
+
+  label64
+  [Address%r2:] = [Address%r1:] NEQ Immediate 0
+  Branch [Address%r1:] true: label59 false: label60
+
+  label59
+  Return Immediate 0
+  Jump label61
+
+  label60
+  Jump label61
+
+  label61
+  Store [Addressvalue:] to [Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset [Addressidx:]*i64]
+  Return Immediate 1
+  Return
+
+define i64 @__vector__tostring([struct vector])
+  [Addresstemp:] = alloca i64
+  Store [AddressString_0:] to [Addresstemp:]
+  [Address%r0:] = alloca i64
+  [Address%r0:] = Call @getDim()
+  [Address%r1:] = alloca i64
+  [Address%r1:] = [Address%r0:] SGT Immediate 0
+  Branch [Address%r1:] true: label68 false: label69
+
+  label68
+  Store Immediate 1 to [Address%r1:]
+  Jump label70
+
+  label69
+  Store Immediate 0 to [Address%r1:]
+
+  label70
+  [Address%r2:] = [Address%r1:] NEQ Immediate 0
+  Branch [Address%r1:] true: label65 false: label66
+
+  label65
+  [Address%r3:] = alloca i64
+  [Address%r4:] = alloca i64
+  [Address%r4:] = Call @toString([Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset Immediate 0*i64])
+  [Address%r3:] = Call @Str_ADD([Addresstemp:], [Address%r4:])
+  Store [Address%r3:] to [Addresstemp:]
+  Jump label67
+
+  label66
+  Jump label67
+
+  label67
+  [Addressi:] = alloca i64
+  Store Immediate 1 to [Addressi:]
+
+  label73
+  [Address%r5:] = alloca i64
+  [Address%r5:] = Call @getDim()
+  [Address%r6:] = alloca i64
+  [Address%r6:] = [Addressi:] SLT [Address%r5:]
+  Branch [Address%r6:] true: label75 false: label76
+
+  label75
+  Store Immediate 1 to [Address%r6:]
+  Jump label77
+
+  label76
+  Store Immediate 0 to [Address%r6:]
+
+  label77
+  [Address%r7:] = [Address%r6:] NEQ Immediate 0
+  Branch [Address%r6:] true: label71 false: label72
+
+  label71
+  [Address%r8:] = alloca i64
+  [Address%r9:] = alloca i64
+  [Address%r9:] = Call @Str_ADD([Addresstemp:], [AddressString_1:])
+  [Address%r10:] = alloca i64
+  [Address%r10:] = Call @toString([Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64])
+  [Address%r8:] = Call @Str_ADD([Address%r9:], [Address%r10:])
+  Store [Address%r8:] to [Addresstemp:]
+
+  label74
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label73
+
+  label72
+  [Address%r12:] = alloca i64
+  [Address%r12:] = Call @Str_ADD([Addresstemp:], [AddressString_2:])
+  Store [Address%r12:] to [Addresstemp:]
+  Return [Addresstemp:]
+  Return
+
+define i64 @__vector__copy([struct vector], [struct vector])
+  [Address%r0:] = alloca i64
+  [Address%r0:] = [Addressrhs:] EQU 
+  Branch [Address%r0:] true: label81 false: label82
+
+  label81
+  Store Immediate 1 to [Address%r0:]
+  Jump label83
+
+  label82
+  Store Immediate 0 to [Address%r0:]
+
+  label83
+  [Address%r1:] = [Address%r0:] NEQ Immediate 0
+  Branch [Address%r0:] true: label78 false: label79
+
+  label78
+  Return Immediate 0
+  Jump label80
+
+  label79
+  Jump label80
+
+  label80
+  [Address%r2:] = alloca i64
+  [Address%r2:] = Call @__vector__getDim([Addressrhs:])
+  [Address%r3:] = alloca i64
+  [Address%r3:] = [Address%r2:] EQU Immediate 0
+  Branch [Address%r3:] true: label87 false: label88
+
+  label87
+  Store Immediate 1 to [Address%r3:]
+  Jump label89
+
+  label88
+  Store Immediate 0 to [Address%r3:]
+
+  label89
+  [Address%r4:] = [Address%r3:] NEQ Immediate 0
+  Branch [Address%r3:] true: label84 false: label85
+
+  label84
+  Store NULL to [Addressvector_data:[Addressnull:]+offset Immediate 0*i64]
+  Jump label86
+
+  label85
+  [Address%r5:] = alloca i64
+  [Address%r6:] = alloca i64
+  [Address%r6:] = Call @__vector__getDim([Addressrhs:])
+  [Address%r5:] = Malloc [Address%r6:]
+  Store [Address%r6:] to [Address%r5_size:[Address%r5:]+offset Immediate -1*i64]
+  Store [Address%r5:] to [Addressvector_data:[Addressnull:]+offset Immediate 0*i64]
+  [Addressi:] = alloca i64
+  Store Immediate 0 to [Addressi:]
+
+  label92
+  [Address%r7:] = alloca i64
+  [Address%r7:] = Call @getDim()
+  [Address%r8:] = alloca i64
+  [Address%r8:] = [Addressi:] SLT [Address%r7:]
+  Branch [Address%r8:] true: label94 false: label95
+
+  label94
+  Store Immediate 1 to [Address%r8:]
+  Jump label96
+
+  label95
+  Store Immediate 0 to [Address%r8:]
+
+  label96
+  [Address%r9:] = [Address%r8:] NEQ Immediate 0
+  Branch [Address%r8:] true: label90 false: label91
+
+  label90
+  Store [Addressdata:[Addressdata:[Addressrhs:]+offset Immediate 0*i64]+offset [Addressi:]*i64] to [Addressvector_data:[Addressvector_data:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
+
+  label93
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label92
+
+  label91
+  Jump label86
+
+  label86
   Return Immediate 1
   Return
 
 define i64 @main()
-  [x] = alloca [struct A]
-  [%r0] = alloca Immediate 8
-  [%r0] = Malloc Immediate 8
-  Store [%r0] to [x]
-  [b] = alloca i64
-  [%r1] = alloca i64
-  [%r1] = Call @__A__foo([x])
-  Store [%r1] to [b]
-  [c] = alloca i64
-  Store [Address data:[x]+offset Immediate 0*i64] to [c]
-  [%r3] = alloca i64
-  [%r3] = Call @toString([c])
-  Call @println([%r3])
+  [Addressx:] = alloca [struct vector]
+  [Address%r0:] = alloca Immediate 8
+  [Address%r0:] = Malloc Immediate 8
+  Store [Address%r0:] to [Addressx:]
+  [Addressa:] = alloca [ArrayType: i64[]]
+  [Address%r1:] = alloca i64
+  [Address%r1:] = Malloc Immediate 10
+  Store Immediate 10 to [Address%r1_size:[Address%r1:]+offset Immediate -1*i64]
+  Store [Address%r1:] to [Addressa:]
+  [Addressi:] = alloca i64
+  Store Immediate 0 to [Addressi:]
+
+  label99
+  [Address%r2:] = alloca i64
+  [Address%r2:] = [Addressi:] SLT Immediate 10
+  Branch [Address%r2:] true: label101 false: label102
+
+  label101
+  Store Immediate 1 to [Address%r2:]
+  Jump label103
+
+  label102
+  Store Immediate 0 to [Address%r2:]
+
+  label103
+  [Address%r3:] = [Address%r2:] NEQ Immediate 0
+  Branch [Address%r2:] true: label97 false: label98
+
+  label97
+  [Address%r4:] = alloca i64
+  [Address%r4:] = Immediate 9 sub [Addressi:]
+  Store [Address%r4:] to [Addressa:[Addressa:]+offset [Addressi:]*i64]
+
+  label100
+  [Addressi:] = [Addressi:] add Immediate 1
+  Jump label99
+
+  label98
+  Call @__vector__init([Addressx:], [Addressa:])
+  Call @print([AddressString_3:])
+  [Address%r9:] = alloca i64
+  [Address%r9:] = Call @__vector__tostring([Addressx:])
+  Call @println([Address%r9:])
+  [Addressy:] = alloca [struct vector]
+  [Address%r10:] = alloca Immediate 8
+  [Address%r10:] = Malloc Immediate 8
+  Store [Address%r10:] to [Addressy:]
+  [Address%r11:] = alloca i64
+  [Address%r11:] = Call @__vector__copy([Addressy:], [Addressx:])
+  [Address%r12:] = alloca i64
+  [Address%r12:] = Call @__vector__set([Addressy:], Immediate 3, Immediate 817)
+  [Address%r13:] = [Address%r12:] NEQ Immediate 0
+  Branch [Address%r12:] true: label104 false: label105
+
+  label104
+  Call @println([AddressString_4:])
+  Jump label106
+
+  label105
+  Jump label106
+
+  label106
+  Call @print([AddressString_5:])
+  [Address%r17:] = alloca i64
+  [Address%r17:] = Call @__vector__tostring([Addressy:])
+  Call @println([Address%r17:])
+  Call @print([AddressString_6:])
+  [Address%r20:] = alloca i64
+  [Address%r20:] = Call @__vector__add([Addressx:], [Addressy:])
+  [Address%r21:] = alloca i64
+  [Address%r21:] = Call @__vector__tostring([Address%r20:])
+  Call @println([Address%r21:])
+  Call @print([AddressString_7:])
+  [Address%r24:] = alloca i64
+  [Address%r25:] = alloca i64
+  [Address%r25:] = Call @__vector__dot([Addressx:], [Addressy:])
+  [Address%r24:] = Call @toString([Address%r25:])
+  Call @println([Address%r24:])
+  Call @print([AddressString_8:])
+  [Address%r28:] = alloca i64
+  [Address%r29:] = alloca i64
+  [Address%r29:] = Immediate 1 shl Immediate 3
+  [Address%r28:] = Call @__vector__scalarInPlaceMultiply([Addressy:], [Address%r29:])
+  [Address%r30:] = alloca i64
+  [Address%r30:] = Call @__vector__tostring([Address%r28:])
+  Call @println([Address%r30:])
   Return Immediate 0
   Return
 
 
 __________________________________________
 ===================TYPE===================
-struct A = type {i64}
+struct vector = type {[ArrayType: i64[]]}
 
 
 __________________________________________
 ===================DATA===================
+String_0: ( 
+String_1: , 
+String_2:  )
+String_3: vector x: 
+String_4: excited!
+String_5: vector y: 
+String_6: x + y: 
+String_7: x * y: 
+String_8: (1 << 3) * y: 

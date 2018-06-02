@@ -1,9 +1,13 @@
 class A
 {
     int data;
-    int foo()
+    A foo()
     {
-        data = 2;
+        A f = new A;
+        return f;
+    }
+    int bar()
+    {
         return 1;
     }
 }
@@ -11,8 +15,6 @@ class A
 int main()
 {
     A x = new A;
-    int b = x.foo();
-    int c = x.data;
-    println(toString(c));
+    int y = x.foo().bar();
     return 0;
 }

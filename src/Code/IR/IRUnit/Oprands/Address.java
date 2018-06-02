@@ -126,9 +126,12 @@ public class Address extends VirtualRegister
     @Override
     public String toString()
     {
-        if(this.offset == null)
-            return "[" + name.toString() + "]";
-        else
-            return "[Address " + name.toString() + ":" + base.toString() + "+offset " + offset.toString() + "*i64]";
+        String ret = "[Address" + name.toString() + ":";
+        if(base != null)
+            ret += base.toString();
+        if(offset != null)
+            ret += "+offset " + offset.toString() + "*i64";
+        ret += "]";
+        return ret;
     }
 }

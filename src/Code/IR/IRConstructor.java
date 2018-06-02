@@ -483,9 +483,6 @@ public class IRConstructor implements IRTraversal
     @Override
     public IntegerValue visit(CallExprNode node)
     {
-        //should assign a register to the return value
-//        Address address = new Address(currentFunctionScope.getRegister().getName());
-//        addInst(new Alloca(currentLabel, address, convertType(node.getFunction().getReturnType())));
         VirtualRegister register = currentFunctionScope.getRegister();
         IRType irType = new BuiltIn();
         Address address = null;
@@ -503,7 +500,33 @@ public class IRConstructor implements IRTraversal
         {
             params.add(visit(item));
         }
-        addInst(new Call(currentLabel, address, FunctionRename(node.getFuncName()), params));
+//        addInst(new Call(currentLabel, address, FunctionRename(node.getFuncName()), params));
+        addInst(new Call(currentLabel, address, node.getFuncName(), params));
+        return address;
+    }
+
+    private IntegerValue visitMemberCall(CallExprNode node, Address classAddress)
+    {
+        VirtualRegister register = currentFunctionScope.getRegister();
+        IRType irType = new BuiltIn();
+        Address address = null;
+        if(node.getFunction().getReturnType() != null &&
+                node.getFunction().getReturnType().getTypeName() != Name.getName("void"))
+        {
+            address = new Address(register.getName(), irType);
+            addInst(new Alloca(currentLabel, address, irType));
+            currentFunctionScope.increSlotNumber();
+            currentIRScope.addAddress(register.getName(), address);
+        }
+        List<IntegerValue> params = new ArrayList<>();
+        for(ExprNode item : node.getParam().getExprs())
+        {
+            if(params.size() == 0)
+                params.add(classAddress);
+            else
+                params.add(visit(item));
+        }
+        addInst(new Call(currentLabel, address, node.getFuncName(), params));
         return address;
     }
 
@@ -549,7 +572,8 @@ public class IRConstructor implements IRTraversal
                 node.getFunctionCall().setFunctionName(Name.getName("__" + name.toString() + "__" + node.getFunctionCall().getFuncName()));
             }
             node.getFunctionCall().addParam(node.getExpr(), 0);
-            ret = visit(node.getFunctionCall());
+//            ret = visit(node.getFunctionCall());
+            ret = visitMemberCall(node.getFunctionCall(), base);
         }
         else
         {
