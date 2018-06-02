@@ -32,13 +32,16 @@ public class IRConstructor implements IRTraversal
     private IRInstruction   initializeGlobalInst;
     private Label           currentLabel;
     private IRScope         currentIRScope;
-    private FunctionScope   currentFunction;
+    private Stack<IRScope>  irScopeStack = new Stack<>();
+    private FunctionScope   currentFunctionScope;
     private ClassDecNode    currentClass;
+    
+    private Function        currentFunction;
     private boolean isHeapAllocate = false;
 
     private boolean isInitializeInst = false;
 
-    private boolean isVarForCond = false;
+    private boolean isMemberFunction = false;
     private Label nextJumpLabel;
     private Label nextEndLoopLabel;
     private Stack<Label> jumpLabelStack = new Stack<>();
@@ -61,7 +64,7 @@ public class IRConstructor implements IRTraversal
     {
         this.program = progNode;
         Label globalLabel = new Label("GLOBAL");
-        currentFunction = new FunctionScope(Name.getName("GLOBAL"));
+        currentFunctionScope = new FunctionScope(Name.getName("GLOBAL"));
         currentLabel = globalLabel;
         setJumpLabel(globalLabel);
         setEndLoopLabel(globalLabel);
@@ -193,16 +196,25 @@ public class IRConstructor implements IRTraversal
     {
         currentClass = node;
         Class classType = new Class(node.getName());
+        setIRScope(node.getInternalScope().getIRScope());
         if(node == null) return null;
-        for(FuncDecNode item : node.getMemberFunction())
-            visit(item);
         for(VarDecNode item : node.getMemberVarible())
         {
 //            visit(item);
-            classType.addContainType(convertType(item.getType()));
+            String name = node.getName().toString() + "_" + item.getName();
+            Address address = new Address(Name.getName(name), convertType(item.getType()));
+            address.setMember(true);
+            address.setMemberNumber(item.getMemberNumber());
+            currentIRScope.addAddress(item.getName(), address);
+            classType.addContainType (convertType(item.getType()));
         }
+        isMemberFunction = true;
+        for(FuncDecNode item : node.getMemberFunction())
+            visit(item);
+        isMemberFunction = false;
         addType(classType);
         currentClass = null;
+        exitIRScope();
         return null;
     }
 
@@ -212,15 +224,15 @@ public class IRConstructor implements IRTraversal
         IRType type = visit(node.getReturnType());
         List<Parameter> params = new ArrayList<>();
         setIRScope(node.getInternalScope().getIRScope());
-        currentFunction = new FunctionScope(node.getName());
-        currentFunction.setFuncDecNode(node);
+        currentFunctionScope = new FunctionScope(node.getName());
+        currentFunctionScope.setFuncDecNode(node);
         if(currentClass != null)
             params.add(new Parameter(new Class(currentClass.getName()), Name.getName("null") ,
                     new Address(Name.getName("null"), new BuiltIn()), true));
         for(FuncParamNode item : node.getParameter())
         {
             Address address = new Address(item.getName(), convertType(item.getType()));
-            currentFunction.increSlotNumber();
+            currentFunctionScope.increSlotNumber();
             params.add(new Parameter(convertType(item.getType()), item.getName(), address));
             currentIRScope.addAddress(item.getName(), address);
         }
@@ -228,9 +240,10 @@ public class IRConstructor implements IRTraversal
 //        visitFormalParameter(node.getParameter());
         Function function = new Function(currentLabel, name, type, params, 0);
         addInst(function);
+        currentFunction = function;
         visit(node.getBlock());
         exitIRScope();
-        function.setUsedSlotNumber(currentFunction.getUsedSlotNumber());
+        function.setUsedSlotNumber(currentFunctionScope.getUsedSlotNumber());
         addInst(new Return(currentLabel, null));
         return null;
     }
@@ -263,7 +276,7 @@ public class IRConstructor implements IRTraversal
             name += "_ch";
         Address address = new Address(Name.getName(name), irType);
         addInst(new Alloca(currentLabel, address, irType));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
 
         currentIRScope.addAddress(node.getName(), address);
         if(node.getValue() != null)
@@ -302,7 +315,7 @@ public class IRConstructor implements IRTraversal
 //        if(node.getCond1() instanceof BinaryExprNode)
 //            lhsOp = convertOp(((BinaryExprNode) node.getCond1()).getOp());
         addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                 lhs, new Immediate(0)));
         addInst(new Branch(currentLabel, midLabel, falseLabel, lhs));
 //        addInst(midTrueLabel);
@@ -313,12 +326,12 @@ public class IRConstructor implements IRTraversal
         if(node.getCond2() instanceof BinaryExprNode)
             rhsOp = convertOp(((BinaryExprNode) node.getCond2()).getOp());
 //        addInst(new Branch(currentLabel, nextTrueLabel, nextFalseLabel, rhs, rhsOp));
-        Address returnAddress = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+        Address returnAddress = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
         addInst(new Alloca(currentLabel, returnAddress, new BuiltIn()));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
 //        addInst(new Branch(currentLabel, trueLabel, falseLabel, rhs, rhsOp));
         addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                 rhs, new Immediate(0)));
         addInst(new Branch(currentLabel, trueLabel, falseLabel, returnAddress));
         storeCompareResult(returnAddress, trueLabel, falseLabel, endLabel);
@@ -351,14 +364,14 @@ public class IRConstructor implements IRTraversal
     {
          if(node.getLhs().getExprType().getTypeName() == Name.getName("string"))
             return dealStringOperation(node);
-//        VirtualRegister dest = currentFunction.getRegister();
+//        VirtualRegister dest = currentFunctionScope.getRegister();
         IntegerValue left = visit(node.getLhs());
         IntegerValue right = visit(node.getRhs());
-        VirtualRegister dest = currentFunction.getRegister();
+        VirtualRegister dest = currentFunctionScope.getRegister();
         IRType irType = new BuiltIn();
         Address address = new Address(dest.getName(), irType);
         addInst(new Alloca(currentLabel, address, irType));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
         currentIRScope.addAddress(dest.getName(), address);
 
         addBinaryInst(address, left, right, node.getOp());
@@ -368,9 +381,9 @@ public class IRConstructor implements IRTraversal
     private IntegerValue dealStringOperation(BinaryExprNode node)
     {
         //TODO
-        Address address = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+        Address address = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
         addInst(new Alloca(currentLabel, address, new BuiltIn()));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
         List<IntegerValue> parameter = new ArrayList<>();
         parameter.add(visit(node.getLhs()));
         parameter.add(visit(node.getRhs()));
@@ -471,9 +484,9 @@ public class IRConstructor implements IRTraversal
     public IntegerValue visit(CallExprNode node)
     {
         //should assign a register to the return value
-//        Address address = new Address(currentFunction.getRegister().getName());
+//        Address address = new Address(currentFunctionScope.getRegister().getName());
 //        addInst(new Alloca(currentLabel, address, convertType(node.getFunction().getReturnType())));
-        VirtualRegister register = currentFunction.getRegister();
+        VirtualRegister register = currentFunctionScope.getRegister();
         IRType irType = new BuiltIn();
         Address address = null;
         if(node.getFunction().getReturnType() != null &&
@@ -481,7 +494,7 @@ public class IRConstructor implements IRTraversal
         {
             address = new Address(register.getName(), irType);
             addInst(new Alloca(currentLabel, address, irType));
-            currentFunction.increSlotNumber();
+            currentFunctionScope.increSlotNumber();
             currentIRScope.addAddress(register.getName(), address);
         }
 
@@ -505,14 +518,19 @@ public class IRConstructor implements IRTraversal
     {
         if(node == null) return null;
 //        if(currentIRScope.containsAddress(node.getName()))
-        return currentIRScope.findAddress(node.getName());
+        Address address = currentIRScope.findAddress(node.getName());
+        if(!address.isMember())
+            return address;
+        Address baseAddress = currentFunction.getParameter().get(0).getAddress();
+        Address memberAddress = new Address(address.getName(), baseAddress, new Immediate(address.getMemberNumber()));
+        return memberAddress;
     }
 
     @Override
     public Immediate visit(IntConstNode node)
     {
         if(node == null) return null;
-//        addInst(new Load(currentLabel, currentFunction.getRegister(), new Immediate(node.getValue())));
+//        addInst(new Load(currentLabel, currentFunctionScope.getRegister(), new Immediate(node.getValue())));
         return new Immediate(node.getValue());
     }
 
@@ -560,18 +578,18 @@ public class IRConstructor implements IRTraversal
         {
 //            throw new RuntimeException("cannot be here now");
             IRType irType = convertType(node.getExprType());
-            Address address = new Address(currentFunction.getRegister().getName(), irType);
+            Address address = new Address(currentFunctionScope.getRegister().getName(), irType);
             addInst(new Alloca(currentLabel, address, new Immediate(8)));
-            currentFunction.increSlotNumber();
+            currentFunctionScope.increSlotNumber();
             addInst(new Malloc(currentLabel, new Immediate(node.getExprType().getTypeSize()), address));
             return address;
         }
         else if(node.getDimension() == 1) //one dimension array
         {
             IRType irType = convertType(node.getType());
-            Address address = new Address(currentFunction.getRegister().getName(), irType);
+            Address address = new Address(currentFunctionScope.getRegister().getName(), irType);
             addInst(new Alloca(currentLabel, address, new BuiltIn()));
-            currentFunction.increSlotNumber();
+            currentFunctionScope.increSlotNumber();
             IntegerValue value = visit(node.getExprNodes().get(0));
             addInst(new Malloc(currentLabel,value,address));
             addInst(new Store(currentLabel, new Address(Name.getName(address.getName().toString() + "_size"),
@@ -581,7 +599,7 @@ public class IRConstructor implements IRTraversal
         else //multi dimension array
         {
 //            throw new RuntimeException("cannot be here now");
-            Address address = new Address(currentFunction.getRegister().getName(), convertType(node.getType()));
+            Address address = new Address(currentFunctionScope.getRegister().getName(), convertType(node.getType()));
             memoryAllocate(node.getExprNodes(), node.getType(), true, address);
             return address;
         }
@@ -594,7 +612,7 @@ public class IRConstructor implements IRTraversal
         node.remove(0);
         if(isTop)
         {
-            currentFunction.increSlotNumber();
+            currentFunctionScope.increSlotNumber();
             addInst(new Alloca(currentLabel, address, new BuiltIn()));
         }
         addInst(new Malloc(currentLabel, size, address));
@@ -602,22 +620,22 @@ public class IRConstructor implements IRTraversal
                 address, new Immediate(-1)), size));
         Label trueLabel = new Label(null);
         Label falseLabel = new Label(null);
-        Address offset = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+        Address offset = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
         //TODO
         //should not open in stack
         addInst(new Alloca(currentLabel, offset, new BuiltIn()));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
         //TODO
         addInst(new Store(currentLabel, offset, new Immediate(0)));
         if(node.size() != 0)
         {
             addInst(trueLabel);
-            Address address1 = new Address(currentFunction.getRegister().getName(),
+            Address address1 = new Address(currentFunctionScope.getRegister().getName(),
                     address, offset);
             memoryAllocate(node, type, false, address1);
-            Address compareDest = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+            Address compareDest = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
             addInst(new Alloca(currentLabel, compareDest, new BuiltIn()));
-            currentFunction.increSlotNumber();
+            currentFunctionScope.increSlotNumber();
             addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.add,
                     offset, offset, new Immediate(1)));
             addInst(new Compare(currentLabel, Compare.Condition.SEQ, compareDest, offset, size));
@@ -648,7 +666,7 @@ public class IRConstructor implements IRTraversal
 //        if(node.getCond1() instanceof BinaryExprNode)
 //            lhsOp = convertOp(((BinaryExprNode) node.getCond1()).getOp());
         addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                 lhs, new Immediate(0)));
         addInst(new Branch(currentLabel, trueLabel, midLabel, lhs));
         addInst(midTrueLabel);
@@ -658,12 +676,12 @@ public class IRConstructor implements IRTraversal
         Compare.Condition rhsOp = null;
         if(node.getCond2() instanceof BinaryExprNode)
             rhsOp = convertOp(((BinaryExprNode) node.getCond2()).getOp());
-        Address returnAddress = new Address(currentFunction.getRegister().getName(), new BuiltIn());
+        Address returnAddress = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
         addInst(new Alloca(currentLabel, returnAddress, new BuiltIn()));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
 //        addInst(new Branch(currentLabel, trueLabel, falseLabel, rhs, rhsOp));
         addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                 rhs, new Immediate(0)));
         addInst(new Branch(currentLabel, trueLabel, falseLabel, returnAddress));
         storeCompareResult(returnAddress, trueLabel, falseLabel, endLabel);
@@ -676,25 +694,25 @@ public class IRConstructor implements IRTraversal
         if(isCompareCondition(node.getExprNode()))
             return visitNotCondition(node);
         IntegerValue value = visit(node.getExprNode());
-        VirtualRegister register = currentFunction.getRegister();
+        VirtualRegister register = currentFunctionScope.getRegister();
         Address address = new Address(register.getName(), new BuiltIn());
         switch (node.getOp())
         {
             case NEG:
                 addInst(new Alloca(currentLabel, address, new BuiltIn()));
-                currentFunction.increSlotNumber();
+                currentFunctionScope.increSlotNumber();
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.neg, address,
                         value, null));
                 return address;
             case NOT:
                 addInst(new Alloca(currentLabel, address, new BuiltIn()));
-                currentFunction.increSlotNumber();
+                currentFunctionScope.increSlotNumber();
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.xor, address,
                         value, new Immediate(1)));
                 return address;
             case BIT_NOT:
                 addInst(new Alloca(currentLabel, address, new BuiltIn()));
-                currentFunction.increSlotNumber();
+                currentFunctionScope.increSlotNumber();
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.not, address,
                         value, new Immediate(-1)));
                 return address;
@@ -718,7 +736,7 @@ public class IRConstructor implements IRTraversal
     private IntegerValue visitNotCondition(PrefixExprNode node)
     {
         IntegerValue value = visit(node.getExprNode());
-        VirtualRegister register = currentFunction.getRegister();
+        VirtualRegister register = currentFunctionScope.getRegister();
         //return address
         //store a 1 or a 0
         Address address = new Address(register.getName(), new BuiltIn());
@@ -775,15 +793,15 @@ public class IRConstructor implements IRTraversal
     public IntegerValue visit(SuffixExprNode node)
     {
         IntegerValue value = visit(node.getExprNode());
-        VirtualRegister new_reg = currentFunction.getRegister();
-        VirtualRegister origin_reg = currentFunction.getRegister();
+        VirtualRegister new_reg = currentFunctionScope.getRegister();
+        VirtualRegister origin_reg = currentFunctionScope.getRegister();
         IRType irType;
         irType = new BuiltIn();
 
         Address origin_address = new Address(origin_reg.getName(), irType);
 
         addInst(new Alloca(currentLabel, origin_address, irType));
-        currentFunction.increSlotNumber();
+        currentFunctionScope.increSlotNumber();
         currentIRScope.addAddress(origin_reg.getName(), origin_address);
         addInst(new Store(currentLabel, origin_address, value));
 
@@ -867,7 +885,7 @@ public class IRConstructor implements IRTraversal
         if(endCondition != null)
         {
             addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                    new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                    new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                     endCondition, new Immediate(0)));
             addInst(new Branch(currentLabel, trueLabel, falseLabel, endCondition));
         }
@@ -895,7 +913,7 @@ public class IRConstructor implements IRTraversal
 
         IntegerValue condition = visit(node.getCondition());
         addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                 condition, new Immediate(0)));
         addInst(new Branch(currentLabel, trueLabel, falseLabel, condition));
         addInst(trueLabel);
@@ -936,7 +954,7 @@ public class IRConstructor implements IRTraversal
         if(endCondition != null)
         {
             addInst(new Compare(currentLabel, Compare.Condition.NEQ,
-                    new Address(currentFunction.getRegister().getName(), new BuiltIn()),
+                    new Address(currentFunctionScope.getRegister().getName(), new BuiltIn()),
                     endCondition, new Immediate(0)));
             addInst(new Branch(currentLabel, trueLabel, falseLabel, endCondition));
         }
@@ -1005,10 +1023,12 @@ public class IRConstructor implements IRTraversal
     private void setIRScope(IRScope irScope)
     {
         this.currentIRScope = irScope;
+        irScopeStack.push(irScope);
     }
 
     private void exitIRScope()
     {
+        irScopeStack.pop();
         this.currentIRScope = currentIRScope.getParent();
     }
 
@@ -1056,13 +1076,13 @@ public class IRConstructor implements IRTraversal
 //    {
 //        if(value instanceof Address)
 //        {
-//            VirtualRegister register = currentFunction.getRegister();
+//            VirtualRegister register = currentFunctionScope.getRegister();
 //            addInst(new Load(currentLabel, register, (Address)value));
 //            return register;
 //        }
 //        else if(value instanceof Immediate)
 //        {
-//            VirtualRegister register = currentFunction.getRegister();
+//            VirtualRegister register = currentFunctionScope.getRegister();
 //            addInst(new Load(currentLabel, register, (Immediate)value));
 //            return register;
 //        }
@@ -1077,7 +1097,7 @@ public class IRConstructor implements IRTraversal
 //    {
 //        if(value instanceof Address)
 //        {
-//            VirtualRegister register = currentFunction.getRegister();
+//            VirtualRegister register = currentFunctionScope.getRegister();
 //            addInst(new Load(currentLabel, register, (Address)value));
 //            return register;
 //        }

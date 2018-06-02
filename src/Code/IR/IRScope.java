@@ -49,6 +49,8 @@ public class IRScope
     {
         if(addressMap.containsKey(name))
             return true;
+        else if(this.Parent == null)
+            return false;
         else
             return this.Parent.containsAddress(name);
     }

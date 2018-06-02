@@ -25,6 +25,7 @@ public class SemanticChecker implements ASTTraversal
     private ErrorHandler errorHandler;
     private FuncDecNode currentFunction;
     private ClassDecNode currentClass;
+    private boolean isMember;
 
     public SemanticChecker(Scope topScope, ErrorHandler handler)
     {
@@ -281,6 +282,21 @@ public class SemanticChecker implements ASTTraversal
         }
     }
 
+    private void visitMemberCall(CallExprNode node, Scope scope)
+    {
+        if(node == null)return;
+        if(!scope.containsNode(node.getFuncName()))
+            errorHandler.addError(node.getPosition(),
+                    "function " + node.getFuncName().toString() + " have not been declared");
+        FuncDecNode function = (FuncDecNode)scope.findNode(node.getFuncName());
+        if(!function.isFunction())
+            errorHandler.addError(node.getPosition(),
+                    node.getFuncName().toString() + " is not a function");
+        visit(node.getParam());
+        node.setExprType(function.getReturnType());
+        node.setFunction(function);
+        checkParameterMatch(function, node);
+    }
 
     @Override
     public void visit(ExprListNode node)
@@ -299,8 +315,6 @@ public class SemanticChecker implements ASTTraversal
                     node.getName().toString() + " have not been declared");
         VarDecNode var = (VarDecNode)currentScope.findNode(node.getName());
         node.setExprType(var.getType());
-        if(node.getExprType() == null)
-            System.out.println(1);
     }
 
     @Override
@@ -348,7 +362,8 @@ public class SemanticChecker implements ASTTraversal
             node.setExprType(func.getReturnType());
             visit(node.getFunctionCall().getParam());
             checkParameterMatch(func, node.getFunctionCall());
-            visit(node.getFunctionCall());
+            visitMemberCall(node.getFunctionCall(),
+                    node.getExpr().getExprType().getClassNode().getInternalScope());
             node.getFunctionCall().setFunction(func);
         }
         else

@@ -11,6 +11,8 @@ public class Address extends VirtualRegister
     private IRType irType;
     private boolean isGlobal = false;
     private boolean isPointer = false;//only works with global variable
+    private boolean isMember = false;
+    private int memberNumber = -1;
 
     private PhysicalRegister baseReg;
     private PhysicalRegister offsetReg;
@@ -39,6 +41,8 @@ public class Address extends VirtualRegister
         this.isGlobal = isGlobal;
     }
 
+
+
     public boolean isGlobal()
     {
         return isGlobal;
@@ -57,6 +61,26 @@ public class Address extends VirtualRegister
     public void setPointer(boolean pointer)
     {
         isPointer = pointer;
+    }
+
+    public boolean isMember()
+    {
+        return isMember;
+    }
+
+    public void setMember(boolean member)
+    {
+        isMember = member;
+    }
+
+    public int getMemberNumber()
+    {
+        return memberNumber;
+    }
+
+    public void setMemberNumber(int memberNumber)
+    {
+        this.memberNumber = memberNumber;
     }
 
     public Name getName()
