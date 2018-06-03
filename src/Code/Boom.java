@@ -39,7 +39,7 @@ import java.util.List;
  * semantic check, get Expr Type(ArrayType)(done)
  * substring(done)
  * null(done)
- * memory allocate for multiarray(done)
+ * memory allocate for multiarray(not done, use too much regs)
  * function use the member variable in its own class
  */
 
@@ -50,7 +50,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test900.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test913.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);

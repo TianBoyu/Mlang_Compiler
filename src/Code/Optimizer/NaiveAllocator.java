@@ -1,5 +1,6 @@
 package Code.Optimizer;
 
+import Code.AST.Node.ExprNode.ExprNode;
 import Code.AST.Tools.Name;
 import Code.IR.IRInstTraversal;
 import Code.IR.IRUnit.*;
@@ -239,17 +240,38 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
             {
                 PhysicalRegister basePr = getAvailablePhysicalRegister();
                 ((Address) vr).setBaseReg(basePr);
+                PhysicalRegister offsetPr = null;
                 if (!(((Address) vr).getOffset() instanceof Immediate))
                 {
-                    PhysicalRegister offsetPr = getAvailablePhysicalRegister();
+                    offsetPr = getAvailablePhysicalRegister();
                     ((Address) vr).setOffsetReg(offsetPr);
                 }
                 allocRegisterForAddress(((Address) vr).getBase());
                 if(((Address) vr).getOffset() instanceof Address)
-                allocRegisterForAddress((Address)((Address) vr).getOffset());
+                    allocRegisterForAddress((Address)((Address) vr).getOffset());
             }
         }
     }
+
+//    private void allocRegisterForAddress(VirtualRegister vr, PhysicalRegister basePr, PhysicalRegister offsetPr)
+//    {
+//        if(vr instanceof Address)
+//        {
+//            if(((Address) vr).getBase() != null)
+//            {
+////                PhysicalRegister basePr = getAvailablePhysicalRegister();
+//                ((Address) vr).setBaseReg(basePr);
+//                if (!(((Address) vr).getOffset() instanceof Immediate))
+//                {
+////                    PhysicalRegister offsetPr = getAvailablePhysicalRegister();
+//                    ((Address) vr).setOffsetReg(offsetPr);
+//                }
+//                allocRegisterForAddress(((Address) vr).getBase(), basePr, offsetPr);
+//                if(((Address) vr).getOffset() instanceof Address)
+//                allocRegisterForAddress((Address)((Address) vr).getOffset(), basePr, offsetPr);
+//            }
+//        }
+//    }
     private PhysicalRegister getPhysicalRegister(VirtualRegister vr)
     {
         allocRegisterForAddress(vr);
@@ -257,10 +279,18 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
             return registerMap.get(vr);
         else
         {
-            PhysicalRegister pr = getAvailablePhysicalRegister();
-            registerMap.put(vr, pr);
-            return pr;
+            try
+            {
+                PhysicalRegister pr = getAvailablePhysicalRegister();
+                registerMap.put(vr, pr);
+                return pr;
+            }
+            catch (Exception e)
+            {
+                System.out.println(1);
+            }
         }
+        return new PhysicalRegister(Name.getName("rax"));
     }
 
     private PhysicalRegister getAvailablePhysicalRegister()

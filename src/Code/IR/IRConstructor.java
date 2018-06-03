@@ -748,7 +748,7 @@ public class IRConstructor implements IRTraversal
                 addInst(new Alloca(currentLabel, address, new BuiltIn()));
                 currentFunctionScope.increSlotNumber();
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.not, address,
-                        value, new Immediate(-1)));
+                        value, null));
                 return address;
             case POS:
                 return value;

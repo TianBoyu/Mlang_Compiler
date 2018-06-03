@@ -183,6 +183,11 @@ public class Translator implements IRInstTraversal
         String rightIntegerValue = null;
         if(inst.getRhs() != null)
             rightIntegerValue = processIntegerValue(inst.getRhs(), inst.getRhsReg());
+        if(inst.getOp() == BinaryOperation.BinaryOp.shl || inst.getOp() == BinaryOperation.BinaryOp.shr)
+        {
+            addInst(NasmInst.Instruction.mov, "rcx", rightIntegerValue);
+            rightIntegerValue = "cl";
+        }
         addInst(NasmInst.Instruction.valueOf(inst.getOp().toString()),
                 inst.getDestReg().toString(), rightIntegerValue);
         addInst(NasmInst.Instruction.mov, processAddress(inst.getDest(), null), inst.getDestReg().toString());
