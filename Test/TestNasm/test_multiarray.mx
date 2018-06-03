@@ -1,12 +1,8 @@
 int main()
 {
-    int[][] a = new int[4][];
+    int[][] a = new int[4][5];
     int i;
     int j;
-    for(i = 0; i < 4; ++i)
-    {
-        a[i]  = new int[5];
-    }
     for(i = 0; i < 4; ++i)
     {
         for(j = 0; j < 5; ++j)

@@ -674,6 +674,7 @@ public class IRConstructor implements IRTraversal
                     offset, offset, new Immediate(1)));
             addInst(new Compare(currentLabel, Compare.Condition.SEQ, compareDest, offset, size));
             addInst(new Branch(currentLabel, trueLabel, falseLabel, compareDest, Compare.Condition.SEQ));
+            addInst(new Jump(currentLabel, trueLabel));
             addInst(falseLabel);
         }
         return address;
