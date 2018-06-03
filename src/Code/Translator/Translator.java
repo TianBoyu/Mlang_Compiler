@@ -206,7 +206,8 @@ public class Translator implements IRInstTraversal
         {
             addInst(NasmInst.Instruction.mov, inst.getLhsReg().toString(),
                     processAddress((Address)inst.getLhs(), null));
-            addInst(NasmInst.Instruction.mov, inst.getDestReg().toString(), inst.getLhsReg().toString());
+            addInst(NasmInst.Instruction.mov, inst.getDestReg().toString(),
+                    inst.getLhsReg().toString());
         }
         if(inst.getRhs() instanceof Immediate)
         {

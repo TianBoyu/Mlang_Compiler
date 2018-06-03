@@ -73,33 +73,18 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
     public void visit(BinaryOperation inst)
     {
         //const value folded
-        if(inst.getOp() == BinaryOperation.BinaryOp.idiv)
+        if(inst.getOp() == BinaryOperation.BinaryOp.idiv ||
+                inst.getOp() == BinaryOperation.BinaryOp.mod)
         {
-            inst.setDestReg(physicalRegisters.get(0));
-            isAvailable[0] = false;
+            visitDivBinaryOp(inst);
+            return;
         }
-        else if(inst.getOp() == BinaryOperation.BinaryOp.mod)
-        {
-            inst.setOp(BinaryOperation.BinaryOp.idiv);
-            inst.setDestReg(physicalRegisters.get(2));
-            isAvailable[2] = false;
-        }
-        else
-        {
-            PhysicalRegister destPr = getPhysicalRegister(inst.getDest());
-            inst.setDestReg(destPr);
-        }
+        PhysicalRegister destPr = getPhysicalRegister(inst.getDest());
+        inst.setDestReg(destPr);
 
         if(inst.getLhs() instanceof VirtualRegister)
         {
-            PhysicalRegister lhsPr;
-            if(inst.getOp() == BinaryOperation.BinaryOp.idiv)
-            {
-                lhsPr = physicalRegisters.get(0);
-                isAvailable[0] = false;
-            }
-            else
-                lhsPr = getPhysicalRegister((VirtualRegister) inst.getLhs());
+            PhysicalRegister lhsPr = getPhysicalRegister((VirtualRegister) inst.getLhs());
             inst.setLhsReg(lhsPr);
         }
         if(inst.getRhs() instanceof VirtualRegister)
@@ -114,6 +99,34 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
         }
     }
 
+
+    public void visitDivBinaryOp(BinaryOperation inst)
+    {
+        if(inst.getOp() == BinaryOperation.BinaryOp.idiv)
+        {
+            inst.setDestReg(physicalRegisters.get(0));
+            isAvailable[0] = false;
+        }
+        else // (inst.getOp() == BinaryOperation.BinaryOp.mod)
+        {
+            inst.setOp(BinaryOperation.BinaryOp.idiv);
+            inst.setDestReg(physicalRegisters.get(2));
+            isAvailable[2] = false;
+        }
+        PhysicalRegister lhsPr = physicalRegisters.get(0);
+        isAvailable[0] = false;
+        inst.setLhsReg(lhsPr);
+        if(inst.getRhs() instanceof VirtualRegister)
+        {
+            PhysicalRegister rhsPr = getPhysicalRegister((VirtualRegister) inst.getRhs());
+            inst.setRhsReg(rhsPr);
+        }
+        else
+        {
+            PhysicalRegister rhsPr = getAvailablePhysicalRegister();
+            inst.setRhsReg(rhsPr);
+        }
+    }
     @Override
     public void visit(Branch inst)
     {
