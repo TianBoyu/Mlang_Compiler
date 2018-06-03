@@ -1,13 +1,28 @@
 class A
 {
-    int data;
+    int[] data;
     A foo()
     {
         A f = new A;
         return f;
     }
-    int bar()
+    int init()
     {
+        data = new int[5];
+        int i = 0;
+        for(i = 0; i < 5; ++i)
+        {
+            data[i] = i;
+        }
+        return 1;
+    }
+    int bar(A rhs)
+    {
+        int i;
+        for(i = 0; i < 5; ++i)
+        {
+            println(toString(data[i] * rhs.data[i]));
+        }
         return 1;
     }
 }
@@ -15,6 +30,9 @@ class A
 int main()
 {
     A x = new A;
-    int y = x.foo().bar();
+    A y = new A;
+    x.init();
+    y.init();
+    x.bar(y);
     return 0;
 }

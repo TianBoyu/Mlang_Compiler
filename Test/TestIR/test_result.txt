@@ -100,7 +100,7 @@ define i64 @__vector__dot([struct vector], [struct vector])
 
   label21
   [Address%r0:] = alloca i64
-  [Address%r0:] = Call @getDim()
+  [Address%r0:] = Call @__vector__getDim()
   [Address%r1:] = alloca i64
   [Address%r1:] = [Addressi:] SLT [Address%r0:]
   Branch [Address%r1:] true: label22 false: label23
@@ -156,7 +156,7 @@ define [struct vector] @__vector__scalarInPlaceMultiply([struct vector], i64)
 
   label33
   [Address%r2:] = alloca i64
-  [Address%r2:] = Call @getDim()
+  [Address%r2:] = Call @__vector__getDim()
   [Address%r3:] = alloca i64
   [Address%r3:] = [Addressi:] SLT [Address%r2:]
   Branch [Address%r3:] true: label35 false: label36
@@ -174,20 +174,20 @@ define [struct vector] @__vector__scalarInPlaceMultiply([struct vector], i64)
 
   label31
   [Address%r5:] = alloca i64
-  [Address%r5:] = [Addressc:] imul [Addressdata:[Addressdata:+offset Immediate 0*i64]+offset [Addressi:]*i64]
-  Store [Address%r5:] to [Addressdata:[Addressdata:+offset Immediate 0*i64]+offset [Addressi:]*i64]
+  [Address%r5:] = [Addressc:] imul [Addressdata:[Addressdata:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
+  Store [Address%r5:] to [Addressdata:[Addressdata:[Addressnull:]+offset Immediate 0*i64]+offset [Addressi:]*i64]
 
   label34
   [Addressi:] = [Addressi:] add Immediate 1
   Jump label33
 
   label32
-  Return
+  Return [Addressnull:]
   Return
 
 define [struct vector] @__vector__add([struct vector], [struct vector])
   [Address%r0:] = alloca i64
-  [Address%r0:] = Call @getDim()
+  [Address%r0:] = Call @__vector__getDim()
   [Address%r1:] = alloca i64
   [Address%r1:] = Call @__vector__getDim([Addressrhs:])
   [Address%r2:] = alloca i64
@@ -210,7 +210,7 @@ define [struct vector] @__vector__add([struct vector], [struct vector])
 
   label41
   [Address%r4:] = alloca i64
-  [Address%r4:] = Call @getDim()
+  [Address%r4:] = Call @__vector__getDim()
   [Address%r5:] = alloca i64
   [Address%r5:] = [Address%r4:] EQU Immediate 0
   Branch [Address%r5:] true: label49 false: label50
@@ -253,7 +253,7 @@ define [struct vector] @__vector__add([struct vector], [struct vector])
   [Addressi:] = alloca i64
   [Address%r10:] = alloca i64
   [Address%r11:] = alloca i64
-  [Address%r11:] = Call @getDim()
+  [Address%r11:] = Call @__vector__getDim()
   [Address%r10:] = Malloc [Address%r11:]
   Store [Address%r11:] to [Address%r10_size:[Address%r10:]+offset Immediate -1*i64]
   Store [Address%r10:] to [Addressdata:[Addresstemp:]+offset Immediate 0*i64]
@@ -261,7 +261,7 @@ define [struct vector] @__vector__add([struct vector], [struct vector])
 
   label54
   [Address%r12:] = alloca i64
-  [Address%r12:] = Call @getDim()
+  [Address%r12:] = Call @__vector__getDim()
   [Address%r13:] = alloca i64
   [Address%r13:] = [Addressi:] SLT [Address%r12:]
   Branch [Address%r13:] true: label56 false: label57
@@ -292,7 +292,7 @@ define [struct vector] @__vector__add([struct vector], [struct vector])
 
 define i64 @__vector__set([struct vector], i64, i64)
   [Address%r0:] = alloca i64
-  [Address%r0:] = Call @getDim()
+  [Address%r0:] = Call @__vector__getDim()
   [Address%r1:] = alloca i64
   [Address%r1:] = [Address%r0:] SLT [Addressidx:]
   Branch [Address%r1:] true: label62 false: label63
@@ -324,7 +324,7 @@ define i64 @__vector__tostring([struct vector])
   [Addresstemp:] = alloca i64
   Store [AddressString_0:] to [Addresstemp:]
   [Address%r0:] = alloca i64
-  [Address%r0:] = Call @getDim()
+  [Address%r0:] = Call @__vector__getDim()
   [Address%r1:] = alloca i64
   [Address%r1:] = [Address%r0:] SGT Immediate 0
   Branch [Address%r1:] true: label68 false: label69
@@ -357,7 +357,7 @@ define i64 @__vector__tostring([struct vector])
 
   label73
   [Address%r5:] = alloca i64
-  [Address%r5:] = Call @getDim()
+  [Address%r5:] = Call @__vector__getDim()
   [Address%r6:] = alloca i64
   [Address%r6:] = [Addressi:] SLT [Address%r5:]
   Branch [Address%r6:] true: label75 false: label76
@@ -450,7 +450,7 @@ define i64 @__vector__copy([struct vector], [struct vector])
 
   label92
   [Address%r7:] = alloca i64
-  [Address%r7:] = Call @getDim()
+  [Address%r7:] = Call @__vector__getDim()
   [Address%r8:] = alloca i64
   [Address%r8:] = [Addressi:] SLT [Address%r7:]
   Branch [Address%r8:] true: label94 false: label95

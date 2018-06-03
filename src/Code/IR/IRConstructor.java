@@ -255,6 +255,14 @@ public class IRConstructor implements IRTraversal
         return new_name;
     }
 
+    private Name FunctionRename(FuncDecNode node)
+    {
+        Name newName = node.getClassDecNode() == null ? node.getName() :
+                Name.getName("__" + node.getClassDecNode().getName().toString() +
+                        "__" + node.getName().toString());
+        return newName;
+    }
+
 //    private void visitFormalParameter(List<FuncParamNode> parameters)
 //    {
 //        int i = 0;
@@ -496,12 +504,14 @@ public class IRConstructor implements IRTraversal
         }
 
         List<IntegerValue> params = new ArrayList<>();
+        if(node.getFunction().getClassDecNode() != null)
+            params.add(currentFunction.getParameter().get(0).getAddress());
         for(ExprNode item : node.getParam().getExprs())
         {
             params.add(visit(item));
         }
-//        addInst(new Call(currentLabel, address, FunctionRename(node.getFuncName()), params));
-        addInst(new Call(currentLabel, address, node.getFuncName(), params));
+        addInst(new Call(currentLabel, address, FunctionRename(node.getFunction()), params));
+//        addInst(new Call(currentLabel, address, node.getFuncName(), params));
         return address;
     }
 
@@ -847,7 +857,8 @@ public class IRConstructor implements IRTraversal
     public IntegerValue visit(ThisExprNode node)
     {
         //TODO
-        return null;
+        Address address = currentFunction.getParameter().get(0).getAddress();
+        return address;
     }
 
     @Override

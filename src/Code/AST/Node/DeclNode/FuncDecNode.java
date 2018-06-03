@@ -20,6 +20,7 @@ public class FuncDecNode extends DeclNode
     private BlockNode block;
     private Scope external_scope;
     private Scope internal_scope;
+    private ClassDecNode classDecNode;
 
     public FuncDecNode(boolean isBuiltIn, Position pos, FuncDecObject _function, BlockNode _block)
     {
@@ -80,6 +81,16 @@ public class FuncDecNode extends DeclNode
     public Scope getInternalScope()
     {
         return internal_scope;
+    }
+
+    public ClassDecNode getClassDecNode()
+    {
+        return classDecNode;
+    }
+
+    public void setClassDecNode(ClassDecNode classDecNode)
+    {
+        this.classDecNode = classDecNode;
     }
 
     public void setReturnType(Type type)

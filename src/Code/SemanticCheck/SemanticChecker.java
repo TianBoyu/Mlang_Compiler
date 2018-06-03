@@ -79,6 +79,7 @@ public class SemanticChecker implements ASTTraversal
         if(node == null) return;
         currentFunction = node;
         setCurrentScope(node.getInternalScope());
+        node.setClassDecNode(currentClass);
         if(node.isConstructor() && (node.getName() != currentClass.getName()))
             errorHandler.addError(node.getPosition(), "name of the constructor should be the name of the class");
         for(FuncParamNode item : node.getParameter())
