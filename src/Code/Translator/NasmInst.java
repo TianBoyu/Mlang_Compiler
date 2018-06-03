@@ -10,7 +10,7 @@ public class NasmInst
         resq, resb,
 
         add, sub, imul, xor, or, and, inc, dec,
-        neg, not, shl, shr, idiv,
+        neg, not, sal, sar, idiv,
 
         jz, jnz, jmp, je, jne, jg, jge, jl, jle,
 

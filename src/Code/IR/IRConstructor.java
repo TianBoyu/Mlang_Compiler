@@ -468,8 +468,8 @@ public class IRConstructor implements IRTraversal
                 case MIN: binaryOp = BinaryOperation.BinaryOp.sub; break;
                 case MUL: binaryOp = BinaryOperation.BinaryOp.imul; break;
                 case DIV: binaryOp = BinaryOperation.BinaryOp.idiv; break;
-                case L_SHIFT: binaryOp = BinaryOperation.BinaryOp.shl; break;
-                case R_SHIFT: binaryOp = BinaryOperation.BinaryOp.shr; break;
+                case L_SHIFT: binaryOp = BinaryOperation.BinaryOp.sal; break;
+                case R_SHIFT: binaryOp = BinaryOperation.BinaryOp.sar; break;
                 case MOD: binaryOp = BinaryOperation.BinaryOp.mod; break;
                 case BIT_AND: binaryOp = BinaryOperation.BinaryOp.and; break;
                 case BIT_OR: binaryOp = BinaryOperation.BinaryOp.or; break;

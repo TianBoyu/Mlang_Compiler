@@ -2,360 +2,1306 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @add(i64, i64)
-  [Address%r0:] = alloca i64
-  [Address%r0:] = [Addressx:] add [Addressy:]
-  [Address%r1:] = alloca i64
-  [Address%r1:] = [Address%r0:] mod Immediate 233
-  Return [Address%r1:]
+define i64 @square(i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_x:] mod [Address_p:]
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = [Address_x:] mod [Address_p:]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_%r0:] imul [Address_%r1:]
+  Return [Address_%r2:]
   Return
 
-define i64 @dp(i64)
-  [Address%r0:] = alloca i64
-  [Address%r0:] = [Addressx:] SEQ Immediate 1
-  Branch [Address%r0:] true: label3 false: label4
+define i64 @gcd(i64, i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_y:] EQU Immediate 0
+  Branch [Address_%r0:] true: label7 false: label8
 
-  label3
-  Store Immediate 1 to [Address%r0:]
-  Jump label5
-
-  label4
-  Store Immediate 0 to [Address%r0:]
-
-  label5
-  [Address%r1:] = [Address%r0:] NEQ Immediate 0
-  Branch [Address%r0:] true: label0 false: label1
-
-  label0
-  [Addresstmp:] = alloca i64
-  [Address%r2:] = alloca i64
-  [Address%r2:] = Immediate 7 mod Immediate 233
-  [Address%r3:] = alloca i64
-  [Address%r3:] = [Address%r2:] imul Immediate 7
-  [Address%r4:] = alloca i64
-  [Address%r4:] = [Address%r3:] mod Immediate 233
-  [Address%r5:] = alloca i64
-  [Address%r5:] = [Address%r4:] imul Immediate 7
-  [Address%r6:] = alloca i64
-  [Address%r6:] = [Address%r5:] mod Immediate 233
-  [Address%r7:] = alloca i64
-  [Address%r7:] = [Address%r6:] imul Immediate 7
-  [Address%r8:] = alloca i64
-  [Address%r8:] = [Address%r7:] mod Immediate 233
-  [Address%r9:] = alloca i64
-  [Address%r9:] = [Address%r8:] imul Immediate 7
-  [Address%r10:] = alloca i64
-  [Address%r10:] = [Address%r9:] mod Immediate 233
-  [Address%r11:] = alloca i64
-  [Address%r11:] = [Address%r10:] imul Immediate 7
-  [Address%r12:] = alloca i64
-  [Address%r12:] = [Address%r11:] mod Immediate 233
-  [Address%r13:] = alloca i64
-  [Address%r13:] = [Address%r12:] imul Immediate 7
-  [Address%r14:] = alloca i64
-  [Address%r14:] = [Address%r13:] mod Immediate 233
-  [Address%r15:] = alloca i64
-  [Address%r15:] = [Address%r14:] imul Immediate 7
-  [Address%r16:] = alloca i64
-  [Address%r16:] = [Address%r15:] mod Immediate 233
-  [Address%r17:] = alloca i64
-  [Address%r17:] = [Address%r16:] imul Immediate 7
-  [Address%r18:] = alloca i64
-  [Address%r18:] = [Address%r17:] mod Immediate 233
-  [Address%r19:] = alloca i64
-  [Address%r19:] = [Address%r18:] imul Immediate 7
-  [Address%r20:] = alloca i64
-  [Address%r20:] = [Address%r19:] mod Immediate 233
-  [Address%r21:] = alloca i64
-  [Address%r21:] = [Address%r20:] imul Immediate 7
-  [Address%r22:] = alloca i64
-  [Address%r22:] = [Address%r21:] mod Immediate 233
-  [Address%r23:] = alloca i64
-  [Address%r23:] = [Address%r22:] imul Immediate 7
-  [Address%r24:] = alloca i64
-  [Address%r24:] = [Address%r23:] mod Immediate 233
-  [Address%r25:] = alloca i64
-  [Address%r25:] = [Address%r24:] imul Immediate 7
-  [Address%r26:] = alloca i64
-  [Address%r26:] = [Address%r25:] mod Immediate 233
-  [Address%r27:] = alloca i64
-  [Address%r27:] = [Address%r26:] imul Immediate 7
-  [Address%r28:] = alloca i64
-  [Address%r28:] = [Address%r27:] mod Immediate 233
-  [Address%r29:] = alloca i64
-  [Address%r29:] = [Address%r28:] imul Immediate 7
-  [Address%r30:] = alloca i64
-  [Address%r30:] = [Address%r29:] mod Immediate 233
-  [Address%r31:] = alloca i64
-  [Address%r31:] = [Address%r30:] imul Immediate 7
-  [Address%r32:] = alloca i64
-  [Address%r32:] = [Address%r31:] mod Immediate 233
-  [Address%r33:] = alloca i64
-  [Address%r33:] = [Address%r32:] imul Immediate 7
-  [Address%r34:] = alloca i64
-  [Address%r34:] = [Address%r33:] mod Immediate 233
-  [Address%r35:] = alloca i64
-  [Address%r35:] = [Address%r34:] imul Immediate 7
-  [Address%r36:] = alloca i64
-  [Address%r36:] = [Address%r35:] mod Immediate 233
-  [Address%r37:] = alloca i64
-  [Address%r37:] = [Address%r36:] imul Immediate 7
-  [Address%r38:] = alloca i64
-  [Address%r38:] = [Address%r37:] mod Immediate 233
-  [Address%r39:] = alloca i64
-  [Address%r39:] = [Address%r38:] imul Immediate 7
-  [Address%r40:] = alloca i64
-  [Address%r40:] = [Address%r39:] mod Immediate 233
-  [Address%r41:] = alloca i64
-  [Address%r41:] = [Address%r40:] imul Immediate 7
-  [Address%r42:] = alloca i64
-  [Address%r42:] = [Address%r41:] mod Immediate 233
-  [Address%r43:] = alloca i64
-  [Address%r43:] = [Address%r42:] imul Immediate 7
-  [Address%r44:] = alloca i64
-  [Address%r44:] = [Address%r43:] mod Immediate 233
-  [Address%r45:] = alloca i64
-  [Address%r45:] = [Address%r44:] imul Immediate 7
-  [Address%r46:] = alloca i64
-  [Address%r46:] = [Address%r45:] mod Immediate 233
-  [Address%r47:] = alloca i64
-  [Address%r47:] = [Address%r46:] imul Immediate 7
-  [Address%r48:] = alloca i64
-  [Address%r48:] = [Address%r47:] mod Immediate 233
-  [Address%r49:] = alloca i64
-  [Address%r49:] = [Address%r48:] imul Immediate 7
-  [Address%r50:] = alloca i64
-  [Address%r50:] = [Address%r49:] mod Immediate 233
-  [Address%r51:] = alloca i64
-  [Address%r51:] = [Address%r50:] imul Immediate 7
-  [Address%r52:] = alloca i64
-  [Address%r52:] = [Address%r51:] mod Immediate 233
-  [Address%r53:] = alloca i64
-  [Address%r53:] = [Address%r52:] imul Immediate 7
-  [Address%r54:] = alloca i64
-  [Address%r54:] = [Address%r53:] mod Immediate 233
-  [Address%r55:] = alloca i64
-  [Address%r55:] = [Address%r54:] imul Immediate 7
-  [Address%r56:] = alloca i64
-  [Address%r56:] = [Address%r55:] mod Immediate 233
-  [Address%r57:] = alloca i64
-  [Address%r57:] = [Address%r56:] imul Immediate 7
-  [Address%r58:] = alloca i64
-  [Address%r58:] = [Address%r57:] mod Immediate 233
-  [Address%r59:] = alloca i64
-  [Address%r59:] = [Address%r58:] imul Immediate 7
-  [Address%r60:] = alloca i64
-  [Address%r60:] = [Address%r59:] mod Immediate 233
-  [Address%r61:] = alloca i64
-  [Address%r61:] = [Address%r60:] imul Immediate 7
-  [Address%r62:] = alloca i64
-  [Address%r62:] = [Address%r61:] mod Immediate 233
-  [Address%r63:] = alloca i64
-  [Address%r63:] = [Address%r62:] imul Immediate 7
-  [Address%r64:] = alloca i64
-  [Address%r64:] = [Address%r63:] mod Immediate 233
-  [Address%r65:] = alloca i64
-  [Address%r65:] = [Address%r64:] imul Immediate 7
-  [Address%r66:] = alloca i64
-  [Address%r66:] = [Address%r65:] mod Immediate 233
-  [Address%r67:] = alloca i64
-  [Address%r67:] = [Address%r66:] imul Immediate 7
-  [Address%r68:] = alloca i64
-  [Address%r68:] = [Address%r67:] mod Immediate 233
-  [Address%r69:] = alloca i64
-  [Address%r69:] = [Address%r68:] imul Immediate 7
-  [Address%r70:] = alloca i64
-  [Address%r70:] = [Address%r69:] mod Immediate 233
-  [Address%r71:] = alloca i64
-  [Address%r71:] = [Address%r70:] imul Immediate 7
-  [Address%r72:] = alloca i64
-  [Address%r72:] = [Address%r71:] mod Immediate 233
-  [Address%r73:] = alloca i64
-  [Address%r73:] = [Address%r72:] imul Immediate 7
-  [Address%r74:] = alloca i64
-  [Address%r74:] = [Address%r73:] mod Immediate 233
-  [Address%r75:] = alloca i64
-  [Address%r75:] = [Address%r74:] imul Immediate 7
-  [Address%r76:] = alloca i64
-  [Address%r76:] = [Address%r75:] mod Immediate 233
-  [Address%r77:] = alloca i64
-  [Address%r77:] = [Address%r76:] imul Immediate 7
-  [Address%r78:] = alloca i64
-  [Address%r78:] = [Address%r77:] mod Immediate 233
-  [Address%r79:] = alloca i64
-  [Address%r79:] = [Address%r78:] imul Immediate 7
-  [Address%r80:] = alloca i64
-  [Address%r80:] = [Address%r79:] mod Immediate 233
-  [Address%r81:] = alloca i64
-  [Address%r81:] = [Address%r80:] imul Immediate 7
-  [Address%r82:] = alloca i64
-  [Address%r82:] = [Address%r81:] mod Immediate 233
-  [Address%r83:] = alloca i64
-  [Address%r83:] = [Address%r82:] imul Immediate 7
-  [Address%r84:] = alloca i64
-  [Address%r84:] = [Address%r83:] mod Immediate 233
-  [Address%r85:] = alloca i64
-  [Address%r85:] = [Address%r84:] imul Immediate 7
-  [Address%r86:] = alloca i64
-  [Address%r86:] = [Address%r85:] mod Immediate 233
-  [Address%r87:] = alloca i64
-  [Address%r87:] = [Address%r86:] imul Immediate 7
-  [Address%r88:] = alloca i64
-  [Address%r88:] = [Address%r87:] mod Immediate 233
-  [Address%r89:] = alloca i64
-  [Address%r89:] = [Address%r88:] imul Immediate 7
-  [Address%r90:] = alloca i64
-  [Address%r90:] = [Address%r89:] mod Immediate 233
-  [Address%r91:] = alloca i64
-  [Address%r91:] = [Address%r90:] imul Immediate 7
-  [Address%r92:] = alloca i64
-  [Address%r92:] = [Address%r91:] mod Immediate 233
-  [Address%r93:] = alloca i64
-  [Address%r93:] = [Address%r92:] imul Immediate 7
-  [Address%r94:] = alloca i64
-  [Address%r94:] = [Address%r93:] mod Immediate 233
-  [Address%r95:] = alloca i64
-  [Address%r95:] = [Address%r94:] imul Immediate 7
-  [Address%r96:] = alloca i64
-  [Address%r96:] = [Address%r95:] mod Immediate 233
-  [Address%r97:] = alloca i64
-  [Address%r97:] = [Address%r96:] imul Immediate 7
-  [Address%r98:] = alloca i64
-  [Address%r98:] = [Address%r97:] mod Immediate 233
-  [Address%r99:] = alloca i64
-  [Address%r99:] = [Address%r98:] imul Immediate 7
-  [Address%r100:] = alloca i64
-  [Address%r100:] = [Address%r99:] mod Immediate 233
-  [Address%r101:] = alloca i64
-  [Address%r101:] = [Address%r100:] imul Immediate 7
-  [Address%r102:] = alloca i64
-  [Address%r102:] = [Address%r101:] mod Immediate 233
-  [Address%r103:] = alloca i64
-  [Address%r103:] = [Address%r102:] imul Immediate 7
-  [Address%r104:] = alloca i64
-  [Address%r104:] = [Address%r103:] mod Immediate 233
-  [Address%r105:] = alloca i64
-  [Address%r105:] = [Address%r104:] imul Immediate 7
-  [Address%r106:] = alloca i64
-  [Address%r106:] = [Address%r105:] mod Immediate 233
-  [Address%r107:] = alloca i64
-  [Address%r107:] = [Address%r106:] imul Immediate 7
-  [Address%r108:] = alloca i64
-  [Address%r108:] = [Address%r107:] mod Immediate 233
-  [Address%r109:] = alloca i64
-  [Address%r109:] = [Address%r108:] imul Immediate 7
-  [Address%r110:] = alloca i64
-  [Address%r110:] = [Address%r109:] mod Immediate 233
-  Store [Address%r110:] to [Addresstmp:]
-  Return [Addresstmp:]
-  Jump label2
-
-  label1
-  Jump label2
-
-  label2
-  [Addresssum:] = alloca i64
-  Store Immediate 0 to [Addresssum:]
-  [Addressi:] = alloca i64
-  Store Immediate 2 to [Addressi:]
+  label7
+  Store Immediate 1 to [Address_%r0:]
+  Jump label9
 
   label8
-  [Address%r111:] = alloca i64
-  [Address%r111:] = [Addressi:] SEQ [Addressx:]
-  Branch [Address%r111:] true: label10 false: label11
+  Store Immediate 0 to [Address_%r0:]
 
-  label10
-  Store Immediate 1 to [Address%r111:]
-  Jump label12
+  label9
+  [Address_%r1:] = [Address_%r0:] NEQ Immediate 0
+  Branch [Address_%r0:] true: label4 false: label5
 
-  label11
-  Store Immediate 0 to [Address%r111:]
+  label4
+  Return [Address_x:]
+  Jump label6
 
-  label12
-  [Address%r112:] = [Address%r111:] NEQ Immediate 0
-  Branch [Address%r111:] true: label6 false: label7
+  label5
+  Jump label6
 
   label6
-  [Address%r113:] = alloca i64
-  [Address%r113:] = [Addressx:] xor [Addressi:]
-  [Address%r114:] = alloca i64
-  [Address%r114:] = [Address%r113:] SLT [Addressx:]
-  Branch [Address%r114:] true: label16 false: label17
-
-  label16
-  Store Immediate 1 to [Address%r114:]
-  Jump label18
-
-  label17
-  Store Immediate 0 to [Address%r114:]
-
-  label18
-  [Address%r115:] = [Address%r114:] NEQ Immediate 0
-  Branch [Address%r114:] true: label13 false: label14
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_x:] SLT [Address_y:]
+  Branch [Address_%r2:] true: label13 false: label14
 
   label13
-  [Address%r116:] = alloca i64
-  [Address%r117:] = alloca i64
-  [Address%r118:] = alloca i64
-  [Address%r118:] = [Addressx:] xor [Addressi:]
-  [Address%r117:] = Call @dp([Address%r118:])
-  [Address%r116:] = Call @add([Addresssum:], [Address%r117:])
-  Store [Address%r116:] to [Addresssum:]
+  Store Immediate 1 to [Address_%r2:]
   Jump label15
 
   label14
-  Jump label15
+  Store Immediate 0 to [Address_%r2:]
 
   label15
+  [Address_%r3:] = [Address_%r2:] NEQ Immediate 0
+  Branch [Address_%r2:] true: label10 false: label11
 
-  label9
-  [Address%r120:] = alloca i64
-  Store [Addressi:] to [Address%r120:]
-  [Addressi:] = [Addressi:] add Immediate 1
-  Jump label8
+  label10
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = Call @gcd([Address_y:], [Address_x:])
+  Return [Address_%r4:]
+  Jump label12
 
-  label7
-  Return [Addresssum:]
+  label11
+  [Address_%r5:] = alloca i64
+  [Address_%r6:] = alloca i64
+  [Address_%r6:] = [Address_x:] mod [Address_y:]
+  [Address_%r5:] = Call @gcd([Address_y:], [Address_%r6:])
+  Return [Address_%r5:]
+  Jump label12
+
+  label12
   Return
 
-define i64 @main()
-  [Addressi:] = alloca i64
-  [Addressn:] = alloca i64
-  [Address%r0:] = alloca i64
-  [Address%r0:] = Call @getInt()
-  Store [Address%r0:] to [Addressn:]
-  Store Immediate 1 to [Addressi:]
+define i64 @lcm(i64, i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = Call @gcd([Address_a:], [Address_b:])
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = [Address_a:] idiv [Address_%r0:]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_%r1:] imul [Address_b:]
+  Return [Address_%r2:]
+  Return
+
+define i64 @Rand()
+  [Address_i:] = alloca i64
+  Store Immediate 1 to [Address_i:]
+  Store Immediate 1 to [Address_i:]
+
+  label18
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_i:] SLT Immediate 3
+  Branch [Address_%r0:] true: label20 false: label21
+
+  label20
+  Store Immediate 1 to [Address_%r0:]
+  Jump label22
 
   label21
-  [Address%r1:] = alloca i64
-  [Address%r1:] = [Addressi:] SEQ [Addressn:]
-  Branch [Address%r1:] true: label23 false: label24
+  Store Immediate 0 to [Address_%r0:]
+
+  label22
+  [Address_%r1:] = [Address_%r0:] NEQ Immediate 0
+  Branch [Address_%r0:] true: label16 false: label17
+
+  label16
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_no:] imul [Address_aa:]
+  [Address_%r3:] = alloca i64
+  [Address_%r3:] = [Address_%r2:] add [Address_bb:]
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = [Address_%r3:] mod [Address_MOD:]
+  Store [Address_%r4:] to [Address_no:]
+
+  label19
+  [Address_%r6:] = alloca i64
+  Store [Address_i:] to [Address_%r6:]
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label18
+
+  label17
+  [Address_%r7:] = alloca i64
+  [Address_%r7:] = [Address_no:] SLT Immediate 0
+  Branch [Address_%r7:] true: label26 false: label27
+
+  label26
+  Store Immediate 1 to [Address_%r7:]
+  Jump label28
+
+  label27
+  Store Immediate 0 to [Address_%r7:]
+
+  label28
+  [Address_%r8:] = [Address_%r7:] NEQ Immediate 0
+  Branch [Address_%r7:] true: label23 false: label24
 
   label23
-  Store Immediate 1 to [Address%r1:]
+  [Address_%r9:] = alloca i64
+  [Address_%r9:] = [Address_no:] neg
+  Store [Address_%r9:] to [Address_no:]
   Jump label25
 
   label24
-  Store Immediate 0 to [Address%r1:]
+  Jump label25
 
   label25
-  [Address%r2:] = [Address%r1:] NEQ Immediate 0
-  Branch [Address%r1:] true: label19 false: label20
+  Return [Address_no:]
+  Return
 
-  label19
-  [Address%r4:] = alloca i64
-  [Address%r5:] = alloca i64
-  [Address%r5:] = Call @dp([Addressi:])
-  [Address%r4:] = Call @toString([Address%r5:])
-  Call @println([Address%r4:])
+define i64 @RandRange(i64, i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = Call @Rand()
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = [Address_high:] sub [Address_low:]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_%r1:] add Immediate 1
+  [Address_%r3:] = alloca i64
+  [Address_%r3:] = [Address_%r0:] mod [Address_%r2:]
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = [Address_low:] add [Address_%r3:]
+  [Address_%r5:] = alloca i64
+  [Address_%r5:] = [Address_%r4:] add Immediate 1
+  Return [Address_%r5:]
+  Return
 
-  label22
-  [Address%r7:] = alloca i64
-  Store [Addressi:] to [Address%r7:]
-  [Addressi:] = [Addressi:] add Immediate 1
-  Jump label21
+define i64 @init()
+  [Address_c:] = alloca [ArrayType: i64[]]
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = Malloc Immediate 140005
+  Store Immediate 140005 to [Address_%r0_size:[Address_%r0:]+offset Immediate -1*i64]
+  Store [Address_%r0:] to [Address_c:]
+  [Address_i:] = alloca i64
+  Store Immediate 0 to [Address_i:]
+  [Address_j:] = alloca i64
+  Store Immediate 0 to [Address_j:]
+  Store Immediate 2 to [Address_i:]
 
-  label20
+  label31
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = [Address_i:] SLT [Address_p:]
+  Branch [Address_%r1:] true: label33 false: label34
+
+  label33
+  Store Immediate 1 to [Address_%r1:]
+  Jump label35
+
+  label34
+  Store Immediate 0 to [Address_%r1:]
+
+  label35
+  [Address_%r2:] = [Address_%r1:] NEQ Immediate 0
+  Branch [Address_%r1:] true: label29 false: label30
+
+  label29
+  Store [Address_i:] to [Address_c:[Address_c:]+offset [Address_i:]*i64]
+
+  label32
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label31
+
+  label30
+  Store Immediate 2 to [Address_i:]
+
+  label38
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = [Address_i:] SLT [Address_p:]
+  Branch [Address_%r4:] true: label40 false: label41
+
+  label40
+  Store Immediate 1 to [Address_%r4:]
+  Jump label42
+
+  label41
+  Store Immediate 0 to [Address_%r4:]
+
+  label42
+  [Address_%r5:] = [Address_%r4:] NEQ Immediate 0
+  Branch [Address_%r4:] true: label36 false: label37
+
+  label36
+  Store Immediate 1 to [Address_j:]
+
+  label45
+  [Address_%r6:] = alloca i64
+  [Address_%r6:] = [Address_j:] SEQ Immediate 15
+  Branch [Address_%r6:] true: label47 false: label48
+
+  label47
+  Store Immediate 1 to [Address_%r6:]
+  Jump label49
+
+  label48
+  Store Immediate 0 to [Address_%r6:]
+
+  label49
+  [Address_%r7:] = [Address_%r6:] NEQ Immediate 0
+  Branch [Address_%r6:] true: label43 false: label44
+
+  label43
+  [Address_%r8:] = alloca i64
+  [Address_%r8:] = Call @square([Address_c:[Address_c:]+offset [Address_i:]*i64])
+  [Address_%r9:] = alloca i64
+  [Address_%r9:] = [Address_%r8:] mod [Address_p:]
+  Store [Address_%r9:] to [Address_c:[Address_c:]+offset [Address_i:]*i64]
+
+  label46
+  [Address_j:] = [Address_j:] add Immediate 1
+  Jump label45
+
+  label44
+
+  label39
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label38
+
+  label37
+  Store Immediate 2 to [Address_i:]
+
+  label52
+  [Address_%r12:] = alloca i64
+  [Address_%r12:] = [Address_i:] SLT [Address_p:]
+  Branch [Address_%r12:] true: label54 false: label55
+
+  label54
+  Store Immediate 1 to [Address_%r12:]
+  Jump label56
+
+  label55
+  Store Immediate 0 to [Address_%r12:]
+
+  label56
+  [Address_%r13:] = [Address_%r12:] NEQ Immediate 0
+  Branch [Address_%r12:] true: label50 false: label51
+
+  label50
+  [Address_j:] = alloca i64
+  [Address_x:] = alloca i64
+  Store [Address_c:[Address_c:]+offset [Address_i:]*i64] to [Address_x:]
+  Store Immediate 1 to [Address_j:]
+
+  label59
+
+  label57
+  [Address_%r14:] = alloca i64
+  [Address_%r14:] = Call @square([Address_x:])
+  [Address_%r15:] = alloca i64
+  [Address_%r15:] = [Address_%r14:] mod [Address_p:]
+  Store [Address_%r15:] to [Address_x:]
+  Store Immediate 1 to [Address_b:[Address_b:]+offset [Address_x:]*i64]
+  [Address_%r16:] = alloca i64
+  [Address_%r16:] = [Address_x:] EQU [Address_c:[Address_c:]+offset [Address_i:]*i64]
+  Branch [Address_%r16:] true: label64 false: label65
+
+  label64
+  Store Immediate 1 to [Address_%r16:]
+  Jump label66
+
+  label65
+  Store Immediate 0 to [Address_%r16:]
+
+  label66
+  [Address_%r17:] = [Address_%r16:] NEQ Immediate 0
+  Branch [Address_%r16:] true: label61 false: label62
+
+  label61
+  Jump label58
+  Jump label63
+
+  label62
+  Jump label63
+
+  label63
+
+  label60
+  [Address_j:] = [Address_j:] add Immediate 1
+  Jump label59
+
+  label58
+  [Address_%r19:] = alloca i64
+  [Address_%r19:] = Call @lcm([Address_L:], [Address_j:])
+  Store [Address_%r19:] to [Address_L:]
+
+  label53
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label52
+
+  label51
+  Store Immediate 1 to [Address_b:[Address_b:]+offset Immediate 0*i64]
+  Store Immediate 1 to [Address_b:[Address_b:]+offset Immediate 1*i64]
+  Return
+  Return
+
+define i64 @build(i64, i64, i64)
+  [Address_i:] = alloca i64
+  Store Immediate 0 to [Address_i:]
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_l:] EQU [Address_r:]
+  Branch [Address_%r0:] true: label70 false: label71
+
+  label70
+  Store Immediate 1 to [Address_%r0:]
+  Jump label72
+
+  label71
+  Store Immediate 0 to [Address_%r0:]
+
+  label72
+  [Address_%r1:] = [Address_%r0:] NEQ Immediate 0
+  Branch [Address_%r0:] true: label67 false: label68
+
+  label67
+  Store [Address_a:[Address_a:]+offset [Address_l:]*i64] to [Address_sum:[Address_sum:]+offset [Address_o:]*i64]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_a:[Address_a:]+offset [Address_l:]*i64] SLT [Address_p:]
+  Branch [Address_%r2:] true: label86 false: label87
+
+  label86
+  Store Immediate 1 to [Address_%r2:]
+  Jump label88
+
+  label87
+  Store Immediate 0 to [Address_%r2:]
+
+  label88
+  [Address_%r3:] = [Address_%r2:] NEQ Immediate 0
+  Branch [Address_%r2:] true: label81 false: label84
+
+  label81
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = [Address_a:[Address_a:]+offset [Address_l:]*i64] BEQ Immediate 0
+  Branch [Address_%r4:] true: label89 false: label90
+
+  label89
+  Store Immediate 1 to [Address_%r4:]
+  Jump label91
+
+  label90
+  Store Immediate 0 to [Address_%r4:]
+
+  label91
+  [Address_%r5:] = alloca i64
+  [Address_%r6:] = [Address_%r4:] NEQ Immediate 0
+  Branch [Address_%r5:] true: label83 false: label84
+
+  label83
+  Store Immediate 1 to [Address_%r5:]
+  Jump label85
+
+  label84
+  Store Immediate 0 to [Address_%r5:]
+
+  label85
+  [Address_%r7:] = [Address_%r5:] NEQ Immediate 0
+  Branch [Address_%r5:] true: label76 false: label79
+
+  label76
+  [Address_%r8:] = alloca i64
+  [Address_%r8:] = [Address_a:[Address_a:]+offset [Address_l:]*i64] mod [Address_p:]
+  [Address_%r9:] = alloca i64
+  [Address_%r9:] = [Address_b:[Address_b:]+offset [Address_%r8:]*i64] SGT Immediate 0
+  Branch [Address_%r9:] true: label92 false: label93
+
+  label92
+  Store Immediate 1 to [Address_%r9:]
+  Jump label94
+
+  label93
+  Store Immediate 0 to [Address_%r9:]
+
+  label94
+  [Address_%r10:] = alloca i64
+  [Address_%r11:] = [Address_%r9:] NEQ Immediate 0
+  Branch [Address_%r10:] true: label78 false: label79
+
+  label78
+  Store Immediate 1 to [Address_%r10:]
+  Jump label80
+
+  label79
+  Store Immediate 0 to [Address_%r10:]
+
+  label80
+  [Address_%r12:] = [Address_%r10:] NEQ Immediate 0
+  Branch [Address_%r10:] true: label73 false: label74
+
+  label73
+  Store Immediate 1 to [Address_flag:[Address_flag:]+offset [Address_o:]*i64]
+  Store [Address_a:[Address_a:]+offset [Address_l:]*i64] to [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset Immediate 0*i64]
+  Store Immediate 1 to [Address_i:]
+
+  label97
+  [Address_%r13:] = alloca i64
+  [Address_%r13:] = [Address_i:] SLT [Address_L:]
+  Branch [Address_%r13:] true: label99 false: label100
+
+  label99
+  Store Immediate 1 to [Address_%r13:]
+  Jump label101
+
+  label100
+  Store Immediate 0 to [Address_%r13:]
+
+  label101
+  [Address_%r14:] = [Address_%r13:] NEQ Immediate 0
+  Branch [Address_%r13:] true: label95 false: label96
+
+  label95
+  [Address_%r15:] = alloca i64
+  [Address_%r16:] = alloca i64
+  [Address_%r16:] = [Address_i:] sub Immediate 1
+  [Address_%r15:] = Call @square([Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_%r16:]*i64])
+  [Address_%r17:] = alloca i64
+  [Address_%r17:] = [Address_%r15:] mod [Address_p:]
+  Store [Address_%r17:] to [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_i:]*i64]
+
+  label98
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label97
+
+  label96
+  Jump label75
+
+  label74
+  Jump label75
+
+  label75
+  Store Immediate 0 to [Address_now:[Address_now:]+offset [Address_o:]*i64]
+  Jump label69
+
+  label68
+  [Address_lc:] = alloca i64
+  [Address_%r19:] = alloca i64
+  [Address_%r19:] = [Address_o:] imul Immediate 2
+  Store [Address_%r19:] to [Address_lc:]
+  [Address_rc:] = alloca i64
+  [Address_%r20:] = alloca i64
+  [Address_%r20:] = [Address_o:] imul Immediate 2
+  [Address_%r21:] = alloca i64
+  [Address_%r21:] = [Address_%r20:] add Immediate 1
+  Store [Address_%r21:] to [Address_rc:]
+  [Address_mid:] = alloca i64
+  [Address_%r22:] = alloca i64
+  [Address_%r22:] = [Address_l:] add [Address_r:]
+  [Address_%r23:] = alloca i64
+  [Address_%r23:] = [Address_%r22:] idiv Immediate 2
+  Store [Address_%r23:] to [Address_mid:]
+  Call @build([Address_lc:], [Address_l:], [Address_mid:])
+  [Address_%r26:] = alloca i64
+  [Address_%r26:] = [Address_mid:] add Immediate 1
+  Call @build([Address_rc:], [Address_%r26:], [Address_r:])
+  [Address_%r27:] = alloca i64
+  [Address_%r27:] = [Address_sum:[Address_sum:]+offset [Address_lc:]*i64] add [Address_sum:[Address_sum:]+offset [Address_rc:]*i64]
+  Store [Address_%r27:] to [Address_sum:[Address_sum:]+offset [Address_o:]*i64]
+  [Address_%r28:] = alloca i64
+  [Address_%r28:] = [Address_flag:[Address_flag:]+offset [Address_lc:]*i64] and [Address_flag:[Address_flag:]+offset [Address_rc:]*i64]
+  Store [Address_%r28:] to [Address_flag:[Address_flag:]+offset [Address_o:]*i64]
+  [Address_%r29:] = alloca i64
+  [Address_%r29:] = [Address_flag:[Address_flag:]+offset [Address_o:]*i64] SGT Immediate 0
+  Branch [Address_%r29:] true: label105 false: label106
+
+  label105
+  Store Immediate 1 to [Address_%r29:]
+  Jump label107
+
+  label106
+  Store Immediate 0 to [Address_%r29:]
+
+  label107
+  [Address_%r30:] = [Address_%r29:] NEQ Immediate 0
+  Branch [Address_%r29:] true: label102 false: label103
+
+  label102
+  Store Immediate 0 to [Address_i:]
+
+  label110
+  [Address_%r31:] = alloca i64
+  [Address_%r31:] = [Address_i:] SLT [Address_L:]
+  Branch [Address_%r31:] true: label112 false: label113
+
+  label112
+  Store Immediate 1 to [Address_%r31:]
+  Jump label114
+
+  label113
+  Store Immediate 0 to [Address_%r31:]
+
+  label114
+  [Address_%r32:] = [Address_%r31:] NEQ Immediate 0
+  Branch [Address_%r31:] true: label108 false: label109
+
+  label108
+  [Address_%r33:] = alloca i64
+  [Address_%r33:] = [Address_s:[Address_s:[Address_s:]+offset [Address_lc:]*i64]+offset [Address_i:]*i64] add [Address_s:[Address_s:[Address_s:]+offset [Address_rc:]*i64]+offset [Address_i:]*i64]
+  Store [Address_%r33:] to [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_i:]*i64]
+
+  label111
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label110
+
+  label109
+  Store Immediate 0 to [Address_now:[Address_now:]+offset Immediate 0*i64]
+  Jump label104
+
+  label103
+  Jump label104
+
+  label104
+  Jump label69
+
+  label69
+  Return
+  Return
+
+define i64 @pushdown(i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_t:[Address_t:]+offset [Address_o:]*i64] SGT Immediate 0
+  Branch [Address_%r0:] true: label118 false: label119
+
+  label118
+  Store Immediate 1 to [Address_%r0:]
+  Jump label120
+
+  label119
+  Store Immediate 0 to [Address_%r0:]
+
+  label120
+  [Address_%r1:] = [Address_%r0:] NEQ Immediate 0
+  Branch [Address_%r0:] true: label115 false: label116
+
+  label115
+  [Address_lc:] = alloca i64
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_o:] imul Immediate 2
+  Store [Address_%r2:] to [Address_lc:]
+  [Address_rc:] = alloca i64
+  [Address_%r3:] = alloca i64
+  [Address_%r3:] = [Address_o:] imul Immediate 2
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = [Address_%r3:] add Immediate 1
+  Store [Address_%r4:] to [Address_rc:]
+  [Address_%r5:] = alloca i64
+  [Address_%r5:] = [Address_now:[Address_now:]+offset [Address_lc:]*i64] add [Address_t:[Address_t:]+offset [Address_o:]*i64]
+  [Address_%r6:] = alloca i64
+  [Address_%r6:] = [Address_%r5:] mod [Address_L:]
+  Store [Address_%r6:] to [Address_now:[Address_now:]+offset [Address_lc:]*i64]
+  Store [Address_s:[Address_s:[Address_s:]+offset [Address_lc:]*i64]+offset [Address_now:[Address_now:]+offset [Address_lc:]*i64]*i64] to [Address_sum:[Address_sum:]+offset [Address_lc:]*i64]
+  [Address_%r7:] = alloca i64
+  [Address_%r7:] = [Address_t:[Address_t:]+offset [Address_lc:]*i64] add [Address_t:[Address_t:]+offset [Address_o:]*i64]
+  [Address_%r8:] = alloca i64
+  [Address_%r8:] = [Address_%r7:] mod [Address_L:]
+  Store [Address_%r8:] to [Address_t:[Address_t:]+offset [Address_lc:]*i64]
+  [Address_%r9:] = alloca i64
+  [Address_%r9:] = [Address_now:[Address_now:]+offset [Address_rc:]*i64] add [Address_t:[Address_t:]+offset [Address_o:]*i64]
+  [Address_%r10:] = alloca i64
+  [Address_%r10:] = [Address_%r9:] mod [Address_L:]
+  Store [Address_%r10:] to [Address_now:[Address_now:]+offset [Address_rc:]*i64]
+  Store [Address_s:[Address_s:[Address_s:]+offset [Address_rc:]*i64]+offset [Address_now:[Address_now:]+offset [Address_rc:]*i64]*i64] to [Address_sum:[Address_sum:]+offset [Address_rc:]*i64]
+  [Address_%r11:] = alloca i64
+  [Address_%r11:] = [Address_t:[Address_t:]+offset [Address_rc:]*i64] add [Address_t:[Address_t:]+offset [Address_o:]*i64]
+  [Address_%r12:] = alloca i64
+  [Address_%r12:] = [Address_%r11:] mod [Address_L:]
+  Store [Address_%r12:] to [Address_t:[Address_t:]+offset [Address_rc:]*i64]
+  Store Immediate 0 to [Address_t:[Address_t:]+offset [Address_o:]*i64]
+  Jump label117
+
+  label116
+  Jump label117
+
+  label117
+  Return
+  Return
+
+define i64 @update(i64, i64, i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_pl:] SEQ [Address_l:]
+  Branch [Address_%r0:] true: label134 false: label135
+
+  label134
+  Store Immediate 1 to [Address_%r0:]
+  Jump label136
+
+  label135
+  Store Immediate 0 to [Address_%r0:]
+
+  label136
+  [Address_%r1:] = [Address_%r0:] NEQ Immediate 0
+  Branch [Address_%r0:] true: label129 false: label132
+
+  label129
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_pr:] BEQ [Address_r:]
+  Branch [Address_%r2:] true: label137 false: label138
+
+  label137
+  Store Immediate 1 to [Address_%r2:]
+  Jump label139
+
+  label138
+  Store Immediate 0 to [Address_%r2:]
+
+  label139
+  [Address_%r3:] = alloca i64
+  [Address_%r4:] = [Address_%r2:] NEQ Immediate 0
+  Branch [Address_%r3:] true: label131 false: label132
+
+  label131
+  Store Immediate 1 to [Address_%r3:]
+  Jump label133
+
+  label132
+  Store Immediate 0 to [Address_%r3:]
+
+  label133
+  [Address_%r5:] = [Address_%r3:] NEQ Immediate 0
+  Branch [Address_%r3:] true: label124 false: label127
+
+  label124
+  [Address_%r6:] = alloca i64
+  [Address_%r6:] = [Address_flag:[Address_flag:]+offset [Address_o:]*i64] SGT Immediate 0
+  Branch [Address_%r6:] true: label140 false: label141
+
+  label140
+  Store Immediate 1 to [Address_%r6:]
+  Jump label142
+
+  label141
+  Store Immediate 0 to [Address_%r6:]
+
+  label142
+  [Address_%r7:] = alloca i64
+  [Address_%r8:] = [Address_%r6:] NEQ Immediate 0
+  Branch [Address_%r7:] true: label126 false: label127
+
+  label126
+  Store Immediate 1 to [Address_%r7:]
+  Jump label128
+
+  label127
+  Store Immediate 0 to [Address_%r7:]
+
+  label128
+  [Address_%r9:] = [Address_%r7:] NEQ Immediate 0
+  Branch [Address_%r7:] true: label121 false: label122
+
+  label121
+  [Address_%r10:] = alloca i64
+  [Address_%r10:] = [Address_now:[Address_now:]+offset [Address_o:]*i64] add Immediate 1
+  [Address_%r11:] = alloca i64
+  [Address_%r11:] = [Address_%r10:] mod [Address_L:]
+  Store [Address_%r11:] to [Address_now:[Address_now:]+offset [Address_o:]*i64]
+  Store [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_now:[Address_now:]+offset [Address_o:]*i64]*i64] to [Address_sum:[Address_sum:]+offset [Address_o:]*i64]
+  [Address_%r12:] = alloca i64
+  [Address_%r12:] = [Address_t:[Address_t:]+offset [Address_o:]*i64] add Immediate 1
+  [Address_%r13:] = alloca i64
+  [Address_%r13:] = [Address_%r12:] mod [Address_L:]
+  Store [Address_%r13:] to [Address_t:[Address_t:]+offset [Address_o:]*i64]
+  Return
+  Jump label123
+
+  label122
+  Jump label123
+
+  label123
+  [Address_%r14:] = alloca i64
+  [Address_%r14:] = [Address_l:] EQU [Address_r:]
+  Branch [Address_%r14:] true: label146 false: label147
+
+  label146
+  Store Immediate 1 to [Address_%r14:]
+  Jump label148
+
+  label147
+  Store Immediate 0 to [Address_%r14:]
+
+  label148
+  [Address_%r15:] = [Address_%r14:] NEQ Immediate 0
+  Branch [Address_%r14:] true: label143 false: label144
+
+  label143
+  [Address_%r16:] = alloca i64
+  [Address_%r16:] = Call @square([Address_sum:[Address_sum:]+offset [Address_o:]*i64])
+  [Address_%r17:] = alloca i64
+  [Address_%r17:] = [Address_%r16:] mod [Address_p:]
+  Store [Address_%r17:] to [Address_sum:[Address_sum:]+offset [Address_o:]*i64]
+  [Address_%r18:] = alloca i64
+  [Address_%r18:] = [Address_b:[Address_b:]+offset [Address_sum:[Address_sum:]+offset [Address_o:]*i64]*i64] SGT Immediate 0
+  Branch [Address_%r18:] true: label152 false: label153
+
+  label152
+  Store Immediate 1 to [Address_%r18:]
+  Jump label154
+
+  label153
+  Store Immediate 0 to [Address_%r18:]
+
+  label154
+  [Address_%r19:] = [Address_%r18:] NEQ Immediate 0
+  Branch [Address_%r18:] true: label149 false: label150
+
+  label149
+  Store Immediate 1 to [Address_flag:[Address_flag:]+offset [Address_o:]*i64]
+  Store [Address_sum:[Address_sum:]+offset [Address_o:]*i64] to [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset Immediate 0*i64]
+  [Address_i:] = alloca i64
+  Store Immediate 0 to [Address_i:]
+  Store Immediate 1 to [Address_i:]
+
+  label157
+  [Address_%r20:] = alloca i64
+  [Address_%r20:] = [Address_i:] SLT [Address_L:]
+  Branch [Address_%r20:] true: label159 false: label160
+
+  label159
+  Store Immediate 1 to [Address_%r20:]
+  Jump label161
+
+  label160
+  Store Immediate 0 to [Address_%r20:]
+
+  label161
+  [Address_%r21:] = [Address_%r20:] NEQ Immediate 0
+  Branch [Address_%r20:] true: label155 false: label156
+
+  label155
+  [Address_%r22:] = alloca i64
+  [Address_%r23:] = alloca i64
+  [Address_%r23:] = [Address_i:] sub Immediate 1
+  [Address_%r22:] = Call @square([Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_%r23:]*i64])
+  [Address_%r24:] = alloca i64
+  [Address_%r24:] = [Address_%r22:] mod [Address_p:]
+  Store [Address_%r24:] to [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_i:]*i64]
+
+  label158
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label157
+
+  label156
+  Jump label151
+
+  label150
+  Jump label151
+
+  label151
+  Return
+  Jump label145
+
+  label144
+  Jump label145
+
+  label145
+  [Address_%r26:] = alloca i64
+  [Address_%r26:] = [Address_t:[Address_t:]+offset [Address_o:]*i64] SGT Immediate 0
+  Branch [Address_%r26:] true: label165 false: label166
+
+  label165
+  Store Immediate 1 to [Address_%r26:]
+  Jump label167
+
+  label166
+  Store Immediate 0 to [Address_%r26:]
+
+  label167
+  [Address_%r27:] = [Address_%r26:] NEQ Immediate 0
+  Branch [Address_%r26:] true: label162 false: label163
+
+  label162
+  Call @pushdown([Address_o:])
+  Jump label164
+
+  label163
+  Jump label164
+
+  label164
+  [Address_lc:] = alloca i64
+  [Address_%r29:] = alloca i64
+  [Address_%r29:] = [Address_o:] imul Immediate 2
+  Store [Address_%r29:] to [Address_lc:]
+  [Address_rc:] = alloca i64
+  [Address_%r30:] = alloca i64
+  [Address_%r30:] = [Address_o:] imul Immediate 2
+  [Address_%r31:] = alloca i64
+  [Address_%r31:] = [Address_%r30:] add Immediate 1
+  Store [Address_%r31:] to [Address_rc:]
+  [Address_mid:] = alloca i64
+  [Address_%r32:] = alloca i64
+  [Address_%r32:] = [Address_l:] add [Address_r:]
+  [Address_%r33:] = alloca i64
+  [Address_%r33:] = [Address_%r32:] idiv Immediate 2
+  Store [Address_%r33:] to [Address_mid:]
+  [Address_%r34:] = alloca i64
+  [Address_%r34:] = [Address_pl:] SEQ [Address_mid:]
+  Branch [Address_%r34:] true: label171 false: label172
+
+  label171
+  Store Immediate 1 to [Address_%r34:]
+  Jump label173
+
+  label172
+  Store Immediate 0 to [Address_%r34:]
+
+  label173
+  [Address_%r35:] = [Address_%r34:] NEQ Immediate 0
+  Branch [Address_%r34:] true: label168 false: label169
+
+  label168
+  Call @update([Address_lc:], [Address_l:], [Address_mid:])
+  Jump label170
+
+  label169
+  Jump label170
+
+  label170
+  [Address_%r37:] = alloca i64
+  [Address_%r37:] = [Address_mid:] add Immediate 1
+  [Address_%r38:] = alloca i64
+  [Address_%r38:] = [Address_pr:] BEQ [Address_%r37:]
+  Branch [Address_%r38:] true: label177 false: label178
+
+  label177
+  Store Immediate 1 to [Address_%r38:]
+  Jump label179
+
+  label178
+  Store Immediate 0 to [Address_%r38:]
+
+  label179
+  [Address_%r39:] = [Address_%r38:] NEQ Immediate 0
+  Branch [Address_%r38:] true: label174 false: label175
+
+  label174
+  [Address_%r41:] = alloca i64
+  [Address_%r41:] = [Address_mid:] add Immediate 1
+  Call @update([Address_rc:], [Address_%r41:], [Address_r:])
+  Jump label176
+
+  label175
+  Jump label176
+
+  label176
+  [Address_%r42:] = alloca i64
+  [Address_%r42:] = [Address_sum:[Address_sum:]+offset [Address_lc:]*i64] add [Address_sum:[Address_sum:]+offset [Address_rc:]*i64]
+  Store [Address_%r42:] to [Address_sum:[Address_sum:]+offset [Address_o:]*i64]
+  [Address_%r43:] = alloca i64
+  [Address_%r43:] = [Address_flag:[Address_flag:]+offset [Address_lc:]*i64] and [Address_flag:[Address_flag:]+offset [Address_rc:]*i64]
+  Store [Address_%r43:] to [Address_flag:[Address_flag:]+offset [Address_o:]*i64]
+  [Address_%r44:] = alloca i64
+  [Address_%r44:] = [Address_flag:[Address_flag:]+offset [Address_o:]*i64] SGT Immediate 0
+  Branch [Address_%r44:] true: label183 false: label184
+
+  label183
+  Store Immediate 1 to [Address_%r44:]
+  Jump label185
+
+  label184
+  Store Immediate 0 to [Address_%r44:]
+
+  label185
+  [Address_%r45:] = [Address_%r44:] NEQ Immediate 0
+  Branch [Address_%r44:] true: label180 false: label181
+
+  label180
+  [Address_i:] = alloca i64
+  Store Immediate 0 to [Address_i:]
+  Store Immediate 0 to [Address_i:]
+
+  label188
+  [Address_%r46:] = alloca i64
+  [Address_%r46:] = [Address_i:] SLT [Address_L:]
+  Branch [Address_%r46:] true: label190 false: label191
+
+  label190
+  Store Immediate 1 to [Address_%r46:]
+  Jump label192
+
+  label191
+  Store Immediate 0 to [Address_%r46:]
+
+  label192
+  [Address_%r47:] = [Address_%r46:] NEQ Immediate 0
+  Branch [Address_%r46:] true: label186 false: label187
+
+  label186
+  [Address_%r48:] = alloca i64
+  [Address_%r48:] = [Address_i:] add [Address_now:[Address_now:]+offset [Address_lc:]*i64]
+  [Address_%r49:] = alloca i64
+  [Address_%r49:] = [Address_%r48:] mod [Address_L:]
+  [Address_%r50:] = alloca i64
+  [Address_%r50:] = [Address_i:] add [Address_now:[Address_now:]+offset [Address_rc:]*i64]
+  [Address_%r51:] = alloca i64
+  [Address_%r51:] = [Address_%r50:] mod [Address_L:]
+  [Address_%r52:] = alloca i64
+  [Address_%r52:] = [Address_s:[Address_s:[Address_s:]+offset [Address_lc:]*i64]+offset [Address_%r49:]*i64] add [Address_s:[Address_s:[Address_s:]+offset [Address_rc:]*i64]+offset [Address_%r51:]*i64]
+  Store [Address_%r52:] to [Address_s:[Address_s:[Address_s:]+offset [Address_o:]*i64]+offset [Address_i:]*i64]
+
+  label189
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label188
+
+  label187
+  Store Immediate 0 to [Address_now:[Address_now:]+offset [Address_o:]*i64]
+  Jump label182
+
+  label181
+  Jump label182
+
+  label182
+  Return
+  Return
+
+define i64 @query(i64, i64, i64)
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = [Address_pl:] SEQ [Address_l:]
+  Branch [Address_%r0:] true: label201 false: label202
+
+  label201
+  Store Immediate 1 to [Address_%r0:]
+  Jump label203
+
+  label202
+  Store Immediate 0 to [Address_%r0:]
+
+  label203
+  [Address_%r1:] = [Address_%r0:] NEQ Immediate 0
+  Branch [Address_%r0:] true: label196 false: label199
+
+  label196
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_pr:] BEQ [Address_r:]
+  Branch [Address_%r2:] true: label204 false: label205
+
+  label204
+  Store Immediate 1 to [Address_%r2:]
+  Jump label206
+
+  label205
+  Store Immediate 0 to [Address_%r2:]
+
+  label206
+  [Address_%r3:] = alloca i64
+  [Address_%r4:] = [Address_%r2:] NEQ Immediate 0
+  Branch [Address_%r3:] true: label198 false: label199
+
+  label198
+  Store Immediate 1 to [Address_%r3:]
+  Jump label200
+
+  label199
+  Store Immediate 0 to [Address_%r3:]
+
+  label200
+  [Address_%r5:] = [Address_%r3:] NEQ Immediate 0
+  Branch [Address_%r3:] true: label193 false: label194
+
+  label193
+  Return [Address_sum:[Address_sum:]+offset [Address_o:]*i64]
+  Jump label195
+
+  label194
+  Jump label195
+
+  label195
+  [Address_lc:] = alloca i64
+  [Address_%r6:] = alloca i64
+  [Address_%r6:] = [Address_o:] imul Immediate 2
+  Store [Address_%r6:] to [Address_lc:]
+  [Address_rc:] = alloca i64
+  [Address_%r7:] = alloca i64
+  [Address_%r7:] = [Address_o:] imul Immediate 2
+  [Address_%r8:] = alloca i64
+  [Address_%r8:] = [Address_%r7:] add Immediate 1
+  Store [Address_%r8:] to [Address_rc:]
+  [Address_mid:] = alloca i64
+  [Address_%r9:] = alloca i64
+  [Address_%r9:] = [Address_l:] add [Address_r:]
+  [Address_%r10:] = alloca i64
+  [Address_%r10:] = [Address_%r9:] idiv Immediate 2
+  Store [Address_%r10:] to [Address_mid:]
+  [Address_ss:] = alloca i64
+  Store Immediate 0 to [Address_ss:]
+  [Address_%r11:] = alloca i64
+  [Address_%r11:] = [Address_t:[Address_t:]+offset [Address_o:]*i64] SGT Immediate 0
+  Branch [Address_%r11:] true: label210 false: label211
+
+  label210
+  Store Immediate 1 to [Address_%r11:]
+  Jump label212
+
+  label211
+  Store Immediate 0 to [Address_%r11:]
+
+  label212
+  [Address_%r12:] = [Address_%r11:] NEQ Immediate 0
+  Branch [Address_%r11:] true: label207 false: label208
+
+  label207
+  Call @pushdown([Address_o:])
+  Jump label209
+
+  label208
+  Jump label209
+
+  label209
+  [Address_%r14:] = alloca i64
+  [Address_%r14:] = [Address_pl:] SEQ [Address_mid:]
+  Branch [Address_%r14:] true: label216 false: label217
+
+  label216
+  Store Immediate 1 to [Address_%r14:]
+  Jump label218
+
+  label217
+  Store Immediate 0 to [Address_%r14:]
+
+  label218
+  [Address_%r15:] = [Address_%r14:] NEQ Immediate 0
+  Branch [Address_%r14:] true: label213 false: label214
+
+  label213
+  [Address_%r16:] = alloca i64
+  [Address_%r16:] = Call @query([Address_lc:], [Address_l:], [Address_mid:])
+  [Address_%r17:] = alloca i64
+  [Address_%r17:] = [Address_ss:] add [Address_%r16:]
+  [Address_%r18:] = alloca i64
+  [Address_%r18:] = [Address_%r17:] mod [Address_MOD:]
+  Store [Address_%r18:] to [Address_ss:]
+  Jump label215
+
+  label214
+  Jump label215
+
+  label215
+  [Address_%r19:] = alloca i64
+  [Address_%r19:] = [Address_mid:] add Immediate 1
+  [Address_%r20:] = alloca i64
+  [Address_%r20:] = [Address_pr:] BEQ [Address_%r19:]
+  Branch [Address_%r20:] true: label222 false: label223
+
+  label222
+  Store Immediate 1 to [Address_%r20:]
+  Jump label224
+
+  label223
+  Store Immediate 0 to [Address_%r20:]
+
+  label224
+  [Address_%r21:] = [Address_%r20:] NEQ Immediate 0
+  Branch [Address_%r20:] true: label219 false: label220
+
+  label219
+  [Address_%r22:] = alloca i64
+  [Address_%r23:] = alloca i64
+  [Address_%r23:] = [Address_mid:] add Immediate 1
+  [Address_%r22:] = Call @query([Address_rc:], [Address_%r23:], [Address_r:])
+  [Address_%r24:] = alloca i64
+  [Address_%r24:] = [Address_ss:] add [Address_%r22:]
+  [Address_%r25:] = alloca i64
+  [Address_%r25:] = [Address_%r24:] mod [Address_MOD:]
+  Store [Address_%r25:] to [Address_ss:]
+  Jump label221
+
+  label220
+  Jump label221
+
+  label221
+  Return [Address_ss:]
+  Return
+
+define i64 @main()
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = Malloc Immediate 500005
+  Store Immediate 500005 to [Address_%r0_size:[Address_%r0:]+offset Immediate -1*i64]
+  MemCopy [Address_%r0:] to [Address_b:]
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = Malloc Immediate 500005
+  Store Immediate 500005 to [Address_%r1_size:[Address_%r1:]+offset Immediate -1*i64]
+  MemCopy [Address_%r1:] to [Address_now:]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = Malloc Immediate 500005
+  Store Immediate 500005 to [Address_%r2_size:[Address_%r2:]+offset Immediate -1*i64]
+  MemCopy [Address_%r2:] to [Address_t:]
+  [Address_%r3:] = alloca i64
+  [Address_%r3:] = Malloc Immediate 200005
+  Store Immediate 200005 to [Address_%r3_size:[Address_%r3:]+offset Immediate -1*i64]
+  MemCopy [Address_%r3:] to [Address_a:]
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = Malloc Immediate 500005
+  Store Immediate 500005 to [Address_%r4_size:[Address_%r4:]+offset Immediate -1*i64]
+  MemCopy [Address_%r4:] to [Address_flag:]
+  [Address_%r5:] = alloca i64
+  [Address_%r5:] = Malloc Immediate 500005
+  Store Immediate 500005 to [Address_%r5_size:[Address_%r5:]+offset Immediate -1*i64]
+  [Address_%r6:] = alloca i64
+  Store Immediate 0 to [Address_%r6:]
+  label0
+  [Address_%r7:[Address_%r5:]+offset [Address_%r6:]*i64] = Malloc Immediate 80
+  Store Immediate 80 to [Address_%r7_size:[Address_%r7:[Address_%r5:]+offset [Address_%r6:]*i64]+offset Immediate -1*i64]
+  [Address_%r8:] = alloca i64
+  Store Immediate 0 to [Address_%r8:]
+  [Address_%r9:] = alloca i64
+  [Address_%r6:] = [Address_%r6:] add Immediate 1
+  [Address_%r9:] = [Address_%r6:] SEQ Immediate 500005
+  Branch [Address_%r9:] true: label0 false: label1
+  Jump label0
+  label1
+  MemCopy [Address_%r5:] to [Address_s:]
+  [Address_%r10:] = alloca i64
+  [Address_%r10:] = Malloc Immediate 500005
+  Store Immediate 500005 to [Address_%r10_size:[Address_%r10:]+offset Immediate -1*i64]
+  MemCopy [Address_%r10:] to [Address_sum:]
+  [Address_%r3:] = alloca i64
+  [Address_%r3:] = Immediate 2 sal Immediate 14
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = [Address_%r3:] sub Immediate 7
+  Store [Address_%r4:] to [Address_MOD:]
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = Call @getInt()
+  Store [Address_%r0:] to [Address_n:]
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = Call @getInt()
+  Store [Address_%r1:] to [Address_m:]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = Call @getInt()
+  Store [Address_%r2:] to [Address_p:]
+  [Address_i:] = alloca i64
+  Store Immediate 1 to [Address_i:]
+  Store Immediate 1 to [Address_i:]
+
+  label227
+  [Address_%r3:] = alloca i64
+  [Address_%r3:] = [Address_i:] SEQ [Address_n:]
+  Branch [Address_%r3:] true: label229 false: label230
+
+  label229
+  Store Immediate 1 to [Address_%r3:]
+  Jump label231
+
+  label230
+  Store Immediate 0 to [Address_%r3:]
+
+  label231
+  [Address_%r4:] = [Address_%r3:] NEQ Immediate 0
+  Branch [Address_%r3:] true: label225 false: label226
+
+  label225
+  [Address_%r5:] = alloca i64
+  [Address_%r5:] = Call @RandRange(Immediate 0, [Address_p:])
+  Store [Address_%r5:] to [Address_a:[Address_a:]+offset [Address_i:]*i64]
+
+  label228
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label227
+
+  label226
+  Call @init()
+  Call @build(Immediate 1, Immediate 1, [Address_n:])
+
+  label234
+  [Address_%r9:] = alloca i64
+  [Address_%r9:] = [Address_m:] SGT Immediate 0
+  Branch [Address_%r9:] true: label235 false: label236
+
+  label235
+  Store Immediate 1 to [Address_%r9:]
+  Jump label237
+
+  label236
+  Store Immediate 0 to [Address_%r9:]
+
+  label237
+  [Address_%r10:] = [Address_%r9:] NEQ Immediate 0
+  Branch [Address_%r9:] true: label232 false: label233
+
+  label232
+  [Address_%r11:] = alloca i64
+  [Address_%r11:] = Call @Rand()
+  [Address_%r12:] = alloca i64
+  [Address_%r12:] = [Address_%r11:] mod Immediate 2
+  Store [Address_%r12:] to [Address_op:]
+  [Address_%r13:] = alloca i64
+  [Address_%r13:] = Call @RandRange(Immediate 1, [Address_n:])
+  Store [Address_%r13:] to [Address_pl:]
+  [Address_%r14:] = alloca i64
+  [Address_%r14:] = Call @RandRange(Immediate 1, [Address_n:])
+  Store [Address_%r14:] to [Address_pr:]
+
+  label240
+  [Address_%r15:] = alloca i64
+  [Address_%r15:] = [Address_pr:] SEQ [Address_pl:]
+  Branch [Address_%r15:] true: label241 false: label242
+
+  label241
+  Store Immediate 1 to [Address_%r15:]
+  Jump label243
+
+  label242
+  Store Immediate 0 to [Address_%r15:]
+
+  label243
+  [Address_%r16:] = [Address_%r15:] NEQ Immediate 0
+  Branch [Address_%r15:] true: label238 false: label239
+
+  label238
+  [Address_%r17:] = alloca i64
+  [Address_%r17:] = Call @RandRange(Immediate 1, [Address_n:])
+  Store [Address_%r17:] to [Address_pr:]
+  Jump label240
+
+  label239
+  [Address_%r18:] = alloca i64
+  [Address_%r18:] = [Address_op:] EQU Immediate 0
+  Branch [Address_%r18:] true: label247 false: label248
+
+  label247
+  Store Immediate 1 to [Address_%r18:]
+  Jump label249
+
+  label248
+  Store Immediate 0 to [Address_%r18:]
+
+  label249
+  [Address_%r19:] = [Address_%r18:] NEQ Immediate 0
+  Branch [Address_%r18:] true: label244 false: label245
+
+  label244
+  Call @update(Immediate 1, Immediate 1, [Address_n:])
+  Jump label246
+
+  label245
+  Jump label246
+
+  label246
+  [Address_%r21:] = alloca i64
+  [Address_%r21:] = [Address_op:] EQU Immediate 1
+  Branch [Address_%r21:] true: label253 false: label254
+
+  label253
+  Store Immediate 1 to [Address_%r21:]
+  Jump label255
+
+  label254
+  Store Immediate 0 to [Address_%r21:]
+
+  label255
+  [Address_%r22:] = [Address_%r21:] NEQ Immediate 0
+  Branch [Address_%r21:] true: label250 false: label251
+
+  label250
+  [Address_%r23:] = alloca i64
+  [Address_%r23:] = Call @query(Immediate 1, Immediate 1, [Address_n:])
+  [Address_%r24:] = alloca i64
+  [Address_%r24:] = [Address_ans:] add [Address_%r23:]
+  [Address_%r25:] = alloca i64
+  [Address_%r25:] = [Address_%r24:] mod [Address_MOD:]
+  Store [Address_%r25:] to [Address_ans:]
+  Jump label252
+
+  label251
+  Jump label252
+
+  label252
+  [Address_%r27:] = alloca i64
+  Store [Address_m:] to [Address_%r27:]
+  [Address_m:] = [Address_m:] sub Immediate 1
+  Jump label234
+
+  label233
+  [Address_%r29:] = alloca i64
+  [Address_%r29:] = Call @toString([Address_ans:])
+  Call @print([Address_%r29:])
   Return Immediate 0
   Return
 

@@ -126,7 +126,7 @@ public class Address extends VirtualRegister
     @Override
     public String toString()
     {
-        String ret = "[Address" + name.toString() + ":";
+        String ret = "[Address_" + name.toString() + ":";
         if(base != null)
             ret += base.toString();
         if(offset != null)

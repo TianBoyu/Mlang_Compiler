@@ -21,7 +21,7 @@ public class BinaryOperation extends IRInstruction
     public enum BinaryOp
     {
         add, sub, imul, idiv, mod,
-        shl, shr, and, or, xor,
+        sal, sar, and, or, xor,
         neg, not
     }
     public BinaryOperation(Label label, BinaryOp _op, Address reg, IntegerValue left, IntegerValue right)

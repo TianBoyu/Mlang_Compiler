@@ -113,8 +113,10 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
             inst.setDestReg(physicalRegisters.get(2));
             isAvailable[2] = false;
         }
-        PhysicalRegister lhsPr = physicalRegisters.get(0);
         isAvailable[0] = false;
+        if(inst.getLhs() instanceof VirtualRegister)
+            allocRegisterForAddress((VirtualRegister) inst.getLhs());
+        PhysicalRegister lhsPr = physicalRegisters.get(0);
         inst.setLhsReg(lhsPr);
         if(inst.getRhs() instanceof VirtualRegister)
         {
