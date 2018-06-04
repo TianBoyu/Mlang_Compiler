@@ -350,9 +350,14 @@ public class IRConstructor implements IRTraversal
     public IntegerValue visit(ArrayExprNode node)
     {
         //should return address
+        //TODO
         IntegerValue index = visit(node.getIndex());
         Address array = (Address)visit(node.getArray());
-        return new Address(array.getName(), array, index);
+        Address arrayAddress = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
+        addInst(new Alloca(currentLabel, arrayAddress, new BuiltIn()));
+        currentFunctionScope.increSlotNumber();
+        addInst(new Store(currentLabel, arrayAddress, array));
+        return new Address(array.getName(), arrayAddress, index);
     }
 
     @Override
