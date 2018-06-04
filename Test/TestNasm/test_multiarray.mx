@@ -1,22 +1,9 @@
 int main()
 {
-    int[][] a = new int[4][5];
-    int i;
-    int j;
-    for(i = 0; i < 4; ++i)
-    {
-        for(j = 0; j < 5; ++j)
-        {
-            a[i][j] = i + j;
-        }
-    }
-    for(i = 0; i < 4; ++i)
-        {
-            for(j = 0; j < 5; ++j)
-            {
-                println(toString(i) + ", " + toString(j));
-                println(toString(a[i][j]));
-            }
-        }
+    int[][][][][][][] a = new int[4][4][4][4][4][4][4];
+    a[2][2][2][2][2][2][2] = 100;
+    int b = a[2][2][2][2][2][2][2];
+    //int[][] a = new int[2][2];
+    //a[1][1] = 100;
     return 0;
 }

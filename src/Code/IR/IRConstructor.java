@@ -655,6 +655,8 @@ public class IRConstructor implements IRTraversal
             addInst(new Alloca(currentLabel, address, new BuiltIn()));
         }
         addInst(new Malloc(currentLabel, size, address));
+//        addInst(new Store(currentLabel, new Address(Name.getName(address.getName().toString() + "_size"),
+//                address, new Immediate(-1)), size));
         addInst(new Store(currentLabel, new Address(Name.getName(address.getName().toString() + "_size"),
                 address, new Immediate(-1)), size));
         Label trueLabel = new Label(null);
@@ -671,7 +673,15 @@ public class IRConstructor implements IRTraversal
             addInst(trueLabel);
             Address address1 = new Address(currentFunctionScope.getRegister().getName(),
                     address, offset);
-            memoryAllocate(node, type, false, address1);
+
+            Address address2 = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
+            addInst(new Alloca(currentLabel, address2, new BuiltIn()));
+            currentFunctionScope.increSlotNumber();
+            addInst(new Store(currentLabel, address2, address1));
+
+            memoryAllocate(node, type, false, address2);
+            addInst(new Store(currentLabel, address1, address2));
+
             Address compareDest = new Address(currentFunctionScope.getRegister().getName(), new BuiltIn());
             addInst(new Alloca(currentLabel, compareDest, new BuiltIn()));
             currentFunctionScope.increSlotNumber();
