@@ -1,5 +1,9 @@
 global    main
-global    foo
+global    a
+global    j
+global    b
+global    i
+global    printNum
 
 
 section .data
@@ -15,90 +19,104 @@ extern strcmp
 
 section .text
 
-foo:
+printNum:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  96
-       mov  rax,  String_0
-       mov  qword [rbp-16],  rax
-       mov  rax,  qword [rbp-16]
-       mov  qword [rbp-8],  rax
-       mov  rax,  String_1
-       mov  qword [rbp-32],  rax
-       mov  rax,  qword [rbp-32]
-       mov  qword [rbp-24],  rax
-       mov  rax,  qword [rbp-8]
-       mov  rdi,  rax
-       mov  rax,  qword [rbp-24]
-       mov  rsi,  rax
-       call  Str_ADD
-       mov  qword [rbp-48],  rax
-       mov  rax,  qword [rbp-48]
-       mov  qword [rbp-40],  rax
-       mov  rax,  qword [rbp-40]
-       mov  rdi,  rax
-       call  length
-       mov  qword [rbp-64],  rax
-       mov  rax,  qword [rbp-64]
-       mov  qword [rbp-56],  rax
-       mov  rax,  qword [rbp-40]
-       mov  rdi,  rax
-       mov  rsi,  5
-       call  ord
-       mov  qword [rbp-80],  rax
-       mov  rax,  qword [rbp-80]
-       mov  qword [rbp-72],  rax
-       mov  rax,  qword [rbp-40]
-       mov  rdi,  rax
-       call  length
-       mov  qword [rbp-96],  rax
-       mov  rax,  qword [rbp-40]
-       mov  rdi,  rax
-       mov  rsi,  5
-       call  ord
-       mov  qword [rbp-104],  rax
-       mov  rax,  qword [rbp-96]
-       mov  rdx,  qword [rbp-104]
-       add  rax,  rdx
-       mov  qword [rbp-112],  rax
-       mov  rax,  qword [rbp-112]
-       mov  qword [rbp-88],  rax
-       mov  rax,  qword [rbp-88]
-       mov  qword [rbp-120],  rax
-       mov  rax,  qword [rbp-88]
-       add  rsp,  96
+       sub  rsp,  32
+       mov  rbx,  rdi
+       push  rbp
+       push  rbx
+       mov  rdi,  rbx
+       call  toString
+       pop  rbx
+       pop  rbp
+       mov  rbx,  rax
+       push  rbp
+       push  rbx
+       mov  rdi,  rbx
+       call  println
+       pop  rbx
+       pop  rbp
+       add  rsp,  32
        pop  rbp
        ret
 main:
        push  rbp
        mov  rbp,  rsp
-       sub  rsp,  24
-       call  foo
-       mov  qword [rbp-16],  rax
-       mov  rax,  qword [rbp-16]
+       sub  rsp,  48
+       mov  rdi,  40
+       call  malloc
        mov  qword [rbp-8],  rax
-       mov  rax,  qword [rbp-8]
-       mov  rdi,  rax
-       call  toString
+       mov  r15,  qword [rbp-8]
+       mov  qword [r15 + 0],  4
+       mov  qword [rbp-16],  0
+       mov  r14,  qword [rbp-8]
+       mov  qword[a],  r14
+       mov  rdi,  48
+       call  malloc
        mov  qword [rbp-24],  rax
-       mov  rax,  qword [rbp-24]
-       mov  rdi,  rax
-       call  println
-       mov  rax,  0
-       add  rsp,  24
+       mov  r15,  qword [rbp-24]
+       mov  qword [r15 + 0],  5
+       mov  r14,  qword [rbp-24]
+       mov  qword[b],  r14
+       mov  qword[i],  0
+       jmp  label4
+label4:
+       mov  r10,  qword[i]
+       cmp  r10,  4
+       jge  label7
+label6:
+       mov  rbx,  1
+       jmp  label8
+label7:
+       mov  rbx,  0
+       jmp  label8
+label8:
+       cmp  rbx,  0
+       jz  label3
+label2:
+       mov  r11,  qword[a]
+       mov  rbx,  r11
+       mov  rdi,  96
+       push  rbp
+       push  r10
+       push  r11
+       push  r12
+       push  rbx
+       call  malloc
+       pop  rbx
+       pop  r12
+       pop  r11
+       pop  r10
+       pop  rbp
+       mov  r12,  rax
+       mov  qword [r12 + 0],  11
+       mov  r10,  qword[i]
+       mov  r15,  r10
+       add  r15,  1
+       mov  qword [rbx + r15 * 8],  r12
+       jmp  label5
+label5:
+       mov  r10,  qword[i]
+       mov  rbx,  r10
+       mov  r10,  qword[i]
+       mov  r10,  qword[i]
+       mov  r10,  r10
+       add  r10,  1
+       jmp  label4
+label3:
+       add  rsp,  48
        pop  rbp
        ret
 
 section .data
-       dq  3
-String_0:
-       db  97, 97, 97, 0
-       dq  5
-String_1:
-       db  98, 98, 98, 98, 98, 0
 
 section .bss
 
+a:       resq  1
+i:       resq  1
+j:       resq  1
+b:       resq  1
 
 
 section .data

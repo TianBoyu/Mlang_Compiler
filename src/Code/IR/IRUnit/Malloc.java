@@ -7,7 +7,7 @@ import Code.IR.IRUnit.Oprands.PhysicalRegister;
 
 import java.io.InputStream;
 
-public class Malloc extends IRInstruction
+public class Malloc extends Assign
 {
     private IntegerValue size;
     private Address returnAddress;
@@ -16,7 +16,7 @@ public class Malloc extends IRInstruction
 
     public Malloc(Label label, IntegerValue size, Address returnAddress)
     {
-        super(label);
+        super(label, returnAddress);
         this.size = size;
         this.returnAddress = returnAddress;
     }

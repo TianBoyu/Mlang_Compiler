@@ -10,8 +10,9 @@ public class Address extends VirtualRegister
     private IntegerValue offset;
     private IRType irType;
     private boolean isGlobal = false;
-    private boolean isPointer = false;//only works with global variable
+    private boolean isPointer = false;
     private boolean isMember = false;
+    private boolean isStringConst = false;
     private int memberNumber = -1;
 
     private PhysicalRegister baseReg;
@@ -42,6 +43,15 @@ public class Address extends VirtualRegister
     }
 
 
+    public boolean isStringConst()
+    {
+        return isStringConst;
+    }
+
+    public void setStringConst(boolean stringConst)
+    {
+        isStringConst = stringConst;
+    }
 
     public boolean isGlobal()
     {
@@ -55,6 +65,7 @@ public class Address extends VirtualRegister
 
     public boolean isPointer()
     {
+        this.isPointer = (this.base != null);
         return isPointer;
     }
 

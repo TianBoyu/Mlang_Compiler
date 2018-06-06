@@ -1,8 +1,8 @@
-int x = 1;
-int y = x;
+int x = 200;
 
 int main()
 {
+    int y = x;
     println(toString(y));
     return 0;
 }

@@ -1,12 +1,22 @@
 int main()
 {
-    string a = "\n";
-    string b = "\r";
-    a + b
-    string c = "\n + \r";
-    print("\n")
-}""
-
-
-a :
-  db \ n
+    int[] a = new int[5];
+    int i;
+    for(i = 0; i < 5; ++i)
+    {
+        a[i] = i;
+    }
+    for(i = 0; i < 5; ++i)
+    {
+        println(toString(a[i]));
+    }
+    for(i = 0; i < 2; ++i)
+    {
+        a[i] = a[5 - i - 1];
+    }
+    for(i = 0; i < 5; ++i)
+    {
+        println(toString(a[i]));
+    }
+    return 0;
+}

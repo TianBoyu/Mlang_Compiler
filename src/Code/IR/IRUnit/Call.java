@@ -9,7 +9,7 @@ import Code.IR.IRUnit.Oprands.VirtualRegister;
 
 import java.util.List;
 
-public class Call extends IRInstruction
+public class Call extends Assign
 {
     private Name functionName;
     private List<IntegerValue> params;
@@ -19,7 +19,7 @@ public class Call extends IRInstruction
 
     public Call(Label label, Address dest, Name function, List<IntegerValue> params)
     {
-        super(label);
+        super(label, dest);
         this.dest = dest;
         this.functionName = function;
         this.params = params;

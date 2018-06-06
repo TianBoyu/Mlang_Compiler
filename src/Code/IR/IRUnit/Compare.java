@@ -6,7 +6,7 @@ import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 import Code.IR.IRUnit.Oprands.VirtualRegister;
 
-public class Compare extends IRInstruction
+public class Compare extends Assign
 {
     public enum Condition
     {
@@ -22,7 +22,7 @@ public class Compare extends IRInstruction
 
     public Compare(Label label, Condition condition, Address dest, IntegerValue lhs, IntegerValue rhs)
     {
-        super(label);
+        super(label, dest);
         this.condition = condition;
         this.dest = dest;
         this.lhs = lhs;

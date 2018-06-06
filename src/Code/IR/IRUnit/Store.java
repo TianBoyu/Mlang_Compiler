@@ -1,18 +1,19 @@
 package Code.IR.IRUnit;
 
 import Code.IR.IRInstTraversal;
+import Code.IR.IRUnit.Oprands.Address;
 import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 
-public class Store extends IRInstruction
+public class Store extends Assign
 {
-    private IntegerValue address;
+    private Address address;
     private IntegerValue data;
     private PhysicalRegister dataReg;
 
-    public Store(Label label, IntegerValue address, IntegerValue data)
+    public Store(Label label, Address address, IntegerValue data)
     {
-        super(label);
+        super(label, address);
         this.address = address;
         this.data = data;
     }
@@ -28,7 +29,7 @@ public class Store extends IRInstruction
         this.dataReg = data_reg;
     }
 
-    public IntegerValue getAddress()
+    public Address getAddress()
     {
         return address;
     }

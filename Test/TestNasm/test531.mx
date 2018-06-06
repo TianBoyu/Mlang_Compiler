@@ -10,9 +10,10 @@ int main()
 		a[i] = 0;
 		b[i] = getInt();
 	}
+	println(toString(a.size()));
 	for (i = 0; i < a.size(); i++)
 	{
-		print(toString(a[i]));
+		println(toString(a[i]));
 	}
 	println("");
 	a=b;

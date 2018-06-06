@@ -269,25 +269,6 @@ public class NaiveAllocator extends RegisterAllocator implements IRInstTraversal
         }
     }
 
-//    private void allocRegisterForAddress(VirtualRegister vr, PhysicalRegister basePr, PhysicalRegister offsetPr)
-//    {
-//        if(vr instanceof Address)
-//        {
-//            if(((Address) vr).getBase() != null)
-//            {
-////                PhysicalRegister basePr = getAvailablePhysicalRegister();
-//                ((Address) vr).setBaseReg(basePr);
-//                if (!(((Address) vr).getOffset() instanceof Immediate))
-//                {
-////                    PhysicalRegister offsetPr = getAvailablePhysicalRegister();
-//                    ((Address) vr).setOffsetReg(offsetPr);
-//                }
-//                allocRegisterForAddress(((Address) vr).getBase(), basePr, offsetPr);
-//                if(((Address) vr).getOffset() instanceof Address)
-//                allocRegisterForAddress((Address)((Address) vr).getOffset(), basePr, offsetPr);
-//            }
-//        }
-//    }
     private PhysicalRegister getPhysicalRegister(VirtualRegister vr)
     {
         allocRegisterForAddress(vr);

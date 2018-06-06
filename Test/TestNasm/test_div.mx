@@ -1,10 +1,8 @@
-int[] a = new int[100];
-
 int main()
 {
-    int x = 10;
-    int y = 5;
-    a[2] = 10;
-    a[a[2] % y] = 1;
+    int x = 2;
+    int y = 10;
+    int z = y / x;
+    println(toString(z));
     return 0;
 }

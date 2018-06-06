@@ -14,6 +14,7 @@ public class PhysicalRegister extends Register
     {
         return isCallerSave;
     }
+    public boolean isUsed = false;
 
     public boolean isCalleeSave()
     {

@@ -1,8 +1,8 @@
 int foo(int a, int b, int c, int d, int e, int f, int g, int h)
 {
+    println(toString(f));
     println(toString(g));
-    println(toString(h));
-    //int x = a+b+c+d+e+f;
+    //println(toString(h));
     return 1;
 }
 

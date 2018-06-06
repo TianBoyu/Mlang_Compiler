@@ -7,7 +7,7 @@ import Code.IR.IRUnit.Oprands.IntegerValue;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 import Code.IR.IRUnit.Oprands.Register;
 
-public class BinaryOperation extends IRInstruction
+public class BinaryOperation extends Assign
 {
     private BinaryOp op;
     private Address dest;
@@ -26,7 +26,7 @@ public class BinaryOperation extends IRInstruction
     }
     public BinaryOperation(Label label, BinaryOp _op, Address reg, IntegerValue left, IntegerValue right)
     {
-        super(label);
+        super(label, reg);
         op = _op;
         dest = reg;
         lhs = left;

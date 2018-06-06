@@ -2,38 +2,260 @@ __________________________________________
 ===================TEXT===================
 
 
-define i64 @main()
-  [Address_a:] = alloca [ArrayType: [ArrayType: i64[]][]]
+define i64 @origin(i64)
   [Address_%r0:] = alloca i64
-  [Address_%r0:] = Malloc Immediate 2
+  [Address_%r0:] = Malloc [Address_N:]
+  Store [Address_N:] to [Address_%r0_size:[Address_%r0:]+offset Immediate -1*i64]
   [Address_%r1:] = alloca i64
-  Store [Address_%r0:] to [Address_%r1:]
-  Store Immediate 2 to [Address_%r0_size:[Address_%r1:]+offset Immediate -1*i64]
-  [Address_%r2:] = alloca i64
-  Store Immediate 0 to [Address_%r2:]
+  Store Immediate 0 to [Address_%r1:]
+  Store [Address_%r0:] to [Address_c:]
+  Store Immediate 0 to [Address_i:]
+  Jump label4
 
-  label0
+  label4
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_i:] SLT [Address_N:]
+  Branch [Address_%r2:] true: label6 false: label7
+
+  label6
+  Store Immediate 1 to [Address_%r2:]
+  Jump label8
+
+  label7
+  Store Immediate 0 to [Address_%r2:]
+  Jump label8
+
+  label8
+  [Address_%r3:] = [Address_%r2:] NEQ Immediate 0
+  Branch [Address_%r2:] true: label2 false: label3
+
+  label2
   [Address_%r4:] = alloca i64
-  Store [Address_%r3:[Address_%r0:]+offset [Address_%r2:]*i64] to [Address_%r4:]
-  [Address_%r4:] = Malloc Immediate 2
+  Store [Address_c:] to [Address_%r4:]
+  [Address_%r5:] = alloca i64
+  [Address_%r5:] = Malloc [Address_N:]
+  Store [Address_N:] to [Address_%r5_size:[Address_%r5:]+offset Immediate -1*i64]
+  Store [Address_%r5:] to [Address_c:[Address_%r4:]+offset [Address_i:]*i64]
+  Store Immediate 0 to [Address_j:]
+  Jump label11
+
+  label11
+  [Address_%r6:] = alloca i64
+  [Address_%r6:] = [Address_j:] SLT [Address_N:]
+  Branch [Address_%r6:] true: label13 false: label14
+
+  label13
+  Store Immediate 1 to [Address_%r6:]
+  Jump label15
+
+  label14
+  Store Immediate 0 to [Address_%r6:]
+  Jump label15
+
+  label15
+  [Address_%r7:] = [Address_%r6:] NEQ Immediate 0
+  Branch [Address_%r6:] true: label9 false: label10
+
+  label9
+  [Address_%r8:] = alloca i64
+  Store [Address_c:] to [Address_%r8:]
+  [Address_%r9:] = alloca i64
+  Store [Address_c:[Address_%r8:]+offset [Address_i:]*i64] to [Address_%r9:]
+  Store Immediate 0 to [Address_c:[Address_%r9:]+offset [Address_j:]*i64]
+  Jump label12
+
+  label12
+  [Address_%r11:] = alloca i64
+  Store [Address_j:] to [Address_%r11:]
+  [Address_j:] = [Address_j:] add Immediate 1
+  Jump label11
+
+  label10
+  Jump label5
+
+  label5
+  [Address_%r13:] = alloca i64
+  Store [Address_i:] to [Address_%r13:]
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label4
+
+  label3
+  Return
+  Return
+
+define i64 @build(i64, i64)
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = Call @toString([Address_ending:])
+  Call @println([Address_%r1:])
+  Store Immediate 1 to [Address_i:]
+  Jump label18
+
+  label18
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = [Address_i:] SEQ Immediate 49
+  Branch [Address_%r2:] true: label20 false: label21
+
+  label20
+  Store Immediate 1 to [Address_%r2:]
+  Jump label22
+
+  label21
+  Store Immediate 0 to [Address_%r2:]
+  Jump label22
+
+  label22
+  [Address_%r3:] = [Address_%r2:] NEQ Immediate 0
+  Branch [Address_%r2:] true: label16 false: label17
+
+  label16
+  Store Immediate 50 to [Address_j:]
+  Jump label25
+
+  label25
+  [Address_%r4:] = alloca i64
+  Store Immediate 98 to [Address_%r4:]
+  [Address_%r4:] = [Address_%r4:] sub [Address_i:]
   [Address_%r5:] = alloca i64
   Store [Address_%r4:] to [Address_%r5:]
-  Store Immediate 2 to [Address_%r4_size:[Address_%r5:]+offset Immediate -1*i64]
+  [Address_%r5:] = [Address_%r5:] add Immediate 1
   [Address_%r6:] = alloca i64
-  Store Immediate 0 to [Address_%r6:]
-  [Address_%r7:] = alloca i64
-  [Address_%r2:] = [Address_%r2:] add Immediate 1
-  [Address_%r7:] = [Address_%r2:] SEQ Immediate 2
-  Branch [Address_%r7:] true: label0 false: label1
-  Jump label0
+  [Address_%r6:] = [Address_j:] SEQ [Address_%r5:]
+  Branch [Address_%r6:] true: label27 false: label28
 
-  label1
-  Store [Address_%r0:] to [Address_a:]
+  label27
+  Store Immediate 1 to [Address_%r6:]
+  Jump label29
+
+  label28
+  Store Immediate 0 to [Address_%r6:]
+  Jump label29
+
+  label29
+  [Address_%r7:] = [Address_%r6:] NEQ Immediate 0
+  Branch [Address_%r6:] true: label23 false: label24
+
+  label23
   [Address_%r8:] = alloca i64
-  Store [Address_a:] to [Address_%r8:]
+  Store [Address_c:] to [Address_%r8:]
   [Address_%r9:] = alloca i64
-  Store [Address_a:[Address_%r8:]+offset Immediate 1*i64] to [Address_%r9:]
-  Store Immediate 100 to [Address_a:[Address_%r9:]+offset Immediate 1*i64]
+  Store [Address_c:[Address_%r8:]+offset [Address_i:]*i64] to [Address_%r9:]
+  Store Immediate 1 to [Address_c:[Address_%r9:]+offset [Address_j:]*i64]
+  Jump label26
+
+  label26
+  [Address_%r11:] = alloca i64
+  Store [Address_j:] to [Address_%r11:]
+  [Address_j:] = [Address_j:] add Immediate 1
+  Jump label25
+
+  label24
+  Jump label19
+
+  label19
+  [Address_%r13:] = alloca i64
+  Store [Address_i:] to [Address_%r13:]
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label18
+
+  label17
+  Store Immediate 1 to [Address_i:]
+  Jump label32
+
+  label32
+  [Address_%r14:] = alloca i64
+  [Address_%r14:] = [Address_i:] SEQ Immediate 49
+  Branch [Address_%r14:] true: label34 false: label35
+
+  label34
+  Store Immediate 1 to [Address_%r14:]
+  Jump label36
+
+  label35
+  Store Immediate 0 to [Address_%r14:]
+  Jump label36
+
+  label36
+  [Address_%r15:] = [Address_%r14:] NEQ Immediate 0
+  Branch [Address_%r14:] true: label30 false: label31
+
+  label30
+  [Address_%r16:] = alloca i64
+  Store [Address_c:] to [Address_%r16:]
+  [Address_%r17:] = alloca i64
+  Store [Address_c:[Address_%r16:]+offset [Address_start:]*i64] to [Address_%r17:]
+  Store Immediate 1 to [Address_c:[Address_%r17:]+offset [Address_i:]*i64]
+  Jump label33
+
+  label33
+  [Address_%r19:] = alloca i64
+  Store [Address_i:] to [Address_%r19:]
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label32
+
+  label31
+  Store Immediate 50 to [Address_i:]
+  Jump label39
+
+  label39
+  [Address_%r20:] = alloca i64
+  [Address_%r20:] = [Address_i:] SEQ Immediate 98
+  Branch [Address_%r20:] true: label41 false: label42
+
+  label41
+  Store Immediate 1 to [Address_%r20:]
+  Jump label43
+
+  label42
+  Store Immediate 0 to [Address_%r20:]
+  Jump label43
+
+  label43
+  [Address_%r21:] = [Address_%r20:] NEQ Immediate 0
+  Branch [Address_%r20:] true: label37 false: label38
+
+  label37
+  Return Immediate 0
+  Jump label40
+
+  label40
+  [Address_%r23:] = alloca i64
+  Store [Address_i:] to [Address_%r23:]
+  [Address_i:] = [Address_i:] add Immediate 1
+  Jump label39
+
+  label38
+  Return
+
+define i64 @main()
+  [Address_%r0:] = alloca i64
+  [Address_%r0:] = Malloc Immediate 110
+  Store Immediate 110 to [Address_%r0_size:[Address_%r0:]+offset Immediate -1*i64]
+  MemCopy [Address_%r0:] to [Address_visit:]
+  [Address_%r1:] = alloca i64
+  [Address_%r1:] = Malloc Immediate 110
+  Store Immediate 110 to [Address_%r1_size:[Address_%r1:]+offset Immediate -1*i64]
+  MemCopy [Address_%r1:] to [Address_pre:]
+  [Address_%r2:] = alloca i64
+  [Address_%r2:] = Malloc Immediate 110
+  Store Immediate 110 to [Address_%r2_size:[Address_%r2:]+offset Immediate -1*i64]
+  MemCopy [Address_%r2:] to [Address_f:]
+  Call @println([Address_String_0:])
+  Call @origin(Immediate 110)
+  Call @println([Address_String_1:])
+  [Address_k:] = alloca i64
+  [Address_start:] = alloca i64
+  [Address_ending:] = alloca i64
+  [Address_flag:] = alloca i64
+  [Address_i1:] = alloca i64
+  Store Immediate 0 to [Address_k:]
+  Store Immediate 99 to [Address_start:]
+  Store Immediate 100 to [Address_ending:]
+  Store Immediate 0 to [Address_flag:]
+  [Address_%r4:] = alloca i64
+  [Address_%r4:] = Call @toString([Address_ending:])
+  Call @println([Address_%r4:])
+  [Address_%r5:] = alloca i64
+  [Address_%r5:] = Call @build([Address_start:], [Address_ending:])
   Return Immediate 0
   Return
 
@@ -44,3 +266,5 @@ __________________________________________
 
 __________________________________________
 ===================DATA===================
+String_0: hhhh
+String_1: qqqq

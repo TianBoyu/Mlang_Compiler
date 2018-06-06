@@ -4,11 +4,13 @@ package Code;
 import Code.AST.ASTConstructor.ASTConstructor;
 import Code.AST.ASTPrinter;
 import Code.AST.Node.ProgNode;
+import Code.IR.CFGConstructor;
 import Code.IR.DataSection;
 import Code.IR.IRConstructor;
 import Code.IR.IRPrinter;
 import Code.IR.IRUnit.IRInstruction;
 import Code.IR.Type.Class;
+import Code.Optimizer.GraphColoringAllocator;
 import Code.Optimizer.NaiveAllocator;
 import Code.Parser.MlangErrorListener;
 import Code.Parser.MlangLexer;
@@ -19,6 +21,7 @@ import Code.SemanticCheck.Scope.Scope;
 import Code.SemanticCheck.ScopeCollector;
 import Code.SemanticCheck.SemanticChecker;
 import Code.Translator.NasmPrinter;
+import Code.Translator.NewTranslator;
 import Code.Translator.Translator;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -50,7 +53,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test952.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test565.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);
@@ -60,6 +63,8 @@ public class Boom {
 //        printIR(constructor);
         optimizeIR(constructor);
         translate(constructor, out);
+//        graphColoring(constructor);
+//        newTanslate(constructor, out);
     }
 
     public static ProgNode constructAST(InputStream is) throws Exception
@@ -120,6 +125,24 @@ public class Boom {
     public static void translate(IRConstructor irConstructor, OutputStream outputStream)
     {
         Translator translator = new Translator(irConstructor.getEntry(), irConstructor.getInitializeEntry(),
+                irConstructor.getDataSection(), irConstructor.getDataZone(), irConstructor.getBssZone());
+        translator.process();
+        NasmPrinter nasmPrinter = new NasmPrinter(translator.getNasmInsts(), translator.getDataInsts(),
+                translator.getDataZoneInsts(), translator.getBssZoneInsts(),
+                irConstructor.getGlobalName(), outputStream);
+        nasmPrinter.printNasm();
+    }
+    public static void graphColoring(IRConstructor irConstructor)
+    {
+        CFGConstructor cfgConstructor = new CFGConstructor(irConstructor.getEntry());
+        cfgConstructor.BuildCFG();
+        GraphColoringAllocator allocator = new GraphColoringAllocator(irConstructor.getEntry(),
+                cfgConstructor.getFunctions());
+        allocator.process();
+    }
+    public static void newTanslate(IRConstructor irConstructor, OutputStream outputStream)
+    {
+        NewTranslator translator = new NewTranslator(irConstructor.getEntry(), irConstructor.getInitializeEntry(),
                 irConstructor.getDataSection(), irConstructor.getDataZone(), irConstructor.getBssZone());
         translator.process();
         NasmPrinter nasmPrinter = new NasmPrinter(translator.getNasmInsts(), translator.getDataInsts(),

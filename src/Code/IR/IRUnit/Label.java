@@ -18,6 +18,11 @@ public class Label extends IRInstruction
     }
 
 
+    public void setBlock(BasicBlock block)
+    {
+        this.block = block;
+    }
+
     public BasicBlock getBlock()
     {
         return block;

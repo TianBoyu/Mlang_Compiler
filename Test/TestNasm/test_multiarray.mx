@@ -1,9 +1,19 @@
 int main()
 {
-    int[][][][][][][] a = new int[4][4][4][4][4][4][4];
-    a[2][2][2][2][2][2][2] = 100;
-    int b = a[2][2][2][2][2][2][2];
-    //int[][] a = new int[2][2];
-    //a[1][1] = 100;
+    int[][] a = new int[5][];
+    int i;
+    for(i = 0; i < 5; ++i)
+    {
+        a[i] = new int[5];
+    }
+    int j;
+    for(i = 0; i < 5; ++i)
+    {
+        for(j = 0; j < 5; ++j)
+        {
+            a[i][j] = i + j;
+        }
+    }
+    println(toString(12345));
     return 0;
 }

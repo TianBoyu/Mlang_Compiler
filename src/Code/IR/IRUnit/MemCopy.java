@@ -4,7 +4,7 @@ import Code.IR.IRInstTraversal;
 import Code.IR.IRUnit.Oprands.Address;
 import Code.IR.IRUnit.Oprands.PhysicalRegister;
 
-public class MemCopy extends IRInstruction
+public class MemCopy extends Assign
 {
     private Address from_address;
     private Address to_address;
@@ -12,7 +12,7 @@ public class MemCopy extends IRInstruction
 
     public MemCopy(Label label, Address from_address, Address to_address)
     {
-        super(label);
+        super(label, to_address);
         this.from_address = from_address;
         this.to_address = to_address;
     }
