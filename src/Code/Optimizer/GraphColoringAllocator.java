@@ -28,6 +28,7 @@ public class GraphColoringAllocator
     private List<PhysicalRegister> availableRegs;
     private List<PhysicalRegister> callerSaveRegs;
     private List<PhysicalRegister> calleeSaveRegs;
+    private Function currentFunction;
     private Set<PhysicalRegister> usedRegs = new HashSet<>();
     private InterfereGraph interfereGraph = new InterfereGraph();
     private LivenessAnalyzer livenessAnalyzer;
@@ -61,9 +62,11 @@ public class GraphColoringAllocator
         for(Function function : functions)
         {
             usedRegs.clear();
-            interfereGraph.init(function);
+            currentFunction = function;
+            interfereGraph.init(function); // x
             buildGraph(function);
             interfereGraph.simplify();
+//            System.out.println(function.getName().toString());
             allocateRegister();
 
             function.usedRegs.add(calleeSaveRegs.get(0));
@@ -100,8 +103,9 @@ public class GraphColoringAllocator
 //                else
 //                {
                 for (Register register : inst.liveOut)
+                {
                     interfereGraph.addEdge(dest, register);
-//                }
+                }
             }
         }
         interfereGraph.updateDegree();
@@ -120,21 +124,22 @@ public class GraphColoringAllocator
             for (Register neighbor : register.neighbors)
             {
                 if (!neighbor.isDeleted && neighbor.isAssigned)
-                    neighborReg.add(neighbor.physicalRegister);
+                    neighborReg.add(neighbor.getPhysicalRegister());
             }
             for (PhysicalRegister pr : availableRegs)
             {
+                if(register.isInStack())
+                    System.out.println(1);
                 if (!neighborReg.contains(pr))
                 {
                     register.setPhysicalRegister(pr);
-                    //if (pr.isCalleeSave())
-                    register.isAssigned = true;
+//                    register.isAssigned = true;
                     usedRegs.add(pr);
                     break;
                 }
             }
             if (!register.isAssigned)
-                register.isInStack = true;
+                register.setInStack(true);
         }
     }
 }

@@ -12,9 +12,9 @@ public class Register extends IntegerValue
     public Set<Register> neighbors = new HashSet<>();
     public boolean isDeleted = false;
     public boolean isAssigned = false;
-    public boolean isInStack = false;
+    private boolean isInStack = false;
     public int degree = 0;
-    public PhysicalRegister physicalRegister;
+    private PhysicalRegister physicalRegister;
     public StackSlot stackSlot;
 
     public Register(Name name)
@@ -31,6 +31,22 @@ public class Register extends IntegerValue
     {
         this.physicalRegister = pr;
         this.isAssigned = true;
+    }
+
+
+    public PhysicalRegister getPhysicalRegister()
+    {
+        return physicalRegister;
+    }
+
+    public boolean isInStack()
+    {
+        return isInStack;
+    }
+
+    public void setInStack(boolean inStack)
+    {
+        isInStack = inStack;
     }
 
     @Override

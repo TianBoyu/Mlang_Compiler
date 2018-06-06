@@ -349,7 +349,7 @@ public class NewTranslator implements IRInstTraversal
                 int paramPos = (paramNumber - i + 1) * 8;
                 StackSlot slot1 = new StackSlot(paramPos, StackSlot.SlotType.qword);
                 if(item.getAddress().isAssigned)
-                    addInst(NasmInst.Instruction.mov, item.getAddress().physicalRegister.toString(),
+                    addInst(NasmInst.Instruction.mov, item.getAddress().getPhysicalRegister().toString(),
                             slot1.toString());
                 else
                 {
@@ -475,7 +475,7 @@ public class NewTranslator implements IRInstTraversal
         if(((Address)register).isGlobal())
             return "qword[" + register.getName().toString() + "]";
         if(register.isAssigned)
-            return register.physicalRegister.toString();
+            return register.getPhysicalRegister().toString();
         if(register.stackSlot != null)
             return register.stackSlot.toString();
         StackSlot slot = mapAddressToSlot((Address) register);
@@ -532,7 +532,7 @@ public class NewTranslator implements IRInstTraversal
             return pr.toString();
         }
         if(register.isAssigned)
-            return register.physicalRegister.toString();
+            return register.getPhysicalRegister().toString();
         if(register.stackSlot != null)
         {
             PhysicalRegister pr = getSpareRegisters();

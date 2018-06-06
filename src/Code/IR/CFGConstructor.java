@@ -180,12 +180,17 @@ public class CFGConstructor implements IRInstTraversal
     {
         if(value instanceof Address)
         {
+            if(((Address) value).isGlobal())
+                return;
             if(((Address) value).isPointer())
             {
                 addUseVar(inst, ((Address) value).getBase());
                 addUseVar(inst, ((Address) value).getOffset());
             }
-            else inst.addUseVar((Address)value);
+            else if(((Address) value).isGlobal())
+                return;
+            else
+                inst.addUseVar((Address)value);
         }
     }
 
@@ -198,6 +203,8 @@ public class CFGConstructor implements IRInstTraversal
                 addUseVar(inst, ((Address) value).getBase());
                 addUseVar(inst, ((Address) value).getOffset());
             }
+            else if(((Address) value).isGlobal())
+                return;
             else inst.addDefVar((Address)value);
         }
     }

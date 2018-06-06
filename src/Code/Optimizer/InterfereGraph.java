@@ -17,12 +17,13 @@ public class InterfereGraph
     public Set<VirtualRegister> registerGraph = new HashSet<>();
     public Stack<Register> registerStack = new Stack<>();
     private Set<VirtualRegister> firedRegisters = new HashSet<>();
-    private static final int  REGISTER_NUMBER = 11;
+    private static final int  REGISTER_NUMBER = 1;
 
     public void init(Function function)
     {
         registerGraph.clear();
         registerStack.clear();
+        firedRegisters.clear();
 
         for(BasicBlock block : function.getBasicBlocks())
         {
@@ -50,7 +51,7 @@ public class InterfereGraph
                     !((Address)neighbor).isPointer())
             {
                 --neighbor.degree;
-                if(neighbor.degree < REGISTER_NUMBER)
+                if(neighbor.degree < 1)
                     firedRegisters.add((VirtualRegister) neighbor);
             }
         }
@@ -71,6 +72,7 @@ public class InterfereGraph
                 firedRegisters.remove(register);
             }
             Iterator<VirtualRegister> iter = registerGraph.iterator();
+
             if(iter.hasNext()) removeRegister(iter.next());
             else break;
         }
@@ -81,7 +83,7 @@ public class InterfereGraph
         for(Register reg : registerGraph)
         {
             reg.degree = reg.neighbors.size();
-            if(reg.degree < REGISTER_NUMBER && reg instanceof Address && !((Address)reg).isPointer())
+            if(reg.degree < 1 && reg instanceof Address && !((Address)reg).isPointer())
                 firedRegisters.add((Address)reg);
         }
     }
