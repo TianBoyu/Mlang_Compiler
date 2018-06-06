@@ -595,8 +595,8 @@ public class NewTranslator implements IRInstTraversal
         {
             if(isRedundant(nasmInsts.get(i)))
                 nasmInsts.remove(i);
-            if(i != nasmInsts.size() - 1 && noUseJump(nasmInsts.get(i), nasmInsts.get(i + 1)))
-                nasmInsts.remove(i);
+//            if(i != nasmInsts.size() - 1 && noUseJump(nasmInsts.get(i), nasmInsts.get(i + 1)))
+//                nasmInsts.remove(i);
         }
     }
 
