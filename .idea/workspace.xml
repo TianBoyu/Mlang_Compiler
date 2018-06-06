@@ -157,8 +157,8 @@
       <file leaf-file-name="GraphColoringAllocator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+            <state relative-caret-position="162">
+              <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -178,7 +178,7 @@
         <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="57" column="34" lean-forward="true" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+              <caret line="57" column="37" lean-forward="true" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
               <folding>
                 <element signature="method#constructAST#0;class#Boom#0" expanded="false" />
                 <element signature="method#printAST#0;class#Boom#0" expanded="false" />
@@ -188,7 +188,6 @@
                 <element signature="method#optimizeIR#0;class#Boom#0" expanded="false" />
                 <element signature="method#translate#0;class#Boom#0" expanded="false" />
                 <element signature="method#newTanslate#0;class#Boom#0" expanded="false" />
-                <marker date="1528291518572" expanded="true" signature="1582:1656" ph="//..." />
               </folding>
             </state>
           </provider>
@@ -232,8 +231,8 @@
       <file leaf-file-name="NewTranslator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Translator/NewTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="270">
+              <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -1295,18 +1294,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test945.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+        <state relative-caret-position="162">
+          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1319,10 +1310,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test945.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Translator/NewTranslator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="270">
+          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1330,7 +1329,7 @@
     <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="57" column="34" lean-forward="true" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+          <caret line="57" column="37" lean-forward="true" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
           <folding>
             <element signature="method#constructAST#0;class#Boom#0" expanded="false" />
             <element signature="method#printAST#0;class#Boom#0" expanded="false" />
@@ -1340,7 +1339,6 @@
             <element signature="method#optimizeIR#0;class#Boom#0" expanded="false" />
             <element signature="method#translate#0;class#Boom#0" expanded="false" />
             <element signature="method#newTanslate#0;class#Boom#0" expanded="false" />
-            <marker date="1528291518572" expanded="true" signature="1582:1656" ph="//..." />
           </folding>
         </state>
       </provider>
