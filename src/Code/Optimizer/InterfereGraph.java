@@ -17,7 +17,7 @@ public class InterfereGraph
     public Set<VirtualRegister> registerGraph = new HashSet<>();
     public Stack<Register> registerStack = new Stack<>();
     private Set<VirtualRegister> firedRegisters = new HashSet<>();
-    private static final int  REGISTER_NUMBER = 4;
+    private static final int  REGISTER_NUMBER = 2;
 
     public void init(Function function)
     {

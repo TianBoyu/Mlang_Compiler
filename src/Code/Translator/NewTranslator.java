@@ -17,7 +17,7 @@ public class NewTranslator implements IRInstTraversal
     private DataSection dataZone;
     private DataSection bssZone;
     private String[] paramRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
-    private String[] spareRegNames = { "r15", "r14", "r13", "r12", "r11", "r10"};
+    private String[] spareRegNames = { "r15", "r14", "r13", "r12", "r11"};
 //    private String[] spareRegNames = {"r15", "r14", "r13"};
     private List<PhysicalRegister> sparePhysicalRegs = new ArrayList<>();
     private List<PhysicalRegister> paramPhysicalRegs = new ArrayList<>();
