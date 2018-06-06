@@ -391,8 +391,9 @@ public class IRConstructor implements IRTraversal
             addBinaryInst(address, left, right, node.getOp());
         else
         {
-            addInst(new Store(currentLabel, address, left));
-            addBinaryInst(address, address, right, node.getOp());
+//            addInst(new Store(currentLabel, address, left));
+//            addBinaryInst(address, address, right, node.getOp());
+            addBinaryInst(address, left, right, node.getOp());
         }
         return address;
     }

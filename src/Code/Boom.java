@@ -61,10 +61,10 @@ public class Boom {
         checkSemantic(program);
         IRConstructor constructor = constructIR(program);
 //        printIR(constructor);
-        optimizeIR(constructor);
-        translate(constructor, out);
-//        graphColoring(constructor);
-//        newTanslate(constructor, out);
+//        optimizeIR(constructor);
+//        translate(constructor, out);
+        graphColoring(constructor);
+        newTanslate(constructor, out);
     }
 
     public static ProgNode constructAST(InputStream is) throws Exception

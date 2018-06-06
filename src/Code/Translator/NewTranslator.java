@@ -17,8 +17,8 @@ public class NewTranslator implements IRInstTraversal
     private DataSection dataZone;
     private DataSection bssZone;
     private String[] paramRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
-//    private String[] spareRegNames = { "r15", "r14", "r13", "r12", "r11", "r10"};
-    private String[] spareRegNames = {"r15", "r14", "r13"};
+    private String[] spareRegNames = { "r15", "r14", "r13", "r12", "r11", "r10"};
+//    private String[] spareRegNames = {"r15", "r14", "r13"};
     private List<PhysicalRegister> sparePhysicalRegs = new ArrayList<>();
     private List<PhysicalRegister> paramPhysicalRegs = new ArrayList<>();
     private int rspPosition;
@@ -68,6 +68,7 @@ public class NewTranslator implements IRInstTraversal
             }
             cur = cur.getNext();
         }
+        removeRedundantInst();
     }
 
     private void initSpareRegs()
@@ -582,6 +583,23 @@ public class NewTranslator implements IRInstTraversal
         }
         sbu.append('0');
         return sbu.toString();
+    }
+
+    private void removeRedundantInst()
+    {
+        for(int i = 0; i < nasmInsts.size(); ++i)
+        {
+            if(isRedundant(nasmInsts.get(i)))
+                nasmInsts.remove(i);
+        }
+    }
+
+    private boolean isRedundant(NasmInst nasmInst)
+    {
+        if(nasmInst.getInst() == NasmInst.Instruction.mov &&
+                nasmInst.getOperand1().equals(nasmInst.getOperand2()))
+            return true;
+        return false;
     }
 
 }

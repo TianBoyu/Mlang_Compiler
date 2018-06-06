@@ -85,7 +85,7 @@ int main() {
     flag = 0;
 
     build(start, ending);
-    while (find(ending, start, flag)>0) {
+    if (find(ending, start, flag)>0) {
         improve(ending);
     }
 	println(toString(ans));

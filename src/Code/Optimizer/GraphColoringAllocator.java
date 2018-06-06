@@ -17,8 +17,8 @@ import java.util.Set;
 
 public class GraphColoringAllocator
 {
-//    private String[] regNames = {"rbx"};
-    private String[] regNames = {"rbx", "r10", "r11", "r12"};
+    private String[] regNames = {"rbx"};
+//    private String[] regNames = {"rbx", "r10", "r11", "r12"};
     private String[] parameterRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
     private String[] calleeSaveNames = {"rbp", "rbx", "r12", "r13", "r14", "r15"};
     private List<BasicBlock> basicBlocks;

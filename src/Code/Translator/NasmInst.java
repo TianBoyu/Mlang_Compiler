@@ -21,6 +21,7 @@ public class NasmInst
     private Instruction inst;
     private String operand1;
     private String operand2;
+    private NasmInst nextInst;
 
     public NasmInst(Instruction inst, String operand1, String operand2)
     {
@@ -42,6 +43,16 @@ public class NasmInst
     public String getOperand2()
     {
         return operand2;
+    }
+
+    public NasmInst getNextInst()
+    {
+        return nextInst;
+    }
+
+    public void setNextInst(NasmInst nextInst)
+    {
+        this.nextInst = nextInst;
     }
 
     public String toString()

@@ -1,0 +1,11 @@
+int main()
+{
+    int[][] a = new int[4][4];
+    int i = 2;
+    int j = 3;
+    a[i][j] = 5;
+    int x = a[2][3]++;
+    println(toString(x));
+    println(toString(a[2][3]));
+    return 0;
+}
