@@ -401,7 +401,10 @@ public class NewTranslator implements IRInstTraversal
     @Override
     public void visit(Label inst)
     {
-        addInst(null, inst.toString(), null);
+//        addInst(null, inst.toString(), null);
+        NasmInst nasmInst = new NasmInst(NasmInst.Instruction.NULL, inst.toString(), "NULL");
+        nasmInst.isLabel = true;
+        addInst(nasmInst);
     }
 
     @Override
@@ -439,6 +442,11 @@ public class NewTranslator implements IRInstTraversal
 
     private void addInst(NasmInst inst)
     {
+        if(isInitialzeInst)
+        {
+            addDataInst(initializeInsts, inst.getInst(), inst.getOperand1(), inst.getOperand2());
+            return;
+        }
         nasmInsts.add(inst);
     }
 
@@ -453,7 +461,7 @@ public class NewTranslator implements IRInstTraversal
             inst = NasmInst.Instruction.NULL;
         if(operand1 == null)
             operand1 = "NULL";
-        if(operand2 == null || operand2.equals("label!"))
+        if(operand2 == null)
             operand2 = "NULL";
         nasmInsts.add(new NasmInst(inst, operand1, operand2));
     }
@@ -595,8 +603,8 @@ public class NewTranslator implements IRInstTraversal
         {
             if(isRedundant(nasmInsts.get(i)))
                 nasmInsts.remove(i);
-//            if(i != nasmInsts.size() - 1 && noUseJump(nasmInsts.get(i), nasmInsts.get(i + 1)))
-//                nasmInsts.remove(i);
+            if(i != nasmInsts.size() - 1 && noUseJump(nasmInsts.get(i), nasmInsts.get(i + 1)))
+                nasmInsts.remove(i);
         }
     }
 
@@ -611,7 +619,7 @@ public class NewTranslator implements IRInstTraversal
     private boolean noUseJump(NasmInst nasmInst1, NasmInst nasmInst2)
     {
         if(nasmInst1.getInst() == NasmInst.Instruction.jmp &&
-                nasmInst2.getInst() == null && nasmInst2.getOperand2().equals("label!") &&
+                nasmInst2.getInst() == null && nasmInst2.isLabel &&
                 nasmInst1.getOperand1().equals(nasmInst2.getOperand1()))
             return true;
         return false;

@@ -22,6 +22,7 @@ public class NasmInst
     private String operand1;
     private String operand2;
     private NasmInst nextInst;
+    public boolean isLabel;
 
     public NasmInst(Instruction inst, String operand1, String operand2)
     {
@@ -57,6 +58,8 @@ public class NasmInst
 
     public String toString()
     {
+        if(isLabel)
+            return operand1;
         String ret = "";
         if(inst != Instruction.NULL)
             ret += inst.toString() + "  ";
