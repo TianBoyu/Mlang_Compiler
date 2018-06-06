@@ -192,7 +192,11 @@ public class NewTranslator implements IRInstTraversal
         if(inst.getRhs() != null)
             right = getValueByRegister(inst.getRhs());
         String dest = processIntegerValue(inst.getDest());
-        String destReg = getValueByRegister(inst.getDest());
+        String destReg = null;
+        if(inst.getDest().isAssigned)
+            destReg = dest;
+        else
+            destReg = getSpareRegisters().toString();
         if(inst.getOp() == BinaryOperation.BinaryOp.sal || inst.getOp() == BinaryOperation.BinaryOp.sar)
         {
             addInst(NasmInst.Instruction.mov, "rcx", right);

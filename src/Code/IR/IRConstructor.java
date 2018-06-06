@@ -391,9 +391,9 @@ public class IRConstructor implements IRTraversal
             addBinaryInst(address, left, right, node.getOp());
         else
         {
-//            addInst(new Store(currentLabel, address, left));
-//            addBinaryInst(address, address, right, node.getOp());
-            addBinaryInst(address, left, right, node.getOp());
+            addInst(new Store(currentLabel, address, left));
+            addBinaryInst(address, address, right, node.getOp());
+//            addBinaryInst(address, left, right, node.getOp());
         }
         return address;
     }
@@ -870,11 +870,11 @@ public class IRConstructor implements IRTraversal
         {
             case SUF_DECRE:
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.sub,
-                        (Address) value, value, new Immediate(1)));
+                        (Address) value, origin_address, new Immediate(1)));
                 return origin_address;
             case SUF_INCRE:
                 addInst(new BinaryOperation(currentLabel, BinaryOperation.BinaryOp.add,
-                        (Address) value, value, new Immediate(1)));
+                        (Address) value, origin_address, new Immediate(1)));
                 return origin_address;
         }
         throw new RuntimeException("you should not be here");
