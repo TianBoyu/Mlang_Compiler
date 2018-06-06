@@ -7,6 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4173ea95-f4af-4e99-8761-94d39ccf9ff2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Test/TestNasm/a.out" afterPath="$PROJECT_DIR$/Test/TestNasm/a.out" />
+      <change beforePath="$PROJECT_DIR$/Test/TestNasm/test_result.asm" afterPath="$PROJECT_DIR$/Test/TestNasm/test_result.asm" />
+      <change beforePath="$PROJECT_DIR$/Test/TestNasm/test_result.o" afterPath="$PROJECT_DIR$/Test/TestNasm/test_result.o" />
+      <change beforePath="$PROJECT_DIR$/bin/Code/Optimizer/GraphColoringAllocator.class" afterPath="$PROJECT_DIR$/bin/Code/Optimizer/GraphColoringAllocator.class" />
+      <change beforePath="$PROJECT_DIR$/bin/Code/Optimizer/InterfereGraph.class" afterPath="$PROJECT_DIR$/bin/Code/Optimizer/InterfereGraph.class" />
+      <change beforePath="$PROJECT_DIR$/bin/Code/Translator/NewTranslator.class" afterPath="$PROJECT_DIR$/bin/Code/Translator/NewTranslator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Optimizer/GraphColoringAllocator.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Optimizer/GraphColoringAllocator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Optimizer/InterfereGraph.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Optimizer/InterfereGraph.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Translator/NewTranslator.class" afterPath="$PROJECT_DIR$/out/production/Mlang_Compiler/Code/Translator/NewTranslator.class" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Boom.java" afterPath="$PROJECT_DIR$/src/Code/Boom.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java" afterPath="$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Optimizer/InterfereGraph.java" afterPath="$PROJECT_DIR$/src/Code/Optimizer/InterfereGraph.java" />
       <change beforePath="$PROJECT_DIR$/src/Code/Translator/NewTranslator.java" afterPath="$PROJECT_DIR$/src/Code/Translator/NewTranslator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -144,57 +157,8 @@
       <file leaf-file-name="GraphColoringAllocator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3321">
-              <caret line="136" column="26" lean-forward="false" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UselessJumpRemover.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/UselessJumpRemover.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Boom.java" pinned="true" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="57" column="37" lean-forward="true" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
-              <folding>
-                <element signature="method#constructAST#0;class#Boom#0" expanded="false" />
-                <element signature="method#printAST#0;class#Boom#0" expanded="false" />
-                <element signature="method#checkSemantic#0;class#Boom#0" expanded="false" />
-                <element signature="method#constructIR#0;class#Boom#0" expanded="false" />
-                <element signature="method#printIR#0;class#Boom#0" expanded="false" />
-                <element signature="method#optimizeIR#0;class#Boom#0" expanded="false" />
-                <element signature="method#translate#0;class#Boom#0" expanded="false" />
-                <element signature="method#newTanslate#0;class#Boom#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test533.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/TestNasm/test533.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test566.mx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/TestNasm/test566.mx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="119" column="51" lean-forward="false" selection-start-line="119" selection-start-column="51" selection-end-line="119" selection-end-column="51" />
+            <state relative-caret-position="189">
+              <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -210,10 +174,30 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Boom.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="57" column="34" lean-forward="true" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+              <folding>
+                <element signature="method#constructAST#0;class#Boom#0" expanded="false" />
+                <element signature="method#printAST#0;class#Boom#0" expanded="false" />
+                <element signature="method#checkSemantic#0;class#Boom#0" expanded="false" />
+                <element signature="method#constructIR#0;class#Boom#0" expanded="false" />
+                <element signature="method#printIR#0;class#Boom#0" expanded="false" />
+                <element signature="method#optimizeIR#0;class#Boom#0" expanded="false" />
+                <element signature="method#translate#0;class#Boom#0" expanded="false" />
+                <element signature="method#newTanslate#0;class#Boom#0" expanded="false" />
+                <marker date="1528291518572" expanded="true" signature="1582:1656" ph="//..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="test_result.asm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_result.asm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -245,11 +229,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewTranslator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NewTranslator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Code/Translator/NewTranslator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="597" column="14" lean-forward="true" selection-start-line="597" selection-start-column="14" selection-end-line="598" selection-end-column="38" />
+            <state relative-caret-position="351">
+              <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -294,8 +278,8 @@
       <find>Label</find>
       <find>addIns</find>
       <find>getSpa</find>
-      <find>sp</find>
       <find>test</find>
+      <find>sp</find>
     </findStrings>
     <replaceStrings>
       <replace>actuall_parameters</replace>
@@ -372,13 +356,13 @@
         <option value="$PROJECT_DIR$/src/Code/IR/IRConstructor.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test565.mx" />
         <option value="$PROJECT_DIR$/src/Code/Translator/NasmInst.java" />
-        <option value="$PROJECT_DIR$/src/Code/Optimizer/InterfereGraph.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test_result.asm" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test527.mx" />
-        <option value="$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java" />
         <option value="$PROJECT_DIR$/Test/TestNasm/test945.mx" />
-        <option value="$PROJECT_DIR$/src/Code/Boom.java" />
+        <option value="$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java" />
+        <option value="$PROJECT_DIR$/src/Code/Optimizer/InterfereGraph.java" />
         <option value="$PROJECT_DIR$/src/Code/Translator/NewTranslator.java" />
+        <option value="$PROJECT_DIR$/src/Code/Boom.java" />
       </list>
     </option>
   </component>
@@ -710,9 +694,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2881549" sideWeight="0.5064378" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2881549" sideWeight="0.49356222" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2881549" sideWeight="0.49356222" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3189066" sideWeight="0.49570817" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3189066" sideWeight="0.49570817" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26180258" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1235,14 +1219,14 @@
             <element signature="method#visit#0;class#IRConstructor#0" expanded="false" />
             <element signature="method#addGlobalVariable#0;class#IRConstructor#0" expanded="false" />
             <element signature="method#visit#2;class#IRConstructor#0" expanded="false" />
-            <element signature="e#20281#20282#0" expanded="true" />
-            <element signature="e#20308#20309#0" expanded="true" />
-            <element signature="e#26787#26788#0" expanded="true" />
-            <element signature="e#26814#26815#0" expanded="true" />
-            <element signature="e#39184#39185#0" expanded="true" />
-            <element signature="e#39224#39225#0" expanded="true" />
-            <element signature="e#40194#40195#0" expanded="true" />
-            <element signature="e#40230#40231#0" expanded="true" />
+            <element signature="e#20281#20282#0" expanded="false" />
+            <element signature="e#20308#20309#0" expanded="false" />
+            <element signature="e#26787#26788#0" expanded="false" />
+            <element signature="e#26814#26815#0" expanded="false" />
+            <element signature="e#39184#39185#0" expanded="false" />
+            <element signature="e#39224#39225#0" expanded="false" />
+            <element signature="e#40194#40195#0" expanded="false" />
+            <element signature="e#40230#40231#0" expanded="false" />
             <element signature="method#convertType#0;class#IRConstructor#0" expanded="false" />
             <element signature="e#43692#43706#0" expanded="false" />
             <marker date="1528284524528" expanded="true" signature="43547:43634" ph="{...}" />
@@ -1271,14 +1255,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test945.mx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Translator/NasmPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1226">
@@ -1303,10 +1279,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/UselessJumpRemover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Test/TestNasm/test_result.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/TestNasm/test945.mx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
           <folding />
         </state>
       </provider>
@@ -1319,26 +1319,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/UselessJumpRemover.java">
+    <entry file="file://$PROJECT_DIR$/src/Code/Translator/NewTranslator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Optimizer/GraphColoringAllocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3321">
-          <caret line="136" column="26" lean-forward="false" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+        <state relative-caret-position="351">
+          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Code/Boom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="57" column="37" lean-forward="true" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+        <state relative-caret-position="270">
+          <caret line="57" column="34" lean-forward="true" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
           <folding>
             <element signature="method#constructAST#0;class#Boom#0" expanded="false" />
             <element signature="method#printAST#0;class#Boom#0" expanded="false" />
@@ -1348,15 +1340,8 @@
             <element signature="method#optimizeIR#0;class#Boom#0" expanded="false" />
             <element signature="method#translate#0;class#Boom#0" expanded="false" />
             <element signature="method#newTanslate#0;class#Boom#0" expanded="false" />
+            <marker date="1528291518572" expanded="true" signature="1582:1656" ph="//..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Code/Translator/NewTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="597" column="14" lean-forward="true" selection-start-line="597" selection-start-column="14" selection-end-line="598" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
