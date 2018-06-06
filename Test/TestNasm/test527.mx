@@ -19,7 +19,10 @@ int makeHeap() {
         j = i * 2;
         if (i*2+1<n && a[i*2+1]<a[i*2]) j = i*2+1;
         if (a[i] > a[j]) {
+
+            println(toString(i) + " " + toString(j));
             exchange(i,j);
+            println(toString(i) + " " + toString(j));
         }
         i = i - 1;
     }
@@ -49,6 +52,8 @@ int heapSort() {
     int k;
     t = 0;
     for (k = 0; k < n; k = k + 1) {
+
+        println(toString(k));
         t = a[0];
         a[0] = a[n-k-1];
         a[n-k-1] = t;

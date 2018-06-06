@@ -17,8 +17,8 @@ public class NewTranslator implements IRInstTraversal
     private DataSection dataZone;
     private DataSection bssZone;
     private String[] paramRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
-    private String[] spareRegNames = { "r15", "r14", "r13", "r12", "r11", "r10"};
-//    private String[] spareRegNames = {"r15", "r14", "r13"};
+//    private String[] spareRegNames = { "r15", "r14", "r13", "r12", "r11", "r10"};
+    private String[] spareRegNames = {"r15", "r14", "r13", "r8", "r9", "rcx"};
     private List<PhysicalRegister> sparePhysicalRegs = new ArrayList<>();
     private List<PhysicalRegister> paramPhysicalRegs = new ArrayList<>();
     private int rspPosition;
@@ -163,7 +163,7 @@ public class NewTranslator implements IRInstTraversal
     @Override
     public void visit(Malloc inst)
     {
-        String sizeValue = null;
+        String sizeValue;
         if(inst.getSize() instanceof Immediate)
         {
             sizeValue = String.valueOf((((Immediate) inst.getSize()).getValue() + 1) * 8);
@@ -453,7 +453,7 @@ public class NewTranslator implements IRInstTraversal
             inst = NasmInst.Instruction.NULL;
         if(operand1 == null)
             operand1 = "NULL";
-        if(operand2 == null)
+        if(operand2 == null || operand2.equals("label!"))
             operand2 = "NULL";
         nasmInsts.add(new NasmInst(inst, operand1, operand2));
     }
