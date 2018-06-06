@@ -401,7 +401,7 @@ public class NewTranslator implements IRInstTraversal
     @Override
     public void visit(Label inst)
     {
-        addInst(null, inst.toString(), null);
+        addInst(null, inst.toString(), "label!");
     }
 
     @Override
@@ -595,6 +595,8 @@ public class NewTranslator implements IRInstTraversal
         {
             if(isRedundant(nasmInsts.get(i)))
                 nasmInsts.remove(i);
+            if(i != nasmInsts.size() - 1 && noUseJump(nasmInsts.get(i), nasmInsts.get(i + 1)))
+                nasmInsts.remove(i);
         }
     }
 
@@ -602,6 +604,15 @@ public class NewTranslator implements IRInstTraversal
     {
         if(nasmInst.getInst() == NasmInst.Instruction.mov &&
                 nasmInst.getOperand1().equals(nasmInst.getOperand2()))
+            return true;
+        return false;
+    }
+
+    private boolean noUseJump(NasmInst nasmInst1, NasmInst nasmInst2)
+    {
+        if(nasmInst1.getInst() == NasmInst.Instruction.jmp &&
+                nasmInst2.getInst() == null && nasmInst2.getOperand2().equals("label!") &&
+                nasmInst1.getOperand1().equals(nasmInst2.getOperand1()))
             return true;
         return false;
     }

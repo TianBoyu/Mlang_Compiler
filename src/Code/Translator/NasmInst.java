@@ -62,7 +62,7 @@ public class NasmInst
             ret += inst.toString() + "  ";
         if(!operand1.equals("NULL"))
             ret += operand1;
-        if(!operand2.equals("NULL"))
+        if(!operand2.equals("NULL") && !operand2.equals("label!"))
             ret += ",  " + operand2;
         return ret;
     }
