@@ -17,7 +17,7 @@ public class InterfereGraph
     public Set<VirtualRegister> registerGraph = new HashSet<>();
     public Stack<Register> registerStack = new Stack<>();
     private Set<VirtualRegister> firedRegisters = new HashSet<>();
-    private static final int  REGISTER_NUMBER = 1;
+    private static final int  REGISTER_NUMBER = 4;
 
     public void init(Function function)
     {
@@ -51,7 +51,7 @@ public class InterfereGraph
                     !((Address)neighbor).isPointer())
             {
                 --neighbor.degree;
-                if(neighbor.degree < 1)
+                if(neighbor.degree < REGISTER_NUMBER)
                     firedRegisters.add((VirtualRegister) neighbor);
             }
         }

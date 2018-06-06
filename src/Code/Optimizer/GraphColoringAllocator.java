@@ -17,9 +17,8 @@ import java.util.Set;
 
 public class GraphColoringAllocator
 {
-    private static final int COLOR_NUMBER = 8;
-
-    private String[] regNames = {"rbx"};
+//    private String[] regNames = {"rbx"};
+    private String[] regNames = {"rbx", "r10", "r11", "r12"};
     private String[] parameterRegNames = {"rdi", "rsi", "rdx", "rcx", "r8", "r9"};
     private String[] calleeSaveNames = {"rbp", "rbx", "r12", "r13", "r14", "r15"};
     private List<BasicBlock> basicBlocks;
@@ -92,19 +91,20 @@ public class GraphColoringAllocator
                 Address dest = assignInst.getDest();
                 if(dest == null || dest.isPointer()) continue;
                 if(dest.isGlobal()) continue;
-//                if(inst instanceof Store)
-//                {
-//                    for (Register register : inst.liveOut)
-//                    {
-//                        if(register != ((Store) inst).getData())
-//                            interfereGraph.addEdge(dest, register);
-//                    }
-//                }
-//                else
-//                {
-                for (Register register : inst.liveOut)
+                if(inst instanceof Store)
                 {
-                    interfereGraph.addEdge(dest, register);
+                    for (Register register : inst.liveOut)
+                    {
+                        if(register != ((Store) inst).getData())
+                            interfereGraph.addEdge(dest, register);
+                    }
+                }
+                else
+                {
+                    for (Register register : inst.liveOut)
+                    {
+                        interfereGraph.addEdge(dest, register);
+                    }
                 }
             }
         }
