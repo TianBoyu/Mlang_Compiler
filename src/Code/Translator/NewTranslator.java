@@ -245,7 +245,7 @@ public class NewTranslator implements IRInstTraversal
         else if(name.equals("rsp")) ret = "esp";
         else if(name.equals("rbp")) ret = "ebp";
         else if(name.equals("rsi")) ret = "esi";
-        else if(name.equals("rdi")) ret = "rdi";
+        else if(name.equals("rdi")) ret = "edi";
         else ret = name + "d";
         return ret;
     }

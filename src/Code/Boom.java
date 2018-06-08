@@ -28,6 +28,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -52,7 +53,7 @@ public class Boom {
     {
         InputStream is = System.in;
         OutputStream out = System.out;
-//        InputStream is = new FileInputStream("Test/TestNasm/test925.mx");
+//        InputStream is = new FileInputStream("Test/TestNasm/test527.mx");
 //        OutputStream out = new FileOutputStream("Test/TestNasm/test_result.asm");
         ProgNode program = constructAST(is);
 //        printAST(program);
