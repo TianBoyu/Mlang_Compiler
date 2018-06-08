@@ -78,8 +78,8 @@ expression
     | expression op='&' expression                              #binaryExpr
     | expression op='^' expression                              #binaryExpr
     | expression op='|' expression                              #binaryExpr
-    | expression '&&' expression                                #andExpr
-    | expression '||' expression                                #orExpr
+    | <assoc=right>expression '&&' expression                                #andExpr
+    | <assoc=right>expression '||' expression                                #orExpr
     | NUM                                                       #intConstExpr
     | TRUE                                                      #boolConstExpr
     | FALSE                                                     #boolConstExpr

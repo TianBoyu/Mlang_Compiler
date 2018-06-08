@@ -214,6 +214,7 @@ public class NewTranslator implements IRInstTraversal
                 addInst(NasmInst.Instruction.mov, pr.toString(), right);
                 right = pr.toString();
             }
+            right = changeTo32Reg(right);
             addInst(NasmInst.Instruction.mov, "rdx", "0");
             addInst(NasmInst.Instruction.idiv, right, null);
             addInst(NasmInst.Instruction.mov, dest, destReg);
@@ -232,6 +233,22 @@ public class NewTranslator implements IRInstTraversal
 //            addInst(NasmInst.Instruction.mov, "qword["+inst.getDest().getName().toString()+"]", dest);
     }
 
+
+    private String changeTo32Reg(String name)
+    {
+        //RAX RCX RDX RBX RSP RBP RSI RDI
+        String ret;
+        if(name.equals("rax")) ret = "eax";
+        else if(name.equals("rcx")) ret = "ecx";
+        else if(name.equals("rdx")) ret = "edx";
+        else if(name.equals("rbx")) ret = "ebx";
+        else if(name.equals("rsp")) ret = "esp";
+        else if(name.equals("rbp")) ret = "ebp";
+        else if(name.equals("rsi")) ret = "esi";
+        else if(name.equals("rdi")) ret = "rdi";
+        else ret = name + "d";
+        return ret;
+    }
     @Override
     public void visit(Branch inst)
     {

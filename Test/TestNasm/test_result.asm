@@ -294,7 +294,7 @@ label62:
        mov  rax,  r10
        mov  r9,  10
        mov  rdx,  0
-       idiv  r9
+       idiv  r9d
        mov  r10,  rax
        push  rbp
        push  r11
@@ -322,7 +322,7 @@ label62:
        mov  rax,  rbx
        mov  rcx,  10
        mov  rdx,  0
-       idiv  rcx
+       idiv  ecx
        mov  rbx,  rdx
        push  rbp
        push  r11
@@ -430,7 +430,7 @@ label68:
        mov  rax,  rbx
        mov  rsi,  10
        mov  rdx,  0
-       idiv  rsi
+       idiv  esi
        mov  rbx,  rax
        push  rbp
        push  r11
@@ -459,7 +459,7 @@ label68:
        mov  rax,  rbx
        mov  r15,  10
        mov  rdx,  0
-       idiv  r15
+       idiv  r15d
        mov  rbx,  rdx
        push  rbp
        push  r11

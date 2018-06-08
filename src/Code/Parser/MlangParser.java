@@ -2027,7 +2027,7 @@ public class MlangParser extends Parser {
 						setState(221);
 						match(T__24);
 						setState(222);
-						expression(12);
+						expression(11);
 						}
 						break;
 					case 10:
@@ -2039,7 +2039,7 @@ public class MlangParser extends Parser {
 						setState(224);
 						match(T__25);
 						setState(225);
-						expression(11);
+						expression(10);
 						}
 						break;
 					case 11:
@@ -2609,8 +2609,8 @@ public class MlangParser extends Parser {
 		"\2\2\u00d7\u00f5\5\34\17\21\u00d8\u00d9\f\17\2\2\u00d9\u00da\7\31\2\2"+
 		"\u00da\u00f5\5\34\17\20\u00db\u00dc\f\16\2\2\u00dc\u00dd\7\32\2\2\u00dd"+
 		"\u00f5\5\34\17\17\u00de\u00df\f\r\2\2\u00df\u00e0\7\33\2\2\u00e0\u00f5"+
-		"\5\34\17\16\u00e1\u00e2\f\f\2\2\u00e2\u00e3\7\34\2\2\u00e3\u00f5\5\34"+
-		"\17\r\u00e4\u00e5\f\3\2\2\u00e5\u00e6\7\b\2\2\u00e6\u00f5\5\34\17\4\u00e7"+
+		"\5\34\17\r\u00e1\u00e2\f\f\2\2\u00e2\u00e3\7\34\2\2\u00e3\u00f5\5\34\17"+
+		"\f\u00e4\u00e5\f\3\2\2\u00e5\u00e6\7\b\2\2\u00e6\u00f5\5\34\17\4\u00e7"+
 		"\u00e8\f\35\2\2\u00e8\u00eb\7\n\2\2\u00e9\u00ec\79\2\2\u00ea\u00ec\5 "+
 		"\21\2\u00eb\u00e9\3\2\2\2\u00eb\u00ea\3\2\2\2\u00ec\u00f5\3\2\2\2\u00ed"+
 		"\u00ee\f\34\2\2\u00ee\u00ef\7\67\2\2\u00ef\u00f0\5\34\17\2\u00f0\u00f1"+
